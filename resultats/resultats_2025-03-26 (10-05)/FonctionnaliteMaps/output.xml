@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.9 on linux)" generated="2025-03-26T10:05:57.537471" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteMaps" source="/app/test_cases/FonctionnaliteMaps.robot">
+<test id="s1-t1" name="Test GPS Location Functionality" line="22">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-03-26T10:05:57.689721" level="INFO">Erreur lors de la définition de la position : error: could not connect to TCP port 5554: Connection refused</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS sur l'émulateur ou l'appareil.</doc>
+<status status="PASS" start="2025-03-26T10:05:57.686650" elapsed="0.003164"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-26T10:05:59.690435" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-26T10:05:57.690023" elapsed="2.000547"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-03-26T10:05:59.746366" level="INFO">${current_latitude} = 40.7128</msg>
+<msg time="2025-03-26T10:05:59.746424" level="INFO">${current_longitude} = -74.006</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-03-26T10:05:59.690770" elapsed="0.055672"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-26T10:05:59.746793" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-26T10:05:59.746586" elapsed="0.000300"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-26T10:05:59.747119" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-26T10:05:59.746992" elapsed="0.000164"/>
+</kw>
+<doc>Ce test définit la localisation GPS et vérifie qu'elle est correcte.</doc>
+<tag>gps</tag>
+<status status="PASS" start="2025-03-26T10:05:57.685609" elapsed="2.061769"/>
+</test>
+<status status="PASS" start="2025-03-26T10:05:57.539461" elapsed="2.208262"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">gps</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteMaps" id="s1" pass="1" fail="0" skip="0">FonctionnaliteMaps</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-26T10:05:57.571766" level="ERROR">Error in file '/app/test_cases/FonctionnaliteMaps.robot' on line 5: Importing library 'AppiumLibrary' failed: ModuleNotFoundError: No module named 'AppiumLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  /usr/local/bin
+  /usr/local/lib/python312.zip
+  /usr/local/lib/python3.12
+  /usr/local/lib/python3.12/lib-dynload
+  /usr/local/lib/python3.12/site-packages</msg>
+</errors>
+</robot>

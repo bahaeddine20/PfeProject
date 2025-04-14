@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aestoolscelad/flask-app-baha:v1
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - /dev/bus/usb:/dev/bus/usb
+    environment:
+      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
+      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
+      - ANDROID_ADB_SERVER_PORT=5037
+      - FLASK_ENV=development
+      - FLASK_RUN_HOST=0.0.0.0
+    networks:
+      - app_network
+
+  appium:
+    image: appium/appium
+    container_name: appium_container
+    environment:
+      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
+      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
+      - ANDROID_ADB_SERVER_PORT=5037
+      - ANDROID_HOSTNAME=host.docker.internal:8200
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+    ports:
+      - "4723:4723"
+      - "8200:8200"
+    privileged: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

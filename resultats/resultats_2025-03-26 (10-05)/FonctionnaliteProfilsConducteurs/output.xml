@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.9 on linux)" generated="2025-03-26T10:06:02.111077" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteProfilsConducteurs" source="/app/test_cases/FonctionnaliteProfilsConducteurs.robot">
+<test id="s1-t1" name="Test Ajouter Utilisateur" line="20">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-03-26T10:06:02.328859" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c8db5c0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.329371" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c868230&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.329754" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7870e0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.330386" level="FAIL">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c0050&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-03-26T10:06:02.325357" elapsed="0.014806">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c0050&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340383" elapsed="0.000033"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340592" elapsed="0.000019"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340675" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340745" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Ajouter un profil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340809" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340869" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340506" elapsed="0.000393"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340979" elapsed="0.000014"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341046" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341135" elapsed="0.000015"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Add Profile</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341203" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341270" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340921" elapsed="0.000388"/>
+</branch>
+<status status="NOT RUN" start="2025-03-26T10:06:02.340481" elapsed="0.000846"/>
+</if>
+<kw name="Get Android Users" owner="Integration">
+<var>${old_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341393" elapsed="0.000012"/>
+</kw>
+<kw name="Revenir A La Home Page" owner="Integration">
+<arg>${driver}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341462" elapsed="0.000013"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341530" elapsed="0.000012"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341599" elapsed="0.000011"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341664" elapsed="0.000012"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Be True</arg>
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341748" elapsed="0.000011"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Clique Sur Setting</arg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341819" elapsed="0.000011"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Ajouter}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341884" elapsed="0.000011"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.341944" elapsed="0.000011"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Ok}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.342002" elapsed="0.000010"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.342069" elapsed="0.000018"/>
+</kw>
+<kw name="Get Android Users" owner="Integration">
+<var>${new_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.342157" elapsed="0.000013"/>
+</kw>
+<kw name="Get Added User" owner="Integration">
+<var>${verifie_adb_add_user}</var>
+<arg>${old_users}</arg>
+<arg>${new_users}</arg>
+<doc>Compare deux listes d'utilisateurs et retourne l'utilisateur ajouté.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.342225" elapsed="0.000011"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Not Be Equal</arg>
+<arg>${verifie_adb_add_user}</arg>
+<arg>${None}</arg>
+<arg>Aucun utilisateur n'a été ajouté.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.342827" elapsed="0.000036"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Utilisateur ajouté : ${verifie_adb_add_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.342954" elapsed="0.000015"/>
+</kw>
+<status status="FAIL" start="2025-03-26T10:06:02.324083" elapsed="0.019077">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c0050&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</test>
+<test id="s1-t2" name="Test renommer Utilisateur" line="72">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-03-26T10:06:02.344670" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c1e50&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.345159" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c20f0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.345479" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c2570&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.346138" level="FAIL">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c2ab0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-03-26T10:06:02.343636" elapsed="0.005836">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c2ab0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.349674" elapsed="0.000025"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.349865" elapsed="0.000015"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.349955" elapsed="0.000015"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350032" elapsed="0.000013"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Ajouter un profil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350133" elapsed="0.000016"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350213" elapsed="0.000013"/>
+</kw>
+<status status="NOT RUN" start="2025-03-26T10:06:02.349780" elapsed="0.000467"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350327" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350391" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350455" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Add Profile</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350515" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350575" elapsed="0.000010"/>
+</kw>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350269" elapsed="0.000334"/>
+</branch>
+<status status="NOT RUN" start="2025-03-26T10:06:02.349755" elapsed="0.000862"/>
+</if>
+<kw name="Get Android Users" owner="Integration">
+<var>${old_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350677" elapsed="0.000011"/>
+</kw>
+<kw name="Revenir A La Home Page" owner="Integration">
+<arg>${driver}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350742" elapsed="0.000010"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350800" elapsed="0.000010"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350863" elapsed="0.000012"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.350939" elapsed="0.000016"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Be True</arg>
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.351037" elapsed="0.000014"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Clique Sur Setting</arg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:06:02.351168" elapsed="0.000018"/>
+</kw>
+<status status="FAIL" start="2025-03-26T10:06:02.343366" elapsed="0.008026">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c2ab0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</test>
+<status status="FAIL" start="2025-03-26T10:06:02.113615" elapsed="0.238268"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteProfilsConducteurs" id="s1" pass="0" fail="2" skip="0">FonctionnaliteProfilsConducteurs</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-26T10:06:02.328859" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c8db5c0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.329371" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c868230&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.329754" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7870e0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.344670" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c1e50&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.345159" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c20f0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:06:02.345479" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fc87c7c2570&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+</errors>
+</robot>

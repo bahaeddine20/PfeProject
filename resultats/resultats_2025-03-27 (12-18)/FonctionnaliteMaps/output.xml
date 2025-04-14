@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-03-27T12:18:17.931243" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteMaps" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteMaps.robot">
+<test id="s1-t1" name="Test GPS Location Functionality" line="22">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-03-27T12:18:18.243755" level="INFO">Position définie à Longitude: -74.0060, Latitude: 40.7128</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS sur l'émulateur ou l'appareil.</doc>
+<status status="PASS" start="2025-03-27T12:18:18.212725" elapsed="0.031122"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-27T12:18:20.244555" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-27T12:18:18.244021" elapsed="2.000678"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-03-27T12:18:20.288870" level="INFO">${current_latitude} = 40.7128</msg>
+<msg time="2025-03-27T12:18:20.288917" level="INFO">${current_longitude} = -74.006</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-03-27T12:18:20.244837" elapsed="0.044094"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-27T12:18:20.289185" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-27T12:18:20.289048" elapsed="0.000182"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-27T12:18:20.289390" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-27T12:18:20.289305" elapsed="0.000116"/>
+</kw>
+<doc>Ce test définit la localisation GPS et vérifie qu'elle est correcte.</doc>
+<tag>gps</tag>
+<status status="PASS" start="2025-03-27T12:18:18.212040" elapsed="2.077481"/>
+</test>
+<status status="PASS" start="2025-03-27T12:18:17.932429" elapsed="2.357408"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">gps</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteMaps" id="s1" pass="1" fail="0" skip="0">FonctionnaliteMaps</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-27T12:18:18.172019" level="ERROR">Error in file 'C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteMaps.robot' on line 5: Importing library 'AppiumLibrary' failed: ModuleNotFoundError: No module named 'appium.webdriver.common.touch_action'
+Traceback (most recent call last):
+  File "C:\Users\bahae\Desktop\PfeProject\.venv\Lib\site-packages\AppiumLibrary\__init__.py", line 4, in &lt;module&gt;
+    from AppiumLibrary.keywords import *
+  File "C:\Users\bahae\Desktop\PfeProject\.venv\Lib\site-packages\AppiumLibrary\keywords\__init__.py", line 9, in &lt;module&gt;
+    from ._touch import _TouchKeywords
+  File "C:\Users\bahae\Desktop\PfeProject\.venv\Lib\site-packages\AppiumLibrary\keywords\_touch.py", line 3, in &lt;module&gt;
+    from appium.webdriver.common.touch_action import TouchAction
+PYTHONPATH:
+  C:\Users\bahae\Desktop\PfeProject\.venv\Scripts\robot.exe
+  C:\Users\bahae\Desktop\PfeProject
+  C:\Program Files\JetBrains\PyCharm 2024.3.2\plugins\python-ce\helpers\pycharm_display
+  C:\Users\bahae\Desktop\PfeProject\.venv\Scripts\python313.zip
+  C:\Python313\DLLs
+  C:\Python313\Lib
+  C:\Python313
+  C:\Users\bahae\Desktop\PfeProject\.venv
+  C:\Users\bahae\Desktop\PfeProject\.venv\Lib\site-packages
+  C:\Program Files\JetBrains\PyCharm 2024.3.2\plugins\python-ce\helpers\pycharm_matplotlib_backend
+  C:\Program Files\JetBrains\PyCharm 2024.3.2\plugins\python-ce\helpers\pycharm_plotly_backend</msg>
+</errors>
+</robot>
