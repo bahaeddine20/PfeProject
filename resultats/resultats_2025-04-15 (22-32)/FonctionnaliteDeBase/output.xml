@@ -1,0 +1,1246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-15T22:32:23.613666" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteDeBase" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteDeBase.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-15T22:32:29.013872" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="86aadf13-38ee-41a8-95e1-1af98dd6d64a")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-04-15T22:32:23.833663" elapsed="5.180209"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:32:29.013872" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="86aadf13-38ee-41a8-95e1-1af98dd6d64a")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-15T22:32:29.013872" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:32:23.833663" elapsed="5.180209"/>
+</kw>
+<test id="s1-t1" name="Test Home_Button" line="31">
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-04-15T22:32:39.238909" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-04-15T22:32:29.014872" elapsed="10.224037"/>
+</kw>
+<doc>Ce test vérifie si le bouton "Home" fonctionne correctement en revenant à la page d'accueil de l'appareil.</doc>
+<status status="PASS" start="2025-04-15T22:32:29.013872" elapsed="10.225037"/>
+</test>
+<test id="s1-t2" name="Test Ouvrir YouTube App" line="35">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:32:41.240881" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:32:39.239910" elapsed="2.000971"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:32:59.839382" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+650 209 759 247</msg>
+<msg time="2025-04-15T22:32:59.839382" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>YouTube</arg>
+<status status="PASS" start="2025-04-15T22:32:41.240881" elapsed="18.598501"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>L'activité YouTube n'est pas trouvée.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:32:59.839382" elapsed="0.001001"/>
+</kw>
+<kw name="Print Activity2" owner="Integration">
+<msg time="2025-04-15T22:32:59.925381" level="INFO">${Activity} = com.google.android.apps.automotive.youtube/.YoutubeWebviewFallbackActivity</msg>
+<var>${Activity}</var>
+<arg>${driver}</arg>
+<doc>Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'.</doc>
+<status status="PASS" start="2025-04-15T22:32:59.840383" elapsed="0.084998"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:33:04.926304" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:32:59.925381" elapsed="5.000923"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T22:33:04.926304" level="INFO">com.google.android.apps.automotive.youtube/.YoutubeWebviewFallbackActivity</msg>
+<arg>${Activity}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T22:33:04.926304" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T22:33:05.042814" level="INFO">${is_element_present} = True</msg>
+<var>${is_element_present}</var>
+<arg>${driver}</arg>
+<arg>com.google.android.apps.automotive.youtube:id/decor_content_parent</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T22:33:04.926304" elapsed="0.116510"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_element_present}</arg>
+<arg>L'élément YouTube n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:33:05.043814" elapsed="0.000000"/>
+</kw>
+<doc>Ce test vérifie si l'application YouTube peut être ouverte et si son activité est correctement lancée sur l'appareil Android.</doc>
+<status status="PASS" start="2025-04-15T22:32:39.239910" elapsed="25.803904"/>
+</test>
+<test id="s1-t3" name="Test Modifier Languages" line="46">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T22:33:05.091815" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T22:33:05.043814" elapsed="0.048001"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:33:05.091815" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:33:05.092813" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue1}</var>
+<arg>Langues et saisie</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:33:05.092813" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue2}</var>
+<arg>Langues</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:33:05.092813" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T22:33:05.091815" elapsed="0.000998"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:33:05.092813" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:33:05.092813" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:33:05.092813" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:33:05.092813" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:33:05.092813" level="INFO">${Langue1} = Languages &amp; input</msg>
+<var>${Langue1}</var>
+<arg>Languages &amp; input</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:33:05.092813" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:33:05.093813" level="INFO">${Langue2} = Languages</msg>
+<var>${Langue2}</var>
+<arg>Languages</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:33:05.092813" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:33:05.092813" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-04-15T22:33:05.091815" elapsed="0.001998"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:33:20.563844" level="INFO">📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+📌 First Home Page détectée : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-04-15T22:33:20.563844" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-15T22:33:05.093813" elapsed="15.470031"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:33:21.564078" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:33:20.563844" elapsed="1.000234"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T22:33:21.622078" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T22:33:21.564078" elapsed="0.058000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:33:21.622078" elapsed="0.000998"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:33:33.752019" level="INFO">📌 Liste des applications détectées : ['Bluetooth', 'Network &amp; internet', 'Notifications', 'Sound', 'Display', 'Profiles &amp; accounts', 'Location', 'Use Bluetooth', 'Paired devices', 'sdk_gphone64_x86_64', 'Pair new device']
+📌 First Home Page détectée : ['Bluetooth', 'Network &amp; internet', 'Notifications', 'Sound', 'Display', 'Profiles &amp; accounts', 'Location', 'Use Bluetooth', 'Paired devices', 'sdk_gphone64_x86_64', 'Pair new device']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Network &amp; internet', 'Notifications', 'Sound', 'Display', 'Profiles &amp; accounts', 'Location', 'Use Bluetooth', 'Paired devices', 'sdk_gphone64_x86_64', 'Pair new device']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+✅ 'System' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-15T22:33:21.623076" elapsed="12.128943"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:33:43.136610" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+✅ Retour à la first home page !
+✅ 'Languages &amp; input' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:33:33.752019" elapsed="9.384591"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:33:53.422072" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+✅ Retour à la first home page !
+✅ 'Languages' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:33:43.136610" elapsed="10.285462"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:34:12.421982" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10</msg>
+<arg>${driver}</arg>
+<arg>English</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:33:53.423070" elapsed="18.998912"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:34:21.820314" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+✅ 'English (United States)' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English (United States)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:34:12.421982" elapsed="9.398332"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:34:25.821547" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:34:21.820314" elapsed="4.001233"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-04-15T22:34:25.862533" level="INFO">CompletedProcess(args=['adb', '-s', 'emulator-5554', 'shell', 'settings', 'get', 'system', 'system_locales'], returncode=0, stdout='en-US\n', stderr='')
+🔄 La langue a été modifiée : en-US</msg>
+<msg time="2025-04-15T22:34:25.862533" level="INFO">${verfieadb} = True</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>en-US</arg>
+<status status="PASS" start="2025-04-15T22:34:25.821547" elapsed="0.040986"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:34:25.862533" elapsed="0.000000"/>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T22:34:25.899532" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T22:34:25.862533" elapsed="0.036999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:34:25.899532" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:34:25.899532" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue1}</var>
+<arg>Langues et saisie</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:34:25.899532" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue2}</var>
+<arg>Langues</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:34:25.899532" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T22:34:25.899532" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:34:25.899532" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:34:25.899532" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:34:25.899532" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:34:25.899532" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:34:25.900533" level="INFO">${Langue1} = Languages &amp; input</msg>
+<var>${Langue1}</var>
+<arg>Languages &amp; input</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:34:25.900533" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:34:25.900533" level="INFO">${Langue2} = Languages</msg>
+<var>${Langue2}</var>
+<arg>Languages</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:34:25.900533" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:34:25.899532" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-04-15T22:34:25.899532" elapsed="0.001001"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:34:37.416168" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-04-15T22:34:37.416168" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-15T22:34:25.900533" elapsed="11.515635"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:34:38.416536" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:34:37.416168" elapsed="1.000368"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T22:34:38.461517" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T22:34:38.416536" elapsed="0.044981"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:34:38.461517" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:34:48.214218" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+✅ Retour à la first home page !
+✅ 'System' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-15T22:34:38.461517" elapsed="9.752701"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:34:58.137122" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+✅ Retour à la first home page !
+✅ 'Languages &amp; input' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:34:48.214218" elapsed="9.922904"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:35:08.176010" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Languages', 'Autofill service', 'Keyboard', 'Text-to-speech output']
+✅ Retour à la first home page !
+✅ 'Languages' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:34:58.137122" elapsed="10.038888"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:35:26.438958" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10</msg>
+<arg>${driver}</arg>
+<arg>Français</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:35:08.176010" elapsed="18.262948"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:35:45.313898" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10</msg>
+<arg>${driver}</arg>
+<arg>Français (France)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:35:26.438958" elapsed="18.874940"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:35:49.315114" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:35:45.313898" elapsed="4.001216"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-04-15T22:35:49.354635" level="INFO">CompletedProcess(args=['adb', '-s', 'emulator-5554', 'shell', 'settings', 'get', 'system', 'system_locales'], returncode=0, stdout='en-US\n', stderr='')
+✅ La langue n'a pas été modifiée.</msg>
+<msg time="2025-04-15T22:35:49.354635" level="INFO">${verfieadb} = False</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>fr-FR</arg>
+<status status="PASS" start="2025-04-15T22:35:49.315114" elapsed="0.039521"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-04-15T22:35:49.355631" level="FAIL">Modifier Languages ne s'active pas (via adb).</msg>
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-04-15T22:35:49.354635" elapsed="0.000996">Modifier Languages ne s'active pas (via adb).</status>
+</kw>
+<doc>Ce test vérifie si la modification de la langue du système fonctionne correctement sur l'appareil, en fonction de la langue actuelle de l'appareil.</doc>
+<status status="FAIL" start="2025-04-15T22:33:05.043814" elapsed="164.311817">Modifier Languages ne s'active pas (via adb).</status>
+</test>
+<test id="s1-t4" name="Test Notification Réception" line="102">
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-04-15T22:35:50.633972" level="INFO">Installation réussie : Performing Streamed Install
+Success</msg>
+<arg>${driver}</arg>
+<arg>automotive-Notification_Test.apk</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-04-15T22:35:49.356631" elapsed="1.277341"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-04-15T22:35:50.730056" level="INFO">${isIns} = True</msg>
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="PASS" start="2025-04-15T22:35:50.634975" elapsed="0.095081"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T22:35:50.730056" level="INFO">True</msg>
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T22:35:50.730056" elapsed="0.000000"/>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T22:35:50.897219" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T22:35:50.730056" elapsed="0.167163"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:35:50.897219" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:35:50.897219" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:35:50.897219" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T22:35:50.897219" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:35:50.898219" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:35:50.898219" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:35:50.898219" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:35:50.898219" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:35:50.898219" level="INFO">${Noti} = Notifications</msg>
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:35:50.898219" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:35:50.898219" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-04-15T22:35:50.897219" elapsed="0.001000"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:36:02.532040" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-04-15T22:36:02.532040" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-15T22:35:50.898219" elapsed="11.633821"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:36:03.533934" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:36:02.532040" elapsed="1.001894"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T22:36:03.581447" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T22:36:03.533934" elapsed="0.047513"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:36:03.582448" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:36:22.002996" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10</msg>
+<arg>${driver}</arg>
+<arg>${Noti}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-15T22:36:03.582448" elapsed="18.420548"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:36:38.222212" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10</msg>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:36:22.002996" elapsed="16.219216"/>
+</kw>
+<kw name="Activer Notification Si Desactive" owner="Integration">
+<msg time="2025-04-15T22:36:38.289209" level="INFO">❌ Erreur lors de l'activation du notification : Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-04-15T22:36:38.222212" elapsed="0.066997"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:36:55.598853" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+837 209 1078 247</msg>
+<msg time="2025-04-15T22:36:55.598853" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="PASS" start="2025-04-15T22:36:38.289209" elapsed="17.309644"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>ENVOYER NOTIFICATION</arg>
+<status status="PASS" start="2025-04-15T22:36:55.598853" elapsed="2.005673"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:36:59.605438" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:36:57.604526" elapsed="2.000912"/>
+</kw>
+<kw name="Afficher Notification" owner="Integration">
+<arg>${driver}</arg>
+<status status="PASS" start="2025-04-15T22:36:59.605438" elapsed="0.743974"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:37:02.350429" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:37:00.349412" elapsed="2.001017"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T22:37:02.405429" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>com.android.systemui:id/notifications</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T22:37:02.350429" elapsed="0.055000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Notification n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:37:02.405429" elapsed="0.001002"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<msg time="2025-04-15T22:37:03.216483" level="INFO">${VerfierNotif} = False</msg>
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="PASS" start="2025-04-15T22:37:02.406431" elapsed="0.811055"/>
+</kw>
+<doc>Ce test vérifie la réception d'une notification après l'activation des paramètres nécessaires et l'envoi de la notification depuis une application tierce.</doc>
+<status status="PASS" start="2025-04-15T22:35:49.355631" elapsed="73.861855"/>
+</test>
+<test id="s1-t5" name="Test Notification Supprimer" line="137">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T22:37:03.255385" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T22:37:03.217486" elapsed="0.037899"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:03.255385" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:03.255385" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue1}</var>
+<arg>Langues et saisie</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:03.255385" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue2}</var>
+<arg>Langues</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:03.255385" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Btn_clear}</var>
+<arg>Tout effacer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:03.255385" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T22:37:03.255385" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:37:03.255385" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:37:03.255385" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:37:03.256383" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:37:03.256383" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:37:03.256383" level="INFO">${Langue2} = Languages</msg>
+<var>${Langue2}</var>
+<arg>Languages</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:37:03.256383" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:37:03.256383" level="INFO">${Btn_clear} = Clear all</msg>
+<var>${Btn_clear}</var>
+<arg>Clear all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:37:03.256383" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:37:03.255385" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-04-15T22:37:03.255385" elapsed="0.000998"/>
+</if>
+<kw name="Afficher Notification" owner="Integration">
+<arg>${driver}</arg>
+<status status="PASS" start="2025-04-15T22:37:03.256383" elapsed="0.559646"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:37:05.816345" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:37:03.816029" elapsed="2.000316"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<msg time="2025-04-15T22:37:06.471233" level="INFO">${VerfierNotif} = False</msg>
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="PASS" start="2025-04-15T22:37:05.816345" elapsed="0.654888"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-04-15T22:37:06.472233" level="FAIL">La notification n'est pas affichée.</msg>
+<arg>${VerfierNotif}</arg>
+<arg>La notification n'est pas affichée.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-04-15T22:37:06.471233" elapsed="0.001000">La notification n'est pas affichée.</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.472233" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Btn_clear}</arg>
+<status status="NOT RUN" start="2025-04-15T22:37:06.472233" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.472233" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.472233" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${VerfierNotif}' == 'False'</arg>
+<arg>Log</arg>
+<arg>La notification a été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.472233" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${VerfierNotif}' == 'True'</arg>
+<arg>Fail</arg>
+<arg>La notification n'a pas été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.472233" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-15T22:37:03.217486" elapsed="3.254747">La notification n'est pas affichée.</status>
+</test>
+<test id="s1-t6" name="Test Disable Notification" line="174">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T22:37:06.515232" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T22:37:06.473233" elapsed="0.041999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.515232" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.515232" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:37:06.515232" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T22:37:06.515232" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:37:06.515232" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:37:06.515232" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:37:06.515232" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:37:06.515232" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:37:06.516234" level="INFO">${Noti} = Notifications</msg>
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:37:06.516234" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:37:06.515232" elapsed="0.001002"/>
+</branch>
+<status status="PASS" start="2025-04-15T22:37:06.515232" elapsed="0.001002"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:37:18.979066" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-04-15T22:37:18.979066" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-15T22:37:06.516234" elapsed="12.462832"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:37:19.981180" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:37:18.979066" elapsed="1.002114"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T22:37:20.068208" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T22:37:19.981180" elapsed="0.087028"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:37:20.068208" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:37:38.190225" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10</msg>
+<arg>${driver}</arg>
+<arg>${Noti}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-15T22:37:20.068208" elapsed="18.122017"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:37:57.280804" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10</msg>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:37:38.190225" elapsed="19.090579"/>
+</kw>
+<kw name="Desactive Notification Si Activer" owner="Integration">
+<msg time="2025-04-15T22:37:57.351803" level="INFO">❌ Erreur lors de l'activation du notification : Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-04-15T22:37:57.280804" elapsed="0.070999"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:38:11.826936" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+837 209 1078 247</msg>
+<msg time="2025-04-15T22:38:11.826936" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="PASS" start="2025-04-15T22:37:57.351803" elapsed="14.475133"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-04-15T22:38:12.012936" level="INFO">Aucun élément trouvé avec le texte: ENVOYER NOTIFICATION</msg>
+<arg>${driver}</arg>
+<arg>ENVOYER NOTIFICATION</arg>
+<status status="PASS" start="2025-04-15T22:38:11.826936" elapsed="0.186000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:38:14.013299" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:38:12.012936" elapsed="2.000363"/>
+</kw>
+<kw name="Afficher Notification" owner="Integration">
+<arg>${driver}</arg>
+<status status="PASS" start="2025-04-15T22:38:14.013299" elapsed="0.647506"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:38:16.661892" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:38:14.660805" elapsed="2.001087"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<msg time="2025-04-15T22:38:17.281827" level="INFO">${VerfierNotif} = False</msg>
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="PASS" start="2025-04-15T22:38:16.661892" elapsed="0.619935"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${VerfierNotif}' == 'True'</arg>
+<arg>Fail</arg>
+<arg>La notification a été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-04-15T22:38:17.281827" elapsed="0.000999"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T22:38:17.282826" level="INFO">La notification n'a pas été supprimée correctement.</msg>
+<arg>La notification n'a pas été supprimée correctement.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T22:38:17.282826" elapsed="0.000000"/>
+</kw>
+<arg>'${VerfierNotif}' == 'False'</arg>
+<arg>Log</arg>
+<arg>La notification n'a pas été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-04-15T22:38:17.282826" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:37:06.472233" elapsed="70.810593"/>
+</test>
+<test id="s1-t7" name="Test Modifier Manuellement Date" line="218">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T22:38:17.334826" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T22:38:17.282826" elapsed="0.052000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:38:17.334826" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Date}</var>
+<arg>Date et heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Btn_Heure}</var>
+<arg>Définir l'heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T22:38:17.334826" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:38:17.335827" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:38:17.335827" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:38:17.335827" level="INFO">${Date} = Date &amp; time</msg>
+<var>${Date}</var>
+<arg>Date &amp; time</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T22:38:17.335827" level="INFO">${Btn_Heure} = Définir l'heure</msg>
+<var>${Btn_Heure}</var>
+<arg>Définir l'heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T22:38:17.335827" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-04-15T22:38:17.334826" elapsed="0.001001"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T22:38:29.115790" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-04-15T22:38:29.115790" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-15T22:38:17.335827" elapsed="11.779963"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T22:38:30.117767" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T22:38:29.116790" elapsed="1.000977"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T22:38:30.194766" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T22:38:30.117767" elapsed="0.076999"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T22:38:30.194766" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:38:40.143969" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'Suggested', '[Éñĝļîšĥ one two] ([Þšéûðö‐Åççéñţš one two])', '\u061c\u202eArabic\u202c\u061c (\u061c\u202ePseudo\u202c\u061c-\u061c\u202eBidi\u202c\u061c)', 'English (United States)', 'Español (Estados Unidos)']
+✅ Retour à la first home page !
+✅ 'System' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-15T22:38:30.194766" elapsed="9.949203"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T22:38:50.599536" level="INFO">📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+📌 First Home Page détectée : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'Google', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+✅ Retour à la first home page !
+✅ 'Date &amp; time' trouvé en haut ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Date}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-15T22:38:40.143969" elapsed="10.455567"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<msg time="2025-04-15T22:38:50.643535" level="INFO">${date_ini} = 00:05</msg>
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="PASS" start="2025-04-15T22:38:50.599536" elapsed="0.043999"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-04-15T22:39:01.170267" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)

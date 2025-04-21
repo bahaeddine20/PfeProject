@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-14T16:31:07.279089" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteMaps" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteMaps.robot">
+<test id="s1-t1" name="Test GPS Location Functionality" line="21">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-04-14T16:31:07.827846" level="INFO">Position définie à Longitude: -74.0060, Latitude: 40.7128</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS sur l'émulateur ou l'appareil.</doc>
+<status status="PASS" start="2025-04-14T16:31:07.737764" elapsed="0.090082"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-14T16:31:09.828695" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-14T16:31:07.827846" elapsed="2.000849"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-04-14T16:31:09.937355" level="INFO">${current_latitude} = 40.7128</msg>
+<msg time="2025-04-14T16:31:09.937355" level="INFO">${current_longitude} = -74.006</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-14T16:31:09.828695" elapsed="0.108660"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-14T16:31:09.938355" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-14T16:31:09.937355" elapsed="0.001000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-14T16:31:09.938355" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-14T16:31:09.938355" elapsed="0.000000"/>
+</kw>
+<doc>Ce test définit la localisation GPS et vérifie qu'elle est correcte.</doc>
+<tag>gps</tag>
+<status status="PASS" start="2025-04-14T16:31:07.735762" elapsed="2.202593"/>
+</test>
+<status status="PASS" start="2025-04-14T16:31:07.282092" elapsed="2.657266"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">gps</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteMaps" id="s1" pass="1" fail="0" skip="0">FonctionnaliteMaps</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -3,7 +3,8 @@ Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
-
+Suite Setup     Démarrer Driver
+Suite Teardown  Fermer Driver
 *** Variables ***
 ${AppGrid_ACTIVITY}    com.android.car.carlauncher/.GASAppGridActivity
 ${Setting_ACTIVITY}    com.android.car.settings/.Settings_Launcher_Homepage
@@ -11,13 +12,19 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5556
+${Device}              emulator-5554
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
+*** Keywords ***
+Démarrer Driver
+    ${driver}=    setup driver    ${Device}
+    Set Suite Variable    ${driver}
+
+Fermer Driver
+    Close Driver    ${driver}
+
 *** Test Cases ***
 Test Install Apk
-      ${driver}    setup driver       ${Device}
-      Set Global Variable    ${driver}
 
       ${isInsUi}=   Search Application     ${driver}        TestNotificationapk
       Log    ${isInsUi}

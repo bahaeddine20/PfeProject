@@ -6,7 +6,7 @@ from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.common.actions.interaction import POINTER_TOUCH
 
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException, TimeoutException
 
 from appium import webdriver
 
@@ -24,19 +24,20 @@ def setup_driver(device):
     options.platform_name = "Android"
     options.platform_version = "14"
     options.device_name = device
+    options.device_name = device
     options.adb_exec_timeout = 60000
-    options.remote_adb_host="host.docker.internal"
-    options.disable_window_animation=True
-    options.new_command_timeout=300
-    options.allowInvisibleElements=True
-    options.disableIdLocatorAutocompletion=True
-    #remote_url = "http://127.0.0.1:4723"
+    #options.remote_adb_host="host.docker.internal"
+    #options.remote_adb_host="host.docker.internal"
+    remote_url = "http://127.0.0.1:4723"
     #remote_url = "http://172.21.0.3:4723"
-    remote_url = "http://appium:4723"
+    #remote_url = "http://appium:4723"
 
     options.set_capability("enforceXPath1", True)
     return webdriver.Remote(remote_url, options=options)
-
+def close_driver(driver):
+    """Ferme proprement le driver Appium."""
+    if driver:
+        driver.quit()
 def start_activity_code(driver, app_activity):
     """Lance une activité spécifique sur un appareil Android via Appium."""
     driver.execute_script('mobile: startActivity', {'intent': app_activity})
@@ -103,8 +104,7 @@ def swap_Until(driver, target_xpath):
     # Effectuer un swipe vers le haut jusqu'à ce que l'élément soit trouvé
     while True:
         # Effectuer le swipe
-        driver.swipe(250, 400, 250, 600)  # Le swipe vers le haut
-        time.sleep(1)  # Attendre 1 seconde entre les swipes pour permettre à l'élément d'apparaître
+        driver.swipe(250, 400, 250, 600,100)  # Le swipe vers le haut
 
         # Vérifier si l'élément cible est présent
         try:
@@ -153,7 +153,7 @@ def revenir_a_la_home_page(driver):
     print("📌 First Home Page détectée :", first)
 
     while True:
-        driver.swipe(200, 500, 900, 500)  # Swipe vers la droite (modifie si nécessaire)
+        driver.swipe(200, 500, 900, 500,100)  # Swipe vers la droite (modifie si nécessaire)
         seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
 
         if first == seconde:
@@ -162,7 +162,6 @@ def revenir_a_la_home_page(driver):
         else:
             first = seconde
         print("🔄 Swipe en cours...")
-
 
 
 
@@ -215,14 +214,16 @@ def afficher_noms_setting(driver):
     print("\n📌 Liste des applications détectées :", noms_applications)
     return noms_applications  # Retourner la liste si besoin
 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
-
-
-def click_element_by_text_att(driver, text):
-    element = driver.find_element(By.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{text}")')
+def click_element_by_text_att(driver, text, timeout=20):
+    locator = (By.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{text}")')
+    element = WebDriverWait(driver, timeout).until(
+        EC.presence_of_element_located(locator)
+    )
     element.click()
-# Exemple d'utilisation
-
 
 def is_within_bounds(child_bounds, parent_bounds):
     if not child_bounds or not parent_bounds:
@@ -233,52 +234,14 @@ def is_within_bounds(child_bounds, parent_bounds):
 
     return (x1_p <= x1_c <= x2_p and y1_p <= y1_c <= y2_p) or (x1_p <= x2_c <= x2_p and y1_p <= y2_c <= y2_p)
 
-def afficher_noms_setting_bound(driver, xpath_id):
-    noms_settings = []  # Liste pour stocker les noms des settings
-    parent_bounds = get_element_bounds_byId(driver, xpath_id)
-
-    print(parent_bounds)
-    print("###################################")
-    print(parent_bounds)
-
-    if parent_bounds == (0, 0, 0, 0):
-        print(f"Aucun élément trouvé avec le texte: {xpath_id}")
-        return noms_settings  # Retourne une liste vide
-
-    elements = driver.find_elements("xpath", "//*")  # Récupérer tous les éléments
-    for element in elements:
-        try:
-            classe = element.get_attribute("class")
-            text = element.text
-            resource_id = element.get_attribute("resource-id")
-            bounds = element.get_attribute("bounds")
-
-            if bounds:
-                child_bounds = extract_bounds(bounds)
-                if child_bounds and is_within_bounds(child_bounds, parent_bounds):
-                    if classe == "android.widget.TextView" and resource_id == "android:id/title":
-                        noms_settings.append(text)  # Ajouter le nom si dans la zone
-        except Exception as e:
-            print(f"Erreur lors de la récupération d'un élément : {str(e)}")
-
-    print("\n📌 Liste des settings détectés dans la zone :", noms_settings)
-    return noms_settings  # Retourne la liste des settings trouvés
-def revenir_a_la_setting_haut(driver):
-    first = afficher_noms_setting(driver)
-    print("📌 First Home Page détectée :", first)
-
-    while True:
-        driver.swipe(300, 400, 300, 750)
-        seconde = afficher_noms_setting(driver)
-
-        if first == seconde:
-            print("✅ Retour à la first home page !")
-            break
-        else:
-            first = seconde
-        print("🔄 Swipe en cours...")
-
-
+def afficher_noms_setting_bound(driver, xpathid):
+    try:
+        elements = driver.find_elements("xpath", f"//*[@resource-id='{xpathid}']//android.widget.TextView")
+        noms = {el.text.strip() for el in elements if el.text.strip()}
+        return list(noms)
+    except Exception as e:
+        print("⚠️ Erreur récupération noms:", e)
+        return []
 
 
 
@@ -347,25 +310,56 @@ def check_element_exists_by_text(driver, text):
         print(f"Erreur lors de la recherche de l'élément : {e}")
         return False
 
-def afficher_notification(driver):
-    # Créer un objet ActionBuilder
-    actions = ActionBuilder(driver)
 
-    # Créer un pointeur de type "touch"
-    pointer = PointerInput(POINTER_TOUCH, "touch")  # Utiliser "touch" comme type de pointeur
+from selenium.common.exceptions import NoSuchElementException
+import time
 
-    # Ajouter le pointeur à l'ActionBuilder
-    actions.add_pointer_input("touch", pointer)  # Ajouter un nom pour le pointeur
+def afficher_notification(driver, max_attempts=3):
+    for attempt in range(1, max_attempts + 1):
+        try:
+            print(f"Tentative {attempt} : swipe vers le bas avec ActionBuilder")
 
-    # Définir les actions (déplacement, appui, relâchement)
-    actions.pointer_action.move_to_location(500, 25)  # Déplacer le pointeur à (x, y)
-    actions.pointer_action.pointer_down()  # Appuyer
-    actions.pointer_action.move_to_location(500, 200)  # Déplacer le pointeur à (x, y)
+            # Créer un objet ActionBuilder
+            actions = ActionBuilder(driver)
 
-    actions.pointer_action.pointer_up()  # Relâcher
+            # Créer un pointeur de type "touch"
+            pointer = PointerInput(POINTER_TOUCH, "touch")
 
-    # Exécuter les actions
-    actions.perform()
+            # Ajouter le pointeur à l'ActionBuilder
+            actions.add_pointer_input("touch", pointer)
+
+            # Définir les actions (swipe du haut vers le bas)
+            actions.pointer_action.move_to_location(500, 25)
+            actions.pointer_action.pointer_down()
+            actions.pointer_action.move_to_location(500, 400)
+            actions.pointer_action.pointer_up()
+
+            # Exécuter les actions
+            actions.perform()
+
+            time.sleep(2)
+
+            if check_notification_visible(driver):
+                print("✅ Notification affichée avec succès.")
+                return True
+            else:
+                print("❌ Notification non détectée, nouvelle tentative...")
+
+        except Exception as e:
+            print(f"Erreur à la tentative {attempt}: {e}")
+            time.sleep(1)
+
+    print("❌ Échec après plusieurs tentatives.")
+    return False
+
+
+def check_notification_visible(driver):
+    try:
+        notif = driver.find_element("id", "com.android.systemui:id/notifications")
+        return notif.is_displayed()
+    except NoSuchElementException:
+        return False
+
 def get_element_bounds_byId(driver, element_id):
     """
     Récupère les bounds (coordonnées) d'un élément donné par son ID.
@@ -392,7 +386,6 @@ def get_element_bounds_byId(driver, element_id):
 
 def get_element_bounds(driver, text):
     try:
-        time.sleep(2)  # Attendre que l'élément soit visible
 
         # Chercher avec XPath exact
         xpath_exact = f"//android.widget.TextView[@text='{text}']"
@@ -431,14 +424,11 @@ def extract_bounds(bounds_str):
 
 def open_application_with_click(driver,text):
     revenir_a_la_home_page(driver)
-    print("111111111111111111111")
     page=True
     while page:
-        print("2222222222222222")
         first = afficher_noms_applications(driver)  # Vérifier les apps après swipe
         if text in first:
             if get_element_bounds(driver, text) is not None:
-                print("3333333333333333333")
                 bounds=get_element_bounds(driver, text)
                 x1, y1, x2, y2 = extract_bounds(bounds)
                 print(x1, y1, x2, y2)
@@ -448,16 +438,13 @@ def open_application_with_click(driver,text):
                 page =False
                 return True
         else:
-            driver.swipe(1200, 500, 500, 500)  # Swipe vers la droite (modifie si nécessaire)
-            print("444444444444444444444'")
+            driver.swipe(1200, 500, 500, 500,100)  # Swipe vers la droite (modifie si nécessaire)
             seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
 
             if first == seconde:
-                print("55555555555555555")
                 print("✅ Retour à la first home page !")
                 return  False # Sortir de la boucle une fois la home page atteinte
             else:
-                print("6666666666666666666")
                 first = seconde
             print("🔄 Swipe en cours...")
 
@@ -484,7 +471,7 @@ def search_application(driver,text):
                 page =False
                 return True
         else:
-            driver.swipe(1200, 500, 500, 500)  # Swipe vers la droite (modifie si nécessaire)
+            driver.swipe(1200, 500, 500, 500,100)  # Swipe vers la droite (modifie si nécessaire)
             print("444444444444444444444'")
             seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
 
@@ -508,7 +495,8 @@ def all_setting_list(driver,xpathid):
     print("📌 First Home Page détectée :", first)
 
     while True:
-        driver.swipe(300, 500, 300, 220)
+        driver.swipe(300, 500, 300, 220,100)
+        time.sleep(0.2)
         seconde = afficher_noms_setting_bound(driver,xpathid)
         setting=setting+seconde
 
@@ -574,7 +562,7 @@ def clique_sur_setting_include(driver, nom, xpathid):
                 element = driver.find_element("xpath", f"//*[contains(@text, '{element_text}')]")
                 return element.click()  # Clique sur l'élément trouvé
 
-        driver.swipe(x_middle, y_start, x_middle, y_end)
+        driver.swipe(x_middle, y_start, x_middle, y_end,100)
         print(" Swipe effectué...")
         seconde = afficher_noms_setting_bound(driver, xpathid)
         setting = setting + seconde
@@ -589,44 +577,97 @@ def clique_sur_setting_include(driver, nom, xpathid):
     # Retourner la liste sans doublons après avoir arrêté de swiper
     return remove_duplicates(setting)
 
+def revenir_a_la_setting_haut(driver):
+    max_swipes = 4
+    first = afficher_noms_setting(driver)
+    print("📌 First Home Page détectée :", first)
+
+    for i in range(max_swipes):
+        driver.swipe(300, 400, 300, 750, 50)  # Durée réduite à 50 ms
+        print(f"🔄 Swipe #{i+1} en cours...")
+
+        seconde = afficher_noms_setting(driver)
+        if first == seconde:
+            print("✅ Retour à la first home page !")
+            return
+        else:
+            first = seconde
+
+    print("⚠️ Max swipes atteints. Impossible de revenir à la home page.")
 
 def clique_sur_setting(driver, nom, xpathid):
-    setting = []
-    revenir_a_la_setting_haut(driver)  # Revenir au haut des settings
-    first = afficher_noms_setting_bound(driver, xpathid)  # Obtenir les premiers éléments
+    def get_middle_coords(bounds):
+        x_middle = (bounds[0] + bounds[2]) // 2
+        y_middle = (bounds[1] + bounds[3]) // 2
+        return x_middle, y_middle
+
+    def try_click_on_text(text):
+        try:
+            locator = (By.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{text}")')
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located(locator)
+            )
+            element.click()
+            return True
+        except Exception:
+            return False
+
+    def swipe_vertical(direction='down'):
+        delta = 50
+        if direction == 'up':
+            driver.swipe(x, y + delta, x, y - delta, 150)
+        else:
+            driver.swipe(x, y - delta, x, y + delta, 150)
+
+    def afficher_page_actuelle():
+        return set(afficher_noms_setting_bound(driver, xpathid))
+
+    # --- Initialisation
     parent_bounds = get_element_bounds_byId(driver, xpathid)
+    print(parent_bounds)
+    x, y = get_middle_coords(parent_bounds)
 
-    setting = setting + first
-    print("First Home Page détectée :", first)
-    seconde = first
+    visited = set()
+    max_swipes = 10
 
-    # Calcul des coordonnées centrales pour le swipe
-    x_middle = (parent_bounds[0] + parent_bounds[2]) // 2  # Milieu en X
-    y_start = (parent_bounds[1] + parent_bounds[3]) // 2 + 100  # Légèrement en dessous du centre
-    y_end = (parent_bounds[1] + parent_bounds[3]) // 2 - 150  # Légèrement au-dessus du centre
+    # Vérification directe sans swiper
+    current_items = afficher_page_actuelle()
+    visited.update(current_items)
+    if nom in current_items:
+        print(f"✅ '{nom}' trouvé sans swipe. Appui en cours...")
+        try_click_on_text(nom)
+        return
 
-    while True:
-        # Vérifier si le nom recherché est dans les éléments actuels
-        if nom in seconde:
-            print(f" {nom} trouvé ! Appui sur le nom.")
-            # Si le nom est trouvé, clique sur l'élément correspondant
-            element = driver.find_element("xpath", f"//*[contains(@text, '{nom}')]")
-            return element.click()  # Clique sur l'élément trouvé
+    # 🔽 Balayage vers le bas
+    for i in range(max_swipes):
+        swipe_vertical('down')
+        print(f"🔽 Swipe vers le bas #{i + 1}")
+        current_items = afficher_page_actuelle()
+        if nom in current_items:
+            print(f"✅ '{nom}' trouvé en bas ! Appui en cours...")
+            try_click_on_text(nom)
+            return
+        if current_items.issubset(visited):
+            print("🛑 Plus de nouveaux éléments en bas. Fin de balayage.")
+            break
+        visited.update(current_items)
 
-        driver.swipe(x_middle, y_start, x_middle, y_end)
-        print(" Swipe effectué...")
-        seconde = afficher_noms_setting_bound(driver, xpathid)
-        setting = setting + seconde
+    # 🔼 Optionnel : remonter si besoin
+    for i in range(max_swipes):
+        swipe_vertical('up')
+        print(f"🔼 Swipe vers le haut #{i + 1}")
+        current_items = afficher_page_actuelle()
+        if nom in current_items:
+            print(f"✅ '{nom}' trouvé en remontant ! Appui en cours...")
+            try_click_on_text(nom)
+            return
+        if current_items.issubset(visited):
+            print("🛑 Aucun nouvel élément en haut. Fin de balayage.")
+            break
+        visited.update(current_items)
 
-        # Si la page a recommencé à afficher les mêmes éléments (retour à la première page)
-        if first == seconde:
-            print(" Retour à la first home page !")
-            return remove_duplicates(setting) # Si on est revenu à la première page, on arrête le swipe
-
-        first = seconde  # Mettre à jour 'first' pour la prochaine itération
-
-    # Retourner la liste sans doublons après avoir arrêté de swiper
-    return remove_duplicates(setting)
+    print(f"❌ '{nom}' introuvable après balayage complet.")
+    return list(visited)
 
 def element_existe_par_accessibility_id(driver, accessibility_id):
     try:
@@ -744,6 +785,119 @@ def est_bluetooth_active(device):
 
 
 
+def is_aligned(text_el, switch_el, tolerance=50):
+    # Récupérer la position et taille des éléments
+    text_y = text_el.location['y']
+    text_height = text_el.size['height']
+    switch_y = switch_el.location['y']
+    switch_height = switch_el.size['height']
+
+    # Comparaison des lignes verticales (alignement)
+    return abs(text_y - switch_y) < tolerance and abs((text_y + text_height) - (switch_y + switch_height)) < tolerance
+
+def find_switch_by_label(driver, label_text):
+    # 1. Chercher tous les TextView
+    text_views = driver.find_elements("class name", "android.widget.TextView")
+
+    # 2. Identifier l'élément dont le texte correspond
+    target_label = None
+    for tv in text_views:
+        if label_text.lower() in tv.text.lower():
+            target_label = tv
+            break
+
+    if not target_label:
+        print(f"[ERROR] Label '{label_text}' non trouvé")
+        return None
+
+    # 3. Chercher tous les Switchs (toggles)
+    switches = driver.find_elements("class name", "android.widget.Switch")
+
+    # 4. Trouver celui qui est aligné avec le label
+    for sw in switches:
+        if is_aligned(target_label, sw):
+            return sw
+
+    print(f"[ERROR] Aucun switch aligné avec '{label_text}' trouvé.")
+    return None
+
+import subprocess
+
+def is_wifi_enabled_adb(driver):
+
+        # Récupérer l'ID du device depuis Appium
+        device = driver.capabilities.get('deviceName')
+        if not device:
+            print("❌ Aucune information sur l'ID du device.")
+            return None
+
+        # Utiliser ADB pour vérifier l'état du Wi-Fi
+        result = subprocess.check_output(["adb", "-s", device, "shell", "dumpsys", "wifi"], text=True)
+
+        # Chercher la ligne indiquant l'état du Wi-Fi
+        if "Wi-Fi is enabled" in result or "Wi-Fi enabled" in result:
+            print("✅ Le Wi-Fi est activé.")
+            return True
+        elif "Wi-Fi is disabled" in result or "Wi-Fi disabled" in result:
+            print("❌ Le Wi-Fi est désactivé.")
+            return False
+        else:
+            print("⚠️ État du Wi-Fi non déterminé.")
+            return None
+
+
+
+
+
+def activer_wifi_si_desactive(driver):
+    try:
+        # Trouver le toggle Bluetooth
+        switch_element = find_switch_by_label(driver, "Wi-Fi")
+        current_state = switch_element.get_attribute("checked")
+        print(current_state)
+
+        if switch_element and current_state == "false":
+            switch_element.click()
+
+    except Exception as e:
+        print(f"❌ Erreur lors de l'activation du wifi : {str(e)}")
+
+
+
+def desactiver_wifi_si_active(driver):
+    try:
+        # Trouver le toggle Bluetooth
+        switch_element = find_switch_by_label(driver, "Wi-Fi")
+        current_state = switch_element.get_attribute("checked")
+        print(current_state)
+
+        if switch_element and current_state == "true":
+            switch_element.click()
+
+    except Exception as e:
+        print(f"❌ Erreur lors de l'activation du wifi : {str(e)}")
+
+
+def is_active_wifi_ui(driver):
+    try:
+        # Trouver le toggle Wi-Fi
+        switch_element = find_switch_by_label(driver, "Wi-Fi")
+
+        if not switch_element:
+            print("❌ Switch Wi-Fi introuvable")
+            return False
+
+        current_state = switch_element.get_attribute("checked")
+        print(f"État actuel du Wi-Fi : {current_state}")
+
+        if current_state == "true":
+            return True
+        else:
+            return False
+
+    except Exception as e:
+        print(f"❌ Erreur lors de l'activation du Wi-Fi : {str(e)}")
+        return False
 
 
 def get_system_language(device):
@@ -765,33 +919,36 @@ def get_system_language(device):
         return "eng"  # Valeur par défaut en cas d'erreur
 
 
-
-def check_language_change(device, reference_language):
-    # Exécution de la commande ADB pour obtenir la langue du système
-    result = subprocess.run(["adb", "-s", device, "shell", "settings", "get", "system", "system_locales"],
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    print(result)
-    if result.returncode != 0:
-        print(f"Erreur ADB: {result.stderr}")
-        return False
-
-    current_language = result.stdout.strip()
-
-    # Vérifier si plusieurs langues sont retournées et ne garder que la première
-    first_language = current_language.split(",")[0] if current_language else ""
-
-    # Vérification si la langue actuelle est différente de la langue de référence
-    if first_language == reference_language:
-        print(f"🔄 La langue a été modifiée : {first_language}")
-
-        return True
-    else:
-        print("✅ La langue n'a pas été modifiée.")
-
-        return False
+import subprocess
+import time
 
 
+def check_language_change(device, reference_language, max_attempts=3, wait_between_attempts=2):
+    for attempt in range(1, max_attempts + 1):
+        print(f"Tentative {attempt} : Vérification de la langue...")
 
+        # Exécution de la commande ADB
+        result = subprocess.run(["adb", "-s", device, "shell", "settings", "get", "system", "system_locales"],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+        if result.returncode != 0:
+            print(f"❌ Erreur ADB : {result.stderr.strip()}")
+        else:
+            current_language = result.stdout.strip()
+            first_language = current_language.split(",")[0] if current_language else ""
+
+            if first_language == reference_language:
+                print(f"✅ La langue a bien été modifiée : {first_language}")
+                return True
+            else:
+                print(f"🔁 Langue actuelle : {first_language} ≠ attendue : {reference_language}")
+
+        if attempt < max_attempts:
+            print(f"⏳ Nouvelle tentative dans {wait_between_attempts} secondes...")
+            time.sleep(wait_between_attempts)
+
+    print("❌ Échec : la langue n'a pas été modifiée après plusieurs tentatives.")
+    return False
 
 
 def enable_bluetooth(driver):
@@ -980,156 +1137,158 @@ def compose_time(driver):
     return f"{hour}:{minute}"
 
 
-def change_date(driver,date):
+import re
+import time
+
+
+def change_date(driver, date):
     """
-    Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
-    :param driver: Instance de WebDriver Appium.
-    :return: L'heure composée sous forme de chaîne (HH:MM).
+    Sets the time by using two buttons: one for hours and one for minutes.
+    Uses adaptive swipe distances based on the difference between current and target values.
+
+    :param driver: Appium WebDriver instance
+    :param date: Target time string in format "HH:MM"
+    :return: The set time as string (HH:MM)
     """
-    buttons = get_button_elements(driver)
+    # Validate input format
+    time_match = re.fullmatch(r"(\d{2}):(\d{2})", date)
+    if not time_match:
+        raise ValueError("Invalid time format. Expected HH:MM")
 
-    # Vérifier qu'on a bien 2 boutons
-    if len(buttons) < 2:
-        raise ValueError("Pas assez de boutons pour composer l'heure et les minutes.")
+    target_hour, target_minute = map(int, time_match.groups())
 
-    # Trier les boutons par position X (de gauche à droite)
-    buttons.sort(key=lambda btn: int(btn['bounds'].split('[')[1].split(',')[0]))
-
-    # Le premier bouton est pour les heures, le deuxième pour les minutes
-    hour = buttons[0]['text']
-    minute = buttons[1]['text']
-
-    print(f"Hour: {hour}")
-    print(f"Minute: {minute}")
-    match = re.search(r"\b(\d{2}):(\d{2})\b", date)
-    if match:
-        h = match.group(1)  # Heures
-        m = match.group(2)  # Minutes
-        print("eeeeeeeeee:", h)
-        print("cccccccccccc:", m)
-
-    while (h!=hour) :
-
-        if h > hour :
-            swipe_up(driver, buttons[0]['bounds'])
-
-        elif h < hour :
-            swipe_down(driver,buttons[0]['bounds'])
-
-
-
+    while True:
         buttons = get_button_elements(driver)
 
-        # Vérifier qu'on a bien 2 boutons
+        # Validate we have enough buttons
         if len(buttons) < 2:
-            raise ValueError("Pas assez de boutons pour composer l'heure et les minutes.")
+            raise ValueError("Not enough buttons to set time (need 2)")
 
-        # Trier les boutons par position X (de gauche à droite)
-        buttons.sort(key=lambda btn: int(btn['bounds'].split('[')[1].split(',')[0]))
+        # Sort buttons left to right
+        buttons.sort(key=lambda btn: get_bounds_x(btn['bounds']))
 
-        # Le premier bouton est pour les heures, le deuxième pour les minutes
-        hour = buttons[0]['text']
-        minute = buttons[1]['text']
+        current_hour = int(buttons[0]['text'])
+        current_minute = int(buttons[1]['text'])
 
-        print(f"Hour: {hour}")
-        print(f"Minute: {minute}")
-        match = re.search(r"\b(\d{2}):(\d{2})\b", date)
-        if match:
-            h = match.group(1)  # Heures
-            m = match.group(2)  # Minutes
-            print("eeeeeeeeee:", h)
-            print("cccccccccccc:", m)
-    while (m!=minute) :
+        print(f"Current time: {current_hour:02d}:{current_minute:02d}")
+        print(f"Target time: {target_hour:02d}:{target_minute:02d}")
 
-        if m > minute :
-            swipe_up(driver, buttons[1]['bounds'])
+        # Adjust hours if needed
+        if current_hour != target_hour:
+            diff = abs(target_hour - current_hour)
+            direction = "up" if target_hour > current_hour else "down"
+            swipe_time_picker(driver, buttons[0]['bounds'], direction, diff)
+            continue
 
-        elif m < minute :
-            swipe_down(driver,buttons[1]['bounds'])
+        # Adjust minutes if needed
+        if current_minute != target_minute:
+            diff = abs(target_minute - current_minute)
+            direction = "up" if target_minute > current_minute else "down"
+            swipe_time_picker(driver, buttons[1]['bounds'], direction, diff)
+            continue
 
-
-
-        buttons = get_button_elements(driver)
-
-        # Vérifier qu'on a bien 2 boutons
-        if len(buttons) < 2:
-            raise ValueError("Pas assez de boutons pour composer l'heure et les minutes.")
-
-        # Trier les boutons par position X (de gauche à droite)
-        buttons.sort(key=lambda btn: int(btn['bounds'].split('[')[1].split(',')[0]))
-
-        # Le premier bouton est pour les heures, le deuxième pour les minutes
-        hour = buttons[0]['text']
-        minute = buttons[1]['text']
-
-        print(f"Hour: {hour}")
-        print(f"Minute: {minute}")
-        match = re.search(r"\b(\d{2}):(\d{2})\b", date)
-        if match:
-            h = match.group(1)  # Heures
-            m = match.group(2)  # Minutes
-            print("eeeeeeeeee:", h)
-            print("cccccccccccc:", m)
-
-    return f"{hour}:{minute}"
+        # Both match - we're done
+        return f"{current_hour:02d}:{current_minute:02d}"
 
 
+def get_bounds_x(bounds_str):
+    """Helper to extract x coordinate from bounds string"""
+    match = re.match(r"\[(\d+),(\d+)\]\[(\d+),(\d+)\]", bounds_str)
+    if not match:
+        raise ValueError(f"Invalid bounds format: {bounds_str}")
+    return int(match.group(1))
 
 
-def swipe_up(driver, bounds):
+from typing import Optional
+import time
+from appium.webdriver.webdriver import WebDriver
+from appium.webdriver.webelement import WebElement
+
+
+def wait_until_element_is_visible(
+        driver: WebDriver,
+        by: str,
+        value: str,
+        timeout: int = 10,
+        poll_frequency: float = 0.5
+) -> Optional[WebElement]:
     """
-    Effectue un swipe vers le haut sur un élément en utilisant ses bounds.
+    Attend qu'un élément soit visible sur un appareil Android en utilisant Appium pur.
 
-    :param driver: Instance de WebDriver Appium.
-    :param bounds: Chaîne de bounds sous forme "[x1,y1][x2,y2]".
+    Args:
+        driver: Instance Appium WebDriver
+        by: Stratégie de localisation (MobileBy constants)
+        value: Valeur du localisateur
+        timeout: Temps d'attente maximum en secondes (défaut: 10)
+        poll_frequency: Intervalle de vérification en secondes (défaut: 0.5)
+
+    Returns:
+        WebElement: L'élément trouvé et visible
+
+    Raises:
+        TimeoutException: Si l'élément n'est pas trouvé dans le délai imparti
     """
-    # Extraire les coordonnées (x1, y1, x2, y2) depuis la chaîne de bounds
+    end_time = time.time() + timeout
+
+    while time.time() < end_time:
+        try:
+            element = driver.find_element(by, value)
+            if element.is_displayed():
+                return element
+        except Exception:
+            pass
+        time.sleep(poll_frequency)
+
+    raise TimeoutException(
+        f"Élément avec le localisateur '{by}={value}' non visible après {timeout} secondes"
+    )
+def swipe_time_picker(driver, bounds, direction, difference):
+    """
+    Performs an adaptive swipe on a time picker element based on the difference
+
+    :param driver: Appium WebDriver instance
+    :param bounds: Bounds string in format "[x1,y1][x2,y2]"
+    :param direction: "up" or "down"
+    :param difference: Numerical difference between current and target value
+    """
+    # Parse bounds
     match = re.match(r"\[(\d+),(\d+)\]\[(\d+),(\d+)\]", bounds)
     if not match:
-        raise ValueError(f"Format de bounds invalide : {bounds}")
+        raise ValueError(f"Invalid bounds format: {bounds}")
 
     x1, y1, x2, y2 = map(int, match.groups())
 
-    # Calculer le point central de l'élément
-    start_x = (x1 + x2) // 2
-    start_y = (y1 + y2) // 2
+    # Calculate element center and size
+    center_x = (x1 + x2) // 2
+    center_y = (y1 + y2) // 2
+    element_height = y2 - y1
 
-    # Définir les coordonnées de fin pour un swipe vers le haut
-    end_x = start_x
-    end_y = start_y - 100  # Ajuste cette valeur selon le besoin (plus c'est grand, plus le swipe est long)
+    # Calculate adaptive swipe distance
+    base_distance = element_height * 2  # Base swipe distance
+    max_distance = element_height * 8  # Maximum swipe distance
 
-    # Effectuer le swipe
-    driver.swipe(start_x, start_y, end_x, end_y, 500)  # 500ms pour la durée du swipe
+    # Scale swipe distance based on difference
+    if difference > 10:
+        swipe_distance = max_distance  # Big swipe for large differences
+    elif difference > 5:
+        swipe_distance = min(max_distance, base_distance * 2)
+    else:
+        swipe_distance = base_distance
 
-    print(f"Swipe up effectué de ({start_x}, {start_y}) à ({end_x}, {end_y})")
-def swipe_down(driver, bounds):
-    """
-    Effectue un swipe vers le haut sur un élément en utilisant ses bounds.
+    # Set swipe coordinates
+    if direction == "up":
+        end_y = center_y - swipe_distance
+    elif direction == "down":
+        end_y = center_y + swipe_distance
+    else:
+        raise ValueError("Direction must be 'up' or 'down'")
 
-    :param driver: Instance de WebDriver Appium.
-    :param bounds: Chaîne de bounds sous forme "[x1,y1][x2,y2]".
-    """
-    # Extraire les coordonnées (x1, y1, x2, y2) depuis la chaîne de bounds
-    match = re.match(r"\[(\d+),(\d+)\]\[(\d+),(\d+)\]", bounds)
-    if not match:
-        raise ValueError(f"Format de bounds invalide : {bounds}")
+    # Perform swipe (faster swipe for larger distances)
+    swipe_duration = max(100, min(500, 200 + difference * 20))
+    driver.swipe(center_x, center_y, center_x, end_y, swipe_duration)
 
-    x1, y1, x2, y2 = map(int, match.groups())
-
-    # Calculer le point central de l'élément
-    start_x = (x1 + x2) // 2
-    start_y = (y1 + y2) // 2
-
-    # Définir les coordonnées de fin pour un swipe vers le haut
-    end_x = start_x
-    end_y = start_y + 100  # Ajuste cette valeur selon le besoin (plus c'est grand, plus le swipe est long)
-
-    # Effectuer le swipe
-    driver.swipe(start_x, start_y, end_x, end_y, 500)  # 500ms pour la durée du swipe
-
-    print(f"Swipe up effectué de ({start_x}, {start_y}) à ({end_x}, {end_y})")
-
-
+    print(f"Swiping {direction} (difference: {difference}) from ({center_x}, {center_y}) to ({center_x}, {end_y})")
+    time.sleep(0.3 + difference * 0.05)  # Adaptive pause
 def heure_aleatoire():
     heures = random.randint(0, 23)
     minutes = random.randint(0, 59)

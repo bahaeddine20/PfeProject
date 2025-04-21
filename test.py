@@ -731,9 +731,124 @@ def capture_element_screenshot(driver, bounds, output_path="element_screenshot.p
         if os.path.exists(local_screenshot_path):
             os.remove(local_screenshot_path)
 
+
+def is_aligned(text_el, switch_el, tolerance=50):
+    # Récupérer la position et taille des éléments
+    text_y = text_el.location['y']
+    text_height = text_el.size['height']
+    switch_y = switch_el.location['y']
+    switch_height = switch_el.size['height']
+
+    # Comparaison des lignes verticales (alignement)
+    return abs(text_y - switch_y) < tolerance and abs((text_y + text_height) - (switch_y + switch_height)) < tolerance
+
+def find_switch_by_label(driver, label_text):
+    # 1. Chercher tous les TextView
+    text_views = driver.find_elements("class name", "android.widget.TextView")
+
+    # 2. Identifier l'élément dont le texte correspond
+    target_label = None
+    for tv in text_views:
+        if label_text.lower() in tv.text.lower():
+            target_label = tv
+            break
+
+    if not target_label:
+        print(f"[ERROR] Label '{label_text}' non trouvé")
+        return None
+
+    # 3. Chercher tous les Switchs (toggles)
+    switches = driver.find_elements("class name", "android.widget.Switch")
+
+    # 4. Trouver celui qui est aligné avec le label
+    for sw in switches:
+        if is_aligned(target_label, sw):
+            return sw
+
+    print(f"[ERROR] Aucun switch aligné avec '{label_text}' trouvé.")
+    return None
+
+def is_wifi_enabled(driver):
+    device = driver.capabilities['deviceName']  # Récupérer l'ID du device depuis Appium
+
+    try:
+        # Utiliser ADB pour vérifier l'état du Wi-Fi
+        result = subprocess.check_output(["adb", "-s", device, "shell", "dumpsys", "wifi"], text=True)
+
+        # Chercher la ligne indiquant l'état du Wi-Fi
+        if "Wi-Fi is enabled" in result or "Wi-Fi enabled" in result:
+            return True
+        elif "Wi-Fi is disabled" in result or "Wi-Fi disabled" in result:
+            return False
+        else:
+            print("État du Wi-Fi non déterminé.")
+            return None
+
+    except subprocess.CalledProcessError as e:
+        print(f"Erreur lors de l'exécution ADB : {e}")
+        return None
+
+
+import cv2
+import numpy as np
+import os
+import tempfile
+from appium.webdriver.common.appiumby import AppiumBy
+from io import BytesIO
+from PIL import Image
+
+
+def find_icon_position(driver, icon_name):
+    """
+    Trouve la position d'une icône sur l'écran du device Android.
+
+    Args:
+        driver: Instance du driver Appium
+        icon_name: Nom du fichier de l'icône à trouver (doit être dans le dossier 'icons')
+
+    Returns:
+        Tuple (x, y, width, height) de la position de l'icône ou None si non trouvée
+    """
+    # Chemin vers l'icône template
+    template_path = os.path.join('iconshd/', f'{icon_name}.png')
+    if not os.path.exists(template_path):
+        raise FileNotFoundError(f"Le fichier d'icône {template_path} n'existe pas")
+
+    # Prendre un screenshot avec Appium
+    screenshot = driver.get_screenshot_as_png()
+    img = np.array(Image.open(BytesIO(screenshot)))
+    img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+
+    # Charger le template
+    template = cv2.imread(template_path)
+    if template is None:
+        raise ValueError(f"Impossible de charger l'icône {template_path}")
+
+    h, w = template.shape[:2]
+
+    # Convertir en niveaux de gris
+    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+
+    # Faire la correspondance de template
+    res = cv2.matchTemplate(img_gray, template_gray, cv2.TM_CCOEFF_NORMED)
+    threshold = 0.8
+
+    # Trouver la meilleure correspondance
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+
+    if max_val >= threshold:
+        x, y = max_loc
+        return (x, y, w, h)
+    else:
+        return None
+
+
 # Exemple d'utilisation
-
-
+# icon_position = find_icon_position(driver, "notif_menu")
+# if icon_position:
+#     x, y, w, h = icon_position
+#     print(f"Icône trouvée à : x={x}, y={
 if __name__ == "__main__":
 
     main()
@@ -743,7 +858,9 @@ if __name__ == "__main__":
     # Exemple d'utilisation dans un test Appium :
     # driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
     bounds_exemple = "[404,76][1408,696]"
-    capture_element_screenshot(driver, bounds_exemple)
+    #capture_element_screenshot(driver, bounds_exemple)
+    # Exemple d'éléments obtenus avec UIAutomator (comme tu l'as montré)
+    # Utilisation dans ton script de test
 
     #print(get_location(driver))
     #swipe_down(driver, "[862,356][926,404]")
@@ -756,9 +873,17 @@ if __name__ == "__main__":
     #
     print(Print_Activity(driver))
     # #afficher_noms_setting(driver)
-    afficheraLL_infos_elements(driver)
-
-    # x_center = (912 + 1000) // 2  # 956
+    #afficheraLL_infos_elements(driver)
+    # Test de la fonction
+    icon_pos = find_icon_position(driver, "appsgrid")  # Sans l'extension .png
+    print(icon_pos)
+    if icon_pos:
+        x, y, w, h = icon_pos
+        # Cliquer au centre de l'icône
+        driver.tap([(x + w // 2, y + h // 2)])
+        print("Clic effectué sur l'icône")
+    else:
+        print("Échec de détection")    # x_center = (912 + 1000) // 2  # 956
     # y_center = (619 + 657) // 2  # 638
     #
     # click_sur(driver, x_center, y_center)

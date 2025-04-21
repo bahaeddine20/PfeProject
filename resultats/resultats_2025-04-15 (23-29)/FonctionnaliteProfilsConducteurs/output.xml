@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-15T23:36:32.289323" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteProfilsConducteurs" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteProfilsConducteurs.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-15T23:36:36.787326" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="32ecd913-fe74-4a41-ac2e-46f2ac86cf51")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-04-15T23:36:32.508290" elapsed="4.279036"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:36:36.788327" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="32ecd913-fe74-4a41-ac2e-46f2ac86cf51")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-15T23:36:36.787326" elapsed="0.001001"/>
+</kw>
+<status status="PASS" start="2025-04-15T23:36:32.507288" elapsed="4.281039"/>
+</kw>
+<test id="s1-t1" name="Test Ajouter Utilisateur" line="29">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T23:36:36.825843" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T23:36:36.788327" elapsed="0.037516"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Ajouter un profil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T23:36:36.825843" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:36:36.826842" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:36:36.826842" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:36:36.826842" level="INFO">${Profils} = Profils et comptes</msg>
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:36:36.826842" level="INFO">${Ajouter} = Add Profile</msg>
+<var>${Ajouter}</var>
+<arg>Add Profile</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:36:36.826842" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:36:36.827841" level="INFO">${Ok} = OK</msg>
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:36:36.826842" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2025-04-15T23:36:36.826842" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-04-15T23:36:36.825843" elapsed="0.001998"/>
+</if>
+<kw name="Get Android Users" owner="Integration">
+<msg time="2025-04-15T23:36:36.908842" level="INFO">${old_users} = [{'id': '0', 'name': 'Driver', 'status': 'running'}, {'id': '10', 'name': 'Driver', 'status': 'active'}, {'id': '17', 'name': 'Nouveau profil', 'status': 'inactive'}]</msg>
+<var>${old_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="PASS" start="2025-04-15T23:36:36.827841" elapsed="0.081001"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T23:36:51.146207" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-04-15T23:36:51.146207" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-15T23:36:36.908842" elapsed="14.237365"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T23:36:52.146602" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T23:36:51.146207" elapsed="1.000395"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T23:36:52.210661" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T23:36:52.146602" elapsed="0.064059"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T23:36:52.210661" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-15T23:36:52.210661" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T23:37:01.982287" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Profils et comptes' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-15T23:36:52.210661" elapsed="9.771626"/>
+</kw>
+<arg>Clique Sur Setting</arg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-15T23:36:52.210661" elapsed="9.771626"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-04-15T23:37:12.030785" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${Ajouter}</arg>
+<status status="FAIL" start="2025-04-15T23:37:01.982287" elapsed="10.049498">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.032785" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Ok}</arg>
+<status status="NOT RUN" start="2025-04-15T23:37:12.032785" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.032785" elapsed="0.000000"/>
+</kw>
+<kw name="Get Android Users" owner="Integration">
+<var>${new_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.032785" elapsed="0.000000"/>
+</kw>
+<kw name="Get Added User" owner="Integration">
+<var>${verifie_adb_add_user}</var>
+<arg>${old_users}</arg>
+<arg>${new_users}</arg>
+<doc>Compare deux listes d'utilisateurs et retourne l'utilisateur ajouté.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.032785" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Not Be Equal</arg>
+<arg>${verifie_adb_add_user}</arg>
+<arg>${None}</arg>
+<arg>Aucun utilisateur n'a été ajouté.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.032785" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Utilisateur ajouté : ${verifie_adb_add_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.032785" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-15T23:36:36.788327" elapsed="35.244458">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</test>
+<test id="s1-t2" name="Test renommer Utilisateur" line="78">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-15T23:37:12.073298" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T23:37:12.033785" elapsed="0.039513"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.073298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Ajouter un profil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-15T23:37:12.073298" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:37:12.074298" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:37:12.074298" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:37:12.074298" level="INFO">${Profils} = Profils et comptes</msg>
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:37:12.074298" level="INFO">${Ajouter} = Add Profile</msg>
+<var>${Ajouter}</var>
+<arg>Add Profile</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T23:37:12.074298" level="INFO">${Ok} = OK</msg>
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T23:37:12.074298" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T23:37:12.074298" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-04-15T23:37:12.073298" elapsed="0.002001"/>
+</if>
+<kw name="Get Android Users" owner="Integration">
+<msg time="2025-04-15T23:37:12.154352" level="INFO">${old_users} = [{'id': '0', 'name': 'Driver', 'status': 'running'}, {'id': '10', 'name': 'Driver', 'status': 'active'}, {'id': '17', 'name': 'Nouveau profil', 'status': 'inactive'}]</msg>
+<var>${old_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="PASS" start="2025-04-15T23:37:12.075299" elapsed="0.079053"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-15T23:37:25.684862" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-04-15T23:37:25.684862" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-15T23:37:12.154352" elapsed="13.530510"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T23:37:26.686343" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T23:37:25.685863" elapsed="1.000480"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-15T23:37:26.730340" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-15T23:37:26.686343" elapsed="0.043997"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-15T23:37:26.730340" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-15T23:37:26.730340" elapsed="0.001000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-15T23:37:31.394834" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Profils et comptes' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-15T23:37:26.731340" elapsed="4.663494"/>
+</kw>
+<arg>Clique Sur Setting</arg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-15T23:37:26.731340" elapsed="4.663494"/>
+</kw>
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-04-15T23:37:31.394834" elapsed="0.160000"/>
+</kw>
+<status status="PASS" start="2025-04-15T23:37:12.032785" elapsed="19.522049"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<msg time="2025-04-15T23:37:31.563847" level="FAIL">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at logger (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</msg>
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="FAIL" start="2025-04-15T23:37:31.554834" elapsed="0.010999">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</status>
+</kw>
+<status status="FAIL" start="2025-04-15T23:37:31.554834" elapsed="0.012002">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</status>
+</kw>
+<status status="FAIL" start="2025-04-15T23:36:32.290288" elapsed="59.276548">Suite teardown failed:
+InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteProfilsConducteurs" id="s1" pass="0" fail="2" skip="0">FonctionnaliteProfilsConducteurs</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,9 +1,12 @@
 *** Settings ***
 Documentation    Ce fichier contient des tests pour vérifier l'activation, la désactivation et la gestion des notifications, la modification de la langue, la synchronisation de l'heure, etc. sur un appareil Android. Les tests prennent en charge les interfaces en français et en anglais.
 Library    Process
+*** Settings ***
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Suite Setup     Démarrer Driver
+Suite Teardown  Fermer Driver
 
 *** Variables ***
 ${AppGrid_ACTIVITY}    com.android.car.carlauncher/.GASAppGridActivity
@@ -12,22 +15,26 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5556
+${Device}              emulator-5554
 ${Setting_system}      com.android.car.settings:id/fragment_container
-${System}               System
+${System}              System
+
+*** Keywords ***
+Démarrer Driver
+    ${driver}=    setup driver    ${Device}
+    Set Suite Variable    ${driver}
+
+Fermer Driver
+    Close Driver    ${driver}
 
 *** Test Cases ***
-
 Test Home_Button
     [Documentation]    Ce test vérifie si le bouton "Home" fonctionne correctement en revenant à la page d'accueil de l'appareil.
-    ${driver}    setup driver        ${Device}
     Revenir A La Home Page    ${driver}
 
 Test Ouvrir YouTube App
     [Documentation]    Ce test vérifie si l'application YouTube peut être ouverte et si son activité est correctement lancée sur l'appareil Android.
-    ${driver}    setup driver       ${Device}
     Sleep    2
-    Revenir A La Home Page    ${driver}
     ${resultat}=    Open Application With Click      ${driver}    YouTube
     Should Be True    ${resultat}      L'activité YouTube n'est pas trouvée.
     ${Activity}=          Print Activity2       ${driver}
@@ -38,7 +45,6 @@ Test Ouvrir YouTube App
 
 Test Modifier Languages
     [Documentation]    Ce test vérifie si la modification de la langue du système fonctionne correctement sur l'appareil, en fonction de la langue actuelle de l'appareil.
-    ${driver}    setup driver       ${Device}
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -53,7 +59,6 @@ Test Modifier Languages
         ${Langue2}=    Set Variable      Languages
     END
 
-    Revenir A La Home Page    ${driver}
     ${resultat}=    Open Application With Click      ${driver}        ${Setting}
     Sleep    1s
     ${Verfier}=    Check Element ExistsBy Id      ${driver}         ${Setting_xpath_id}
@@ -81,7 +86,6 @@ Test Modifier Languages
         ${Langue2}=    Set Variable      Languages
     END
 
-    Revenir A La Home Page    ${driver}
     ${resultat}=    Open Application With Click      ${driver}        ${Setting}
     Sleep    1s
     ${Verfier}=    Check Element ExistsBy Id      ${driver}         ${Setting_xpath_id}
@@ -95,9 +99,9 @@ Test Modifier Languages
     ${verfieadb} =         Check Language Change      ${Device}        fr-FR
     Should Be True     ${verfieadb}  Modifier Languages ne s'active pas (via adb).
 
+
 Test Notification Réception
     [Documentation]    Ce test vérifie la réception d'une notification après l'activation des paramètres nécessaires et l'envoi de la notification depuis une application tierce.
-    ${driver}    setup driver       ${Device}
     Install Apk     ${driver}         automotive-Notification_Test.apk
     ${isIns}=      Is App Installed      ${driver}        actia.pfe25.testnotificationapk
     Log    ${isIns}
@@ -132,7 +136,6 @@ Test Notification Réception
     ${VerfierNotif}=        Check Element Exists By Text         ${driver}      Bouton appuyé !
 
 Test Notification Supprimer
-    ${driver}    setup driver       ${Device}
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -170,7 +173,6 @@ Test Notification Supprimer
 
 
 Test Disable Notification
-    ${driver}    setup driver       ${Device}
 
     ${lang}    Get System Language       ${Device}
 
@@ -215,7 +217,6 @@ Test Disable Notification
 
 
 Test Modifier Manuellement Date
-     ${driver}    setup driver       ${Device}
 
         ${lang}    Get System Language       ${Device}
 
@@ -231,7 +232,7 @@ Test Modifier Manuellement Date
             ${System}   Set Variable    System
             ${Setting}    Set Variable    Settings
             ${Date}    Set Variable     Date & time
-            ${Btn_Heure}         Set Variable     Définir l'heure
+            ${Btn_Heure}         Set Variable     Set time
 
 
 
@@ -239,7 +240,6 @@ Test Modifier Manuellement Date
         END
 
 
-    Revenir A La Home Page    ${driver}
     ${resultat}=    Open Application With Click      ${driver}        ${Setting}
     Sleep    1s
     ${Verfier}=    Check Element ExistsBy Id      ${driver}         ${Setting_xpath_id}
@@ -249,6 +249,7 @@ Test Modifier Manuellement Date
     Clique Sur Setting       ${driver}      ${System}        ${Setting_menu}
     Clique Sur Setting       ${driver}     ${Date}     ${Setting_system}
     ${date_ini}=     Get Device Datetime Heure        ${driver}
+    Sleep    1s
     Click Element By Text Att       ${driver}     ${Btn_Heure}
     ${heure_act}=   Compose Time        ${driver}
     Log     ${heure_act}
@@ -262,7 +263,6 @@ Test Modifier Manuellement Date
 
 
 Test Modifier Synchronisation Automatique Date
-     ${driver}    setup driver       ${Device}
 
         ${lang}    Get System Language       ${Device}
 
@@ -286,7 +286,6 @@ Test Modifier Synchronisation Automatique Date
         END
 
 
-    Revenir A La Home Page    ${driver}
     ${resultat}=    Open Application With Click      ${driver}        ${Setting}
     Sleep    1s
     ${Verfier}=    Check Element ExistsBy Id      ${driver}         ${Setting_xpath_id}

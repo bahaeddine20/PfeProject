@@ -15,14 +15,11 @@ def setup_driver_mobile(device):
     options.platform_version = "15"
     options.device_name = device
     options.adb_exec_timeout = 60000
-    options.remote_adb_host="host.docker.internal"
-    options.disable_window_animation = True
-    options.new_command_timeout = 300
-    options.allowInvisibleElements = True
-    options.disableIdLocatorAutocompletion = True
-    #remote_url = "http://127.0.0.1:4723"
+    #options.remote_adb_host="host.docker.internal"
+
+    remote_url = "http://127.0.0.1:4723"
     #remote_url = "http://172.21.0.3:4723"
-    remote_url = "http://appium:4723"
+    #remote_url = "http://appium:4723"
 
     options.set_capability("enforceXPath1", True)
     return webdriver.Remote(remote_url, options=options)

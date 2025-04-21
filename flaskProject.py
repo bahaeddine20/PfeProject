@@ -67,7 +67,7 @@ def remplacer_device(dossier, nouveau_device):
                 nouveau_contenu = []
                 modifié = False
                 for ligne in contenu:
-                    if "${Device}" in ligne and "emulator-5554" in ligne:
+                    if "${Device}     " in ligne :
                         ligne = f"${{Device}}              {nouveau_device}\n"
                         modifié = True
                     nouveau_contenu.append(ligne)
@@ -110,11 +110,13 @@ def remplacer_devices_robot_files(device_auto, device_mobile):
             nouveau_contenu = []
             modifié = False
             for ligne in lignes:
-                if ligne.strip().startswith("${Device}") and "emulator-5554" in ligne:
-                    ligne = f"${{Device}}              {device_auto}\n"
+                if re.match(r"^\s*\${Device}\s+", ligne):
+                    espace = re.search(r"(\s+)", ligne.strip()).group(1) if re.search(r"(\s+)", ligne.strip()) else "    "
+                    ligne = f"${{Device}}{espace}{device_auto}\n"
                     modifié = True
-                elif ligne.strip().startswith("${Device_mobile}") and "emulator-5556" in ligne:
-                    ligne = f"${{Device_mobile}}       {device_mobile}\n"
+                elif re.match(r"^\s*\${Device_mobile}\s+", ligne):
+                    espace = re.search(r"(\s+)", ligne.strip()).group(1) if re.search(r"(\s+)", ligne.strip()) else "    "
+                    ligne = f"${{Device_mobile}}{espace}{device_mobile}\n"
                     modifié = True
                 nouveau_contenu.append(ligne)
 
@@ -122,7 +124,6 @@ def remplacer_devices_robot_files(device_auto, device_mobile):
                 with open(chemin, "w", encoding="utf-8") as f:
                     f.writelines(nouveau_contenu)
                 print(f"[MODIFIÉ] {fichier}")
-
 def get_tests_and_descriptions(file_path):
     """Extrait les tests et leurs descriptions d'un fichier .robot en utilisant robot.parsing."""
     try:

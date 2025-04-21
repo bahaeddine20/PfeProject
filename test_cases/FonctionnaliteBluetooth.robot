@@ -5,6 +5,9 @@ Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
 Library    script_mobile.py
+Library    script_IA.py
+Suite Setup     Démarrer Driver
+Suite Teardown  Fermer Driver
 
 
 *** Variables ***
@@ -14,17 +17,26 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5556
-${Device_mobile}       emulator-5554
+${Device}              emulator-5554
+${Device_mobile}       emulator-5556
 
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
+${name_bluetooth_mobile}        ${null}
+*** Keywords ***
+Démarrer Driver
+    ${driver}=    Setup Driver    ${Device}
+    Set Suite Variable    ${driver}
+    Set Suite Variable    ${driver_mobile}    ${None}  # Initialize mobile driver variable
 
+Fermer Driver
+    Run Keyword If    '${driver}' != 'None'    Close Driver    ${driver}
+    Run Keyword If    '${driver_mobile}' != 'None'    Close Driver    ${driver_mobile}
 *** Test Cases ***
 
 Test Ouvrir Bluetooth
     [Documentation]    Ce test vérifie si le Bluetooth peut être activé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de activer Bluetooth et de vérifier son statut.
-    ${driver}    setup driver       ${Device}
+
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -59,7 +71,7 @@ Test Ouvrir Bluetooth
 
 
 Test Pairing Bluetooth
-        ${driver}    setup driver       ${Device}
+
         ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -80,30 +92,30 @@ Test Pairing Bluetooth
         ${Consulter_allapps}         Set Variable      Voir les
         ${DesButton}        Set Variable    Désinstaller
         ${confirme}         Set Variable    OK
-        ${pairing}        Set Variable       Associer un nouvel appareil
-        ${pairing_conf}        Set Variable       Associer
-        ${pairing_conf2}        Set Variable       Continuer
+        ${pairing}        Set Variable       Pair new device
+        ${pairing_conf}        Set Variable       Pair
+        ${pairing_conf2}        Set Variable       Continue
 
 
     END
+        ${resultat}=    Open Application With Click      ${driver}        ${Setting}
+
         ${driver_mobile}    setup driver Mobile      ${Device_mobile}
+        Clique Sur Setting       ${driver}      Bluetooth       ${Setting_menu}
 
         ${name_bluetooth_mobile} =      Get Bluetooth Name      ${driver_mobile}
         Log   ${name_bluetooth_mobile}
-        Press Key    ${driver_mobile}    176
-        Click Element By Text Att    ${driver_mobile}     Bluetooth, pairing
+        Press Key    ${driver_mobile}    4
 
-        Sleep    2s
-        Click Element By Text Att     ${driver}      ${pairing}
-        Sleep    4s
-        Click Element By Text Att     ${driver}      ${name_bluetooth_mobile}
-        Sleep    2s
-        Click Element By Text Att    ${driver_mobile}     Pair
-        Click Element By Text Att     ${driver}      ${pairing_conf}
-        Sleep    2s
-        Click Element By Text Att     ${driver_mobile}      Allow
-        Click Element By Text Att     ${driver}      ${pairing_conf2}
-        Sleep    2s
+        Press Key    ${driver_mobile}    176
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}     Bluetooth, pairing
+
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver}      ${pairing}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver}      ${name_bluetooth_mobile}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}     Pair
+        Wait Until Keyword Succeeds    10s    2s    Click Element By Text Att     ${driver}      ${pairing_conf}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver_mobile}      Allow
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver}      ${pairing_conf2}
         ${verif_adb}=        Is Bluetooth Connected   ${driver}      ${name_bluetooth_mobile}
 
         Should Be True     ${verif_adb}   Le Bluetooth n'est pas connecté (via ADB).
@@ -113,12 +125,64 @@ Test Pairing Bluetooth
 
 
 
+Test Supprimer Bluetooth
+        ${lang}    Get System Language       ${Device}
+
+    IF    '${lang}' == 'fr'
+        ${System}       Set Variable     Système
+        ${Setting}     Set Variable     Paramètres
+        ${apps}         Set Variable     Applis
+        ${Consulter_allapps}         Set Variable     Voir les
+        ${DesButton}        Set Variable    Désinstaller
+        ${confirme}         Set Variable    OK
+        ${pairing}        Set Variable       Associer un nouvel appareil
+        ${pairing_conf}        Set Variable       Associer
+        ${pairing_conf2}        Set Variable       Continuer
+        ${supp}        Set Variable       Supprimer
+
+    ELSE
+        ${System}   Set Variable    System
+        ${Setting}    Set Variable    Settings
+        ${apps}         Set Variable     Applis
+        ${Consulter_allapps}         Set Variable      Voir les
+        ${DesButton}        Set Variable    Désinstaller
+        ${confirme}         Set Variable    OK
+        ${pairing}        Set Variable       Pair new device
+        ${pairing_conf}        Set Variable       Pair
+        ${pairing_conf2}        Set Variable       Continue
+        ${supp}        Set Variable       Supprimer
+
+
+    END
+        ${resultat}=    Open Application With Click      ${driver}        ${Setting}
+
+        ${driver_mobile}    setup driver Mobile      ${Device_mobile}
+        Clique Sur Setting       ${driver}      Bluetooth       ${Setting_menu}
+
+        ${name_bluetooth_mobile} =      Get Bluetooth Name      ${driver_mobile}
+        Log   ${name_bluetooth_mobile}
+        Press Key    ${driver_mobile}    4
+
+        Press Key    ${driver_mobile}    176
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}     Bluetooth, pairing
+
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver}      ${name_bluetooth_mobile}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver}      ${supp}
+
+
+
+        ${verif_adb}=        Is Bluetooth Connected   ${driver}      ${name_bluetooth_mobile}
+
+        Should Not Be True     ${verif_adb}   Le Bluetooth n'est pas connecté (via ADB).
+
+
+
 
 
 
 Test Fermer Bluetooth
     [Documentation]    Ce test vérifie si le Bluetooth peut être désactivé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de désactiver Bluetooth et de vérifier son statut.
-    ${driver}    setup driver       ${Device}
+
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -150,3 +214,12 @@ Test Fermer Bluetooth
     Should Not Be True     ${verifier_ble_ui}   Le Bluetooth ne desactive pas (ui).
     ${verfier_ble_adb}=  Est Bluetooth Active       ${Device}
     Should Not Be True     ${verfier_ble_adb}   Le Bluetooth ne desactive pas (via adb).
+    
+
+Test Open Bluetooth IA
+    ${Click_grid}=      Click Icon Ia   ${driver}      appsgrid
+    ${Click_setting}=      Click Icon Ia   ${driver}      setting
+    ${Click_grid}=      Click Icon Ia   ${driver}      bluetooth_menu
+    ${Click_grid}=      Click Icon Ia   ${driver}      toggle_off
+    ${verfier_ble_adb}=  Est Bluetooth Active       ${Device}
+    Should Be True     ${verfier_ble_adb}   Le Bluetooth ne s'active pas (via adb).

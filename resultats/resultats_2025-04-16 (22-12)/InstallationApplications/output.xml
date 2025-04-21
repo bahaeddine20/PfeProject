@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.10 on linux)" generated="2025-04-16T22:20:06.893450" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="/app/test_cases/InstallationApplications.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-16T22:20:11.246098" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="34c510fc-3b76-444e-80eb-355007231c42")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-04-16T22:20:07.063224" elapsed="4.182936"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-16T22:20:11.246621" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="34c510fc-3b76-444e-80eb-355007231c42")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-16T22:20:11.246369" elapsed="0.000318"/>
+</kw>
+<status status="PASS" start="2025-04-16T22:20:07.062439" elapsed="4.184347"/>
+</kw>
+<test id="s1-t1" name="Test Install Apk" line="27">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-04-16T22:20:33.453049" level="INFO">📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+📌 First Home Page détectée : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Vivaldi Browser', 'YouTube', 'TestNotificationapk', 'Appium Settings']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['Vivaldi Browser', 'YouTube', 'TestNotificationapk', 'Appium Settings']
+3333333333333333333
+584 209 825 247</msg>
+<msg time="2025-04-16T22:20:33.453277" level="INFO">${isInsUi} = True</msg>
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="PASS" start="2025-04-16T22:20:11.247524" elapsed="22.205781"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-16T22:20:33.453679" level="INFO">True</msg>
+<arg>${isInsUi}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-16T22:20:33.453490" elapsed="0.000231"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-04-16T22:20:33.522188" level="INFO">${isIns} = True</msg>
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="PASS" start="2025-04-16T22:20:33.453812" elapsed="0.068422"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-16T22:20:33.522671" level="INFO">True</msg>
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-16T22:20:33.522412" elapsed="0.000321"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-04-16T22:20:34.482737" level="INFO">Installation réussie : Performing Streamed Install
+Success</msg>
+<arg>${driver}</arg>
+<arg>automotive-Notification_Test.apk</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-04-16T22:20:33.522846" elapsed="0.960007"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-04-16T22:20:34.561550" level="INFO">${isIns} = True</msg>
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="PASS" start="2025-04-16T22:20:34.483033" elapsed="0.078585"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-16T22:20:34.562037" level="INFO">True</msg>
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-16T22:20:34.561842" elapsed="0.000267"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${isIns}</arg>
+<arg>The application is not installed via adb</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-16T22:20:34.562339" elapsed="0.000141"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${isIns}</arg>
+<arg>The application is not installed via adb</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-16T22:20:34.562213" elapsed="0.000306"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<msg time="2025-04-16T22:20:57.795941" level="INFO">📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+📌 First Home Page détectée : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Vivaldi Browser', 'YouTube', 'TestNotificationapk', 'Appium Settings']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['Vivaldi Browser', 'YouTube', 'TestNotificationapk', 'Appium Settings']
+3333333333333333333
+584 209 825 247</msg>
+<msg time="2025-04-16T22:20:57.796158" level="INFO">${isInsUi} = True</msg>
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="PASS" start="2025-04-16T22:20:34.562603" elapsed="23.233576"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${isInsUi}</arg>
+<arg>The installed application is not displayed (via adb)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.796700" elapsed="0.000217"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${isInsUi}</arg>
+<arg>The installed application is not displayed (via adb)</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.796433" elapsed="0.000529"/>
+</kw>
+<status status="PASS" start="2025-04-16T22:20:11.246892" elapsed="46.550176"/>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="43">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-16T22:20:57.842017" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-16T22:20:57.798149" elapsed="0.043924"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T22:20:57.842906" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.842683" elapsed="0.000252"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T22:20:57.843155" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.843032" elapsed="0.000143"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T22:20:57.843356" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.843262" elapsed="0.000112"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T22:20:57.843575" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.843460" elapsed="0.000134"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T22:20:57.843847" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.843729" elapsed="0.000140"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T22:20:57.844105" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T22:20:57.843962" elapsed="0.000189"/>
+</kw>
+<status status="PASS" start="2025-04-16T22:20:57.842237" elapsed="0.001966"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T22:20:57.844420" elapsed="0.000018"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T22:20:57.844513" elapsed="0.000015"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T22:20:57.844632" elapsed="0.000033"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>View all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T22:20:57.844758" elapsed="0.000022"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T22:20:57.844862" elapsed="0.000016"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T22:20:57.844952" elapsed="0.000020"/>
+</kw>
+<status status="NOT RUN" start="2025-04-16T22:20:57.844272" elapsed="0.000730"/>
+</branch>
+<status status="PASS" start="2025-04-16T22:20:57.842199" elapsed="0.002877"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-16T22:21:11.659758" level="INFO">📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+📌 First Home Page détectée : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+1137 414 1281 452</msg>
+<msg time="2025-04-16T22:21:11.659928" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-16T22:20:57.846040" elapsed="13.813910"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-16T22:21:12.660432" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-16T22:21:11.660100" elapsed="1.000493"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-16T22:21:12.849718" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-16T22:21:12.660808" elapsed="0.188953"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings is not displayed.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-16T22:21:12.849922" elapsed="0.000221"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-16T22:21:17.034354" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Applis' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-16T22:21:12.850232" elapsed="4.184214"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-04-16T22:21:37.534172" level="INFO">📌 Liste des applications détectées : ['Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Notifications', 'Autorisations', 'Espace de stockage et cache', "Prioriser les performances de l'appli"]
+📌 First Home Page détectée : ['Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Notifications', 'Autorisations', 'Espace de stockage et cache', "Prioriser les performances de l'appli"]
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Notifications', 'Autorisations', 'Espace de stockage et cache', "Prioriser les performances de l'appli"]
+🔄 Swipe #2 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Notifications', 'Autorisations', 'Espace de stockage et cache', "Prioriser les performances de l'appli"]
+✅ Retour à la first home page !
+First Home Page détectée : ['Aucune autorisation accordée', "Prioriser les performances de l'appli", 'Espace de stockage et cache', "Utiliser les ressources système pour prioriser les performances de l'appli", 'Autorisations', 'Notifications', '7,82\u202fMo de mémoire de stockage interne']
+ Swipe effectué...
+ Swipe effectué...
+ Retour à la first home page !</msg>
+<arg>${driver}</arg>
+<arg>${Consulter_allapps}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-16T22:21:17.034617" elapsed="20.500267"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-16T22:21:41.391576" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+✅ 'TestNotificationapk' trouvé en bas ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-04-16T22:21:37.535202" elapsed="3.856496"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${DesButton}</arg>
+<status status="PASS" start="2025-04-16T22:21:41.391877" elapsed="0.176421"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-16T22:21:42.568941" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-16T22:21:41.568496" elapsed="1.000620"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-04-16T22:21:42.687715" level="INFO">Clic effectué sur l'élément avec le texte: OK</msg>
+<arg>${driver}</arg>
+<arg>${confirme}</arg>
+<status status="PASS" start="2025-04-16T22:21:42.569428" elapsed="0.118382"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<msg time="2025-04-16T22:22:05.288970" level="INFO">📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+📌 First Home Page détectée : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS', 'Spotify', 'Téléphone']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Vivaldi Browser', 'YouTube', 'Appium Settings']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['Vivaldi Browser', 'YouTube', 'Appium Settings']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Vivaldi Browser', 'YouTube', 'Appium Settings']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-04-16T22:22:05.289127" level="INFO">${isInsUi} = False</msg>
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="PASS" start="2025-04-16T22:21:42.687968" elapsed="22.601179"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${isInsUi}</arg>
+<arg>The uninstalled application is displayed</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-04-16T22:22:05.289488" elapsed="0.000162"/>
+</kw>
+<arg>Should Not Be True</arg>
+<arg>${isInsUi}</arg>
+<arg>The uninstalled application is displayed</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-16T22:22:05.289337" elapsed="0.000349"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-04-16T22:22:05.342308" level="INFO">${isIns} = True</msg>
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="PASS" start="2025-04-16T22:22:05.289752" elapsed="0.052633"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-16T22:22:05.342760" level="INFO">True</msg>
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-16T22:22:05.342565" elapsed="0.000239"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be True" owner="BuiltIn">
+<msg time="2025-04-16T22:22:05.343645" level="FAIL">The application is not uninstalled correctly (via adb)</msg>
+<arg>${isIns}</arg>
+<arg>The application is not uninstalled correctly (via adb)</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="FAIL" start="2025-04-16T22:22:05.343181" elapsed="0.000709">The application is not uninstalled correctly (via adb)</status>
+</kw>
+<arg>Should Not Be True</arg>
+<arg>${isIns}</arg>
+<arg>The application is not uninstalled correctly (via adb)</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-04-16T22:22:05.342982" elapsed="0.000989">The application is not uninstalled correctly (via adb)</status>
+</kw>
+<status status="FAIL" start="2025-04-16T22:20:57.797321" elapsed="67.546820">The application is not uninstalled correctly (via adb)</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-04-16T22:22:05.344991" elapsed="0.136758"/>
+</kw>
+<status status="PASS" start="2025-04-16T22:22:05.344757" elapsed="0.137125"/>
+</kw>
+<status status="FAIL" start="2025-04-16T22:20:06.896233" elapsed="118.585679"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="InstallationApplications" id="s1" pass="1" fail="1" skip="0">InstallationApplications</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

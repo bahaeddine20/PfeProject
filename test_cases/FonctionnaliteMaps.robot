@@ -3,6 +3,10 @@ Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Library    script_mobile.py
+Suite Setup     Démarrer Driver
+Suite Teardown  Fermer Driver
+
 
 *** Variables ***
 ${AppGrid_ACTIVITY}    com.android.car.carlauncher/.GASAppGridActivity
@@ -11,11 +15,19 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5556
+${Device}              emulator-5554
+${Device_mobile}       emulator-5556
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
 ${Longitude}           -74.0060
 ${Latitude}            40.7128
+*** Keywords ***
+Démarrer Driver
+    ${driver}=    setup driver    ${Device}
+    Set Suite Variable    ${driver}
+
+Fermer Driver
+    Close Driver    ${driver}
 
 *** Test Cases ***
 Test GPS Location Functionality
