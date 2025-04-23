@@ -26,8 +26,10 @@ ${name_bluetooth_mobile}        ${null}
 *** Keywords ***
 Démarrer Driver
     ${driver}=    Setup Driver    ${Device}
+    ${driver_mobile}=    Setup Driver Mobile    ${Device}
+
     Set Suite Variable    ${driver}
-    Set Suite Variable    ${driver_mobile}    ${None}  # Initialize mobile driver variable
+    Set Suite Variable    ${driver_mobile}    # Initialize mobile driver variable
 
 Fermer Driver
     Run Keyword If    '${driver}' != 'None'    Close Driver    ${driver}
@@ -100,7 +102,6 @@ Test Pairing Bluetooth
     END
         ${resultat}=    Open Application With Click      ${driver}        ${Setting}
 
-        ${driver_mobile}    setup driver Mobile      ${Device_mobile}
         Clique Sur Setting       ${driver}      Bluetooth       ${Setting_menu}
 
         ${name_bluetooth_mobile} =      Get Bluetooth Name      ${driver_mobile}
@@ -121,8 +122,12 @@ Test Pairing Bluetooth
         Should Be True     ${verif_adb}   Le Bluetooth n'est pas connecté (via ADB).
 
 
-
-
+Test Call Bluetooth
+    ${call}=    Simulate Incoming Call    ${driver_mobile}    52440030
+    Sleep    5s
+    ${bounds}=    Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}    52440030
+    Log    ${bounds}
+    Should Not Be Equal    ${bounds}    ${None}    Le numéro 52440030 n'a pas été trouvé à l'écran
 
 
 Test Supprimer Bluetooth

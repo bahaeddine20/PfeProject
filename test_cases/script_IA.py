@@ -2,10 +2,8 @@
 import cv2
 import numpy as np
 import os
-import tempfile
-from appium.webdriver.common.appiumby import AppiumBy
+
 from io import BytesIO
-from PIL import Image
 
 
 def find_icon_position(driver, icon_name):
@@ -64,3 +62,73 @@ def click_icon_ia(driver, icon_name):
         return  True
     else:
         return False
+
+import io
+from PIL import Image
+from doctr.io import DocumentFile
+from doctr.models import ocr_predictor
+
+
+# Charger le modèle OCR une seule fois
+ocr_model = ocr_predictor(pretrained=True)
+
+
+
+def get_text_bounds(image_input, text_to_find):
+    """
+    Extrait les coordonnées (xmin, ymin, xmax, ymax) du texte trouvé dans une image.
+
+    :param image_input: Chemin vers l'image (str) ou image en bytes
+    :param text_to_find: Mot ou texte à chercher
+    :return: Tuple (xmin, ymin, xmax, ymax) ou None si non trouvé
+    """
+    # Charger l'image et créer l'objet Doctr
+    if isinstance(image_input, str):  # chemin de fichier
+        image = Image.open(image_input)
+        # Convert to bytes to handle both cases the same way
+        img_byte_arr = io.BytesIO()
+        image.save(img_byte_arr, format='PNG')
+        img_byte_arr = img_byte_arr.getvalue()
+    elif isinstance(image_input, (bytes, bytearray)):  # image PNG depuis Selenium
+        img_byte_arr = image_input
+        image = Image.open(io.BytesIO(img_byte_arr))
+    else:
+        raise TypeError("image_input must be a file path or PNG bytes")
+
+    width, height = image.size
+
+    # Create DocumentFile from bytes (note: from_images expects a list)
+    doc = DocumentFile.from_images([img_byte_arr])
+
+    # OCR avec Doctr
+    result = ocr_model(doc)
+
+    # Analyse du résultat
+    blocks = result.pages[0].blocks  # On suppose une seule page
+
+    for block in blocks:
+        for line in block.lines:
+            for word in line.words:
+                if text_to_find.lower() in word.value.lower():
+                    (xmin_norm, ymin_norm), (xmax_norm, ymax_norm) = word.geometry
+
+                    xmin = int(xmin_norm * width)
+                    ymin = int(ymin_norm * height)
+                    xmax = int(xmax_norm * width)
+                    ymax = int(ymax_norm * height)
+
+                    return (xmin, ymin, xmax, ymax)
+
+    return None
+
+def get_text_bounds_driver(driver, text_to_find):
+    """
+    Capture une capture d'écran du navigateur et extrait les coordonnées du texte.
+
+    :param driver: Instance de Selenium WebDriver
+    :param text_to_find: Texte à rechercher dans l'image
+    :return: Tuple (xmin, ymin, xmax, ymax) ou None si non trouvé
+    """
+    screenshot_bytes = driver.get_screenshot_as_png()
+    return get_text_bounds(screenshot_bytes, text_to_find)
+

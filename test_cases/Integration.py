@@ -24,7 +24,6 @@ def setup_driver(device):
     options.platform_name = "Android"
     options.platform_version = "14"
     options.device_name = device
-    options.device_name = device
     options.adb_exec_timeout = 60000
     #options.remote_adb_host="host.docker.internal"
     #options.remote_adb_host="host.docker.internal"
@@ -1446,4 +1445,38 @@ def is_bluetooth_connected(driver, name_bluetooth):
 
     except Exception as e:
         print(f"Erreur lors de la vérification du Bluetooth: {e}")
+        return False
+
+
+
+
+
+
+def simulate_incoming_call(driver, phone_number):
+    """
+    Simule un appel entrant sur un émulateur Android via ADB et vérifie si la commande a réussi.
+
+    :param driver: Instance Appium WebDriver
+    :param phone_number: Numéro de téléphone à simuler (string)
+    :return: True si la commande a réussi, False sinon
+    """
+    device_name = driver.capabilities.get('deviceName')
+    if not device_name:
+        print("[ERREUR] deviceName non trouvé dans les capabilities du driver.")
+        return False
+
+    # Construire la commande
+    command = ["adb", "-s", device_name, "emu", "gsm", "call", phone_number]
+
+    try:
+        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        output = result.stdout.strip()
+        if "OK" in output:
+            print(f"[OK] Appel simulé depuis {phone_number} vers {device_name}.")
+            return True
+        else:
+            print(f"[ERREUR] Réponse inattendue : {output}")
+            return False
+    except subprocess.CalledProcessError as e:
+        print(f"[ERREUR] Échec de la simulation d'appel : {e.stderr.strip()}")
         return False

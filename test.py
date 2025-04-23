@@ -844,6 +844,56 @@ def find_icon_position(driver, icon_name):
         return None
 
 
+import os
+from doctr.io import DocumentFile
+from doctr.models import ocr_predictor
+from PIL import Image
+
+
+def get_text_bounds(image_path, text_to_find):
+    """
+    Extrait les coordonnées (xmin, ymin, xmax, ymax) du texte trouvé dans l'image.
+
+    :param image_path: Chemin vers l'image
+    :param text_to_find: Mot ou texte à chercher
+    :return: Tuple (xmin, ymin, xmax, ymax) ou None si non trouvé
+    """
+    # Charger l'image pour obtenir ses dimensions
+    image = Image.open(image_path)
+    width, height = image.size
+
+    # OCR avec Doctr
+    doc = DocumentFile.from_images(image_path)
+    model = ocr_predictor(pretrained=True)
+    result = model(doc)
+
+    # Récupérer les blocs de texte
+    blocks = result.pages[0].blocks  # On suppose qu'une seule page
+
+    for block in blocks:
+        for line in block.lines:
+            for word in line.words:
+                if text_to_find.lower() in word.value.lower():
+                    xmin_norm, ymin_norm = word.geometry[0]
+                    xmax_norm, ymax_norm = word.geometry[1]
+
+                    xmin = int(xmin_norm * width)
+                    ymin = int(ymin_norm * height)
+                    xmax = int(xmax_norm * width)
+                    ymax = int(ymax_norm * height)
+
+                    return (xmin, ymin, xmax, ymax)
+
+    return None
+def get_text_bounds_driver(driver,text_to_find):
+    screenshot = driver.get_screenshot_as_png()
+    (x, y, w, h)=get_text_bounds(screenshot, text_to_find)
+    return (x, y, w, h)
+
+
+
+
+
 # Exemple d'utilisation
 # icon_position = find_icon_position(driver, "notif_menu")
 # if icon_position:
@@ -857,11 +907,11 @@ if __name__ == "__main__":
     #set_location(driver, -74.0060, 40.7128)  # Exemples de coordonnées pour New York
     # Exemple d'utilisation dans un test Appium :
     # driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
-    bounds_exemple = "[404,76][1408,696]"
+    #bounds_exemple = "[404,76][1408,696]"
     #capture_element_screenshot(driver, bounds_exemple)
     # Exemple d'éléments obtenus avec UIAutomator (comme tu l'as montré)
     # Utilisation dans ton script de test
-
+    print(get_text_bounds("screenshot1.png", "Son"))
     #print(get_location(driver))
     #swipe_down(driver, "[862,356][926,404]")
     #print(get_android_users(driver))
@@ -871,19 +921,11 @@ if __name__ == "__main__":
     #print(check_language_change("emulator-5554","fr-FR"))
     #revenir_a_la_home_page(driver)
     #
-    print(Print_Activity(driver))
+    #print(Print_Activity(driver))
     # #afficher_noms_setting(driver)
     #afficheraLL_infos_elements(driver)
     # Test de la fonction
-    icon_pos = find_icon_position(driver, "appsgrid")  # Sans l'extension .png
-    print(icon_pos)
-    if icon_pos:
-        x, y, w, h = icon_pos
-        # Cliquer au centre de l'icône
-        driver.tap([(x + w // 2, y + h // 2)])
-        print("Clic effectué sur l'icône")
-    else:
-        print("Échec de détection")    # x_center = (912 + 1000) // 2  # 956
+
     # y_center = (619 + 657) // 2  # 638
     #
     # click_sur(driver, x_center, y_center)
