@@ -17,7 +17,7 @@ ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
 ${Device}              emulator-5554
-${Device_mobile}       emulator-5556
+${Device_mobile}       None
 
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
@@ -63,9 +63,9 @@ Test Ouvrir Wifi
     Activer Wifi Si Desactive       ${driver}
     Sleep    3s
     ${verifier_wifi_ui}=   Is Active Wifi Ui       ${driver}
-    Should Be True     ${verifier_wifi_ui}   Le Wifi ne s'active pas (ui).
+    Run Keyword And Continue On Failure     Should Be True     ${verifier_wifi_ui}   Le Wifi ne s'active pas (ui).
     ${verfier_wifi_adb}=  Is Wifi Enabled Adb       ${driver}
-    Should Be True     ${verfier_wifi_adb}   Le Wifi ne s'active pas (via adb).
+    Run Keyword And Continue On Failure     Should Be True     ${verfier_wifi_adb}   Le Wifi ne s'active pas (via adb).
 
 
 
@@ -102,7 +102,7 @@ Test Fermer Wifi
     Desactiver Wifi Si Active       ${driver}
     Sleep    3s
     ${verifier_wifi_ui}=   Is Active Wifi Ui       ${driver}
-    Should Not Be True     ${verifier_wifi_ui}   Le Wifi ne s'active pas (ui).
+    Run Keyword And Continue On Failure         Should Not Be True     ${verifier_wifi_ui}   Le Wifi ne s'active pas (ui).
     ${verfier_wifi_adb}=  Is Wifi Enabled Adb       ${driver}
-    Should Not Be True     ${verfier_wifi_adb}   Le Wifi ne s'active pas (via adb).
+    Run Keyword And Continue On Failure         Should Not Be True     ${verfier_wifi_adb}   Le Wifi ne s'active pas (via adb).
 

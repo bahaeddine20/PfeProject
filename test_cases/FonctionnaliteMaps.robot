@@ -16,7 +16,7 @@ ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
 ${Device}              emulator-5554
-${Device_mobile}       emulator-5556
+${Device_mobile}       None
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
 ${Longitude}           -74.0060
@@ -43,5 +43,5 @@ Test GPS Location Functionality
     ${current_latitude}    ${current_longitude}       Get Location ViaAdb        ${Device}
 
     # Vérifier que les valeurs sont correctes
-    Should Be Equal As Numbers    ${current_latitude}    ${Latitude}
-    Should Be Equal As Numbers    ${current_longitude}    ${Longitude}
+    Run Keyword And Continue On Failure     Should Be Equal As Numbers    ${current_latitude}    ${Latitude}
+    Run Keyword And Continue On Failure     Should Be Equal As Numbers    ${current_longitude}    ${Longitude}

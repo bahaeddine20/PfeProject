@@ -70,7 +70,7 @@ Test Modifier Languages
     Clique Sur Setting       ${driver}      English (United States)       ${Setting_system}
     Sleep    4s
     ${verfieadb} =         Check Language Change      ${Device}       en-US
-    Should Be True     ${verfieadb}  Modifier Languages ne s'active pas (via adb).
+    Run Keyword And Continue On Failure     Should Be True     ${verfieadb}  Modifier Languages ne s'active pas (via adb).
 
     ${lang}    Get System Language       ${Device}
 
@@ -96,8 +96,8 @@ Test Modifier Languages
     Clique Sur Setting       ${driver}      Français      ${Setting_system}
     Clique Sur Setting       ${driver}      Français (France)   ${Setting_system}
     Sleep    4s
-    ${verfieadb} =         Check Language Change      ${Device}        fr-FR
-    Should Be True     ${verfieadb}  Modifier Languages ne s'active pas (via adb).
+    Run Keyword And Continue On Failure         ${verfieadb} =         Check Language Change      ${Device}        fr-FR
+    Run Keyword And Continue On Failure         Should Be True     ${verfieadb}  Modifier Languages ne s'active pas (via adb).
 
 
 Test Notification Réception
@@ -128,10 +128,10 @@ Test Notification Réception
     ${resultat}=    Open Application With Click      ${driver}        TestNotificationapk
     click Element By Text Att   ${driver}       ENVOYER NOTIFICATION
     Sleep    2
-    Afficher Notification        ${driver}
+    Run Keyword And Continue On Failure         Afficher Notification        ${driver}
     Sleep    2s
     ${Verfier}=      Check Element ExistsBy Id      ${driver}        com.android.systemui:id/notifications
-    Should Be True    ${Verfier}      Notification n'est pas affiché.
+    Run Keyword And Continue On Failure     Should Be True    ${Verfier}      Notification n'est pas affiché.
 
     ${VerfierNotif}=        Check Element Exists By Text         ${driver}      Bouton appuyé !
 

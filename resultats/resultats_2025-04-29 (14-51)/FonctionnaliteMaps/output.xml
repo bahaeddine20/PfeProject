@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.10.12 on linux)" generated="2025-04-29T14:51:02.475178" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteMaps" source="/home/bsomrani@actia.local/Bahaeddinesomrani/PfeProject/test_cases/FonctionnaliteMaps.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-29T14:51:10.772421" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="10d8cf88-caf6-4c15-af13-dad6d4291aed")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-04-29T14:51:02.885397" elapsed="7.887203"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-29T14:51:10.773174" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="10d8cf88-caf6-4c15-af13-dad6d4291aed")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-29T14:51:10.772895" elapsed="0.000326"/>
+</kw>
+<status status="PASS" start="2025-04-29T14:51:02.868522" elapsed="7.904775"/>
+</kw>
+<test id="s1-t1" name="Test GPS Location Functionality" line="33">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-04-29T14:51:10.853639" level="INFO">[OK] Position définie : -74.0060, 40.7128</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS via une API Flask sur le host.</doc>
+<status status="PASS" start="2025-04-29T14:51:10.774118" elapsed="0.079609"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-29T14:51:12.854236" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-29T14:51:10.853886" elapsed="2.000457"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-04-29T14:51:12.884809" level="INFO">${current_latitude} = None</msg>
+<msg time="2025-04-29T14:51:12.884872" level="INFO">${current_longitude} = None</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-29T14:51:12.854509" elapsed="0.030388"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-29T14:51:12.885338" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-04-29T14:51:12.885519" level="FAIL">'None' cannot be converted to a floating point number: TypeError: float() argument must be a string or a real number, not 'NoneType'</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2025-04-29T14:51:12.885057" elapsed="0.000674">'None' cannot be converted to a floating point number: TypeError: float() argument must be a string or a real number, not 'NoneType'</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-04-29T14:51:12.885860" elapsed="0.000023"/>
+</kw>
+<doc>Ce test définit la localisation GPS et vérifie qu'elle est correcte.</doc>
+<tag>gps</tag>
+<status status="FAIL" start="2025-04-29T14:51:10.773380" elapsed="2.112646">'None' cannot be converted to a floating point number: TypeError: float() argument must be a string or a real number, not 'NoneType'</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-04-29T14:51:12.886823" elapsed="0.155096"/>
+</kw>
+<status status="PASS" start="2025-04-29T14:51:12.886645" elapsed="0.155395"/>
+</kw>
+<status status="FAIL" start="2025-04-29T14:51:02.476438" elapsed="10.565639"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">gps</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteMaps" id="s1" pass="0" fail="1" skip="0">FonctionnaliteMaps</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

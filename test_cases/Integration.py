@@ -15,8 +15,8 @@ import time
 import random
 
 import re
-#url_host="http://host.docker.internal:6000"
-url_host="http://127.0.0.1:6000"
+url_host="http://host.docker.internal:6000"
+#url_host="http://127.0.0.1:6000"
 
 
 
@@ -28,11 +28,10 @@ def setup_driver(device):
     options.platform_version = "14"
     options.device_name = device
     #options.adb_exec_timeout = 60000
-    #options.remote_adb_host="host.docker.internal"
-    #options.remote_adb_host="host.docker.internal"
-    remote_url = "http://127.0.0.1:4723"
+    options.remote_adb_host="host.docker.internal"
+    #remote_url = "http://127.0.0.1:4723"
     #remote_url = "http://172.21.0.3:4723"
-    #remote_url = "http://appium:4723"
+    remote_url = "http://appium:4723"
 
     options.uiautomator2ServerPort = 8201
 
