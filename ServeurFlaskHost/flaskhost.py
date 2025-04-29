@@ -43,5 +43,25 @@ def simulate_incoming_call():
         print(f"[ERREUR] Échec de la simulation d'appel : {e.stderr.strip()}")
         return jsonify({"success": False, "message": f"Erreur ADB : {e.stderr.strip()}"}), 500
 
+@app.route('/setlocation', methods=['POST'])
+def set_location():
+    data = request.get_json()
+
+    device_id = data.get('device_id')
+    longitude = data.get('longitude')
+    latitude = data.get('latitude')
+
+    if not device_id or longitude is None or latitude is None:
+        return jsonify({"success": False, "message": "Champs manquants."}), 400
+
+    adb_command = ["adb", "-s", device_id, "emu", "geo", "fix", str(longitude), str(latitude)]
+
+    try:
+        result = subprocess.run(adb_command, capture_output=True, text=True, check=True)
+        return jsonify({"success": True, "message": f"Position définie : {longitude}, {latitude}"}), 200
+    except subprocess.CalledProcessError as e:
+        return jsonify({"success": False, "message": f"Erreur ADB : {e.stderr.strip()}"}), 500
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6000)

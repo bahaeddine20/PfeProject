@@ -26,8 +26,9 @@ ${name_bluetooth_mobile}        ${null}
 *** Keywords ***
 
 Démarrer Driver
-    ${driver}=    setup driver    ${Device}
-    ${driver_mobile}=    Setup Driver Mobile  ${Device_mobile}
+    ${driver}=    Setup Driver    ${Device}
+    Log    Driver for ${Device}: ${driver}
+    ${driver_mobile}=    Setup Driver Mobile    ${Device_mobile}
 
     Set Suite Variable    ${driver}
     Set Suite Variable    ${driver_mobile}

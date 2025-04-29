@@ -15,6 +15,10 @@ import time
 import random
 
 import re
+#url_host="http://host.docker.internal:6000"
+url_host="http://127.0.0.1:6000"
+
+
 
 apps_page="com.android.car.carlauncher/.GASAppGridActivity"
 def setup_driver(device):
@@ -1365,27 +1369,25 @@ import subprocess
 
 def set_location_viaAdb(device_id, x, y):
     """
-    Définit une nouvelle position GPS sur l'émulateur ou l'appareil.
-
-    :param device_id: L'ID du device Appium ou l'ID du périphérique.
-    :param x: La longitude à définir (en degrés).
-    :param y: La latitude à définir (en degrés).
-    :return: True si la commande a réussi, False sinon.
+    Définit une nouvelle position GPS via une API Flask sur le host.
     """
-    # Construire la commande ADB pour définir la localisation
-    adb_command = ["adb", "-s", device_id, "emu", "geo", "fix", str(x), str(y)]
+    payload = {
+        "device_id": device_id,
+        "longitude": x,
+        "latitude": y
+    }
 
-    # Exécuter la commande
-    result = subprocess.run(adb_command, capture_output=True, text=True)
-
-    # Vérifier si la commande a réussi
-    if result.returncode == 0:
-        print(f"Position définie à Longitude: {x}, Latitude: {y}")
-        return True
-    else:
-        print(f"Erreur lors de la définition de la position : {result.stderr}")
+    try:
+        response = requests.post(url_host+"/setlocation", json=payload)
+        if response.status_code == 200:
+            print(f"[OK] Position définie : {x}, {y}")
+            return True
+        else:
+            print(f"[ERREUR] Réponse API : {response.text}")
+            return False
+    except requests.RequestException as e:
+        print(f"[ERREUR] Exception lors de la requête : {e}")
         return False
-
 
 
 def get_added_user(old_users, new_users):
@@ -1484,6 +1486,9 @@ def is_bluetooth_connected(driver, name_bluetooth):
 
 import requests
 
+
+
+
 def simulate_incoming_call(driver, phone_number):
     """
     Simule un appel entrant sur un émulateur Android en envoyant une requête à l'endpoint /call.
@@ -1503,7 +1508,7 @@ def simulate_incoming_call(driver, phone_number):
     }
 
     try:
-        response = requests.post("http://host.docker.internal:6000/call", json=payload)
+        response = requests.post(url_host+"/call", json=payload)
         if response.status_code == 200:
             print(f"[OK] Appel simulé : {phone_number} vers {device_name}.")
             return True
