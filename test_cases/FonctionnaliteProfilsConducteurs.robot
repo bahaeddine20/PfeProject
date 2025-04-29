@@ -18,7 +18,7 @@ ${System}               System
 ${verifie_adb_add_user}     ${null}
 *** Keywords ***
 Démarrer Driver
-    ${driver}=    setup driver    ${Device}
+    ${driver}=    Setup Driver       ${Device}
     Set Suite Variable    ${driver}
 
 Fermer Driver
@@ -43,7 +43,8 @@ Test Ajouter Utilisateur
         ${Setting}=    Set Variable    Settings
         ${Profils}    Set Variable    Profiles & accounts
         ${Mange}     Set Variable     Manage other profiles
-        ${Ajouter}    Set Variable    Add Profile
+        ${Ajouter}    Set Variable    Add profile
+        ${Ajouter2}    Set Variable   Add a profile
         ${Ok}         Set Variable    OK
     END
 
@@ -58,8 +59,11 @@ Test Ajouter Utilisateur
 
     Run Keyword And Continue On Failure      Clique Sur Setting       ${driver}      ${Profils}        ${Setting_menu}
     Run Keyword And Continue On Failure      Clique Sur Setting       ${driver}      ${Mange}        ${Setting_system}
+    Sleep    2s
+    Run Keyword And Continue On Failure          Click Element By Text Att     ${driver}           ${Ajouter}
+    Run Keyword And Continue On Failure          Click Element By Text Att      ${driver}           ${Ajouter2}
 
-    Click Element By Text Att    ${driver}       ${Ajouter}
+
 
     Sleep    2s
     Click Element By Text Att    ${driver}         ${Ok}
@@ -76,9 +80,11 @@ Test Ajouter Utilisateur
 
     # Log des informations
     Log    Utilisateur ajouté : ${verifie_adb_add_user}
+    Sleep    50s
+    Switch Android User    ${Device}    10
     Sleep    20s
 
-
+    ${resultat}=    Open Application With Click      ${driver}        ${Setting}
 
 Test Supprimer Utilisateur
 

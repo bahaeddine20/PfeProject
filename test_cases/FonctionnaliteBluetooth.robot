@@ -24,16 +24,19 @@ ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
 ${name_bluetooth_mobile}        ${null}
 *** Keywords ***
+
 Démarrer Driver
-    ${driver}=    Setup Driver    ${Device}
-    ${driver_mobile}=    Setup Driver Mobile    ${Device}
+    ${driver}=    setup driver    ${Device}
+    ${driver_mobile}=    Setup Driver Mobile  ${Device_mobile}
 
     Set Suite Variable    ${driver}
-    Set Suite Variable    ${driver_mobile}    # Initialize mobile driver variable
+    Set Suite Variable    ${driver_mobile}
 
 Fermer Driver
-    Run Keyword If    '${driver}' != 'None'    Close Driver    ${driver}
-    Run Keyword If    '${driver_mobile}' != 'None'    Close Driver    ${driver_mobile}
+    Close Driver    ${driver}
+    Close Driver   ${driver_mobile}
+
+
 *** Test Cases ***
 
 Test Ouvrir Bluetooth
@@ -57,6 +60,7 @@ Test Ouvrir Bluetooth
         ${confirme}         Set Variable    OK
     END
 
+
     ${resultat}=    Open Application With Click      ${driver}        ${Setting}
     Sleep    2s
     ${Verfier}=    Check Element ExistsBy Id      ${driver}         ${Setting_xpath_id}
@@ -73,53 +77,53 @@ Test Ouvrir Bluetooth
 
 
 Test Pairing Bluetooth
-
-        ${lang}    Get System Language       ${Device}
+    ${lang}=    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
-        ${System}       Set Variable     Système
-        ${Setting}     Set Variable     Paramètres
-        ${apps}         Set Variable     Applis
-        ${Consulter_allapps}         Set Variable     Voir les
-        ${DesButton}        Set Variable    Désinstaller
-        ${confirme}         Set Variable    OK
-        ${pairing}        Set Variable       Associer un nouvel appareil
-        ${pairing_conf}        Set Variable       Associer
-        ${pairing_conf2}        Set Variable       Continuer
-
+        ${System}=      Set Variable    Système
+        ${Setting}=     Set Variable    Paramètres
+        ${apps}=        Set Variable    Applis
+        ${Consulter_allapps}=    Set Variable    Voir les
+        ${DesButton}=   Set Variable    Désinstaller
+        ${confirme}=    Set Variable    OK
+        ${pairing}=     Set Variable    Associer un nouvel appareil
+        ${pairing_conf}=    Set Variable    Associer
+        ${pairing_conf2}=   Set Variable    Continuer
     ELSE
-        ${System}   Set Variable    System
-        ${Setting}    Set Variable    Settings
-        ${apps}         Set Variable     Applis
-        ${Consulter_allapps}         Set Variable      Voir les
-        ${DesButton}        Set Variable    Désinstaller
-        ${confirme}         Set Variable    OK
-        ${pairing}        Set Variable       Pair new device
-        ${pairing_conf}        Set Variable       Pair
-        ${pairing_conf2}        Set Variable       Continue
-
-
+        ${System}=      Set Variable    System
+        ${Setting}=     Set Variable    Settings
+        ${apps}=        Set Variable    Apps
+        ${Consulter_allapps}=    Set Variable    See all
+        ${DesButton}=   Set Variable    Uninstall
+        ${confirme}=    Set Variable    OK
+        ${pairing}=     Set Variable    Pair new device
+        ${pairing_conf}=    Set Variable    Pair
+        ${pairing_conf2}=   Set Variable    Continue
     END
-        ${resultat}=    Open Application With Click      ${driver}        ${Setting}
 
-        Clique Sur Setting       ${driver}      Bluetooth       ${Setting_menu}
+    ${resultat}=    Open Application With Click      ${driver}    ${Setting}
+    Clique Sur Setting       ${driver}      Bluetooth       ${Setting_menu}
 
-        ${name_bluetooth_mobile} =      Get Bluetooth Name      ${driver_mobile}
-        Log   ${name_bluetooth_mobile}
+    ${name_bluetooth_mobile}=    Get Bluetooth Name    ${driver_mobile}
+    Log    ${name_bluetooth_mobile}
+
+    ${verif_adb}=    Is Bluetooth Connected    ${driver}    ${name_bluetooth_mobile}
+
+    IF    not ${verif_adb}
         Press Key    ${driver_mobile}    4
-
         Press Key    ${driver_mobile}    176
-        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}     Bluetooth, pairing
 
-        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver}      ${pairing}
-        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver}      ${name_bluetooth_mobile}
-        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}     Pair
-        Wait Until Keyword Succeeds    10s    2s    Click Element By Text Att     ${driver}      ${pairing_conf}
-        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver_mobile}      Allow
-        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att     ${driver}      ${pairing_conf2}
-        ${verif_adb}=        Is Bluetooth Connected   ${driver}      ${name_bluetooth_mobile}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}    Bluetooth, pairing
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver}    ${pairing}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver}    ${name_bluetooth_mobile}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}    Pair
+        Wait Until Keyword Succeeds    10s    2s    Click Element By Text Att    ${driver}    ${pairing_conf}
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver_mobile}    Allow
+        Wait Until Keyword Succeeds    30s    2s    Click Element By Text Att    ${driver}    ${pairing_conf2}
+    END
 
-        Should Be True     ${verif_adb}   Le Bluetooth n'est pas connecté (via ADB).
+    ${verif_adb}=    Is Bluetooth Connected    ${driver}    ${name_bluetooth_mobile}
+    Should Be True    ${verif_adb}    Le Bluetooth n'est pas connecté (via ADB).
 
 
 Test Call Bluetooth
@@ -128,6 +132,24 @@ Test Call Bluetooth
     ${bounds}=    Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}    52440030
     Log    ${bounds}
     Should Not Be Equal    ${bounds}    ${None}    Le numéro 52440030 n'a pas été trouvé à l'écran
+
+
+Test Answer Call Bluetooth
+    ${bounds}=    Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}     Answer
+    Log    ${bounds}
+    Click Sur Bound    ${driver_mobile}    ${bounds}
+    Sleep       3s
+    ${Verifcall}=        Wait Until Keyword Succeeds    30s    2s       Find Icon Position      ${driver}           callsAnswer
+    Should Not Be Equal    ${Verifcall}    ${None}       problem lors de repondre
+
+Test End Call Bluetooth
+
+    ${resultat}=          Open Application With Click      ${driver}          Phone
+    Sleep       3s
+    ${Verifcall}=        Wait Until Keyword Succeeds    30s    2s       Click Icon Ia    ${driver}       endcall
+
+
+
 
 
 Test Supprimer Bluetooth
@@ -155,13 +177,12 @@ Test Supprimer Bluetooth
         ${pairing}        Set Variable       Pair new device
         ${pairing_conf}        Set Variable       Pair
         ${pairing_conf2}        Set Variable       Continue
-        ${supp}        Set Variable       Supprimer
+        ${supp}        Set Variable       Forget
 
 
     END
         ${resultat}=    Open Application With Click      ${driver}        ${Setting}
 
-        ${driver_mobile}    setup driver Mobile      ${Device_mobile}
         Clique Sur Setting       ${driver}      Bluetooth       ${Setting_menu}
 
         ${name_bluetooth_mobile} =      Get Bluetooth Name      ${driver_mobile}

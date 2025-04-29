@@ -1,4 +1,3 @@
-
 from appium.options.android import UiAutomator2Options
 
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
@@ -24,16 +23,25 @@ def setup_driver(device):
     options.platform_name = "Android"
     options.platform_version = "14"
     options.device_name = device
-    options.adb_exec_timeout = 60000
+    #options.adb_exec_timeout = 60000
     #options.remote_adb_host="host.docker.internal"
-    options.remote_adb_host="host.docker.internal"
-    #remote_url = "http://127.0.0.1:4723"
+    #options.remote_adb_host="host.docker.internal"
+    remote_url = "http://127.0.0.1:4723"
     #remote_url = "http://172.21.0.3:4723"
-    remote_url = "http://appium:4723"
+    #remote_url = "http://appium:4723"
+
     options.uiautomator2ServerPort = 8201
 
-    options.set_capability("enforceXPath1", True)
     return webdriver.Remote(remote_url, options=options)
+
+
+import subprocess
+
+def switch_android_user(device, user_id):
+    """Switch Android user via ADB."""
+    command = ["adb", "-s", device, "shell", "am", "switch-user", str(user_id)]
+    subprocess.run(command, check=True)
+
 def close_driver(driver):
     """Ferme proprement le driver Appium."""
     if driver:
@@ -257,6 +265,31 @@ def click_sur(driver, x, y):
 
     # Définir les actions (déplacement, appui, relâchement)
     actions.pointer_action.move_to_location(x, y)  # Déplacer le pointeur à (x, y)
+    actions.pointer_action.pointer_down()  # Appuyer
+    actions.pointer_action.pointer_up()  # Relâcher
+
+    # Exécuter les actions
+    actions.perform()
+
+
+def click_sur_bound(driver, bound):
+    # bound est sous la forme (x_min, y_min, x_max, y_max)
+    x_min, y_min, x_max, y_max = bound
+
+    # Calcul du centre
+    x_center = (x_min + x_max) // 2
+    y_center = (y_min + y_max) // 2
+
+    actions = ActionBuilder(driver)
+
+    # Créer un pointeur de type "touch"
+    pointer = PointerInput(POINTER_TOUCH, "touch")  # Utiliser "touch" comme type de pointeur
+
+    # Ajouter le pointeur à l'ActionBuilder
+    actions.add_pointer_input("touch", pointer)  # Ajouter un nom pour le pointeur
+
+    # Définir les actions (déplacement, appui, relâchement)
+    actions.pointer_action.move_to_location(x_center, y_center)  # Déplacer le pointeur à (x, y)
     actions.pointer_action.pointer_down()  # Appuyer
     actions.pointer_action.pointer_up()  # Relâcher
 
@@ -1449,35 +1482,64 @@ def is_bluetooth_connected(driver, name_bluetooth):
         return False
 
 
-
-
-
+import requests
 
 def simulate_incoming_call(driver, phone_number):
     """
-    Simule un appel entrant sur un émulateur Android via ADB et vérifie si la commande a réussi.
+    Simule un appel entrant sur un émulateur Android en envoyant une requête à l'endpoint /call.
 
     :param driver: Instance Appium WebDriver
     :param phone_number: Numéro de téléphone à simuler (string)
-    :return: True si la commande a réussi, False sinon
+    :return: True si la simulation a réussi, False sinon
     """
     device_name = driver.capabilities.get('deviceName')
     if not device_name:
         print("[ERREUR] deviceName non trouvé dans les capabilities du driver.")
         return False
 
-    # Construire la commande
-    command = ["adb", "-s", device_name, "emu", "gsm", "call", phone_number]
+    payload = {
+        "device_name": device_name,
+        "phone_number": phone_number
+    }
 
     try:
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
-        output = result.stdout.strip()
-        if "OK" in output:
-            print(f"[OK] Appel simulé depuis {phone_number} vers {device_name}.")
+        response = requests.post("http://host.docker.internal:6000/call", json=payload)
+        if response.status_code == 200:
+            print(f"[OK] Appel simulé : {phone_number} vers {device_name}.")
             return True
         else:
-            print(f"[ERREUR] Réponse inattendue : {output}")
+            print(f"[ERREUR] Échec de la simulation d'appel. Réponse : {response.text}")
             return False
-    except subprocess.CalledProcessError as e:
-        print(f"[ERREUR] Échec de la simulation d'appel : {e.stderr.strip()}")
+    except requests.RequestException as e:
+        print(f"[ERREUR] Exception lors de la requête : {e}")
         return False
+
+
+# def simulate_incoming_call(driver, phone_number):
+#     """
+#     Simule un appel entrant sur un émulateur Android via ADB et vérifie si la commande a réussi.
+#
+#     :param driver: Instance Appium WebDriver
+#     :param phone_number: Numéro de téléphone à simuler (string)
+#     :return: True si la commande a réussi, False sinon
+#     """
+#     device_name = driver.capabilities.get('deviceName')
+#     if not device_name:
+#         print("[ERREUR] deviceName non trouvé dans les capabilities du driver.")
+#         return False
+#
+#     # Construire la commande
+#     command = ["adb", "-s", device_name, "emu", "gsm", "call", phone_number]
+#
+#     try:
+#         result = subprocess.run(command, capture_output=True, text=True, check=True)
+#         output = result.stdout.strip()
+#         if "OK" in output:
+#             print(f"[OK] Appel simulé depuis {phone_number} vers {device_name}.")
+#             return True
+#         else:
+#             print(f"[ERREUR] Réponse inattendue : {output}")
+#             return False
+#     except subprocess.CalledProcessError as e:
+#         print(f"[ERREUR] Échec de la simulation d'appel : {e.stderr.strip()}")
+#         return False

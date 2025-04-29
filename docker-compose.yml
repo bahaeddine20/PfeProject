@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: aestoolscelad/flask-app-baha:v2
+    image: aestoolscelad/flask-app-baha:v3
     ports:
       - "5000:5000"
     volumes:
@@ -17,6 +17,8 @@ services:
       - FLASK_RUN_HOST=0.0.0.0
     depends_on:
       - appium
+
+
 
   appium:
     image: appium/appium
@@ -31,4 +33,5 @@ services:
     ports:
       - "4723:4723"
       - "8201:8200"  # Changed from 8200:8200
+
     privileged: true

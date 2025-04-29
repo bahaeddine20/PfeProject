@@ -6,6 +6,7 @@ import os
 from io import BytesIO
 
 
+
 def find_icon_position(driver, icon_name):
     """
     Trouve la position d'une icône sur l'écran du device Android.
@@ -40,7 +41,7 @@ def find_icon_position(driver, icon_name):
 
     # Faire la correspondance de template
     res = cv2.matchTemplate(img_gray, template_gray, cv2.TM_CCOEFF_NORMED)
-    threshold = 0.97
+    threshold = 0.98
 
     # Trouver la meilleure correspondance
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
@@ -51,6 +52,11 @@ def find_icon_position(driver, icon_name):
     else:
         return None
 
+from appium.options.android import UiAutomator2Options
+
+from selenium.webdriver.common.actions.action_builder import ActionBuilder
+from selenium.webdriver.common.actions.pointer_input import PointerInput
+from selenium.webdriver.common.actions.interaction import POINTER_TOUCH
 
 def click_icon_ia(driver, icon_name):
     icon_pos = find_icon_position(driver, icon_name)  # Sans l'extension .png
@@ -62,6 +68,7 @@ def click_icon_ia(driver, icon_name):
         return  True
     else:
         return False
+
 
 import io
 from PIL import Image
