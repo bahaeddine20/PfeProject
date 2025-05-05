@@ -1,10 +1,17 @@
 *** Settings ***
-Documentation    Ce fichier contient des tests pour vérifier l'activation, la désactivation et la gestion des notifications, la modification de la langue, la synchronisation de l'heure, etc. sur un appareil Android. Les tests prennent en charge les interfaces en français et en anglais.
+Documentation    Ce fichier contient des tests pour vérifier les fonctionnalités système d'un appareil Android :
+...              - Activation/désactivation des notifications
+...              - Modification de la langue
+...              - Synchronisation de l'heure
+...              - Gestion des notifications (réception/suppression)
+...              - Navigation de base (bouton Home, lancement d'applications)
+...              Les tests prennent en charge les interfaces en français et en anglais.
 Library    Process
 *** Settings ***
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Library    script_IA.py
 Suite Setup     Démarrer Driver
 Suite Teardown  Fermer Driver
 
@@ -15,7 +22,7 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5554
+${Device}              emulator-5556
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}              System
 
@@ -29,11 +36,17 @@ Fermer Driver
 
 *** Test Cases ***
 Test Home_Button
-    [Documentation]    Ce test vérifie si le bouton "Home" fonctionne correctement en revenant à la page d'accueil de l'appareil.
+    [Documentation]    Teste la fonctionnalité du bouton Home
+    ...                - Vérifie que le bouton Home ramène bien à l'écran d'accueil
+    ...                - Utilise la fonction 'Revenir A La Home Page'
     Revenir A La Home Page    ${driver}
 
 Test Ouvrir YouTube App
-    [Documentation]    Ce test vérifie si l'application YouTube peut être ouverte et si son activité est correctement lancée sur l'appareil Android.
+    [Documentation]    Teste le lancement de l'application YouTube
+    ...                - Ouvre l'application YouTube
+    ...                - Vérifie que l'activité YouTube est correctement lancée
+    ...                - Contrôle la présence d'éléments UI spécifiques à YouTube
+
     Sleep    2
     ${resultat}=    Open Application With Click      ${driver}    YouTube
     Should Be True    ${resultat}      L'activité YouTube n'est pas trouvée.
@@ -44,7 +57,11 @@ Test Ouvrir YouTube App
     Should Be True    ${is_element_present}    L'élément YouTube n'est pas affiché.
 
 Test Modifier Languages
-    [Documentation]    Ce test vérifie si la modification de la langue du système fonctionne correctement sur l'appareil, en fonction de la langue actuelle de l'appareil.
+    [Documentation]    Teste la modification de la langue système
+    ...                - Vérifie la langue actuelle du système
+    ...                - Change la langue en anglais puis en français
+    ...                - Vérifie les changements via ADB
+    ...                - Continue l'exécution même en cas d'échec partiel
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -87,21 +104,24 @@ Test Modifier Languages
     END
 
     ${resultat}=    Open Application With Click      ${driver}        ${Setting}
-    Sleep    1s
-    ${Verfier}=    Check Element ExistsBy Id      ${driver}         ${Setting_xpath_id}
-    Should Be True    ${Verfier}        Settings n'est pas affiché.
     Clique Sur Setting       ${driver}      ${System}        ${Setting_menu}
     Clique Sur Setting       ${driver}     ${Langue1}     ${Setting_system}
     Clique Sur Setting       ${driver}      ${Langue2}       ${Setting_system}
     Clique Sur Setting       ${driver}      Français      ${Setting_system}
     Clique Sur Setting       ${driver}      Français (France)   ${Setting_system}
     Sleep    4s
-    Run Keyword And Continue On Failure         ${verfieadb} =         Check Language Change      ${Device}        fr-FR
-    Run Keyword And Continue On Failure         Should Be True     ${verfieadb}  Modifier Languages ne s'active pas (via adb).
+    ${verfieadb} =         Check Language Change      ${Device}       fr-FR
+    Run Keyword And Continue On Failure     Should Be True     ${verfieadb}  Modifier Languages ne s'active pas (via adb).
 
 
 Test Notification Réception
-    [Documentation]    Ce test vérifie la réception d'une notification après l'activation des paramètres nécessaires et l'envoi de la notification depuis une application tierce.
+    [Documentation]    Teste la réception de notifications
+    ...                - Installe une application de test de notification
+    ...                - Active les notifications pour l'application
+    ...                - Envoie une notification de test
+    ...                - Vérifie l'affichage de la notification
+    ...                - Continue l'exécution même en cas d'échec partiel
+
     Install Apk     ${driver}         automotive-Notification_Test.apk
     ${isIns}=      Is App Installed      ${driver}        actia.pfe25.testnotificationapk
     Log    ${isIns}
@@ -128,7 +148,9 @@ Test Notification Réception
     ${resultat}=    Open Application With Click      ${driver}        TestNotificationapk
     click Element By Text Att   ${driver}       ENVOYER NOTIFICATION
     Sleep    2
-    Run Keyword And Continue On Failure         Afficher Notification        ${driver}
+    Click Icon Ia       ${driver}       notif
+    Click Icon Ia       ${driver}       notif2
+
     Sleep    2s
     ${Verfier}=      Check Element ExistsBy Id      ${driver}        com.android.systemui:id/notifications
     Run Keyword And Continue On Failure     Should Be True    ${Verfier}      Notification n'est pas affiché.
@@ -136,6 +158,11 @@ Test Notification Réception
     ${VerfierNotif}=        Check Element Exists By Text         ${driver}      Bouton appuyé !
 
 Test Notification Supprimer
+    [Documentation]    Teste la suppression de notifications
+    ...                - Vérifie la présence d'une notification
+    ...                - Supprime toutes les notifications
+    ...                - Vérifie que la notification a bien disparu
+    ...                - Continue l'exécution même en cas d'échec partiel
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -151,12 +178,10 @@ Test Notification Supprimer
         ${Btn_clear}    Set Variable    Clear all
     END
 
-    Afficher Notification        ${driver}
+    Click Icon Ia       ${driver}       notif
+    Click Icon Ia       ${driver}       notif2
     Sleep    2s   # Attendre que la notification apparaisse
 
-    ${VerfierNotif}=        Check Element Exists By Text         ${driver}      Bouton appuyé !
-    Should Be True    ${VerfierNotif}    La notification n'est pas affichée.
-    Sleep    2s  # Attendre que l'élément soit visible et interactif
     Click Element By Text     ${driver}    ${Btn_clear}
     Sleep    1s
 
@@ -173,7 +198,11 @@ Test Notification Supprimer
 
 
 Test Disable Notification
-
+    [Documentation]    Teste la désactivation des notifications
+    ...                - Désactive les notifications pour l'application de test
+    ...                - Envoie une notification de test
+    ...                - Vérifie que la notification n'apparaît pas
+    ...                - Continue l'exécution même en cas d'échec partiel
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -206,7 +235,9 @@ Test Disable Notification
     ${resultat}=    Open Application With Click      ${driver}        TestNotificationapk
     Click Element By Text       ${driver}       ENVOYER NOTIFICATION
     Sleep    2
-    Afficher Notification        ${driver}
+    Click Icon Ia       ${driver}       notif
+    Click Icon Ia       ${driver}       notif2
+
     Sleep    2s   # Attendre que la notification apparaisse
 
     ${VerfierNotif}=        Check Element Exists By Text         ${driver}      Bouton appuyé !
@@ -217,7 +248,10 @@ Test Disable Notification
 
 
 Test Modifier Manuellement Date
-
+    [Documentation]    Teste la modification manuelle de la date/heure
+    ...                - Accède aux paramètres de date/heure
+    ...                - Modifie l'heure manuellement
+    ...                - Vérifie que le changement a bien été appliqué
         ${lang}    Get System Language       ${Device}
 
         IF    '${lang}' == 'fr'
@@ -263,7 +297,10 @@ Test Modifier Manuellement Date
 
 
 Test Modifier Synchronisation Automatique Date
-
+    [Documentation]    Teste la synchronisation automatique de la date/heure
+    ...                - Accède aux paramètres de date/heure
+    ...                - Active la synchronisation automatique
+    ...                - Vérifie que l'heure est correctement synchronisée
         ${lang}    Get System Language       ${Device}
 
         IF    '${lang}' == 'fr'

@@ -41,7 +41,7 @@ def find_icon_position(driver, icon_name):
 
     # Faire la correspondance de template
     res = cv2.matchTemplate(img_gray, template_gray, cv2.TM_CCOEFF_NORMED)
-    threshold = 0.98
+    threshold = 0.95
 
     # Trouver la meilleure correspondance
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)

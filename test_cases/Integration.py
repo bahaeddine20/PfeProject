@@ -474,7 +474,7 @@ def open_application_with_click(driver,text):
                 page =False
                 return True
         else:
-            driver.swipe(1200, 500, 500, 500,100)  # Swipe vers la droite (modifie si nécessaire)
+            driver.swipe(1200, 600, 500, 600,200)  # Swipe vers la droite (modifie si nécessaire)
             seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
 
             if first == seconde:
@@ -614,7 +614,7 @@ def clique_sur_setting_include(driver, nom, xpathid):
     return remove_duplicates(setting)
 
 def revenir_a_la_setting_haut(driver):
-    max_swipes = 4
+    max_swipes = 20
     first = afficher_noms_setting(driver)
     print("📌 First Home Page détectée :", first)
 
@@ -649,11 +649,11 @@ def clique_sur_setting(driver, nom, xpathid):
             return False
 
     def swipe_vertical(direction='down'):
-        delta = 50
+        delta = 150
         if direction == 'up':
-            driver.swipe(x, y + delta, x, y - delta, 150)
+            driver.swipe(x, y + delta, x, y - delta, 300)
         else:
-            driver.swipe(x, y - delta, x, y + delta, 150)
+            driver.swipe(x, y - delta, x, y + delta, 300)
 
     def afficher_page_actuelle():
         return set(afficher_noms_setting_bound(driver, xpathid))
@@ -664,7 +664,7 @@ def clique_sur_setting(driver, nom, xpathid):
     x, y = get_middle_coords(parent_bounds)
 
     visited = set()
-    max_swipes = 10
+    max_swipes = 20
 
     # Vérification directe sans swiper
     current_items = afficher_page_actuelle()
@@ -687,7 +687,7 @@ def clique_sur_setting(driver, nom, xpathid):
             print("🛑 Plus de nouveaux éléments en bas. Fin de balayage.")
             break
         visited.update(current_items)
-
+    visited.clear()
     # 🔼 Optionnel : remonter si besoin
     for i in range(max_swipes):
         swipe_vertical('up')
@@ -883,6 +883,36 @@ def is_wifi_enabled_adb(driver):
 
 
 
+import subprocess
+
+def is_gps_enabled_adb(driver):
+    """
+    Vérifie si le GPS (services de localisation) est activé via ADB pour un device donné.
+    """
+    # Récupérer l'ID du device depuis Appium
+    device = driver.capabilities.get('deviceName')
+    if not device:
+        print("❌ Aucune information sur l'ID du device.")
+        return None
+
+    try:
+        # Vérifie le mode de localisation (0: off, 1: device only, 2: battery saving, 3: high accuracy)
+        result = subprocess.check_output(["adb", "-s", device, "shell", "settings", "get", "secure", "location_mode"], text=True)
+        location_mode = result.strip()
+
+        if location_mode == "0":
+            print("❌ Le GPS est désactivé (location_mode = 0).")
+            return False
+        elif location_mode in ["1", "2", "3"]:
+            print(f"✅ Le GPS est activé (location_mode = {location_mode}).")
+            return True
+        else:
+            print(f"⚠️ Mode de localisation inconnu : {location_mode}")
+            return None
+
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Erreur lors de la commande ADB : {e}")
+        return None
 
 
 def activer_wifi_si_desactive(driver):
@@ -897,6 +927,21 @@ def activer_wifi_si_desactive(driver):
 
     except Exception as e:
         print(f"❌ Erreur lors de l'activation du wifi : {str(e)}")
+
+
+def activer_toggle_si_desactive(driver,text):
+    try:
+        # Trouver le toggle Bluetooth
+        switch_element = find_switch_by_label(driver, text)
+        current_state = switch_element.get_attribute("checked")
+        print(current_state)
+
+        if switch_element and current_state == "false":
+            switch_element.click()
+
+    except Exception as e:
+        print(f"❌ Erreur lors de l'activation du wifi : {str(e)}")
+
 
 
 

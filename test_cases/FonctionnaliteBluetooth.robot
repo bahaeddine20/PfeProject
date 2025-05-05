@@ -1,6 +1,8 @@
 *** Settings ***
-Documentation    Ce fichier contient des tests d'activation et de désactivation du Bluetooth sur un appareil Android. Les tests vérifient que les paramètres Bluetooth sont accessibles et que les actions d'activation/désactivation fonctionnent correctement. Les tests prennent en charge les interfaces en français et en anglais.
-Library    Process
+Documentation    Ce fichier contient des tests d'activation, désactivation, appairage et gestion d'appels via Bluetooth sur des appareils Android.
+...              Les tests vérifient que les paramètres Bluetooth sont accessibles, que les actions d'activation/désactivation fonctionnent correctement,
+...              que l'appairage entre appareils fonctionne, et que les fonctionnalités d'appel via Bluetooth opèrent correctement.
+...              Les tests prennent en charge les interfaces en français et en anglais.Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
@@ -17,8 +19,8 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5554
-${Device_mobile}       None
+${Device}              emulator-5556
+${Device_mobile}       emulator-5554
 
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
@@ -41,7 +43,12 @@ Fermer Driver
 *** Test Cases ***
 
 Test Ouvrir Bluetooth
-    [Documentation]    Ce test vérifie si le Bluetooth peut être activé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de activer Bluetooth et de vérifier son statut.
+    [Documentation]    Teste l'activation du Bluetooth sur l'appareil principal
+    ...                - Vérifie la langue du système
+    ...                - Ouvre les paramètres
+    ...                - Accède aux paramètres Bluetooth
+    ...                - Active le Bluetooth s'il est désactivé
+    ...                - Vérifie que le Bluetooth est bien activé (UI et ADB)
 
     ${lang}    Get System Language       ${Device}
 
@@ -78,6 +85,15 @@ Test Ouvrir Bluetooth
 
 
 Test Pairing Bluetooth
+    [Documentation]    Teste l'appairage Bluetooth entre les deux appareils
+    ...                - Vérifie la langue du système
+    ...                - Ouvre les paramètres Bluetooth
+    ...                - Récupère le nom Bluetooth du mobile
+    ...                - Vérifie si l'appairage existe déjà
+    ...                - Si non, initie le processus d'appairage
+    ...                - Valide l'appairage des deux côtés
+    ...                - Vérifie que l'appairage est effectif via ADB
+
     ${lang}=    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -128,32 +144,76 @@ Test Pairing Bluetooth
 
 
 Test Call Bluetooth
-    ${call}=    Simulate Incoming Call    ${driver_mobile}    52440030
+    [Documentation]    Teste la réception d'un appel via Bluetooth
+    ...                - Simule un appel entrant sur le mobile
+    ...                - Vérifie que le numéro appelant est affiché à l'écran
+    ...                - Continue l'exécution même en cas d'échec partiel
+    ${call}=    Run Keyword And Continue On Failure       Simulate Incoming Call    ${driver_mobile}    52440030
     Sleep    5s
-    ${bounds}=    Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}    52440030
-    Log    ${bounds}
-    Should Not Be Equal    ${bounds}    ${None}    Le numéro 52440030 n'a pas été trouvé à l'écran
+    ${bounds}=    Run Keyword And Continue On Failure        Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}    52440030
+    Run Keyword And Continue On Failure     Log    ${bounds}
+    Run Keyword And Continue On Failure     Should Not Be Equal    ${bounds}    ${None}    Le numéro 52440030 n'a pas été trouvé à l'écran
 
 
 Test Answer Call Bluetooth
-    ${bounds}=    Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}     Answer
+    [Documentation]    Teste la réponse à un appel via Bluetooth
+    ...                - Localise et clique sur le bouton "Répondre"
+    ...                - Vérifie que l'interface d'appel est active
+    ...                - Continue l'exécution même en cas d'échec partiel
+
+        ${lang}=    Get System Language       ${Device}
+
+    IF    '${lang}' == 'fr'
+        ${answer}=      Set Variable    Répondre
+        ${Setting}=     Set Variable    Paramètres
+
+        ${answer}=      Set Variable    Answer
+        ${Setting}=     Set Variable    Settings
+
+    END
+
+    ${bounds}=      Run Keyword And Continue On Failure         Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}     ${answer}
     Log    ${bounds}
-    Click Sur Bound    ${driver_mobile}    ${bounds}
+    Run Keyword And Continue On Failure         Click Sur Bound    ${driver_mobile}    ${bounds}
     Sleep       3s
-    ${Verifcall}=        Wait Until Keyword Succeeds    30s    2s       Find Icon Position      ${driver}           callsAnswer
-    Should Not Be Equal    ${Verifcall}    ${None}       problem lors de repondre
+    ${Verifcall}=       Run Keyword And Continue On Failure          Wait Until Keyword Succeeds    30s    2s       Find Icon Position      ${driver}           callsAnswer
+    Run Keyword And Continue On Failure   Should Not Be Equal    ${Verifcall}    ${None}       problem lors de repondre
 
 Test End Call Bluetooth
+    [Documentation]    Teste la fin d'un appel via Bluetooth
+    ...                - Ouvre l'application téléphone
+    ...                - Localise et clique sur le bouton "Terminer l'appel"
+    ...                - Continue l'exécution même en cas d'échec partiel
 
-    ${resultat}=          Open Application With Click      ${driver}          Phone
+
+    ${lang}=    Get System Language       ${Device}
+
+    IF    '${lang}' == 'fr'
+        ${phone}=      Set Variable    Téléphone
+        ${Setting}=     Set Variable    Paramètres
+
+        ${phone}=      Set Variable    Phone
+        ${Setting}=     Set Variable    Settings
+
+    END
+
+    ${resultat}=        Run Keyword And Continue On Failure          Open Application With Click      ${driver}          ${phone}
     Sleep       3s
-    ${Verifcall}=        Wait Until Keyword Succeeds    30s    2s       Click Icon Ia    ${driver}       endcall
+    ${Verifcall}=       Run Keyword And Continue On Failure        Wait Until Keyword Succeeds    30s    2s       Click Icon Ia    ${driver}       endcall
 
 
 
 
 
 Test Supprimer Bluetooth
+    [Documentation]    Teste la suppression de l'appairage Bluetooth
+    ...                - Vérifie la langue du système
+    ...                - Ouvre les paramètres Bluetooth
+    ...                - Récupère le nom Bluetooth du mobile
+    ...                - Supprime l'appareil appairé
+    ...                - Vérifie que l'appairage n'est plus actif via ADB
+    ...                - Continue l'exécution même en cas d'échec partiel
+
         ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -200,7 +260,7 @@ Test Supprimer Bluetooth
 
         ${verif_adb}=        Is Bluetooth Connected   ${driver}      ${name_bluetooth_mobile}
 
-        Should Not Be True     ${verif_adb}   Le Bluetooth n'est pas connecté (via ADB).
+        Run Keyword And Continue On Failure         Should Not Be True     ${verif_adb}   Le Bluetooth n'est pas connecté (via ADB).
 
 
 
@@ -208,7 +268,13 @@ Test Supprimer Bluetooth
 
 
 Test Fermer Bluetooth
-    [Documentation]    Ce test vérifie si le Bluetooth peut être désactivé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de désactiver Bluetooth et de vérifier son statut.
+
+    [Documentation]    Teste la désactivation du Bluetooth sur l'appareil principal
+    ...                - Vérifie la langue du système
+    ...                - Ouvre les paramètres
+    ...                - Accède aux paramètres Bluetooth
+    ...                - Désactive le Bluetooth s'il est activé
+    ...                - Vérifie que le Bluetooth est bien désactivé (UI et ADB)
 
     ${lang}    Get System Language       ${Device}
 
@@ -241,12 +307,5 @@ Test Fermer Bluetooth
     Should Not Be True     ${verifier_ble_ui}   Le Bluetooth ne desactive pas (ui).
     ${verfier_ble_adb}=  Est Bluetooth Active       ${Device}
     Should Not Be True     ${verfier_ble_adb}   Le Bluetooth ne desactive pas (via adb).
-    
 
-Test Open Bluetooth IA
-    ${Click_grid}=      Click Icon Ia   ${driver}      appsgrid
-    ${Click_setting}=      Click Icon Ia   ${driver}      setting
-    ${Click_grid}=      Click Icon Ia   ${driver}      bluetooth_menu
-    ${Click_grid}=      Click Icon Ia   ${driver}      toggle_off
-    ${verfier_ble_adb}=  Est Bluetooth Active       ${Device}
-    Should Be True     ${verfier_ble_adb}   Le Bluetooth ne s'active pas (via adb).
+

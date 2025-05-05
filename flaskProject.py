@@ -223,8 +223,18 @@ def execute_tests():
             progress_data.update({"current_file": test_file, "percentage": int(i / total_tests * 100)})
 
             time.sleep(1)
-            subprocess.run(["robot", "--outputdir", test_result_dir, os.path.join(TESTS_FOLDER, test_file)],
-                           capture_output=True, text=True)
+            result = subprocess.run(
+                ["robot", "--outputdir", test_result_dir, os.path.join(TESTS_FOLDER, test_file)],
+                capture_output=True,
+                text=True
+            )
+
+            # Affichage des détails dans le terminal
+            print(f"--- Exécution du test : {test_file} ---")
+            print("STDOUT:\n", result.stdout)
+            print("STDERR:\n", result.stderr)
+            print(f"Code de retour : {result.returncode}")
+            print("----------------------------------------\n")
 
             progress_data.update({"completed": i + 1, "percentage": int((i + 1) / total_tests * 100)})
             time.sleep(1)

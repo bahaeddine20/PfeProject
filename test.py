@@ -891,6 +891,38 @@ def get_text_bounds_driver(driver,text_to_find):
     return (x, y, w, h)
 
 
+import subprocess
+
+def is_in_call(driver):
+    device = driver.capabilities.get('deviceName')
+    if not device:
+        print("❌ Aucune information sur l'ID du device.")
+        return None
+
+    try:
+        result = subprocess.check_output(
+            ["adb", "-s", device, "shell", "dumpsys", "telephony.registry"], text=True
+        )
+
+        for line in result.splitlines():
+            if "mCallState=" in line:
+                call_state = line.strip().split("=")[-1]
+                if call_state == "2":
+                    print("📞 L'appareil est en appel.")
+                    return True
+                elif call_state == "1":
+                    print("🔔 L'appareil a un appel entrant.")
+                    return True
+                else:
+                    print("✅ Aucun appel en cours.")
+                    return False
+
+        print("⚠️ État d'appel non déterminé.")
+        return None
+
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Erreur lors de l'exécution ADB : {e}")
+        return None
 
 
 
@@ -903,7 +935,7 @@ if __name__ == "__main__":
 
     main()
 
-    driver = setup_driver("emulator-5554")
+    driver = setup_driver("emulator-5556")
     #set_location(driver, -74.0060, 40.7128)  # Exemples de coordonnées pour New York
     # Exemple d'utilisation dans un test Appium :
     # driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
@@ -911,6 +943,7 @@ if __name__ == "__main__":
     #capture_element_screenshot(driver, bounds_exemple)
     # Exemple d'éléments obtenus avec UIAutomator (comme tu l'as montré)
     # Utilisation dans ton script de test
+    print(is_in_call(driver))
     print(get_text_bounds("screenshot1.png", "Son"))
     #print(get_location(driver))
     #swipe_down(driver, "[862,356][926,404]")

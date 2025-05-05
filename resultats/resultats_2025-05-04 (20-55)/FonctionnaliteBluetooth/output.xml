@@ -1,0 +1,1307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-05-04T20:56:00.978170" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteBluetooth" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteBluetooth.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-05-04T20:56:15.434044" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="aadf0323-02d3-4a2c-aaed-96e7f05c9fc9")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-04T20:56:11.167202" elapsed="4.266842"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:56:15.435043" level="INFO">Driver for emulator-5556: &lt;appium.webdriver.webdriver.WebDriver (session="aadf0323-02d3-4a2c-aaed-96e7f05c9fc9")&gt;</msg>
+<arg>Driver for ${Device}: ${driver}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:56:15.434044" elapsed="0.000999"/>
+</kw>
+<kw name="Setup Driver Mobile" owner="script_mobile">
+<msg time="2025-05-04T20:56:19.483781" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="f0229928-a321-4ebd-9e07-be48217b1bfe")&gt;</msg>
+<var>${driver_mobile}</var>
+<arg>${Device_mobile}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-04T20:56:15.435043" elapsed="4.048738"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.484780" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="aadf0323-02d3-4a2c-aaed-96e7f05c9fc9")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.484780" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.484780" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="f0229928-a321-4ebd-9e07-be48217b1bfe")&gt;</msg>
+<arg>${driver_mobile}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.484780" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:56:11.166201" elapsed="8.318579"/>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Bluetooth" line="45">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-04T20:56:19.521856" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-04T20:56:19.485802" elapsed="0.036054"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:19.521856" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-04T20:56:19.521856" elapsed="0.001003"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.522859" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.522859" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.522859" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.522859" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.522859" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.523858" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.522859" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:19.523858" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:19.523858" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:56:19.522859" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-05-04T20:56:19.521856" elapsed="0.002002"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-04T20:56:33.824761" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-05-04T20:56:33.824761" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-05-04T20:56:19.523858" elapsed="14.300903"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-04T20:56:35.824881" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-04T20:56:33.824761" elapsed="2.000120"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-05-04T20:56:35.887930" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-04T20:56:35.824881" elapsed="0.063049"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-04T20:56:35.888931" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-04T20:56:36.935172" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-04T20:56:35.888931" elapsed="1.047241"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<msg time="2025-05-04T20:56:37.006174" level="INFO">${ble} = True</msg>
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="PASS" start="2025-05-04T20:56:36.936172" elapsed="0.070002"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-04T20:56:37.006174" elapsed="0.000000"/>
+</kw>
+<kw name="Activer Bluetooth Si Desactive" owner="Integration">
+<msg time="2025-05-04T20:56:37.073173" level="INFO">✅ Le Bluetooth est déjà activé.</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-05-04T20:56:37.006174" elapsed="0.066999"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.073638" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-04T20:56:37.073173" elapsed="3.000465"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<msg time="2025-05-04T20:56:40.144638" level="INFO">${verifier_ble_ui} = True</msg>
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-05-04T20:56:40.073638" elapsed="0.071000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne s'active pas (ui).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.144638" elapsed="0.000000"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<msg time="2025-05-04T20:56:40.185639" level="INFO">✅ Bluetooth est activé.</msg>
+<msg time="2025-05-04T20:56:40.185639" level="INFO">${verfier_ble_adb} = True</msg>
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-04T20:56:40.144638" elapsed="0.041001"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.185639" elapsed="0.000000"/>
+</kw>
+<doc>Teste l'activation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Active le Bluetooth s'il est désactivé
+- Vérifie que le Bluetooth est bien activé (UI et ADB)</doc>
+<status status="PASS" start="2025-05-04T20:56:19.484780" elapsed="20.701859"/>
+</test>
+<test id="s1-t2" name="Test Pairing Bluetooth" line="87">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-04T20:56:40.223638" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-04T20:56:40.186639" elapsed="0.036999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-04T20:56:40.223638" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.224657" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.223638" elapsed="0.001019"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.224657" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.224657" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.224657" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.224657" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.224657" level="INFO">${Consulter_allapps} = See all</msg>
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.224657" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.224657" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.224657" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.224657" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.224657" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.224657" level="INFO">${pairing} = Pair new device</msg>
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.224657" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.225654" level="INFO">${pairing_conf} = Pair</msg>
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.224657" elapsed="0.000997"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:56:40.225654" level="INFO">${pairing_conf2} = Continue</msg>
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:56:40.225654" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:56:40.223638" elapsed="0.002016"/>
+</branch>
+<status status="PASS" start="2025-05-04T20:56:40.223638" elapsed="0.002016"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-04T20:56:52.716380" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-05-04T20:56:52.716380" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-05-04T20:56:40.225654" elapsed="12.490726"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-04T20:56:54.340206" level="INFO">❌ Erreur : Impossible de récupérer les bounds pour 'com.android.car.settings:id/top_level_menu' -&gt; Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)
+(0, 0, 0, 0)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-04T20:56:52.717382" elapsed="1.622824"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<msg time="2025-05-04T20:56:54.400206" level="INFO">${name_bluetooth_mobile} = sdk_gphone64_x86_64</msg>
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="PASS" start="2025-05-04T20:56:54.340206" elapsed="0.060000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:56:54.400206" level="INFO">sdk_gphone64_x86_64</msg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:56:54.400206" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-05-04T20:56:54.451812" level="INFO">${verif_adb} = False</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-05-04T20:56:54.400206" elapsed="0.051606"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${verif_adb}">
+<kw name="Press Key" owner="Integration">
+<msg time="2025-05-04T20:56:55.027376" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-05-04T20:56:54.451812" elapsed="0.575564"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-05-04T20:56:55.504499" level="INFO">Keycode 176 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-05-04T20:56:55.027376" elapsed="0.477123"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="PASS" start="2025-05-04T20:56:55.505500" elapsed="1.003361"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:56:55.504499" elapsed="1.004362"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<status status="PASS" start="2025-05-04T20:56:56.508861" elapsed="0.158036"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:56:56.508861" elapsed="0.158036"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="PASS" start="2025-05-04T20:56:56.666897" elapsed="0.990257"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:56:56.666897" elapsed="0.990257"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<status status="PASS" start="2025-05-04T20:56:57.657154" elapsed="2.291888"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:56:57.657154" elapsed="2.291888"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<status status="PASS" start="2025-05-04T20:56:59.950044" elapsed="0.125080"/>
+</kw>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:56:59.950044" elapsed="0.125080"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<status status="PASS" start="2025-05-04T20:57:00.075124" elapsed="2.852993"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:00.075124" elapsed="2.852993"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<status status="PASS" start="2025-05-04T20:57:02.929119" elapsed="0.900291"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:02.928117" elapsed="0.901293"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:56:54.451812" elapsed="9.377598"/>
+</branch>
+<status status="PASS" start="2025-05-04T20:56:54.451812" elapsed="9.377598"/>
+</if>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-05-04T20:57:03.977195" level="INFO">${verif_adb} = True</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-05-04T20:57:03.829410" elapsed="0.147785"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-04T20:57:03.977195" elapsed="0.000000"/>
+</kw>
+<doc>Teste l'appairage Bluetooth entre les deux appareils
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Vérifie si l'appairage existe déjà
+- Si non, initie le processus d'appairage
+- Valide l'appairage des deux côtés
+- Vérifie que l'appairage est effectif via ADB</doc>
+<status status="PASS" start="2025-05-04T20:56:40.186639" elapsed="23.791555"/>
+</test>
+<test id="s1-t3" name="Test Call Bluetooth" line="146">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Simulate Incoming Call" owner="Integration">
+<msg time="2025-05-04T20:57:04.013716" level="INFO">[OK] Appel simulé : 52440030 vers emulator-5554.</msg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Simule un appel entrant sur un émulateur Android en envoyant une requête à l'endpoint /call.</doc>
+<status status="PASS" start="2025-05-04T20:57:03.978194" elapsed="0.035522"/>
+</kw>
+<msg time="2025-05-04T20:57:04.013716" level="INFO">${call} = True</msg>
+<var>${call}</var>
+<arg>Simulate Incoming Call</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:03.978194" elapsed="0.035522"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-04T20:57:09.014254" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-04T20:57:04.013716" elapsed="5.000538"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-04T20:57:09.014254" elapsed="2.159372"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:09.014254" elapsed="2.159372"/>
+</kw>
+<msg time="2025-05-04T20:57:11.173626" level="INFO">${bounds} = (251, 147, 446, 187)</msg>
+<var>${bounds}</var>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:09.014254" elapsed="2.159372"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:57:11.174628" level="INFO">(251, 147, 446, 187)</msg>
+<arg>${bounds}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:57:11.174628" elapsed="0.000000"/>
+</kw>
+<arg>Log</arg>
+<arg>${bounds}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:11.173626" elapsed="0.001002"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2025-05-04T20:57:11.174628" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;class 'NoneType'&gt;</msg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" start="2025-05-04T20:57:11.174628" elapsed="0.000000"/>
+</kw>
+<arg>Should Not Be Equal</arg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:11.174628" elapsed="0.000000"/>
+</kw>
+<doc>Teste la réception d'un appel via Bluetooth
+- Simule un appel entrant sur le mobile
+- Vérifie que le numéro appelant est affiché à l'écran
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="PASS" start="2025-05-04T20:57:03.978194" elapsed="7.196434"/>
+</test>
+<test id="s1-t4" name="Test Answer Call Bluetooth" line="158">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<arg>${driver_mobile}</arg>
+<arg>Answer</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-04T20:57:11.175628" elapsed="1.487260"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>Answer</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:11.175628" elapsed="1.487260"/>
+</kw>
+<msg time="2025-05-04T20:57:12.662888" level="INFO">${bounds} = (743, 344, 872, 379)</msg>
+<var>${bounds}</var>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>Answer</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:11.175628" elapsed="1.487260"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:57:12.662888" level="INFO">(743, 344, 872, 379)</msg>
+<arg>${bounds}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:57:12.662888" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<status status="PASS" start="2025-05-04T20:57:12.663888" elapsed="0.327312"/>
+</kw>
+<arg>Click Sur Bound</arg>
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:12.663888" elapsed="0.327312"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-04T20:57:15.991915" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-04T20:57:12.991200" elapsed="3.000715"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Find Icon Position" owner="script_IA">
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="PASS" start="2025-05-04T20:57:15.991915" elapsed="0.505449"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Find Icon Position</arg>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:15.991915" elapsed="0.505449"/>
+</kw>
+<msg time="2025-05-04T20:57:16.497364" level="INFO">${Verifcall} = (813, 17, 37, 40)</msg>
+<var>${Verifcall}</var>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Find Icon Position</arg>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:15.991915" elapsed="0.505449"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2025-05-04T20:57:16.497364" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;class 'NoneType'&gt;</msg>
+<arg>${Verifcall}</arg>
+<arg>${None}</arg>
+<arg>problem lors de repondre</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" start="2025-05-04T20:57:16.497364" elapsed="0.000000"/>
+</kw>
+<arg>Should Not Be Equal</arg>
+<arg>${Verifcall}</arg>
+<arg>${None}</arg>
+<arg>problem lors de repondre</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:16.497364" elapsed="0.000000"/>
+</kw>
+<doc>Teste la réponse à un appel via Bluetooth
+- Localise et clique sur le bouton "Répondre"
+- Vérifie que l'interface d'appel est active
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="PASS" start="2025-05-04T20:57:11.174628" elapsed="5.322736"/>
+</test>
+<test id="s1-t5" name="Test End Call Bluetooth" line="170">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-04T20:57:31.982128" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+158 619 237 657</msg>
+<arg>${driver}</arg>
+<arg>Phone</arg>
+<status status="PASS" start="2025-05-04T20:57:16.498363" elapsed="15.483765"/>
+</kw>
+<msg time="2025-05-04T20:57:31.983130" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>Open Application With Click</arg>
+<arg>${driver}</arg>
+<arg>Phone</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:16.498363" elapsed="15.484767"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-04T20:57:34.983449" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-04T20:57:31.983130" elapsed="3.000319"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Icon Ia" owner="script_IA">
+<msg time="2025-05-04T20:57:35.629063" level="INFO">(645, 564, 115, 109)</msg>
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<status status="PASS" start="2025-05-04T20:57:34.983449" elapsed="0.645614"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Icon Ia</arg>
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:34.983449" elapsed="0.645614"/>
+</kw>
+<msg time="2025-05-04T20:57:35.629063" level="INFO">${Verifcall} = True</msg>
+<var>${Verifcall}</var>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Icon Ia</arg>
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:34.983449" elapsed="0.645614"/>
+</kw>
+<doc>Teste la fin d'un appel via Bluetooth
+- Ouvre l'application téléphone
+- Localise et clique sur le bouton "Terminer l'appel"
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="PASS" start="2025-05-04T20:57:16.498363" elapsed="19.131699"/>
+</test>
+<test id="s1-t6" name="Test Supprimer Bluetooth" line="183">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-04T20:57:35.740036" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-04T20:57:35.630062" elapsed="0.109974"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.740036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.740036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.740036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.740036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.740036" elapsed="0.001002"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.741038" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.741038" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.741038" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.741038" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${supp}</var>
+<arg>Supprimer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:35.741038" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-04T20:57:35.740036" elapsed="0.001002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.741038" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.741038" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.742036" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.741038" elapsed="0.000998"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.742036" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.742036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.742036" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.742036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.742036" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.742036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.742036" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.742036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.743037" level="INFO">${pairing} = Pair new device</msg>
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.743037" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.743037" level="INFO">${pairing_conf} = Pair</msg>
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.743037" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.743037" level="INFO">${pairing_conf2} = Continue</msg>
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.743037" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:35.744037" level="INFO">${supp} = Forget</msg>
+<var>${supp}</var>
+<arg>Forget</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:35.743037" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:57:35.741038" elapsed="0.002999"/>
+</branch>
+<status status="PASS" start="2025-05-04T20:57:35.740036" elapsed="0.004001"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-04T20:57:50.169148" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-05-04T20:57:50.169148" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-05-04T20:57:35.744037" elapsed="14.425111"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-04T20:57:51.591795" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-04T20:57:50.169148" elapsed="1.422647"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<msg time="2025-05-04T20:57:51.667029" level="INFO">${name_bluetooth_mobile} = sdk_gphone64_x86_64</msg>
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="PASS" start="2025-05-04T20:57:51.591795" elapsed="0.076234"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:57:51.668029" level="INFO">sdk_gphone64_x86_64</msg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:57:51.668029" elapsed="0.000000"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-05-04T20:57:52.199141" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-05-04T20:57:51.668029" elapsed="0.531112"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-05-04T20:57:52.666169" level="INFO">Keycode 176 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-05-04T20:57:52.199141" elapsed="0.467028"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="PASS" start="2025-05-04T20:57:52.667158" elapsed="0.833560"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:52.666169" elapsed="0.834549"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="PASS" start="2025-05-04T20:57:53.501719" elapsed="0.153750"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:53.501719" elapsed="0.153750"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${supp}</arg>
+<status status="PASS" start="2025-05-04T20:57:53.656470" elapsed="1.024085"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${supp}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-04T20:57:53.655469" elapsed="1.025086"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-05-04T20:57:54.823090" level="INFO">${verif_adb} = False</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.680555" elapsed="0.142535"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.824079" elapsed="0.000000"/>
+</kw>
+<arg>Should Not Be True</arg>
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.824079" elapsed="0.000000"/>
+</kw>
+<doc>Teste la suppression de l'appairage Bluetooth
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Supprime l'appareil appairé
+- Vérifie que l'appairage n'est plus actif via ADB
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="PASS" start="2025-05-04T20:57:35.630062" elapsed="19.194017"/>
+</test>
+<test id="s1-t7" name="Test Fermer Bluetooth" line="245">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-04T20:57:54.896802" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-04T20:57:54.825078" elapsed="0.071724"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:54.896802" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:54.896802" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:54.896802" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:54.896802" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:54.897803" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-04T20:57:54.897803" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-04T20:57:54.896802" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:54.897803" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.897803" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:54.897803" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.897803" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:54.897803" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.897803" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:54.897803" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.897803" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:54.898926" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.898926" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-04T20:57:54.898926" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-04T20:57:54.898926" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:57:54.897803" elapsed="0.001123"/>
+</branch>
+<status status="PASS" start="2025-05-04T20:57:54.896802" elapsed="0.002124"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-04T20:58:08.178813" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Calendar', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'News', 'Phone', 'Play Store', 'Prime Video', 'Settings', 'SMS']
+905 619 1007 657</msg>
+<msg time="2025-05-04T20:58:08.178813" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-05-04T20:57:54.899445" elapsed="13.279368"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-04T20:58:10.179379" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-04T20:58:08.178813" elapsed="2.000566"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-05-04T20:58:10.236379" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-04T20:58:10.179379" elapsed="0.057000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-04T20:58:10.236379" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-04T20:58:11.218045" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-04T20:58:10.236379" elapsed="0.981666"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<msg time="2025-05-04T20:58:11.272039" level="INFO">${ble} = True</msg>
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="PASS" start="2025-05-04T20:58:11.218045" elapsed="0.053994"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-04T20:58:11.272039" elapsed="0.001002"/>
+</kw>
+<kw name="Desactive Bluetooth Si Activer" owner="Integration">
+<msg time="2025-05-04T20:58:12.449977" level="INFO">✅ Le Bluetooth est désactivé.</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-05-04T20:58:11.273041" elapsed="1.176936"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-04T20:58:15.451327" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-04T20:58:12.449977" elapsed="3.001350"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<msg time="2025-05-04T20:58:15.519311" level="INFO">${verifier_ble_ui} = False</msg>
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-05-04T20:58:15.451327" elapsed="0.067984"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne desactive pas (ui).</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-05-04T20:58:15.519311" elapsed="0.000000"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<msg time="2025-05-04T20:58:15.566311" level="INFO">❌ Bluetooth est désactivé.</msg>
+<msg time="2025-05-04T20:58:15.566311" level="INFO">${verfier_ble_adb} = False</msg>
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-04T20:58:15.519311" elapsed="0.047000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne desactive pas (via adb).</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-05-04T20:58:15.567311" elapsed="0.000000"/>
+</kw>
+<doc>Teste la désactivation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Désactive le Bluetooth s'il est activé
+- Vérifie que le Bluetooth est bien désactivé (UI et ADB)</doc>
+<status status="PASS" start="2025-05-04T20:57:54.824079" elapsed="20.743232"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-05-04T20:58:15.567311" elapsed="0.199046"/>
+</kw>
+<kw name="Close Driver" owner="Integration">
+<arg>${driver_mobile}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-05-04T20:58:15.766357" elapsed="0.141001"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:58:15.567311" elapsed="0.341047"/>
+</kw>
+<doc>Ce fichier contient des tests d'activation, désactivation, appairage et gestion d'appels via Bluetooth sur des appareils Android.
+Les tests vérifient que les paramètres Bluetooth sont accessibles, que les actions d'activation/désactivation fonctionnent correctement,
+que l'appairage entre appareils fonctionne, et que les fonctionnalités d'appel via Bluetooth opèrent correctement.
+Les tests prennent en charge les interfaces en français et en anglais.Library    Process</doc>
+<status status="PASS" start="2025-05-04T20:56:00.980170" elapsed="134.928188"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteBluetooth" id="s1" pass="7" fail="0" skip="0">FonctionnaliteBluetooth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

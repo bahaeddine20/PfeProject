@@ -1,4 +1,8 @@
 *** Settings ***
+Documentation    Tests for APK installation and uninstallation
+...              - Verifies APK installation via ADB
+...              - Checks application visibility in UI
+...              - Tests complete uninstallation flow
 Library    Process
 Library    BuiltIn
 Library    OperatingSystem
@@ -12,7 +16,7 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5554
+${Device}              emulator-5556
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
 *** Keywords ***
@@ -25,7 +29,10 @@ Fermer Driver
 
 *** Test Cases ***
 Test Install Apk
-
+    [Documentation]    Tests APK installation process
+    ...                - Checks pre-installation state
+    ...                - Installs the APK
+    ...                - Verifies installation in system and UI
       ${isInsUi}=   Search Application     ${driver}        TestNotificationapk
       Log    ${isInsUi}
       ${isIns}=      Is App Installed      ${driver}        actia.pfe25.testnotificationapk
@@ -41,6 +48,10 @@ Test Install Apk
 
 
 Test Uninstall Application
+    [Documentation]    Tests application uninstallation
+    ...                - Navigates through settings
+    ...                - Performs uninstallation
+    ...                - Verifies complete removal
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'

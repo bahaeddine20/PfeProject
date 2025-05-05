@@ -1,4 +1,10 @@
 *** Settings ***
+*** Settings ***
+Documentation    Tests de gestion des utilisateurs Android
+...              - Ajout d'un nouvel utilisateur
+...              - Suppression d'un utilisateur
+...              - Renommage d'un utilisateur
+...              - Prend en charge les interfaces en français et en anglais
 Library    Process
 Library    BuiltIn
 Library    OperatingSystem
@@ -12,7 +18,7 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5554
+${Device}              emulator-5556
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
 ${verifie_adb_add_user}     ${null}
@@ -27,7 +33,11 @@ Fermer Driver
 
 
 Test Ajouter Utilisateur
-
+    [Documentation]    Teste l'ajout d'un nouvel utilisateur
+    ...                - Vérifie la langue du système
+    ...                - Navigue dans les menus appropriés
+    ...                - Ajoute un nouveau profil
+    ...                - Vérifie que l'utilisateur a bien été ajouté
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -87,7 +97,11 @@ Test Ajouter Utilisateur
     ${resultat}=    Open Application With Click      ${driver}        ${Setting}
 
 Test Supprimer Utilisateur
-
+    [Documentation]    Teste la suppression d'un utilisateur
+    ...                - Vérifie la langue du système
+    ...                - Navigue dans les menus appropriés
+    ...                - Supprime le profil spécifié
+    ...                - Vérifie que l'utilisateur a bien été supprimé
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
@@ -137,7 +151,10 @@ Test Supprimer Utilisateur
 
 
 Test renommer Utilisateur
-
+    [Documentation]    Teste le renommage d'un utilisateur
+    ...                - Vérifie la langue du système
+    ...                - Navigue dans les menus appropriés
+    ...                - Modifie le nom du profil
     ${lang}    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'

@@ -1,4 +1,7 @@
 *** Settings ***
+Documentation    Tests for system update verification
+...              - Verifies system update functionality
+...              - Supports both French and English interfaces
 Library    Process
 Library    BuiltIn
 Library    OperatingSystem
@@ -12,7 +15,7 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5554
+${Device}              emulator-5556
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
 *** Keywords ***
@@ -27,7 +30,10 @@ Fermer Driver
 *** Test Cases ***
 
 Test Verfier Mise A Jour System
-
+    [Documentation]    Verifies system update functionality
+    ...                - Navigates to system update section
+    ...                - Checks for available updates
+    ...                - Supports both French and English interfaces
         ${lang}    Get System Language       ${Device}
 
         IF    '${lang}' == 'fr'

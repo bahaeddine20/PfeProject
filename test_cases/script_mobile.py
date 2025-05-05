@@ -18,7 +18,6 @@ def setup_driver_mobile(device):
     options.remote_adb_host="host.docker.internal"
     options.uiautomator2ServerPort = 8201
     #remote_url = "http://127.0.0.1:4723"
-    #remote_url = "http://172.21.0.3:4723"
     remote_url = "http://appium:4723"
 
     options.set_capability("enforceXPath1", True)
