@@ -166,15 +166,15 @@ Test Answer Call Bluetooth
     IF    '${lang}' == 'fr'
         ${answer}=      Set Variable    Répondre
         ${Setting}=     Set Variable    Paramètres
-
+    ELSE
         ${answer}=      Set Variable    Answer
         ${Setting}=     Set Variable    Settings
 
     END
 
-    ${bounds}=      Run Keyword And Continue On Failure         Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}     ${answer}
+    ${bounds}=      Run Keyword          Wait Until Keyword Succeeds    30s    2s    Get Text Bounds Driver    ${driver_mobile}     ${answer}
     Log    ${bounds}
-    Run Keyword And Continue On Failure         Click Sur Bound    ${driver_mobile}    ${bounds}
+    Run Keyword      Click Sur Bound    ${driver_mobile}    ${bounds}
     Sleep       3s
     ${Verifcall}=       Run Keyword And Continue On Failure          Wait Until Keyword Succeeds    30s    2s       Find Icon Position      ${driver}           callsAnswer
     Run Keyword And Continue On Failure   Should Not Be Equal    ${Verifcall}    ${None}       problem lors de repondre
@@ -189,18 +189,17 @@ Test End Call Bluetooth
     ${lang}=    Get System Language       ${Device}
 
     IF    '${lang}' == 'fr'
-        ${phone}=      Set Variable    Téléphone
+        ${phone}=       Set Variable     Téléphone
         ${Setting}=     Set Variable    Paramètres
-
-        ${phone}=      Set Variable    Phone
+    ELSE
+        ${phone}=       Set Variable    Phone
         ${Setting}=     Set Variable    Settings
 
     END
 
-    ${resultat}=        Run Keyword And Continue On Failure          Open Application With Click      ${driver}          ${phone}
+    ${resultat}=        Run Keyword         Open Application With Click      ${driver}          ${phone}
     Sleep       3s
-    ${Verifcall}=       Run Keyword And Continue On Failure        Wait Until Keyword Succeeds    30s    2s       Click Icon Ia    ${driver}       endcall
-
+    ${Verifcall}=       Run Keyword         Wait Until Keyword Succeeds    30s    2s       Click Icon Ia    ${driver}       endcall
 
 
 
@@ -242,7 +241,7 @@ Test Supprimer Bluetooth
 
 
     END
-        ${resultat}=    Open Application With Click      ${driver}        ${Setting}
+        ${resultat}=        Run Keyword And Continue On Failure    Open Application With Click      ${driver}        ${Setting}
 
         Clique Sur Setting       ${driver}      Bluetooth       ${Setting_menu}
 
