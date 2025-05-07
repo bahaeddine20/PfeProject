@@ -8,6 +8,11 @@ from appium import webdriver
 
 
 apps_page="com.android.car.carlauncher/.GASAppGridActivity"
+from config import get_appium_url, get_remote_adb_host
+
+
+
+apps_page="com.android.car.carlauncher/.GASAppGridActivity"
 def setup_driver_mobile(device):
     """Initialise et retourne le driver Appium."""
     options = UiAutomator2Options()
@@ -15,10 +20,10 @@ def setup_driver_mobile(device):
     options.platform_version = "15"
     options.device_name = device
     #options.adb_exec_timeout = 60000
-    options.remote_adb_host="host.docker.internal"
+    options.remote_adb_host = get_remote_adb_host()
     options.uiautomator2ServerPort = 8201
     #remote_url = "http://127.0.0.1:4723"
-    remote_url = "http://appium:4723"
+    remote_url = get_appium_url()
 
     options.set_capability("enforceXPath1", True)
     return webdriver.Remote(remote_url, options=options)

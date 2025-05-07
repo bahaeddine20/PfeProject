@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-05-06T14:51:45.535245" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="C:\Users\bahae\Desktop\PfeProject\test_cases\InstallationApplications.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-05-06T14:51:57.585180" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="b87c942a-169b-451f-be2c-d4449dab61bd")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-06T14:51:48.500729" elapsed="9.084451"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:51:57.585180" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="b87c942a-169b-451f-be2c-d4449dab61bd")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-06T14:51:57.585180" elapsed="0.000000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-06T14:51:57.622696" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-06T14:51:57.586179" elapsed="0.036517"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-05-06T14:51:57.622696" level="INFO">${lang_dict} = {'System': 'System', 'Setting': 'Settings', 'apps': 'Apps', 'view_all': 'View all', 'uninstall': 'Uninstall', 'confirm': 'OK'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-05-06T14:51:57.622696" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:51:57.622696" level="INFO">${LANG_DICT} = {'System': 'System', 'Setting': 'Settings', 'apps': 'Apps', 'view_all': 'View all', 'uninstall': 'Uninstall', 'confirm': 'OK'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-06T14:51:57.622696" elapsed="0.000000"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-05-06T14:51:57.585180" elapsed="0.037516"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-05-06T14:51:48.500729" elapsed="9.121967"/>
+</kw>
+<test id="s1-t1" name="Test Install Apk" line="144">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-05-06T14:52:40.774525" level="INFO">📌 Liste des applications détectées : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Voice Recorder', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Voice Recorder', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS']</msg>
+<msg time="2025-05-06T14:52:40.774525" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+    at getResponseForW3CError (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.js:1143:9)
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:485:57)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at processImmediate (node:internal/timers:454:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="FAIL" start="2025-05-06T14:51:57.623694" elapsed="43.153828">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+    at getResponseForW3CError (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.js:1143:9)
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:485:57)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at processImmediate (node:internal/timers:454:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)</status>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.777522" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.777522" elapsed="0.000997"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="FAIL" start="2025-05-06T14:51:57.623694" elapsed="43.154825">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+    at getResponseForW3CError (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.js:1143:9)
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:485:57)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at processImmediate (node:internal/timers:454:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)</status>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.778519" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.778519" elapsed="0.000000"/>
+</kw>
+<kw name="Verify App Installation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.778519" elapsed="0.000000"/>
+</kw>
+<doc>Tests APK installation process
+- Checks pre-installation state
+- Installs the APK
+- Verifies installation in system and UI</doc>
+<tag>installation</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-05-06T14:51:57.622696" elapsed="43.155823">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: The process has received SIGINT signal
+    at getResponseForW3CError (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.js:1143:9)
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:485:57)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at processImmediate (node:internal/timers:454:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)</status>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="161">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-06T14:52:40.795521" level="FAIL">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at logger (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="FAIL" start="2025-05-06T14:52:40.780518" elapsed="0.016002">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.796520" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.796520" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${exists}</arg>
+<arg>Fail</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.797520" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-05-06T14:52:40.797520" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.797520" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.797520" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${view_all_exists}</arg>
+<arg>Fail</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.797520" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-05-06T14:52:40.797520" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="FAIL" start="2025-05-06T14:52:40.779518" elapsed="0.019001">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<kw name="Verify App Uninstallation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is completely uninstalled</doc>
+<status status="NOT RUN" start="2025-05-06T14:52:40.798519" elapsed="0.000000"/>
+</kw>
+<doc>Tests application uninstallation
+- Navigates through settings
+- Performs uninstallation
+- Verifies complete removal</doc>
+<tag>smoke</tag>
+<tag>uninstallation</tag>
+<status status="FAIL" start="2025-05-06T14:52:40.779518" elapsed="0.020001">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<msg time="2025-05-06T14:52:40.817520" level="FAIL">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at logger (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</msg>
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="FAIL" start="2025-05-06T14:52:40.799519" elapsed="0.018999">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</status>
+</kw>
+<doc>Cleans up and closes the test driver</doc>
+<status status="FAIL" start="2025-05-06T14:52:40.799519" elapsed="0.018999">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</status>
+</kw>
+<doc>Tests for APK installation and uninstallation
+- Verifies APK installation via ADB
+- Checks application visibility in UI
+- Tests complete uninstallation flow</doc>
+<status status="FAIL" start="2025-05-06T14:51:45.536245" elapsed="55.282273">Suite teardown failed:
+InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at jsonParser (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\types\json.js:113:7)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">installation</stat>
+<stat pass="0" fail="2" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">uninstallation</stat>
+</tag>
+<suite>
+<stat name="InstallationApplications" id="s1" pass="0" fail="2" skip="0">InstallationApplications</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

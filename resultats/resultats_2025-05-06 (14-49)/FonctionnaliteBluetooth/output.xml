@@ -1,0 +1,1715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-05-06T14:49:26.880331" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteBluetooth" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteBluetooth.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-05-06T14:49:41.533029" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="eb8d7a92-4db9-49b4-ba00-dda3f49a1033")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-06T14:49:35.342377" elapsed="6.190652"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-06T14:49:41.533029" level="INFO">Driver for emulator-5554: &lt;appium.webdriver.webdriver.WebDriver (session="eb8d7a92-4db9-49b4-ba00-dda3f49a1033")&gt;</msg>
+<arg>Driver for ${Device}: ${driver}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-06T14:49:41.533029" elapsed="0.000000"/>
+</kw>
+<kw name="Setup Driver Mobile" owner="script_mobile">
+<msg time="2025-05-06T14:49:45.758684" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="5138cb06-150e-4f0a-a677-2d78fb9a1b40")&gt;</msg>
+<var>${driver_mobile}</var>
+<arg>${Device_mobile}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-06T14:49:41.533029" elapsed="4.225655"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.759686" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="eb8d7a92-4db9-49b4-ba00-dda3f49a1033")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.758684" elapsed="0.001002"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.759686" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="5138cb06-150e-4f0a-a677-2d78fb9a1b40")&gt;</msg>
+<arg>${driver_mobile}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.759686" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:49:35.342377" elapsed="10.417309"/>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Bluetooth" line="54">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-06T14:49:45.925326" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-06T14:49:45.760686" elapsed="0.164640"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:49:45.925326" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.926326" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.926326" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.926326" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.926326" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.926326" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.927325" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.927325" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:45.927325" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:45.927325" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:49:45.926326" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:49:45.925326" elapsed="0.001999"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-06T14:49:45.942328" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="FAIL" start="2025-05-06T14:49:45.927325" elapsed="0.017001">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.944326" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.944326" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.944326" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-05-06T14:49:45.944326" elapsed="0.000000"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="NOT RUN" start="2025-05-06T14:49:45.944326" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.944326" elapsed="0.000000"/>
+</kw>
+<kw name="Activer Bluetooth Si Desactive" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-05-06T14:49:45.944326" elapsed="0.001002"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.945328" elapsed="0.000000"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-05-06T14:49:45.945328" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne s'active pas (ui).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.945328" elapsed="0.000000"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-05-06T14:49:45.945328" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:45.945328" elapsed="0.000000"/>
+</kw>
+<doc>Teste l'activation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Active le Bluetooth s'il est désactivé
+- Vérifie que le Bluetooth est bien activé (UI et ADB)</doc>
+<status status="FAIL" start="2025-05-06T14:49:45.759686" elapsed="0.185642">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</test>
+<test id="s1-t2" name="Test Pairing Bluetooth" line="96">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-06T14:49:46.060339" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-06T14:49:45.946328" elapsed="0.114011"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.060339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.060339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.060339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.060339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.061338" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.061338" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.061338" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.061338" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.061338" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:49:46.060339" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.061338" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.061338" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.061338" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.061338" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.062339" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.062339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.062339" level="INFO">${Consulter_allapps} = See all</msg>
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.062339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.062339" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.062339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.062339" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.062339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.062339" level="INFO">${pairing} = Pair new device</msg>
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.062339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.063340" level="INFO">${pairing_conf} = Pair</msg>
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.062339" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:46.063486" level="INFO">${pairing_conf2} = Continue</msg>
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.063486" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:49:46.061338" elapsed="0.002148"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:49:46.060339" elapsed="0.003147"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-06T14:49:46.086004" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="FAIL" start="2025-05-06T14:49:46.063486" elapsed="0.023518">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${verif_adb}">
+<kw name="Press Key" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.088004" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.001000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:49:46.087004" elapsed="0.001000"/>
+</if>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.088004" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:46.088004" elapsed="0.000000"/>
+</kw>
+<doc>Teste l'appairage Bluetooth entre les deux appareils
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Vérifie si l'appairage existe déjà
+- Si non, initie le processus d'appairage
+- Valide l'appairage des deux côtés
+- Vérifie que l'appairage est effectif via ADB</doc>
+<status status="FAIL" start="2025-05-06T14:49:45.945328" elapsed="0.142676">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</test>
+<test id="s1-t3" name="Test Call Bluetooth" line="155">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Simulate Incoming Call" owner="Integration">
+<msg time="2025-05-06T14:49:46.115003" level="INFO">[OK] Appel simulé : 52440030 vers emulator-5556.</msg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Simule un appel entrant sur un émulateur Android en envoyant une requête à l'endpoint /call.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.089005" elapsed="0.025998"/>
+</kw>
+<msg time="2025-05-06T14:49:46.115003" level="INFO">${call} = True</msg>
+<var>${call}</var>
+<arg>Simulate Incoming Call</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.089005" elapsed="0.025998"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-06T14:49:51.115800" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-06T14:49:46.115003" elapsed="5.000797"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-06T14:49:51.115800" elapsed="2.626052"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-05-06T14:49:51.115800" elapsed="2.626052"/>
+</kw>
+<msg time="2025-05-06T14:49:53.741852" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-06T14:49:51.115800" elapsed="2.626052"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-06T14:49:53.741852" level="INFO">None</msg>
+<arg>${bounds}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-06T14:49:53.741852" elapsed="0.000000"/>
+</kw>
+<arg>Log</arg>
+<arg>${bounds}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-06T14:49:53.741852" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2025-05-06T14:49:53.742852" level="FAIL">Le numéro 52440030 n'a pas été trouvé à l'écran: None == None</msg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="FAIL" start="2025-05-06T14:49:53.741852" elapsed="0.001000">Le numéro 52440030 n'a pas été trouvé à l'écran: None == None</status>
+</kw>
+<arg>Should Not Be Equal</arg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-06T14:49:53.741852" elapsed="0.001000">Le numéro 52440030 n'a pas été trouvé à l'écran: None == None</status>
+</kw>
+<doc>Teste la réception d'un appel via Bluetooth
+- Simule un appel entrant sur le mobile
+- Vérifie que le numéro appelant est affiché à l'écran
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="FAIL" start="2025-05-06T14:49:46.088004" elapsed="7.654848">Le numéro 52440030 n'a pas été trouvé à l'écran: None == None</status>
+</test>
+<test id="s1-t4" name="Test Answer Call Bluetooth" line="167">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-06T14:49:53.783851" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-06T14:49:53.742852" elapsed="0.040999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${answer}</var>
+<arg>Répondre</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:53.783851" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${accept}</var>
+<arg>Accepter</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:53.783851" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:49:53.783851" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:49:53.783851" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:53.784852" level="INFO">${answer} = Answer</msg>
+<var>${answer}</var>
+<arg>Answer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:53.784852" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:53.784852" level="INFO">${accept} = Accept</msg>
+<var>${accept}</var>
+<arg>Accept</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:53.784852" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:53.784852" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:53.784852" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:49:53.784852" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:49:53.783851" elapsed="0.001001"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-06T14:49:58.784980" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-06T14:49:53.784852" elapsed="5.000128"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-05-06T14:49:58.784980" level="INFO">${possible_texts} = ['Answer', 'Accept', 'Accept', 'Answer', 'Répondre', 'Accepter']</msg>
+<var>${possible_texts}</var>
+<arg>${answer}</arg>
+<arg>${accept}</arg>
+<arg>Accept</arg>
+<arg>Answer</arg>
+<arg>Répondre</arg>
+<arg>Accepter</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-05-06T14:49:58.784980" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:49:58.784980" level="INFO">${call_answered} = False</msg>
+<var>${call_answered}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:49:58.784980" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-05-06T14:50:00.713586" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-06T14:49:58.785981" elapsed="1.927605"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</kw>
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:00.714587" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-06T14:50:00.713586" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:00.713586" elapsed="0.001001"/>
+</if>
+<var name="${text}">Answer</var>
+<status status="PASS" start="2025-05-06T14:49:58.785981" elapsed="1.928606"/>
+</iter>
+<iter>
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-05-06T14:50:02.475843" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-06T14:50:00.714587" elapsed="1.761256"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</kw>
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:02.476843" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-06T14:50:02.475843" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:02.475843" elapsed="0.001000"/>
+</if>
+<var name="${text}">Accept</var>
+<status status="PASS" start="2025-05-06T14:50:00.714587" elapsed="1.762256"/>
+</iter>
+<iter>
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-05-06T14:50:04.130826" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-06T14:50:02.476843" elapsed="1.654979"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</kw>
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:04.131822" elapsed="0.000000"/>
+</if>
+<var name="${text}">Accept</var>
+<status status="PASS" start="2025-05-06T14:50:02.476843" elapsed="1.654979"/>
+</iter>
+<iter>
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-05-06T14:50:05.841334" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-06T14:50:04.131822" elapsed="1.709512"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.000000"/>
+</kw>
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.001000"/>
+</if>
+<status status="NOT RUN" start="2025-05-06T14:50:05.841334" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:05.841334" elapsed="0.001000"/>
+</if>
+<var name="${text}">Answer</var>
+<status status="PASS" start="2025-05-06T14:50:04.131822" elapsed="1.710512"/>
+</iter>
+<iter>
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-05-06T14:50:07.732574" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-06T14:50:05.842334" elapsed="1.890240"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:07.732574" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:07.733575" elapsed="0.000000"/>
+</kw>
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:07.733575" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:07.733575" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:07.733575" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-05-06T14:50:07.733575" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-05-06T14:50:07.733575" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:07.733575" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-06T14:50:07.732574" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:07.732574" elapsed="0.001001"/>
+</if>
+<var name="${text}">Répondre</var>
+<status status="PASS" start="2025-05-06T14:50:05.842334" elapsed="1.891241"/>
+</iter>
+<iter>
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-05-06T14:50:09.576903" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-05-06T14:50:07.733575" elapsed="1.843328"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</kw>
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:09.577904" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-06T14:50:09.576903" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:09.576903" elapsed="0.001001"/>
+</if>
+<var name="${text}">Accepter</var>
+<status status="PASS" start="2025-05-06T14:50:07.733575" elapsed="1.844329"/>
+</iter>
+<var>${text}</var>
+<value>@{possible_texts}</value>
+<status status="PASS" start="2025-05-06T14:49:58.784980" elapsed="10.792924"/>
+</for>
+<doc>Teste la réponse à un appel via Bluetooth
+- Localise et clique sur le bouton "Répondre"
+- Vérifie que l'interface d'appel est active
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="PASS" start="2025-05-06T14:49:53.742852" elapsed="15.835052"/>
+</test>
+<test id="s1-t5" name="Test End Call Bluetooth" line="206">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-06T14:50:09.998427" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-06T14:50:09.578902" elapsed="0.419525"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${phone}</var>
+<arg>Téléphone</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:09.998427" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:09.998427" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${end_call}</var>
+<arg>Terminer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:09.999428" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:09.998427" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:09.999428" level="INFO">${phone} = Phone</msg>
+<var>${phone}</var>
+<arg>Phone</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:09.999428" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:09.999428" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:09.999428" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:09.999428" level="INFO">${end_call} = End</msg>
+<var>${end_call}</var>
+<arg>End</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:09.999428" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:50:09.999428" elapsed="0.000509"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:09.998427" elapsed="0.001520"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-06T14:50:10.005947" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${phone}</arg>
+<status status="FAIL" start="2025-05-06T14:50:09.999947" elapsed="0.006997">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir l'application téléphone</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<var>${bounds}</var>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver}</arg>
+<arg>${end_call}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} is not None">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver}</arg>
+<arg>${bounds}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<var>${end_call_pos}</var>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Find Icon Position</arg>
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${end_call_pos} is not None">
+<kw name="Click Icon Ia" owner="script_IA">
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" owner="BuiltIn">
+<arg>Impossible de trouver le bouton pour terminer l'appel</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:10.006944" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.007946" elapsed="0.000000"/>
+</kw>
+<doc>Teste la fin d'un appel via Bluetooth
+- Ouvre l'application téléphone
+- Localise et clique sur le bouton "Terminer l'appel"
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="FAIL" start="2025-05-06T14:50:09.577904" elapsed="0.430042">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</test>
+<test id="s1-t6" name="Test Supprimer Bluetooth" line="244">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-06T14:50:10.069969" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-06T14:50:10.007946" elapsed="0.062023"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${supp}</var>
+<arg>Supprimer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.069969" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.070969" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.070969" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${Consulter_allapps} = See all</msg>
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${pairing} = Pair new device</msg>
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${pairing_conf} = Pair</msg>
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.071968" level="INFO">${pairing_conf2} = Continue</msg>
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.071968" elapsed="0.001000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.072968" level="INFO">${supp} = Forget</msg>
+<var>${supp}</var>
+<arg>Forget</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.072968" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:50:10.070969" elapsed="0.001999"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:10.069969" elapsed="0.002999"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-06T14:50:10.078969" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="FAIL" start="2025-05-06T14:50:10.072968" elapsed="0.006001">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir les paramètres</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.078969" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.078969" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.078969" elapsed="0.000000"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.078969" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${name_bluetooth_mobile}</arg>
+<arg>Impossible de récupérer le nom Bluetooth du mobile</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appareil n'est pas appairé</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${supp}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appairage n'a pas été supprimé</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.079969" elapsed="0.000000"/>
+</kw>
+<doc>Teste la suppression de l'appairage Bluetooth
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Supprime l'appareil appairé
+- Vérifie que l'appairage n'est plus actif via ADB</doc>
+<status status="FAIL" start="2025-05-06T14:50:10.007946" elapsed="0.072023">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</test>
+<test id="s1-t7" name="Test Fermer Bluetooth" line="302">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-06T14:50:10.202990" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-06T14:50:10.080969" elapsed="0.123023"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.203992" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.203992" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.203992" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.204991" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.203992" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.204991" level="INFO">${Consulter_allapps} = See all</msg>
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.204991" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.204991" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.204991" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-06T14:50:10.204991" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.204991" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:50:10.203992" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:10.203992" elapsed="0.000999"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-06T14:50:10.211991" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="FAIL" start="2025-05-06T14:50:10.204991" elapsed="0.007000">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir les paramètres</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.211991" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.211991" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.211991" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Les paramètres ne sont pas affichés</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.211991" elapsed="0.000999"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres Bluetooth ne s'affichent pas</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<var>${ble_active}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${ble_active}">
+<kw name="Desactive Bluetooth Si Activer" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth n'est pas désactivé dans l'interface</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth n'est pas désactivé via ADB</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>Le Bluetooth est déjà désactivé</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-06T14:50:10.212990" elapsed="0.000000"/>
+</if>
+<doc>Teste la désactivation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Désactive le Bluetooth s'il est activé
+- Vérifie que le Bluetooth est bien désactivé (UI et ADB)</doc>
+<status status="FAIL" start="2025-05-06T14:50:10.079969" elapsed="0.133021">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.213990" elapsed="0.146547"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:50:10.213990" elapsed="0.146547"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver principal: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.360537" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.360537" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:10.213990" elapsed="0.146547"/>
+</try>
+<try>
+<branch type="TRY">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver_mobile}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-05-06T14:50:10.360537" elapsed="0.163804"/>
+</kw>
+<status status="PASS" start="2025-05-06T14:50:10.360537" elapsed="0.163804"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver mobile: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-06T14:50:10.525342" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-06T14:50:10.525342" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-06T14:50:10.360537" elapsed="0.164805"/>
+</try>
+<status status="PASS" start="2025-05-06T14:50:10.213990" elapsed="0.311352"/>
+</kw>
+<doc>Ce fichier contient des tests d'activation, désactivation, appairage et gestion d'appels via Bluetooth sur des appareils Android.
+Les tests vérifient que les paramètres Bluetooth sont accessibles, que les actions d'activation/désactivation fonctionnent correctement,
+que l'appairage entre appareils fonctionne, et que les fonctionnalités d'appel via Bluetooth opèrent correctement.
+Les tests prennent en charge les interfaces en français et en anglais.Library    Process</doc>
+<status status="FAIL" start="2025-05-06T14:49:26.882334" elapsed="43.643008"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="6" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteBluetooth" id="s1" pass="1" fail="6" skip="0">FonctionnaliteBluetooth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -14,24 +14,26 @@ import time
 
 import random
 
-import re
-url_host="http://host.docker.internal:6000"
-#url_host="http://127.0.0.1:6000"
+from config import get_host_url, get_appium_url, get_remote_adb_host
+
+url_host = get_host_url()
+# url_host="http://127.0.0.1:6000"
 
 
+apps_page = "com.android.car.carlauncher/.GASAppGridActivity"
 
-apps_page="com.android.car.carlauncher/.GASAppGridActivity"
+
 def setup_driver(device):
     """Initialise et retourne le driver Appium."""
     options = UiAutomator2Options()
     options.platform_name = "Android"
     options.platform_version = "14"
     options.device_name = device
-    #options.adb_exec_timeout = 60000
-    options.remote_adb_host="host.docker.internal"
-    #remote_url = "http://127.0.0.1:4723"
-    #remote_url = "http://172.21.0.3:4723"
-    remote_url = "http://appium:4723"
+    # options.adb_exec_timeout = 60000
+    options.remote_adb_host = get_remote_adb_host()
+    # remote_url = "http://127.0.0.1:4723"
+    # remote_url = "http://172.21.0.3:4723"
+    remote_url = get_appium_url()
 
     options.uiautomator2ServerPort = 8201
 
@@ -40,30 +42,38 @@ def setup_driver(device):
 
 import subprocess
 
+
 def switch_android_user(device, user_id):
     """Switch Android user via ADB."""
     command = ["adb", "-s", device, "shell", "am", "switch-user", str(user_id)]
     subprocess.run(command, check=True)
 
+
 def close_driver(driver):
     """Ferme proprement le driver Appium."""
     if driver:
         driver.quit()
+
+
 def start_activity_code(driver, app_activity):
     """Lance une activité spécifique sur un appareil Android via Appium."""
     driver.execute_script('mobile: startActivity', {'intent': app_activity})
+
 
 def is_activity_active(driver, expected_activity):
     """Vérifie si l'activité actuelle correspond à l'activité spécifiée."""
     current_activity = driver.current_activity
     print(current_activity)
-    return current_activity in  expected_activity
+    return current_activity in expected_activity
+
 
 def Print_Activity(driver):
     """Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'."""
     current_package = driver.current_package
     current_activity = driver.current_activity
     return f"{current_package}/{current_activity}"
+
+
 def print_activity2(driver):
     """Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'."""
     current_package = driver.current_package
@@ -86,6 +96,7 @@ def check_element_exists(driver, xpath):
     except NoSuchElementException:
         return False  # L'élément n'existe pas
 
+
 def get_element_text(driver, xpath):
     """Récupère le texte d'un élément spécifié par son XPath."""
     try:
@@ -93,7 +104,6 @@ def get_element_text(driver, xpath):
         return element.text
     except NoSuchElementException:
         return "Élément non trouvé"
-
 
 
 def swap_Until(driver, target_xpath):
@@ -115,7 +125,7 @@ def swap_Until(driver, target_xpath):
     # Effectuer un swipe vers le haut jusqu'à ce que l'élément soit trouvé
     while True:
         # Effectuer le swipe
-        driver.swipe(250, 400, 250, 600,100)  # Le swipe vers le haut
+        driver.swipe(250, 400, 250, 600, 100)  # Le swipe vers le haut
 
         # Vérifier si l'élément cible est présent
         try:
@@ -125,11 +135,6 @@ def swap_Until(driver, target_xpath):
                 break
         except NoSuchElementException:
             pass  # Si l'élément n'est toujours pas trouvé, continuer à swipernt n'a pas été trouvé après plusieurs tentatives.")
-
-
-
-
-
 
 
 def afficher_noms_applications(driver):
@@ -152,19 +157,21 @@ def afficher_noms_applications(driver):
     return noms_applications  # Retourner la liste si besoin
 
 
-cor_all_apps_x=640
-cor_all_apps_y=745
+cor_all_apps_x = 640
+cor_all_apps_y = 745
+
+
 def revenir_a_la_home_page(driver):
-    click_sur(driver,cor_all_apps_x,cor_all_apps_y)
+    click_sur(driver, cor_all_apps_x, cor_all_apps_y)
     driver.press_keycode(3)  # KEYCODE_HOME
 
-    click_sur(driver,cor_all_apps_x,cor_all_apps_y)
+    click_sur(driver, cor_all_apps_x, cor_all_apps_y)
 
     first = afficher_noms_applications(driver)  # Capturer les apps de la home page
     print("📌 First Home Page détectée :", first)
 
     while True:
-        driver.swipe(200, 500, 900, 500,100)  # Swipe vers la droite (modifie si nécessaire)
+        driver.swipe(200, 500, 900, 500, 100)  # Swipe vers la droite (modifie si nécessaire)
         seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
 
         if first == seconde:
@@ -173,7 +180,6 @@ def revenir_a_la_home_page(driver):
         else:
             first = seconde
         print("🔄 Swipe en cours...")
-
 
 
 def click_element_by_text(driver, text):
@@ -191,6 +197,7 @@ def click_element_by_text(driver, text):
 
     except Exception as e:
         print(f"Erreur lors du clic sur l'élément avec le texte '{text}': {e}")
+
 
 def get_element_bounds(driver, text):
     try:
@@ -225,9 +232,11 @@ def afficher_noms_setting(driver):
     print("\n📌 Liste des applications détectées :", noms_applications)
     return noms_applications  # Retourner la liste si besoin
 
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+
 
 def click_element_by_text_att(driver, text, timeout=20):
     locator = (By.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{text}")')
@@ -235,6 +244,7 @@ def click_element_by_text_att(driver, text, timeout=20):
         EC.presence_of_element_located(locator)
     )
     element.click()
+
 
 def is_within_bounds(child_bounds, parent_bounds):
     if not child_bounds or not parent_bounds:
@@ -245,6 +255,7 @@ def is_within_bounds(child_bounds, parent_bounds):
 
     return (x1_p <= x1_c <= x2_p and y1_p <= y1_c <= y2_p) or (x1_p <= x2_c <= x2_p and y1_p <= y2_c <= y2_p)
 
+
 def afficher_noms_setting_bound(driver, xpathid):
     try:
         elements = driver.find_elements("xpath", f"//*[@resource-id='{xpathid}']//android.widget.TextView")
@@ -253,7 +264,6 @@ def afficher_noms_setting_bound(driver, xpathid):
     except Exception as e:
         print("⚠️ Erreur récupération noms:", e)
         return []
-
 
 
 def click_sur(driver, x, y):
@@ -300,7 +310,6 @@ def click_sur_bound(driver, bound):
     actions.perform()
 
 
-
 def check_element_exists_by_id(driver, element_id):
     """
     Vérifie si un élément existe en utilisant son ID.
@@ -315,7 +324,6 @@ def check_element_exists_by_id(driver, element_id):
         return True  # L'élément existe
     except NoSuchElementException:
         return False  # L'élément n'existe pas
-
 
 
 def check_element_exists_by_text(driver, text):
@@ -349,6 +357,7 @@ def check_element_exists_by_text(driver, text):
 
 from selenium.common.exceptions import NoSuchElementException
 import time
+
 
 def afficher_notification(driver, max_attempts=3):
     for attempt in range(1, max_attempts + 1):
@@ -395,6 +404,7 @@ def check_notification_visible(driver):
         return notif.is_displayed()
     except NoSuchElementException:
         return False
+
 
 def get_element_bounds_byId(driver, element_id):
     """
@@ -456,85 +466,80 @@ def extract_bounds(bounds_str):
         return None
 
 
-
-
-def open_application_with_click(driver,text):
+def open_application_with_click(driver, text):
     revenir_a_la_home_page(driver)
-    page=True
+    page = True
     while page:
         first = afficher_noms_applications(driver)  # Vérifier les apps après swipe
         if text in first:
             if get_element_bounds(driver, text) is not None:
-                bounds=get_element_bounds(driver, text)
+                bounds = get_element_bounds(driver, text)
                 x1, y1, x2, y2 = extract_bounds(bounds)
                 print(x1, y1, x2, y2)
                 x_center = (x1 + x2) // 2
                 y_center = (y1 + y2) // 2
                 click_sur(driver, x_center, y_center)
-                page =False
+                page = False
                 return True
         else:
-            driver.swipe(1200, 600, 500, 600,200)  # Swipe vers la droite (modifie si nécessaire)
+            driver.swipe(1200, 600, 500, 600, 200)  # Swipe vers la droite (modifie si nécessaire)
             seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
 
             if first == seconde:
                 print("✅ Retour à la first home page !")
-                return  False # Sortir de la boucle une fois la home page atteinte
+                return False  # Sortir de la boucle une fois la home page atteinte
             else:
                 first = seconde
             print("🔄 Swipe en cours...")
 
 
-
-def search_application(driver,text):
+def search_application(driver, text):
     revenir_a_la_home_page(driver)
-    click_sur(driver,cor_all_apps_x,cor_all_apps_y)
-    click_sur(driver,cor_all_apps_x,cor_all_apps_y)
+    click_sur(driver, cor_all_apps_x, cor_all_apps_y)
+    click_sur(driver, cor_all_apps_x, cor_all_apps_y)
 
     print("111111111111111111111")
-    page=True
+    page = True
     while page:
         print("2222222222222222")
         first = afficher_noms_applications(driver)  # Vérifier les apps après swipe
         if text in first:
             if get_element_bounds(driver, text) is not None:
                 print("3333333333333333333")
-                bounds=get_element_bounds(driver, text)
+                bounds = get_element_bounds(driver, text)
                 x1, y1, x2, y2 = extract_bounds(bounds)
                 print(x1, y1, x2, y2)
                 x_center = (x1 + x2) // 2
                 y_center = (y1 + y2) // 2
-                page =False
+                page = False
                 return True
         else:
-            driver.swipe(1200, 500, 500, 500,100)  # Swipe vers la droite (modifie si nécessaire)
+            driver.swipe(1200, 500, 500, 500, 100)  # Swipe vers la droite (modifie si nécessaire)
             print("444444444444444444444'")
             seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
 
             if first == seconde:
                 print("55555555555555555")
                 print("✅ Retour à la first home page !")
-                return  False # Sortir de la boucle une fois la home page atteinte
+                return False  # Sortir de la boucle une fois la home page atteinte
             else:
                 print("6666666666666666666")
                 first = seconde
             print("🔄 Swipe en cours...")
 
 
-
-
-def all_setting_list(driver,xpathid):
+def all_setting_list(driver, xpathid):
     setting = []
     revenir_a_la_setting_haut(driver)
-    first = afficher_noms_setting_bound(driver,xpathid)
-    setting=setting+first
+    first = afficher_noms_setting_bound(driver, xpathid)
+    setting = setting + first
     print("📌 First Home Page détectée :", first)
 
     while True:
-        driver.swipe(300, 500, 300, 220,100)
+        driver.swipe(300, 500, 300, 220, 100)
         time.sleep(0.2)
-        seconde = afficher_noms_setting_bound(driver,xpathid)
-        setting=setting+seconde
+        seconde = afficher_noms_setting_bound(driver, xpathid)
+        setting = setting + seconde
 
         if first == seconde:
             print("✅ Retour à la first home page !")
@@ -554,12 +559,12 @@ def remove_duplicates(input_list):
     :return: Liste sans doublons
     """
     seen = set()  # Ensemble pour vérifier les doublons
-    result = []   # Liste pour stocker les éléments uniques
+    result = []  # Liste pour stocker les éléments uniques
 
     for item in input_list:
         if item not in seen:
             result.append(item)  # Ajouter l'élément si non vu
-            seen.add(item)        # Ajouter à l'ensemble des éléments vus
+            seen.add(item)  # Ajouter à l'ensemble des éléments vus
 
     return result
 
@@ -573,6 +578,7 @@ def element_exists(input_list, element):
     :return: True si l'élément existe, sinon False
     """
     return element in input_list
+
 
 def clique_sur_setting_include(driver, nom, xpathid):
     setting = []
@@ -598,7 +604,7 @@ def clique_sur_setting_include(driver, nom, xpathid):
                 element = driver.find_element("xpath", f"//*[contains(@text, '{element_text}')]")
                 return element.click()  # Clique sur l'élément trouvé
 
-        driver.swipe(x_middle, y_start, x_middle, y_end,100)
+        driver.swipe(x_middle, y_start, x_middle, y_end, 100)
         print(" Swipe effectué...")
         seconde = afficher_noms_setting_bound(driver, xpathid)
         setting = setting + seconde
@@ -613,6 +619,7 @@ def clique_sur_setting_include(driver, nom, xpathid):
     # Retourner la liste sans doublons après avoir arrêté de swiper
     return remove_duplicates(setting)
 
+
 def revenir_a_la_setting_haut(driver):
     max_swipes = 20
     first = afficher_noms_setting(driver)
@@ -620,7 +627,7 @@ def revenir_a_la_setting_haut(driver):
 
     for i in range(max_swipes):
         driver.swipe(300, 400, 300, 750, 50)  # Durée réduite à 50 ms
-        print(f"🔄 Swipe #{i+1} en cours...")
+        print(f"🔄 Swipe #{i + 1} en cours...")
 
         seconde = afficher_noms_setting(driver)
         if first == seconde:
@@ -630,6 +637,7 @@ def revenir_a_la_setting_haut(driver):
             first = seconde
 
     print("⚠️ Max swipes atteints. Impossible de revenir à la home page.")
+
 
 def clique_sur_setting(driver, nom, xpathid):
     def get_middle_coords(bounds):
@@ -705,14 +713,13 @@ def clique_sur_setting(driver, nom, xpathid):
     print(f"❌ '{nom}' introuvable après balayage complet.")
     return list(visited)
 
+
 def element_existe_par_accessibility_id(driver, accessibility_id):
     try:
         driver.find_element("accessibility id", accessibility_id)
         return True  # L'élément existe
     except:
         return False  # L'élément n'existe pas
-
-
 
 
 def get_checked_attribute(driver, element_id):
@@ -744,10 +751,6 @@ def activer_bluetooth_si_desactive(driver, element_id):
         print(f"❌ Erreur lors de l'activation du Bluetooth : {str(e)}")
 
 
-
-
-
-
 def desactive_bluetooth_si_activer(driver, element_id):
     try:
         # Trouver le toggle Bluetooth
@@ -769,9 +772,6 @@ def desactive_bluetooth_si_activer(driver, element_id):
         print(f"❌ Erreur lors de l'desactivation du Bluetooth : {str(e)}")
 
 
-
-
-
 def verfier_bluetooth_activer(driver, element_id):
     try:
         # Trouver le toggle Bluetooth
@@ -781,14 +781,12 @@ def verfier_bluetooth_activer(driver, element_id):
         checked_value = toggle.get_attribute("checked")
 
         if checked_value == "true":
-            return  True
+            return True
         else:
             return False
 
     except Exception as e:
         print(f"❌ Erreur lors de l'activation du Bluetooth : {str(e)}")
-
-
 
 
 def est_bluetooth_active(device):
@@ -820,7 +818,6 @@ def est_bluetooth_active(device):
         return None
 
 
-
 def is_aligned(text_el, switch_el, tolerance=50):
     # Récupérer la position et taille des éléments
     text_y = text_el.location['y']
@@ -830,6 +827,7 @@ def is_aligned(text_el, switch_el, tolerance=50):
 
     # Comparaison des lignes verticales (alignement)
     return abs(text_y - switch_y) < tolerance and abs((text_y + text_height) - (switch_y + switch_height)) < tolerance
+
 
 def find_switch_by_label(driver, label_text):
     # 1. Chercher tous les TextView
@@ -857,33 +855,34 @@ def find_switch_by_label(driver, label_text):
     print(f"[ERROR] Aucun switch aligné avec '{label_text}' trouvé.")
     return None
 
+
 import subprocess
+
 
 def is_wifi_enabled_adb(driver):
+    # Récupérer l'ID du device depuis Appium
+    device = driver.capabilities.get('deviceName')
+    if not device:
+        print("❌ Aucune information sur l'ID du device.")
+        return None
 
-        # Récupérer l'ID du device depuis Appium
-        device = driver.capabilities.get('deviceName')
-        if not device:
-            print("❌ Aucune information sur l'ID du device.")
-            return None
+    # Utiliser ADB pour vérifier l'état du Wi-Fi
+    result = subprocess.check_output(["adb", "-s", device, "shell", "dumpsys", "wifi"], text=True)
 
-        # Utiliser ADB pour vérifier l'état du Wi-Fi
-        result = subprocess.check_output(["adb", "-s", device, "shell", "dumpsys", "wifi"], text=True)
-
-        # Chercher la ligne indiquant l'état du Wi-Fi
-        if "Wi-Fi is enabled" in result or "Wi-Fi enabled" in result:
-            print("✅ Le Wi-Fi est activé.")
-            return True
-        elif "Wi-Fi is disabled" in result or "Wi-Fi disabled" in result:
-            print("❌ Le Wi-Fi est désactivé.")
-            return False
-        else:
-            print("⚠️ État du Wi-Fi non déterminé.")
-            return None
-
+    # Chercher la ligne indiquant l'état du Wi-Fi
+    if "Wi-Fi is enabled" in result or "Wi-Fi enabled" in result:
+        print("✅ Le Wi-Fi est activé.")
+        return True
+    elif "Wi-Fi is disabled" in result or "Wi-Fi disabled" in result:
+        print("❌ Le Wi-Fi est désactivé.")
+        return False
+    else:
+        print("⚠️ État du Wi-Fi non déterminé.")
+        return None
 
 
 import subprocess
+
 
 def is_gps_enabled_adb(driver):
     """
@@ -897,7 +896,8 @@ def is_gps_enabled_adb(driver):
 
     try:
         # Vérifie le mode de localisation (0: off, 1: device only, 2: battery saving, 3: high accuracy)
-        result = subprocess.check_output(["adb", "-s", device, "shell", "settings", "get", "secure", "location_mode"], text=True)
+        result = subprocess.check_output(["adb", "-s", device, "shell", "settings", "get", "secure", "location_mode"],
+                                         text=True)
         location_mode = result.strip()
 
         if location_mode == "0":
@@ -929,7 +929,7 @@ def activer_wifi_si_desactive(driver):
         print(f"❌ Erreur lors de l'activation du wifi : {str(e)}")
 
 
-def activer_toggle_si_desactive(driver,text):
+def activer_toggle_si_desactive(driver, text):
     try:
         # Trouver le toggle Bluetooth
         switch_element = find_switch_by_label(driver, text)
@@ -941,8 +941,6 @@ def activer_toggle_si_desactive(driver,text):
 
     except Exception as e:
         print(f"❌ Erreur lors de l'activation du wifi : {str(e)}")
-
-
 
 
 def desactiver_wifi_si_active(driver):
@@ -1168,6 +1166,8 @@ def get_device_datetime(driver):
     device_time_str = driver.device_time  # Ex: "2025-03-12T19:44:49+00:00"
     device_time_obj = datetime.fromisoformat(device_time_str.replace("Z", "+00:00"))  # Convertir ISO 8601
     return device_time_obj.strftime("%Y-%m-%d %H:%M")
+
+
 def get_device_datetime_heure(driver):
     """
     Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.
@@ -1175,6 +1175,7 @@ def get_device_datetime_heure(driver):
     device_time_str = driver.device_time  # Ex: "2025-03-12T19:44:49+00:00"
     device_time_obj = datetime.fromisoformat(device_time_str.replace("Z", "+00:00"))  # Convertir ISO 8601
     return device_time_obj.strftime("%H:%M")
+
 
 def get_button_elements(driver):
     """
@@ -1191,6 +1192,7 @@ def get_button_elements(driver):
         button_info.append({"bounds": bounds, "text": text})
 
     return button_info
+
 
 def compose_time(driver):
     """
@@ -1280,7 +1282,7 @@ def get_bounds_x(bounds_str):
     return int(match.group(1))
 
 
-from typing import Optional
+from typing import Optional, Tuple
 import time
 from appium.webdriver.webdriver import WebDriver
 from appium.webdriver.webelement import WebElement
@@ -1323,6 +1325,8 @@ def wait_until_element_is_visible(
     raise TimeoutException(
         f"Élément avec le localisateur '{by}={value}' non visible après {timeout} secondes"
     )
+
+
 def swipe_time_picker(driver, bounds, direction, difference):
     """
     Performs an adaptive swipe on a time picker element based on the difference
@@ -1370,10 +1374,13 @@ def swipe_time_picker(driver, bounds, direction, difference):
 
     print(f"Swiping {direction} (difference: {difference}) from ({center_x}, {center_y}) to ({center_x}, {end_y})")
     time.sleep(0.3 + difference * 0.05)  # Adaptive pause
+
+
 def heure_aleatoire():
     heures = random.randint(0, 23)
     minutes = random.randint(0, 59)
     return f"{heures:02d}:{minutes:02d}"
+
 
 def pressKey(driver, keycode):
     """
@@ -1384,6 +1391,7 @@ def pressKey(driver, keycode):
     """
     driver.press_keycode(keycode)
     print(f"Keycode {keycode} pressé.")
+
 
 # Exemple d'utilisation :
 # press_key(driver, 66)  # Appuie sur "ENTER"
@@ -1408,8 +1416,8 @@ def get_location_viaAdb(device_id):
         return None, None
 
 
-
 import subprocess
+
 
 def set_location_viaAdb(device_id, x, y):
     """
@@ -1422,7 +1430,7 @@ def set_location_viaAdb(device_id, x, y):
     }
 
     try:
-        response = requests.post(url_host+"/setlocation", json=payload)
+        response = requests.post(url_host + "/setlocation", json=payload)
         if response.status_code == 200:
             print(f"[OK] Position définie : {x}, {y}")
             return True
@@ -1449,7 +1457,6 @@ def get_added_user(old_users, new_users):
             return user  # Retourne le premier utilisateur ajouté trouvé
 
     return None  # Aucun utilisateur ajouté
-
 
 
 def get_android_users(driver):
@@ -1501,8 +1508,6 @@ def get_android_users(driver):
         return []
 
 
-
-
 def is_bluetooth_connected(driver, name_bluetooth):
     """
     Vérifie si un appareil Bluetooth spécifique est connecté.
@@ -1531,8 +1536,6 @@ def is_bluetooth_connected(driver, name_bluetooth):
 import requests
 
 
-
-
 def simulate_incoming_call(driver, phone_number):
     """
     Simule un appel entrant sur un émulateur Android en envoyant une requête à l'endpoint /call.
@@ -1552,7 +1555,7 @@ def simulate_incoming_call(driver, phone_number):
     }
 
     try:
-        response = requests.post(url_host+"/call", json=payload)
+        response = requests.post(url_host + "/call", json=payload)
         if response.status_code == 200:
             print(f"[OK] Appel simulé : {phone_number} vers {device_name}.")
             return True
@@ -1592,3 +1595,318 @@ def simulate_incoming_call(driver, phone_number):
 #     except subprocess.CalledProcessError as e:
 #         print(f"[ERREUR] Échec de la simulation d'appel : {e.stderr.strip()}")
 #         return False
+
+import logging
+import requests
+import functools
+from typing import List, Optional, Dict, Any, Tuple
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
+
+# Configuration du logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
+
+# Constantes pour les retries et timeouts
+MAX_RETRIES = 3
+RETRY_DELAY = 2
+DEFAULT_TIMEOUT = 10
+SCROLL_ATTEMPTS = 5
+SCROLL_DELAY = 0.5
+
+
+def retry_on_failure(max_attempts: int = MAX_RETRIES, delay: int = RETRY_DELAY):
+    """Décorateur pour réessayer une fonction en cas d'échec."""
+
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            last_exception = None
+            for attempt in range(max_attempts):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    last_exception = e
+                    logger.warning(f"Tentative {attempt + 1}/{max_attempts} échouée: {str(e)}")
+                    if attempt < max_attempts - 1:
+                        time.sleep(delay)
+            logger.error(f"Toutes les tentatives ont échoué: {str(last_exception)}")
+            raise last_exception
+
+        return wrapper
+
+    return decorator
+
+
+@retry_on_failure()
+def find_element_with_scroll(driver: webdriver.Remote, text: str, max_attempts: int = SCROLL_ATTEMPTS) -> Optional[
+    Tuple[int, int, int, int]]:
+    """Recherche un élément en scrollant si nécessaire."""
+    try:
+        # Essayer de trouver l'élément directement
+        element = driver.find_element(By.XPATH, f"//*[@text='{text}']")
+        bounds = element.get_attribute("bounds")
+        if bounds:
+            return extract_bounds(bounds)
+
+        # Si non trouvé, essayer avec scroll
+        screen_size = driver.get_window_size()
+        start_y = screen_size['height'] * 0.8
+        end_y = screen_size['height'] * 0.2
+
+        for attempt in range(max_attempts):
+            # Scroll
+            driver.swipe(
+                screen_size['width'] // 2,
+                start_y,
+                screen_size['width'] // 2,
+                end_y,
+                1000
+            )
+            time.sleep(SCROLL_DELAY)
+
+            # Chercher l'élément
+            try:
+                element = driver.find_element(By.XPATH, f"//*[@text='{text}']")
+                bounds = element.get_attribute("bounds")
+                if bounds:
+                    return extract_bounds(bounds)
+            except NoSuchElementException:
+                continue
+
+        logger.warning(f"Élément '{text}' non trouvé après {max_attempts} tentatives de scroll")
+        return None
+    except Exception as e:
+        logger.error(f"Erreur lors de la recherche de l'élément '{text}': {str(e)}")
+        return None
+
+
+@retry_on_failure()
+def click_sur_bound(driver: webdriver.Remote, bounds: Tuple[int, int, int, int]) -> bool:
+    """Clique sur un élément en utilisant ses coordonnées."""
+    try:
+        x_center = (bounds[0] + bounds[2]) // 2
+        y_center = (bounds[1] + bounds[3]) // 2
+
+        actions = ActionBuilder(driver)
+        pointer = PointerInput(POINTER_TOUCH, "touch")
+        actions.add_pointer_input("touch", pointer)
+        actions.pointer_action.move_to_location(x_center, y_center)
+        actions.pointer_action.pointer_down()
+        actions.pointer_action.pointer_up()
+        actions.perform()
+
+        logger.info(f"Clic effectué aux coordonnées ({x_center}, {y_center})")
+        return True
+    except Exception as e:
+        logger.error(f"Erreur lors du clic sur les coordonnées {bounds}: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def wait_for_element(driver: webdriver.Remote, by: str, value: str, timeout: int = DEFAULT_TIMEOUT) -> Optional[
+    WebElement]:
+    """Attend qu'un élément soit présent et visible."""
+    try:
+        element = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((by, value))
+        )
+        if element.is_displayed():
+            return element
+        return None
+    except TimeoutException:
+        logger.warning(f"Timeout en attendant l'élément {by}={value}")
+        return None
+    except Exception as e:
+        logger.error(f"Erreur en attendant l'élément {by}={value}: {str(e)}")
+        return None
+
+
+@retry_on_failure()
+def get_element_text_safely(driver: webdriver.Remote, by: str, value: str) -> Optional[str]:
+    """Récupère le texte d'un élément de manière sécurisée."""
+    try:
+        element = wait_for_element(driver, by, value)
+        if element:
+            return element.text.strip()
+        return None
+    except Exception as e:
+        logger.error(f"Erreur lors de la récupération du texte de {by}={value}: {str(e)}")
+        return None
+
+
+@retry_on_failure()
+def is_element_visible(driver: webdriver.Remote, by: str, value: str) -> bool:
+    """Vérifie si un élément est visible."""
+    try:
+        element = driver.find_element(by, value)
+        return element.is_displayed()
+    except NoSuchElementException:
+        return False
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de la visibilité de {by}={value}: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def scroll_to_element(driver: webdriver.Remote, by: str, value: str, max_attempts: int = SCROLL_ATTEMPTS) -> bool:
+    """Scroll jusqu'à ce qu'un élément soit visible."""
+    try:
+        screen_size = driver.get_window_size()
+        start_y = screen_size['height'] * 0.8
+        end_y = screen_size['height'] * 0.2
+
+        for attempt in range(max_attempts):
+            if is_element_visible(driver, by, value):
+                return True
+
+            driver.swipe(
+                screen_size['width'] // 2,
+                start_y,
+                screen_size['width'] // 2,
+                end_y,
+                1000
+            )
+            time.sleep(SCROLL_DELAY)
+
+        logger.warning(f"Élément {by}={value} non trouvé après {max_attempts} tentatives de scroll")
+        return False
+    except Exception as e:
+        logger.error(f"Erreur lors du scroll vers l'élément {by}={value}: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def verify_bluetooth_state(driver: webdriver.Remote, expected_state: bool) -> bool:
+    """Vérifie l'état du Bluetooth et le compare avec l'état attendu."""
+    try:
+        # Vérifier via l'interface utilisateur
+        ui_state = verfier_bluetooth_activer(driver, "com.android.car.settings:id/switch_widget")
+
+        # Vérifier via ADB
+        device = driver.capabilities['deviceName']
+        adb_state = est_bluetooth_active(device)
+
+        # Les deux états doivent correspondre et être égaux à l'état attendu
+        if ui_state is not None and adb_state is not None:
+            return ui_state == expected_state and adb_state == expected_state
+
+        logger.warning("Impossible de vérifier l'état du Bluetooth de manière fiable")
+        return False
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de l'état du Bluetooth: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def verify_wifi_state(driver: webdriver.Remote, expected_state: bool) -> bool:
+    """Vérifie l'état du Wi-Fi et le compare avec l'état attendu."""
+    try:
+        # Vérifier via l'interface utilisateur
+        ui_state = is_active_wifi_ui(driver)
+
+        # Vérifier via ADB
+        adb_state = is_wifi_enabled_adb(driver)
+
+        # Les deux états doivent correspondre et être égaux à l'état attendu
+        if ui_state is not None and adb_state is not None:
+            return ui_state == expected_state and adb_state == expected_state
+
+        logger.warning("Impossible de vérifier l'état du Wi-Fi de manière fiable")
+        return False
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de l'état du Wi-Fi: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def verify_gps_state(driver: webdriver.Remote, expected_state: bool) -> bool:
+    """Vérifie l'état du GPS et le compare avec l'état attendu."""
+    try:
+        # Vérifier via ADB
+        adb_state = is_gps_enabled_adb(driver)
+
+        if adb_state is not None:
+            return adb_state == expected_state
+
+        logger.warning("Impossible de vérifier l'état du GPS de manière fiable")
+        return False
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de l'état du GPS: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def verify_notification_state(driver: webdriver.Remote, expected_state: bool) -> bool:
+    """Vérifie l'état des notifications et le compare avec l'état attendu."""
+    try:
+        # Vérifier via l'interface utilisateur
+        notifications = afficher_notification(driver)
+
+        # Si on attend des notifications actives, il doit y en avoir
+        if expected_state:
+            return len(notifications) > 0
+        else:
+            return len(notifications) == 0
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de l'état des notifications: {str(e)}")
+        return False
+
+
+
+
+@retry_on_failure()
+def verify_application_state(driver: webdriver.Remote, package_name: str, expected_state: bool) -> bool:
+    """Vérifie l'état d'une application et le compare avec l'état attendu."""
+    try:
+        # Vérifier si l'application est installée
+        is_installed = is_app_installed(driver, package_name)
+
+        if not is_installed:
+            return not expected_state  # Si on attend que l'app ne soit pas installée
+
+        # Vérifier si l'application est en cours d'exécution
+        current_package = driver.current_package
+        is_running = current_package == package_name
+
+        return is_running == expected_state
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de l'état de l'application {package_name}: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def verify_system_language(driver: webdriver.Remote, expected_language: str) -> bool:
+    """Vérifie la langue du système et la compare avec la langue attendue."""
+    try:
+        # Récupérer la langue actuelle
+        device = driver.capabilities['deviceName']
+        current_language = get_system_language(device)
+
+        return current_language == expected_language
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de la langue du système: {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def verify_location_state(driver: webdriver.Remote, expected_state: bool) -> bool:
+    """Vérifie l'état de la localisation et le compare avec l'état attendu."""
+    try:
+        # Vérifier via ADB
+        device = driver.capabilities['deviceName']
+        location_enabled = is_gps_enabled_adb(driver)
+
+        if location_enabled is not None:
+            return location_enabled == expected_state
+
+        logger.warning("Impossible de vérifier l'état de la localisation de manière fiable")
+        return False
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de l'état de la localisation: {str(e)}")
+        return False

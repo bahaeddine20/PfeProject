@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-05-06T14:42:49.400314" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="C:\Users\bahae\Desktop\PfeProject\test_cases\InstallationApplications.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-05-06T14:42:54.257408" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB6BDD0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-05-06T14:42:56.283797" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C080&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-05-06T14:42:58.330283" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C3B0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-05-06T14:43:00.382550" level="FAIL">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-05-06T14:42:52.208972" elapsed="8.177579">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2025-05-06T14:43:00.387552" elapsed="0.000000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="NOT RUN" start="2025-05-06T14:43:00.387552" elapsed="0.000000"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="FAIL" start="2025-05-06T14:42:52.207975" elapsed="8.179577">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</kw>
+<test id="s1-t1" name="Test Install Apk" line="144">
+<doc>Tests APK installation process
+- Checks pre-installation state
+- Installs the APK
+- Verifies installation in system and UI</doc>
+<tag>installation</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-05-06T14:43:00.387552" elapsed="0.000999">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="161">
+<doc>Tests application uninstallation
+- Navigates through settings
+- Performs uninstallation
+- Verifies complete removal</doc>
+<tag>smoke</tag>
+<tag>uninstallation</tag>
+<status status="FAIL" start="2025-05-06T14:43:00.388551" elapsed="0.000000">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<msg time="2025-05-06T14:43:00.389552" level="FAIL">Variable '${driver}' not found.</msg>
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="FAIL" start="2025-05-06T14:43:00.389552" elapsed="0.000000">Variable '${driver}' not found.</status>
+</kw>
+<doc>Cleans up and closes the test driver</doc>
+<status status="FAIL" start="2025-05-06T14:43:00.388551" elapsed="0.001001">Variable '${driver}' not found.</status>
+</kw>
+<doc>Tests for APK installation and uninstallation
+- Verifies APK installation via ADB
+- Checks application visibility in UI
+- Tests complete uninstallation flow</doc>
+<status status="FAIL" start="2025-05-06T14:42:49.403313" elapsed="10.986239">Suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))
+
+Also suite teardown failed:
+Variable '${driver}' not found.</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">installation</stat>
+<stat pass="0" fail="2" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">uninstallation</stat>
+</tag>
+<suite>
+<stat name="InstallationApplications" id="s1" pass="0" fail="2" skip="0">InstallationApplications</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-06T14:42:54.257408" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB6BDD0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-05-06T14:42:56.283797" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C080&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-05-06T14:42:58.330283" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x00000256CDB8C3B0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+</errors>
+</robot>

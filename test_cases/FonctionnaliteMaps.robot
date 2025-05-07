@@ -8,86 +8,129 @@ Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
 Library    script_mobile.py
+Library    AppiumLibrary
+
 Suite Setup     Démarrer Driver
 Suite Teardown  Fermer Driver
 
-
 *** Variables ***
+# Configuration des retries
+${MAX_RETRIES}    3
+${RETRY_DELAY}    2s
+${QUICK_WAIT}     0.5s
+
+# Application Activities
 ${AppGrid_ACTIVITY}    com.android.car.carlauncher/.GASAppGridActivity
 ${Setting_ACTIVITY}    com.android.car.settings/.Settings_Launcher_Homepage
 ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherActivity
+
+# UI Element IDs
 ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
-${Device}              emulator-5556
-${Device_mobile}       emulator-5554
+${Device}              emulator-5554
+${Device_mobile}       emulator-5556
 ${Setting_system}      com.android.car.settings:id/fragment_container
-${System}               System
-${Longitude}           -74.0060
-${Latitude}            40.7128
+${System}              System
+
+# GPS Configuration
+${Longitude}          -74.0060
+${Latitude}           40.7128
+
+# Language Configuration
+&{LANG_FR}    System=Système    Setting=Paramètres    Gps=Position    use_loc=Utiliser la localisation    acces=Accès à la position
+&{LANG_EN}    System=System    Setting=Settings    Gps=Position    use_loc=Use location    acces=Location access
+
 *** Keywords ***
+Execute Test With Retry
+    [Arguments]    ${test_keyword}    ${test_name}
+    ${attempt}=    Set Variable    1
+    ${test_status}=    Set Variable    ${FALSE}
+
+    FOR    ${index}    IN RANGE    ${MAX_RETRIES}
+        ${test_status}=    Run Keyword And Return Status    ${test_keyword}
+        IF    ${test_status}
+            Log    Test ${test_name} réussi
+            Exit For Loop
+        ELSE
+            ${attempt}=    Evaluate    ${attempt} + 1
+            IF    ${attempt} <= ${MAX_RETRIES}
+                Log    Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}
+                Sleep    ${RETRY_DELAY}
+            END
+        END
+    END
+
+    IF    not ${test_status}
+        Fail    Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives
+    END
+
 Démarrer Driver
+    [Documentation]    Initializes the test driver
     ${driver}=    setup driver    ${Device}
     Set Suite Variable    ${driver}
+    Initialize Language Settings
 
 Fermer Driver
-    Close Driver    ${driver}
+    [Documentation]    Cleans up and closes the test driver
+    TRY
+        ${session_active}=    Run Keyword And Return Status    Get Source
+        IF    ${session_active}
+            Close Driver    ${driver}
+            Log    Driver fermé avec succès
+        ELSE
+            Log    Le driver n'était pas actif
+        END
+    EXCEPT    AS    ${error}
+        Log    Erreur lors de la fermeture du driver: ${error}
+    END
+
+Initialize Language Settings
+    [Documentation]    Sets up language-specific variables based on system language
+    ${lang}=    Get System Language    ${Device}
+    ${lang_dict}=    Set Variable If    '${lang}' == 'fr'    ${LANG_FR}    ${LANG_EN}
+    Set Suite Variable    ${LANG_DICT}    ${lang_dict}
+
+Get Localized Text
+    [Documentation]    Gets the localized text for a given key
+    [Arguments]    ${key}
+    RETURN    ${LANG_DICT.${key}}
+
+Execute Open Gps Test
+    [Documentation]    Tests GPS activation
+    ${resultat}=    Open Application With Click    ${driver}    ${LANG_DICT.Setting}
+    Sleep    ${QUICK_WAIT}
+
+    Clique Sur Setting Include    ${driver}    ${LANG_DICT.Gps}    ${Setting_menu}
+    Clique Sur Setting Include    ${driver}    ${LANG_DICT.acces}    ${Setting_system}
+    Activer Toggle Si Desactive    ${driver}    ${LANG_DICT.use_loc}
+
+    ${verfier_gps_adb}=    Is Gps Enabled Adb    ${driver}
+    Should Be True    ${verfier_gps_adb}    Le GPS ne s'active pas (via ADB)
+
+Execute Gps Location Test
+    [Documentation]    Tests GPS location functionality
+    # Set GPS location
+    Set Location ViaAdb    ${Device}    ${Longitude}    ${Latitude}
+    Sleep    ${QUICK_WAIT}
+
+    # Verify GPS location
+    ${current_latitude}    ${current_longitude}=    Get Location ViaAdb    ${Device}
+    Should Be Equal As Numbers    ${current_latitude}    ${Latitude}    La latitude n'a pas été mise à jour correctement
+    Should Be Equal As Numbers    ${current_longitude}    ${Longitude}    La longitude n'a pas été mise à jour correctement
 
 *** Test Cases ***
-
 Test Ouvrir Gps
-        ${lang}    Get System Language       ${Device}
-
-        IF    '${lang}' == 'fr'
-            ${System}       Set Variable     Système
-            ${Setting}     Set Variable     Paramètres
-            ${Gps}         Set Variable     Position
-            ${use_loc}         Set Variable     Utiliser la localisation
-            ${acces}       Set Variable     Accès à la position
-
-
-
-        ELSE
-            ${System}   Set Variable    System
-            ${Setting}    Set Variable    Settings
-            ${Gps}         Set Variable      Position
-            ${use_loc}         Set Variable     Utiliser la localisation
-            ${acces}       Set Variable     Accès à la position
-
-            ${System_update}       Set Variable     System update
-            ${System_update_check}       Set Variable     Check for update
-
-
-
-
-
-        END
-
-
-    ${resultat}=    Open Application With Click      ${driver}        ${Setting}
-    Sleep    1s
-
-    Clique Sur Setting Include      ${driver}             ${Gps}        ${Setting_menu}
-    Clique Sur Setting Include   ${driver}         ${acces}        ${Setting_system}
-    Activer Toggle Si Desactive      ${driver}      ${use_loc}
-    ${verfier_gps_adb}=  Is Gps Enabled Adb       ${driver}
-    Run Keyword And Continue On Failure     Should Be True     ${verfier_gps_adb}   Le gps ne s'active pas (via adb).
+    [Documentation]    Teste l'activation du GPS
+    ...                - Ouvre les paramètres
+    ...                - Active le GPS
+    ...                - Vérifie l'activation via ADB
+    [Tags]    gps    smoke
+    Execute Test With Retry    Execute Open Gps Test    Test Ouvrir Gps
 
 Test GPS Location Functionality
     [Documentation]    Teste la fonctionnalité de modification de position GPS
     ...                - Définit une position GPS spécifique via ADB
     ...                - Vérifie que la position a bien été mise à jour
-    ...                - Tolère les échecs partiels avec continuation du test
-    [Tags]    gps
-    # Appeler set_location pour définir la position GPS
-    Set Location ViaAdb     ${Device}    ${Longitude}    ${Latitude}
-
-    # Attendre que la position soit définie (ajustez selon vos besoins)
-    Sleep    2s
-
-    # Vérifier si la position GPS a été mise à jour
-    ${current_latitude}    ${current_longitude}       Get Location ViaAdb        ${Device}
-
-    # Vérifier que les valeurs sont correctes
-    Run Keyword And Continue On Failure     Should Be Equal As Numbers    ${current_latitude}    ${Latitude}
-    Run Keyword And Continue On Failure     Should Be Equal As Numbers    ${current_longitude}    ${Longitude}
+    [Tags]    gps    location
+    Execute Test With Retry    Execute Gps Location Test    Test GPS Location Functionality
