@@ -35,7 +35,7 @@ ${Setting_system}      com.android.car.settings:id/fragment_container
 
 # Language Configuration
 &{LANG_FR}    System=Système    Setting=Paramètres    ReseauMenu=Réseau et Internet
-&{LANG_EN}    System=System    Setting=Settings    ReseauMenu=Network & Internet
+&{LANG_EN}    System=System    Setting=Settings    ReseauMenu=Network & internet
 
 *** Keywords ***
 Execute Test With Retry

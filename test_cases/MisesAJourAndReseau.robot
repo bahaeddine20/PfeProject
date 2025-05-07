@@ -50,7 +50,7 @@ Test Verfier Mise A Jour System
             ${System}   Set Variable    System
             ${Setting}    Set Variable    Settings
             ${Date}    Set Variable     Date & time
-            ${Btn_Heure}         Set Variable     Définir l'heure
+            ${Btn_Heure}         Set Variable     Set time
             ${System_update}       Set Variable     System update
             ${System_update_check}       Set Variable     Check for update
 
