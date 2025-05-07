@@ -39,7 +39,7 @@ ${Latitude}           40.7128
 
 # Language Configuration
 &{LANG_FR}    System=Système    Setting=Paramètres    Gps=Position    use_loc=Utiliser la localisation    acces=Accès à la position
-&{LANG_EN}    System=System    Setting=Settings    Gps=Position    use_loc=Use location    acces=Location access
+&{LANG_EN}    System=System    Setting=Settings    Gps=Location    use_loc=Use location    acces=Location access
 
 *** Keywords ***
 Execute Test With Retry
