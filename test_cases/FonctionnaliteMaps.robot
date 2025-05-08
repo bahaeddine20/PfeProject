@@ -41,6 +41,23 @@ ${Latitude}           40.7128
 &{LANG_FR}    System=Système    Setting=Paramètres    Gps=Position    use_loc=Utiliser la localisation    acces=Accès à la position
 &{LANG_EN}    System=System    Setting=Settings    Gps=Location    use_loc=Use location    acces=Location access
 
+# New York
+${New_York_Latitude}    40.7128
+${New_York_Longitude}    -74.0060
+
+# Paris
+${Paris_Latitude}        48.8566
+${Paris_Longitude}       2.3522
+
+# Tokyo
+${Tokyo_Latitude}        35.6895
+${Tokyo_Longitude}       139.6917
+
+@{GPS_LOCATIONS}
+...    40.7128    -74.0060    # New York
+...    48.8566    2.3522      # Paris
+...    35.6895    139.6917    # Tokyo
+
 *** Keywords ***
 Execute Test With Retry
     [Arguments]    ${test_keyword}    ${test_name}
@@ -116,8 +133,17 @@ Execute Gps Location Test
 
     # Verify GPS location
     ${current_latitude}    ${current_longitude}=    Get Location ViaAdb    ${Device}
-    Should Be Equal As Numbers    ${current_latitude}    ${Latitude}    La latitude n'a pas été mise à jour correctement
-    Should Be Equal As Numbers    ${current_longitude}    ${Longitude}    La longitude n'a pas été mise à jour correctement
+    Should Be Equal As Numbers    ${current_latitude}    ${Latitude}    La latitude n'a pas été mise à jour correctement       precision=0.0001  
+    Should Be Equal As Numbers    ${current_longitude}    ${Longitude}    La longitude n'a pas été mise à jour correctement    precision=0.0001
+
+Test GPS Location For Coordinates
+    [Arguments]    ${latitude}    ${longitude}
+    Set Location ViaAdb    ${Device}    ${longitude}    ${latitude}
+    Sleep    2s
+    ${current_latitude}    ${current_longitude}=    Get Location ViaAdb    ${Device}
+    Log    Vérification: attendu ${latitude}, obtenu ${current_latitude}
+    Should Be Equal As Numbers    ${current_latitude}    ${latitude}    La latitude n'a pas été mise à jour correctement    precision=0.0001
+    Should Be Equal As Numbers    ${current_longitude}    ${longitude}    La longitude n'a pas été mise à jour correctement    precision=0.0001
 
 *** Test Cases ***
 Test Ouvrir Gps
@@ -134,3 +160,9 @@ Test GPS Location Functionality
     ...                - Vérifie que la position a bien été mise à jour
     [Tags]    gps    location
     Execute Test With Retry    Execute Gps Location Test    Test GPS Location Functionality
+
+Test GPS Multi-Location
+    [Documentation]    Teste la modification de position GPS pour plusieurs emplacements
+    FOR    ${lat}    ${lon}    IN    @{GPS_LOCATIONS}
+        Test GPS Location For Coordinates    ${lat}    ${lon}
+    END

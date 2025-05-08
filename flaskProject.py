@@ -27,6 +27,11 @@ progress_data = {
     "completed": 0
 }
 stop_execution = False
+current_process = None
+
+execution_logs = []
+
+rf_live_log = []
 
 def get_connected_devices():
     """Récupère la liste des appareils connectés via ADB"""
@@ -46,12 +51,66 @@ def home():
     devices = get_connected_devices()
     automotive_devices = [d for d in devices if get_device_type(d) == "Automotive"]
     mobile_devices = [d for d in devices if get_device_type(d) == "Mobile"]
+    
+    # Récupérer l'historique des tests
+    test_history = []
+    if os.path.exists(RESULTS_FOLDER):
+        print(f"Scanning results folder: {RESULTS_FOLDER}")
+        for folder in sorted(os.listdir(RESULTS_FOLDER), reverse=True):
+            if folder.endswith('.zip'):
+                continue
+            folder_path = os.path.join(RESULTS_FOLDER, folder)
+            if os.path.isdir(folder_path):
+                print(f"Found test folder: {folder}")
+                # Vérifier si le dossier contient un rapport final
+                final_report = os.path.join(folder_path, "final_report")
+                if os.path.exists(final_report):
+                    report_path = os.path.join(final_report, "report.html")
+                    if os.path.exists(report_path):
+                        print(f"Found report.html in: {folder}")
+                        # Extraire la date du nom du dossier
+                        date_str = folder.replace('Tests_', '')
+                        try:
+                            timestamp = datetime.datetime.strptime(date_str.split('_')[0] + '_' + date_str.split('_')[1], '%Y-%m-%d_%H-%M')
+                        except:
+                            timestamp = datetime.datetime.now()
+                        
+                        test_history.append({
+                            'name': folder,
+                            'date': folder.replace('Tests_', ''),
+                            'timestamp': timestamp.isoformat(),
+                            'path': folder_path,
+                            'has_report': True
+                        })
+    
+    print(f"Total test history entries found: {len(test_history)}")
+    
     return render_template('index.html',
                            automotive=automotive_devices,
                            mobile=mobile_devices,
                            selected_automotive=selected_automotive,
-                           selected_mobile=selected_mobile)
+                           selected_mobile=selected_mobile,
+                           test_history=test_history)
 
+@app.route('/view_report/<path:folder_name>')
+def view_report(folder_name):
+    folder_path = os.path.join(RESULTS_FOLDER, folder_name)
+    final_report_path = os.path.join(folder_path, "final_report", "log.html")
+    
+    if os.path.exists(final_report_path):
+        return send_file(final_report_path)
+    return "Rapport non trouvé", 404
+
+@app.route('/download_report/<path:folder_name>')
+def download_report(folder_name):
+    folder_path = os.path.join(RESULTS_FOLDER, folder_name)
+    zip_path = os.path.join(RESULTS_FOLDER, f"{folder_name}.zip")
+    
+    # Créer le zip si nécessaire
+    if not os.path.exists(zip_path):
+        shutil.make_archive(folder_path, 'zip', folder_path)
+    
+    return send_file(zip_path, as_attachment=True)
 
 import os
 
@@ -191,70 +250,96 @@ def get_progress():
 
 @app.route('/stop_tests', methods=['POST'])
 def stop_tests():
-    global stop_execution
+    global stop_execution, run, current_process
     stop_execution = True
+    run = 0
+    if current_process is not None:
+        try:
+            current_process.terminate()
+        except Exception:
+            pass
+        current_process = None
     return jsonify({"message": "Tests stoppés !"})
-
-
 def execute_tests():
-    global progress_data, stop_execution, run
-
-    # Create application context
+    global progress_data, stop_execution, run, current_process, rf_live_log
+    rf_live_log = []
     with app.app_context():
         if not selected_tests:
             run = 0
             return
-
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d (%H-%M)")
-        results_dir = os.path.join(RESULTS_FOLDER, f"resultats_{timestamp}")
+        # Créer un nom de dossier plus descriptif
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        test_names = "_".join([os.path.splitext(f)[0] for f in selected_tests])
+        results_dir = os.path.join(RESULTS_FOLDER, f"Tests_{timestamp}_{test_names}")
         os.makedirs(results_dir, exist_ok=True)
         total_tests = len(selected_tests)
-
         progress_data.update({"total": total_tests, "completed": 0})
-
+        output_files = []  # Liste des fichiers output.xml à fusionner
         for i, test_file in enumerate(selected_tests):
             if stop_execution:
                 progress_data.update({"current_file": "🛑 Exécution stoppée !", "percentage": 100})
                 run = 0
                 return
-
-            test_result_dir = os.path.join(results_dir, os.path.splitext(test_file)[0])
+            test_name = os.path.splitext(test_file)[0]
+            test_result_dir = os.path.join(results_dir, test_name)
             os.makedirs(test_result_dir, exist_ok=True)
             progress_data.update({"current_file": test_file, "percentage": int(i / total_tests * 100)})
-
             time.sleep(1)
-            result = subprocess.run(
+            current_process = subprocess.Popen(
                 ["robot", "--outputdir", test_result_dir, os.path.join(TESTS_FOLDER, test_file)],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1
+            )
+            add_rf_log(f"================= {test_file} =================")
+            for line in current_process.stdout:
+                add_rf_log(line.rstrip())
+            current_process.wait()
+            # Ajouter le chemin vers output.xml à la liste
+            output_file = os.path.join(test_result_dir, "output.xml")
+            if os.path.exists(output_file):
+                output_files.append(output_file)
+            log_step(f"--- Exécution du test : {test_file} ---")
+            log_step(f"Code de retour : {current_process.returncode}")
+            log_step("----------------------------------------")
+            progress_data.update({"completed": i + 1, "percentage": int((i + 1) / total_tests * 100)})
+            time.sleep(1)
+        # Création du dossier resumer + fusion des résultats avec rebot
+        resumer_dir = os.path.join(results_dir, "final_report")
+        os.makedirs(resumer_dir, exist_ok=True)
+        if output_files:
+            subprocess.run(
+                ["rebot", "--outputdir", resumer_dir] + output_files,
                 capture_output=True,
                 text=True
             )
-
-            # Affichage des détails dans le terminal
-            print(f"--- Exécution du test : {test_file} ---")
-            print("STDOUT:\n", result.stdout)
-            print("STDERR:\n", result.stderr)
-            print(f"Code de retour : {result.returncode}")
-            print("----------------------------------------\n")
-
-            progress_data.update({"completed": i + 1, "percentage": int((i + 1) / total_tests * 100)})
-            time.sleep(1)
         run = 0
         progress_data.update({
             "current_file": "✅ Tous les tests sont terminés !",
-            "percentage": 100,
-            "download_link": url_for('download_results')
+            "percentage": 100
         })
-
         shutil.make_archive(results_dir, 'zip', results_dir)
         run = 0
+        current_process = None
+
 @app.route('/download_results')
 def download_results():
     latest_results = sorted(os.listdir(RESULTS_FOLDER), reverse=True)
     if not latest_results:
         return "Aucun résultat disponible", 404
-    latest_folder = os.path.join(RESULTS_FOLDER, latest_results[0])
+    
+    # Trouver le dernier dossier de résultats (pas un fichier zip)
+    latest_folder = None
+    for result in latest_results:
+        if not result.endswith('.zip'):
+            latest_folder = os.path.join(RESULTS_FOLDER, result)
+            break
+    
+    if not latest_folder:
+        return "Aucun résultat disponible", 404
 
-    zip_filename = f"{latest_results[0]}.zip"
+    zip_filename = f"{os.path.basename(latest_folder)}.zip"
     zip_filepath = os.path.join(RESULTS_FOLDER, zip_filename)
 
     # Créer un fichier ZIP du dossier de résultats
@@ -262,7 +347,44 @@ def download_results():
 
     return send_file(zip_filepath, as_attachment=True)
 
+@app.route('/delete_test/<path:folder_name>', methods=['DELETE'])
+def delete_test(folder_name):
+    try:
+        folder_path = os.path.join(RESULTS_FOLDER, folder_name)
+        zip_path = os.path.join(RESULTS_FOLDER, f"{folder_name}.zip")
+        
+        # Supprimer le dossier et le fichier zip s'ils existent
+        if os.path.exists(folder_path):
+            shutil.rmtree(folder_path)
+        if os.path.exists(zip_path):
+            os.remove(zip_path)
+            
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
 
+def log_step(message):
+    global execution_logs
+    execution_logs.append(message)
+    # Limite la taille pour éviter de saturer la mémoire
+    if len(execution_logs) > 500:
+        execution_logs = execution_logs[-500:]
+
+@app.route('/execution_logs')
+def get_execution_logs():
+    global execution_logs
+    return jsonify({"logs": execution_logs})
+
+@app.route('/rf_live_log')
+def get_rf_live_log():
+    global rf_live_log
+    return jsonify({"log": rf_live_log})
+
+def add_rf_log(line):
+    global rf_live_log
+    rf_live_log.append(line)
+    if len(rf_live_log) > 1000:
+        rf_live_log = rf_live_log[-1000:]
 
 app.run(host='0.0.0.0', port=5000)
 if __name__ == '__main__':
