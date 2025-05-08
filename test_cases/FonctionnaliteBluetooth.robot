@@ -360,6 +360,7 @@ Execute Supprimer Bluetooth Test
         ${pairing_conf2}=   Set Variable    Continue
         ${supp}=        Set Variable    Forget
     END
+    Press Key    ${driver_mobile}       6
 
     ${resultat}=    Open Application With Click    ${driver}    ${Setting}
     Should Be True    ${resultat}    Impossible d'ouvrir les paramètres
