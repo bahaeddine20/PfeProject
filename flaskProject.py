@@ -95,11 +95,16 @@ def home():
 @app.route('/view_report/<path:folder_name>')
 def view_report(folder_name):
     folder_path = os.path.join(RESULTS_FOLDER, folder_name)
-    final_report_path = os.path.join(folder_path, "final_report", "log.html")
+    final_report_dir = os.path.join(folder_path, "final_report")
     
-    if os.path.exists(final_report_path):
-        return send_file(final_report_path)
-    return "Rapport non trouvé", 404
+    # Try report.html first, then fall back to log.html
+    for report_file in ["report.html", "log.html"]:
+        report_path = os.path.join(final_report_dir, report_file)
+        if os.path.exists(report_path):
+            return send_file(report_path)
+    
+    # If neither file exists, return a more descriptive error
+    return f"Rapport non trouvé dans {final_report_dir}. Vérifiez que le dossier existe et contient report.html ou log.html", 404
 
 @app.route('/download_report/<path:folder_name>')
 def download_report(folder_name):
@@ -135,14 +140,6 @@ def remplacer_device(dossier, nouveau_device):
                     with open(chemin_fichier, "w", encoding="utf-8") as f:
                         f.writelines(nouveau_contenu)
                     print(f"[MODIFIÉ] {chemin_fichier}")
-
-
-# Exemple d'utilisation :
-# remplacer_device("chemin/vers/ton/dossier", "device123")
-
-
-# Exemple d'utilisation :
-# remplacer_device_dans_dossier("my_pixel_7")
 
 
 

@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-05-12T17:05:31.630395" rpa="false" schemaversion="5">
+<suite id="s1" name="WiFiAndConnectivite" source="C:\Users\bahae\Documents\PfeProject\test_cases\WiFiAndConnectivite.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-05-12T17:05:40.313301" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="902b6140-ac84-4bc8-a991-92b42eaf6c65")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-12T17:05:32.652468" elapsed="7.660833"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-12T17:05:40.314301" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="902b6140-ac84-4bc8-a991-92b42eaf6c65")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-12T17:05:40.314301" elapsed="0.000000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-12T17:05:40.382302" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-12T17:05:40.315304" elapsed="0.068001"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-05-12T17:05:40.383305" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'ReseauMenu': 'Réseau et Internet'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-05-12T17:05:40.383305" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-12T17:05:40.384303" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'ReseauMenu': 'Réseau et Internet'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-12T17:05:40.383305" elapsed="0.000998"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-05-12T17:05:40.314301" elapsed="0.070002"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-05-12T17:05:32.650470" elapsed="7.733833"/>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Wifi" line="142">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T17:05:40.386302" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T17:05:40.386302" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T17:05:40.386302" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T17:05:40.386302" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Open Wifi Test">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T17:06:08.542964" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T17:06:08.542964" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T17:05:40.388302" elapsed="28.154662"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:06:09.043355" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:06:08.542964" elapsed="0.500391"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-05-12T17:06:09.212964" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T17:06:09.043355" elapsed="0.169609"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T17:06:09.212964" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T17:06:10.241028" level="INFO">(0, 76, 550, 696)
+✅ 'Réseau et Internet' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.ReseauMenu}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T17:06:09.213960" elapsed="1.027068"/>
+</kw>
+<kw name="Activer Wifi Si Desactive" owner="Integration">
+<msg time="2025-05-12T17:06:10.833274" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Erreur lors de l'activation du wifi : 'NoneType' object has no attribute 'get_attribute'</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:06:10.241028" elapsed="0.592246"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:06:12.835215" level="INFO">Slept 2 seconds.</msg>
+<arg>${WAIT_TIME}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:06:10.833274" elapsed="2.001941"/>
+</kw>
+<kw name="Is Active Wifi Ui" owner="Integration">
+<msg time="2025-05-12T17:06:13.329197" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Switch Wi-Fi introuvable</msg>
+<msg time="2025-05-12T17:06:13.329197" level="INFO">${verifier_wifi_ui} = False</msg>
+<var>${verifier_wifi_ui}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:06:12.835215" elapsed="0.493982"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-05-12T17:06:13.330196" level="FAIL">WiFi is not active in UI</msg>
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-05-12T17:06:13.330196" elapsed="0.000000">WiFi is not active in UI</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-12T17:06:13.330196" elapsed="0.001005">WiFi is not active in UI</status>
+</kw>
+<kw name="Is Wifi Enabled Adb" owner="Integration">
+<msg time="2025-05-12T17:06:13.970204" level="INFO">❌ Le Wi-Fi est désactivé.</msg>
+<msg time="2025-05-12T17:06:13.970204" level="INFO">${verfier_wifi_adb} = False</msg>
+<var>${verfier_wifi_adb}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:06:13.331201" elapsed="0.639003"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-05-12T17:06:13.971203" level="FAIL">WiFi is not active via ADB</msg>
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-05-12T17:06:13.971203" elapsed="0.000000">WiFi is not active via ADB</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-12T17:06:13.971203" elapsed="0.000000">WiFi is not active via ADB</status>
+</kw>
+<doc>Tests WiFi activation</doc>
+<status status="FAIL" start="2025-05-12T17:05:40.387305" elapsed="33.584896">Several failures occurred:
+
+1) WiFi is not active in UI
+
+2) WiFi is not active via ADB</status>
+</kw>
+<msg time="2025-05-12T17:06:13.972201" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T17:05:40.387305" elapsed="33.584896"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T17:06:13.972201" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-05-12T17:06:13.972201" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:06:13.972201" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-12T17:06:13.973198" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-12T17:06:13.972201" elapsed="0.000997"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T17:06:13.973198" level="INFO">Test Test Ouvrir Wifi échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T17:06:13.973198" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:06:15.975229" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:06:13.974200" elapsed="2.001029"/>
+</kw>
+<status status="PASS" start="2025-05-12T17:06:13.973198" elapsed="2.002031"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:06:13.973198" elapsed="2.002031"/>
+</if>
+<status status="PASS" start="2025-05-12T17:06:13.972201" elapsed="2.003028"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:06:13.972201" elapsed="2.003028"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-05-12T17:05:40.387305" elapsed="35.587924"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Open Wifi Test">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T17:06:40.867821" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T17:06:40.867821" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T17:06:15.976171" elapsed="24.891650"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:06:41.368218" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:06:40.867821" elapsed="0.500397"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-05-12T17:06:41.512131" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T17:06:41.368218" elapsed="0.143913"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T17:06:41.513133" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T17:06:42.606138" level="INFO">(0, 76, 550, 696)
+✅ 'Réseau et Internet' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.ReseauMenu}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T17:06:41.513133" elapsed="1.093005"/>
+</kw>
+<kw name="Activer Wifi Si Desactive" owner="Integration">
+<msg time="2025-05-12T17:06:43.126056" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Erreur lors de l'activation du wifi : 'NoneType' object has no attribute 'get_attribute'</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:06:42.606138" elapsed="0.519918"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:06:45.127266" level="INFO">Slept 2 seconds.</msg>
+<arg>${WAIT_TIME}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:06:43.126056" elapsed="2.001210"/>
+</kw>
+<kw name="Is Active Wifi Ui" owner="Integration">
+<msg time="2025-05-12T17:06:45.684259" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Switch Wi-Fi introuvable</msg>
+<msg time="2025-05-12T17:06:45.684259" level="INFO">${verifier_wifi_ui} = False</msg>
+<var>${verifier_wifi_ui}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:06:45.127266" elapsed="0.556993"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-05-12T17:06:45.685258" level="FAIL">WiFi is not active in UI</msg>
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-05-12T17:06:45.685258" elapsed="0.000000">WiFi is not active in UI</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-12T17:06:45.685258" elapsed="0.000000">WiFi is not active in UI</status>
+</kw>
+<kw name="Is Wifi Enabled Adb" owner="Integration">
+<msg time="2025-05-12T17:06:46.015184" level="INFO">❌ Le Wi-Fi est désactivé.</msg>
+<msg time="2025-05-12T17:06:46.016185" level="INFO">${verfier_wifi_adb} = False</msg>
+<var>${verfier_wifi_adb}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:06:45.686262" elapsed="0.329923"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-05-12T17:06:46.017183" level="FAIL">WiFi is not active via ADB</msg>
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-05-12T17:06:46.016185" elapsed="0.000998">WiFi is not active via ADB</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-12T17:06:46.016185" elapsed="0.000998">WiFi is not active via ADB</status>
+</kw>
+<doc>Tests WiFi activation</doc>
+<status status="FAIL" start="2025-05-12T17:06:15.976171" elapsed="30.041012">Several failures occurred:
+
+1) WiFi is not active in UI
+
+2) WiFi is not active via ADB</status>
+</kw>
+<msg time="2025-05-12T17:06:46.017183" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T17:06:15.976171" elapsed="30.041012"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T17:06:46.018189" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-05-12T17:06:46.018189" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:06:46.017183" elapsed="0.001006"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-12T17:06:46.018189" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-12T17:06:46.018189" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T17:06:46.019185" level="INFO">Test Test Ouvrir Wifi échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T17:06:46.019185" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:06:48.019934" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:06:46.019185" elapsed="2.000749"/>
+</kw>
+<status status="PASS" start="2025-05-12T17:06:46.018189" elapsed="2.001745"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:06:46.018189" elapsed="2.001745"/>
+</if>
+<status status="PASS" start="2025-05-12T17:06:46.018189" elapsed="2.001745"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:06:46.017183" elapsed="2.002751"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-05-12T17:06:15.975229" elapsed="32.044705"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Open Wifi Test">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T17:07:14.277814" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T17:07:14.277814" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T17:06:48.020894" elapsed="26.256920"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:07:14.779384" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:07:14.278808" elapsed="0.500576"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-05-12T17:07:14.938365" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T17:07:14.779384" elapsed="0.158981"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T17:07:14.938365" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T17:07:16.059127" level="INFO">(0, 76, 550, 696)
+✅ 'Réseau et Internet' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.ReseauMenu}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T17:07:14.938365" elapsed="1.120762"/>
+</kw>
+<kw name="Activer Wifi Si Desactive" owner="Integration">
+<msg time="2025-05-12T17:07:16.664133" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Erreur lors de l'activation du wifi : 'NoneType' object has no attribute 'get_attribute'</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:07:16.060128" elapsed="0.604005"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:07:18.664812" level="INFO">Slept 2 seconds.</msg>
+<arg>${WAIT_TIME}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:07:16.664133" elapsed="2.000679"/>
+</kw>
+<kw name="Is Active Wifi Ui" owner="Integration">
+<msg time="2025-05-12T17:07:19.283140" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Switch Wi-Fi introuvable</msg>
+<msg time="2025-05-12T17:07:19.283140" level="INFO">${verifier_wifi_ui} = False</msg>
+<var>${verifier_wifi_ui}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:07:18.664812" elapsed="0.618328"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-05-12T17:07:19.284140" level="FAIL">WiFi is not active in UI</msg>
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-05-12T17:07:19.283140" elapsed="0.001000">WiFi is not active in UI</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-12T17:07:19.283140" elapsed="0.001000">WiFi is not active in UI</status>
+</kw>
+<kw name="Is Wifi Enabled Adb" owner="Integration">
+<msg time="2025-05-12T17:07:19.641730" level="INFO">❌ Le Wi-Fi est désactivé.</msg>
+<msg time="2025-05-12T17:07:19.641730" level="INFO">${verfier_wifi_adb} = False</msg>
+<var>${verfier_wifi_adb}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:07:19.284140" elapsed="0.357590"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-05-12T17:07:19.642725" level="FAIL">WiFi is not active via ADB</msg>
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-05-12T17:07:19.642725" elapsed="0.000000">WiFi is not active via ADB</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-12T17:07:19.641730" elapsed="0.000995">WiFi is not active via ADB</status>
+</kw>
+<doc>Tests WiFi activation</doc>
+<status status="FAIL" start="2025-05-12T17:06:48.020894" elapsed="31.621831">Several failures occurred:
+
+1) WiFi is not active in UI
+
+2) WiFi is not active via ADB</status>
+</kw>
+<msg time="2025-05-12T17:07:19.642725" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T17:06:48.020894" elapsed="31.621831"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:19.643724" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:19.643724" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:07:19.643724" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-12T17:07:19.644725" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-12T17:07:19.643724" elapsed="0.001001"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:19.644725" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:19.644725" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:07:19.644725" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:07:19.644725" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-05-12T17:07:19.643724" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:07:19.642725" elapsed="0.002000"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-05-12T17:06:48.019934" elapsed="31.624791"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T17:05:40.386302" elapsed="99.258423"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-05-12T17:07:19.645723" level="FAIL">Le test Test Ouvrir Wifi a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-05-12T17:07:19.645723" elapsed="0.000000">Le test Test Ouvrir Wifi a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-05-12T17:07:19.645723" elapsed="0.000000">Le test Test Ouvrir Wifi a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-05-12T17:07:19.645723" elapsed="0.000000">Le test Test Ouvrir Wifi a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Open Wifi Test</arg>
+<arg>Test Ouvrir Wifi</arg>
+<status status="FAIL" start="2025-05-12T17:05:40.385303" elapsed="99.260420">Le test Test Ouvrir Wifi a échoué après 3 tentatives</status>
+</kw>
+<doc>Teste l'activation du WiFi
+- Ouvre les paramètres
+- Active le WiFi
+- Vérifie l'activation via UI et ADB</doc>
+<tag>smoke</tag>
+<tag>wifi</tag>
+<status status="FAIL" start="2025-05-12T17:05:40.384303" elapsed="99.262421">Le test Test Ouvrir Wifi a échoué après 3 tentatives</status>
+</test>
+<test id="s1-t2" name="Test Fermer Wifi" line="150">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T17:07:19.648729" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T17:07:19.648729" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T17:07:19.648729" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T17:07:19.648729" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Close Wifi Test">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T17:07:44.524751" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T17:07:44.525751" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T17:07:19.650724" elapsed="24.875027"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:07:45.025884" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:07:44.525751" elapsed="0.500133"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-05-12T17:07:45.246835" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T17:07:45.025884" elapsed="0.220951"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T17:07:45.246835" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T17:07:46.378063" level="INFO">(0, 76, 550, 696)
+✅ 'Réseau et Internet' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.ReseauMenu}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T17:07:45.247833" elapsed="1.130230"/>
+</kw>
+<kw name="Desactiver Wifi Si Active" owner="Integration">
+<msg time="2025-05-12T17:07:46.974964" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Erreur lors de l'activation du wifi : 'NoneType' object has no attribute 'get_attribute'</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:07:46.378063" elapsed="0.596901"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T17:07:48.976894" level="INFO">Slept 2 seconds.</msg>
+<arg>${WAIT_TIME}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T17:07:46.974964" elapsed="2.001930"/>
+</kw>
+<kw name="Is Active Wifi Ui" owner="Integration">
+<msg time="2025-05-12T17:07:49.496442" level="INFO">[ERROR] Label 'Wi-Fi' non trouvé
+❌ Switch Wi-Fi introuvable</msg>
+<msg time="2025-05-12T17:07:49.496442" level="INFO">${verifier_wifi_ui} = False</msg>
+<var>${verifier_wifi_ui}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:07:48.976894" elapsed="0.519548"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is still active in UI</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-05-12T17:07:49.496442" elapsed="0.000000"/>
+</kw>
+<kw name="Is Wifi Enabled Adb" owner="Integration">
+<msg time="2025-05-12T17:07:49.845450" level="INFO">❌ Le Wi-Fi est désactivé.</msg>
+<msg time="2025-05-12T17:07:49.846450" level="INFO">${verfier_wifi_adb} = False</msg>
+<var>${verfier_wifi_adb}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-05-12T17:07:49.496442" elapsed="0.350008"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is still active via ADB</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-05-12T17:07:49.846450" elapsed="0.000000"/>
+</kw>
+<doc>Tests WiFi deactivation</doc>
+<status status="PASS" start="2025-05-12T17:07:19.649726" elapsed="30.196724"/>
+</kw>
+<msg time="2025-05-12T17:07:49.846450" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T17:07:19.649726" elapsed="30.196724"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T17:07:49.847450" level="INFO">Test Test Fermer Wifi réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T17:07:49.847450" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-05-12T17:07:49.847450" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-05-12T17:07:49.847450" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-12T17:07:49.847450" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:49.848446" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:49.848446" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:49.848446" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:07:49.848446" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-12T17:07:49.848446" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-12T17:07:49.847450" elapsed="0.000996"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:07:49.847450" elapsed="0.000996"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-05-12T17:07:19.649726" elapsed="30.198720"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T17:07:19.648729" elapsed="30.199717"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:49.849446" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:07:49.848446" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:07:49.848446" elapsed="0.001000"/>
+</if>
+<arg>Execute Close Wifi Test</arg>
+<arg>Test Fermer Wifi</arg>
+<status status="PASS" start="2025-05-12T17:07:19.647727" elapsed="30.201719"/>
+</kw>
+<doc>Teste la désactivation du WiFi
+- Ouvre les paramètres
+- Désactive le WiFi
+- Vérifie la désactivation via UI et ADB</doc>
+<tag>smoke</tag>
+<tag>wifi</tag>
+<status status="PASS" start="2025-05-12T17:07:19.646724" elapsed="30.202722"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-05-12T17:07:49.852446" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-05-12T17:07:49.852446" elapsed="0.003003">No application is open</status>
+</kw>
+<msg time="2025-05-12T17:07:49.857447" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-05-12T17:07:49.857447" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-05-12T17:07:49.851446" elapsed="0.007001">No application is open</status>
+</kw>
+<msg time="2025-05-12T17:07:49.858447" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T17:07:49.851446" elapsed="0.007001"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:49.859448" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:49.859448" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:07:49.859448" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T17:07:49.859448" level="INFO">Le driver n'était pas actif</msg>
+<arg>Le driver n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T17:07:49.859448" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2025-05-12T17:07:49.859448" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:07:49.858447" elapsed="0.002001"/>
+</if>
+<status status="PASS" start="2025-05-12T17:07:49.850446" elapsed="0.010002"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T17:07:49.860448" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T17:07:49.860448" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T17:07:49.850446" elapsed="0.010002"/>
+</try>
+<doc>Cleans up and closes the test driver</doc>
+<status status="PASS" start="2025-05-12T17:07:49.850446" elapsed="0.010002"/>
+</kw>
+<doc>Tests de connectivité WiFi pour appareil Android
+- Activation du WiFi
+- Désactivation du WiFi
+- Vérification de l'état via UI et ADB
+- Prend en charge les interfaces en français et en anglais</doc>
+<status status="FAIL" start="2025-05-12T17:05:31.634388" elapsed="138.226060"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="1" skip="0">smoke</stat>
+<stat pass="1" fail="1" skip="0">wifi</stat>
+</tag>
+<suite>
+<stat name="WiFiAndConnectivite" id="s1" pass="1" fail="1" skip="0">WiFiAndConnectivite</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-12T17:07:49.857447" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-16T11:24:15.642981" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="C:\Users\bahae\Desktop\PfeProject\test_cases\InstallationApplications.robot">
+<test id="s1-t1" name="Test Install Apk" line="23">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-04-16T11:24:15.897885" level="FAIL">Variable '${driver}' not found.</msg>
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="FAIL" start="2025-04-16T11:24:15.897885" elapsed="0.000000">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isInsUi}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<arg>${driver}</arg>
+<arg>automotive-Notification_Test.apk</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Be True</arg>
+<arg>${isIns}</arg>
+<arg>The application is not installed via adb</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Be True</arg>
+<arg>${isInsUi}</arg>
+<arg>The installed application is not displayed (via adb)</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.898885" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-16T11:24:15.896885" elapsed="0.002000">Variable '${driver}' not found.</status>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="39">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-16T11:24:15.941886" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-16T11:24:15.899885" elapsed="0.042001"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.941886" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.941886" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.941886" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.941886" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.941886" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.941886" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-16T11:24:15.941886" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:24:15.942885" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:24:15.942885" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:24:15.942885" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:24:15.942885" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:24:15.942885" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:24:15.942885" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:24:15.942885" level="INFO">${Consulter_allapps} = View all</msg>
+<var>${Consulter_allapps}</var>
+<arg>View all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:24:15.942885" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:24:15.942885" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:24:15.942885" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:24:15.942885" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:24:15.942885" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-16T11:24:15.942885" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-04-16T11:24:15.941886" elapsed="0.000999"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-16T11:24:15.943885" level="FAIL">Variable '${driver}' not found.</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="FAIL" start="2025-04-16T11:24:15.942885" elapsed="0.001000">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings is not displayed.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Consulter_allapps}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${DesButton}</arg>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${confirme}</arg>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="NOT RUN" start="2025-04-16T11:24:15.943885" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Not Be True</arg>
+<arg>${isInsUi}</arg>
+<arg>The uninstalled application is displayed</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.944885" elapsed="0.000000"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.944885" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.944885" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Not Be True</arg>
+<arg>${isIns}</arg>
+<arg>The application is not uninstalled correctly (via adb)</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-04-16T11:24:15.944885" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-16T11:24:15.898885" elapsed="0.046000">Variable '${driver}' not found.</status>
+</test>
+<status status="FAIL" start="2025-04-16T11:24:15.643979" elapsed="0.300906"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="InstallationApplications" id="s1" pass="0" fail="2" skip="0">InstallationApplications</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

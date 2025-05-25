@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-05-12T13:19:45.348974" rpa="false" schemaversion="5">
+<suite id="s1" name="MisesAJourAndReseau" source="C:\Users\bahae\Documents\PfeProject\test_cases\MisesAJourAndReseau.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-05-12T13:19:57.665724" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="9c61b2a1-48f1-4440-9538-9d5916998941")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-12T13:19:48.358968" elapsed="9.306756"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:19:57.666727" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="9c61b2a1-48f1-4440-9538-9d5916998941")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-12T13:19:57.665724" elapsed="0.001003"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:19:48.357966" elapsed="9.308761"/>
+</kw>
+<test id="s1-t1" name="Test Verfier Mise A Jour System" line="92">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:19:57.669724" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T13:19:57.669724" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:19:57.669724" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T13:19:57.669724" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Vérifier Mise A Jour System">
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-12T13:19:57.771865" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-12T13:19:57.672726" elapsed="0.099139"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-05-12T13:19:57.772864" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'System_update': 'Mise à jour du système', 'System_update_check': 'Rechercher les mises à jour'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-05-12T13:19:57.771865" elapsed="0.000999"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:19:57.772864" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'System_update': 'Mise à jour du système', 'System_update_check': 'Rechercher les mises à jour'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-12T13:19:57.772864" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:19:57.672726" elapsed="0.101140"/>
+</kw>
+<kw name="Aller Dans Paramètres">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-05-12T13:19:57.774866" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:19:57.775865" level="INFO">${setting} = Paramètres</msg>
+<var>${setting}</var>
+<arg>Setting</arg>
+<status status="PASS" start="2025-05-12T13:19:57.774866" elapsed="0.000999"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T13:20:19.865043" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<arg>${driver}</arg>
+<arg>${setting}</arg>
+<status status="PASS" start="2025-05-12T13:19:57.775865" elapsed="22.089178"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:20:29.661064" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'System' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T13:20:19.865043" elapsed="9.796021"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:19:57.773866" elapsed="31.887198"/>
+</kw>
+<kw name="Aller Dans Mise A Jour">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-05-12T13:20:29.662065" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:20:29.663063" level="INFO">${system} = Système</msg>
+<var>${system}</var>
+<arg>System</arg>
+<status status="PASS" start="2025-05-12T13:20:29.662065" elapsed="0.000998"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:20:31.102105" level="INFO">(0, 76, 550, 696)
+✅ 'Système' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${system}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T13:20:29.663063" elapsed="1.439042"/>
+</kw>
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-05-12T13:20:31.102105" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:20:31.103105" level="INFO">${system_update} = Mise à jour du système</msg>
+<var>${system_update}</var>
+<arg>System_update</arg>
+<status status="PASS" start="2025-05-12T13:20:31.102105" elapsed="0.001000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-05-12T13:20:45.059010" level="INFO">📌 Liste des applications détectées : ['Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Google', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+📌 First Home Page détectée : ['Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Google', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Google', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+✅ Retour à la first home page !
+First Home Page détectée : ['Langues et saisie', 'Mise à jour du système', 'Date et heure', 'Unités', 'Stockage']
+ Mise à jour du système trouvé ! Appui sur le texte contenant 'Mise à jour du système'.</msg>
+<arg>${driver}</arg>
+<arg>${system_update}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:20:31.103105" elapsed="13.956903"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:20:29.662065" elapsed="15.397943"/>
+</kw>
+<kw name="Lancer Recherche Mise A Jour">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-05-12T13:20:45.060008" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:20:45.061007" level="INFO">${system_update_check} = Rechercher les mises à jour</msg>
+<var>${system_update_check}</var>
+<arg>System_update_check</arg>
+<status status="PASS" start="2025-05-12T13:20:45.060008" elapsed="0.000999"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-05-12T13:20:45.526008" level="INFO">Aucun élément trouvé avec le texte: Rechercher les mises à jour</msg>
+<arg>${driver}</arg>
+<arg>${system_update_check}</arg>
+<status status="PASS" start="2025-05-12T13:20:45.061007" elapsed="0.465001"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:20:45.060008" elapsed="0.466000"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:19:57.671724" elapsed="47.854284"/>
+</kw>
+<msg time="2025-05-12T13:20:45.526008" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:19:57.670729" elapsed="47.855279"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T13:20:45.527008" level="INFO">Test Test Verfier Mise A Jour System réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T13:20:45.526008" elapsed="0.001000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-05-12T13:20:45.527008" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-05-12T13:20:45.527008" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:20:45.526008" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-05-12T13:20:45.527008" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:20:45.528007" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:20:45.528007" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:20:45.528007" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-12T13:20:45.527008" elapsed="0.000999"/>
+</if>
+<status status="NOT RUN" start="2025-05-12T13:20:45.527008" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:20:45.526008" elapsed="0.001999"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-05-12T13:19:57.670729" elapsed="47.857278"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:19:57.670729" elapsed="47.857278"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-05-12T13:20:45.528007" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:20:45.528007" elapsed="0.001005"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:20:45.528007" elapsed="0.001005"/>
+</if>
+<arg>Vérifier Mise A Jour System</arg>
+<arg>Test Verfier Mise A Jour System</arg>
+<status status="PASS" start="2025-05-12T13:19:57.668724" elapsed="47.860288"/>
+</kw>
+<doc>Verifies system update functionality
+- Navigates to system update section
+- Checks for available updates
+- Supports both French and English interfaces</doc>
+<tag>system</tag>
+<tag>update</tag>
+<status status="PASS" start="2025-05-12T13:19:57.666727" elapsed="47.862285"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-05-12T13:20:45.530014" elapsed="0.207001"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:20:45.529012" elapsed="0.208003"/>
+</kw>
+<doc>Tests for system update verification
+- Verifies system update functionality
+- Supports both French and English interfaces</doc>
+<status status="PASS" start="2025-05-12T13:19:45.351520" elapsed="60.385495"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">system</stat>
+<stat pass="1" fail="0" skip="0">update</stat>
+</tag>
+<suite>
+<stat name="MisesAJourAndReseau" id="s1" pass="1" fail="0" skip="0">MisesAJourAndReseau</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

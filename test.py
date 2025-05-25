@@ -931,11 +931,138 @@ def is_in_call(driver):
 # if icon_position:
 #     x, y, w, h = icon_position
 #     print(f"Icône trouvée à : x={x}, y={
+
+
+import subprocess
+import os
+import re
+from datetime import datetime
+
+
+def download_latest_recording(device, destination_dir='.'):
+    """
+    Télécharge le dernier fichier audio depuis l'émulateur Android.
+    Version améliorée avec recherche approfondie et création de dossier si nécessaire.
+
+    Args:
+        device (str): ID de l'appareil (ex: 'emulator-5554')
+        destination_dir (str): Dossier de destination local
+
+    Returns:
+        str: Chemin du fichier téléchargé ou None
+    """
+    # Chemins possibles (ajustés pour Android Automotive)
+    possible_paths = [
+        '/sdcard/Music/Recordings',
+        '/sdcard/Music/Recording',
+        '/sdcard/Recordings',
+        '/sdcard/Recording',
+        '/storage/emulated/0/Music/Recordings',
+        '/storage/emulated/0/Recordings',
+        '/data/media/0/Music/Recordings',  # Ajout pour Android Automotive
+        '/sdcard/Android/media/com.android.soundrecorder'  # Dossier par défaut de l'appli Enregistreur
+    ]
+
+    try:
+        # 1. Trouver le dossier existant
+        valid_path = None
+        for path in possible_paths:
+            result = subprocess.run(
+                ['adb', '-s', device, 'shell', 'test', '-d', path, '&&', 'echo', 'exists'],
+                capture_output=True,
+                text=True
+            )
+            if 'exists' in result.stdout.strip():
+                valid_path = path
+                break
+
+        if not valid_path:
+            print("🔍 Recherche approfondie des fichiers audio...")
+            # Si aucun dossier connu, chercher tous les fichiers audio récents
+            find_cmd = [
+                'adb', '-s', device, 'shell',
+                'find', '/sdcard', '/storage', '/data/media',
+                '-type', 'f', '(', '-name', '*.wav', '-o', '-name', '*.mp3', '-o', '-name', '*.aac', ')',
+                '-exec', 'ls', '-lt', '{}', '+'
+            ]
+            result = subprocess.run(find_cmd, capture_output=True, text=True)
+
+            if not result.stdout.strip():
+                print("❌ Aucun fichier audio trouvé sur l'appareil")
+                return None
+
+            # Prendre le fichier le plus récent
+            latest = result.stdout.split('\n')[0]
+            parts = re.split(r'\s+', latest.strip(), maxsplit=7)
+            remote_path = parts[-1]
+
+            # Téléchargement direct
+            filename = os.path.basename(remote_path)
+            local_path = os.path.join(destination_dir, filename)
+            os.makedirs(destination_dir, exist_ok=True)
+
+            subprocess.run(
+                ['adb', '-s', device, 'pull', remote_path, local_path],
+                check=True
+            )
+            print(f"✅ Fichier trouvé et téléchargé: {local_path}")
+            return local_path
+
+        # 2. Lister les fichiers par date (nouveaux en premier)
+        list_cmd = [
+            'adb', '-s', device, 'shell',
+            'find', valid_path, '-type', 'f',
+            '-exec', 'ls', '-lt', '{}', '+'
+        ]
+        result = subprocess.run(list_cmd, capture_output=True, text=True)
+
+        if not result.stdout.strip():
+            print(f"ℹ️ Dossier trouvé mais vide: {valid_path}")
+            return None
+
+        # Prendre le premier fichier (le plus récent)
+        first_line = result.stdout.split('\n')[0]
+        parts = re.split(r'\s+', first_line.strip(), maxsplit=7)
+        remote_path = parts[-1]
+        filename = os.path.basename(remote_path)
+        local_path = os.path.join(destination_dir, filename)
+
+        # 3. Télécharger
+        os.makedirs(destination_dir, exist_ok=True)
+        subprocess.run(
+            ['adb', '-s', device, 'pull', remote_path, local_path],
+            check=True
+        )
+        print(f"✅ Fichier téléchargé: {local_path}")
+        return local_path
+
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Erreur ADB: {e.stderr}")
+        return None
+    except Exception as e:
+        print(f"❌ Erreur inattendue: {str(e)}")
+        return None
+
+
 if __name__ == "__main__":
 
     main()
 
-    driver = setup_driver("emulator-5556")
+    driver = setup_driver("emulator-5554")
+    device_id = "emulator-5554"  # Remplacer par votre ID d'émulateur
+    destination = "./enregistrements"  # Dossier de destination
+
+    # Créer le dossier s'il n'existe pas
+    os.makedirs(destination, exist_ok=True)
+
+    downloaded_file = download_latest_recording(
+        device="emulator-5554",
+        destination_dir="./enregistrements"
+    )
+    if downloaded_file:
+        print(f"Fichier téléchargé: {downloaded_file}")
+    else:
+        print("Échec du téléchargement")
     #set_location(driver, -74.0060, 40.7128)  # Exemples de coordonnées pour New York
     # Exemple d'utilisation dans un test Appium :
     # driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
@@ -943,8 +1070,8 @@ if __name__ == "__main__":
     #capture_element_screenshot(driver, bounds_exemple)
     # Exemple d'éléments obtenus avec UIAutomator (comme tu l'as montré)
     # Utilisation dans ton script de test
-    print(is_in_call(driver))
-    print(get_text_bounds("screenshot1.png", "Son"))
+    #print(is_in_call(driver))
+    #print(get_text_bounds("screenshot1.png", "Son"))
     #print(get_location(driver))
     #swipe_down(driver, "[862,356][926,404]")
     #print(get_android_users(driver))
@@ -954,9 +1081,9 @@ if __name__ == "__main__":
     #print(check_language_change("emulator-5554","fr-FR"))
     #revenir_a_la_home_page(driver)
     #
-    #print(Print_Activity(driver))
+    print(Print_Activity(driver))
     # #afficher_noms_setting(driver)
-    #afficheraLL_infos_elements(driver)
+    afficheraLL_infos_elements(driver)
     # Test de la fonction
 
     # y_center = (619 + 657) // 2  # 638

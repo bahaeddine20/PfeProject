@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.9 on linux)" generated="2025-03-26T10:14:13.533643" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="/app/test_cases/InstallationApplications.robot">
+<test id="s1-t1" name="Test Install Apk" line="18">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-03-26T10:14:13.689174" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f9060426570&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:14:13.689782" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f90606894f0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:14:13.690179" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f9060426a80&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:14:13.690695" level="FAIL">MaxRetryError: HTTPConnectionPool(host='localhost', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f9060427b00&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-03-26T10:14:13.686251" elapsed="0.012579">MaxRetryError: HTTPConnectionPool(host='localhost', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f9060427b00&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${driver}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699095" elapsed="0.000038"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699216" elapsed="0.000016"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isInsUi}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699311" elapsed="0.000015"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699391" elapsed="0.000013"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699470" elapsed="0.000012"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<arg>${driver}</arg>
+<arg>automotive-Notification_Test.apk</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699535" elapsed="0.000011"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699598" elapsed="0.000012"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699666" elapsed="0.000011"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Be True</arg>
+<arg>${isIns}</arg>
+<arg>The application is not installed via adb</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699736" elapsed="0.000012"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699809" elapsed="0.000011"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Be True</arg>
+<arg>${isInsUi}</arg>
+<arg>The installed application is not displayed (via adb)</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.699891" elapsed="0.000016"/>
+</kw>
+<status status="FAIL" start="2025-03-26T10:14:13.685364" elapsed="0.014705">MaxRetryError: HTTPConnectionPool(host='localhost', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f9060427b00&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="36">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-03-26T10:14:13.751244" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-03-26T10:14:13.700694" elapsed="0.050609"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-26T10:14:13.751914" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-26T10:14:13.751738" elapsed="0.000199"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-26T10:14:13.752101" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-26T10:14:13.752021" elapsed="0.000096"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-26T10:14:13.752288" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-26T10:14:13.752180" elapsed="0.000128"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-26T10:14:13.752448" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-26T10:14:13.752370" elapsed="0.000092"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-26T10:14:13.752589" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-26T10:14:13.752520" elapsed="0.000082"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-26T10:14:13.752731" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-26T10:14:13.752661" elapsed="0.000084"/>
+</kw>
+<status status="PASS" start="2025-03-26T10:14:13.751440" elapsed="0.001327"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.752899" elapsed="0.000014"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.752968" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.753466" elapsed="0.000029"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>View all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.753568" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.753635" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.753698" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2025-03-26T10:14:13.752824" elapsed="0.000905"/>
+</branch>
+<status status="PASS" start="2025-03-26T10:14:13.751400" elapsed="0.002350"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-03-26T10:14:13.754461" level="FAIL">Variable '${driver}' not found.</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="FAIL" start="2025-03-26T10:14:13.753815" elapsed="0.000687">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.754605" elapsed="0.000019"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.754695" elapsed="0.000014"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings is not displayed.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.754776" elapsed="0.000012"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.754847" elapsed="0.000012"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Consulter_allapps}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.754914" elapsed="0.000012"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755008" elapsed="0.000015"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${DesButton}</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755081" elapsed="0.000014"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755162" elapsed="0.000014"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${confirme}</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755224" elapsed="0.000011"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<var>${isInsUi}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755286" elapsed="0.000010"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Not Be True</arg>
+<arg>${isInsUi}</arg>
+<arg>The uninstalled application is displayed</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755359" elapsed="0.000011"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755422" elapsed="0.000010"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755489" elapsed="0.000011"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Not Be True</arg>
+<arg>${isIns}</arg>
+<arg>The application is not uninstalled correctly (via adb)</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-03-26T10:14:13.755555" elapsed="0.000010"/>
+</kw>
+<status status="FAIL" start="2025-03-26T10:14:13.700335" elapsed="0.055360">Variable '${driver}' not found.</status>
+</test>
+<status status="FAIL" start="2025-03-26T10:14:13.537005" elapsed="0.219107"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="InstallationApplications" id="s1" pass="0" fail="2" skip="0">InstallationApplications</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-26T10:14:13.689174" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f9060426570&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:14:13.689782" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f90606894f0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+<msg time="2025-03-26T10:14:13.690179" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f9060426a80&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /session</msg>
+</errors>
+</robot>

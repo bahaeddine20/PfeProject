@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-14T16:34:27.200348" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteDeBase" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteDeBase.robot">
+<test id="s1-t1" name="Test Home_Button" line="21">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-14T16:34:37.666016" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="f02fbacd-82ea-493c-9150-0f768f3927ba")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-04-14T16:34:27.528124" elapsed="10.137892"/>
+</kw>
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-04-14T16:35:03.952899" level="INFO">📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Agenda', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'Google\xa0Actualités', 'Téléphone', 'Play\xa0Store', 'Prime Video', 'Paramètres', 'SMS']
+📌 First Home Page détectée : ['Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Agenda', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'Google\xa0Actualités', 'Téléphone', 'Play\xa0Store', 'Prime Video', 'Paramètres', 'SMS']
+
+📌 Liste des applications détectées : ['Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Agenda', 'Crunchyroll', 'Google Assistant', 'Home Assistant', 'Local Media Player', 'Maps', 'Google\xa0Actualités', 'Téléphone', 'Play\xa0Store', 'Prime Video', 'Paramètres', 'SMS']
+✅ Retour à la first home page !</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-04-14T16:34:37.666016" elapsed="26.286883"/>
+</kw>
+<doc>Ce test vérifie si le bouton "Home" fonctionne correctement en revenant à la page d'accueil de l'appareil.</doc>
+<status status="PASS" start="2025-04-14T16:34:27.527125" elapsed="36.425774"/>
+</test>
+<test id="s1-t2" name="Test Ouvrir YouTube App" line="26">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-14T16:35:05.954266" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-14T16:35:03.953899" elapsed="2.000367"/>
+</kw>
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-04-14T16:35:05.954791" level="FAIL">Variable '${driver}' not found.</msg>
+<arg>${driver}</arg>
+<status status="FAIL" start="2025-04-14T16:35:05.954266" elapsed="0.000525">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>YouTube</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:05.954791" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>L'activité YouTube n'est pas trouvée.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:05.954791" elapsed="0.000000"/>
+</kw>
+<kw name="Print Activity2" owner="Integration">
+<var>${Activity}</var>
+<arg>${driver}</arg>
+<doc>Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:05.954791" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:05.955782" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${Activity}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:05.955782" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${is_element_present}</var>
+<arg>${driver}</arg>
+<arg>com.google.android.apps.automotive.youtube:id/decor_content_parent</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:05.955782" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_element_present}</arg>
+<arg>L'élément YouTube n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:05.955782" elapsed="0.000000"/>
+</kw>
+<doc>Ce test vérifie si l'application YouTube peut être ouverte et si son activité est correctement lancée sur l'appareil Android.</doc>
+<status status="FAIL" start="2025-04-14T16:35:03.952899" elapsed="2.002883">Variable '${driver}' not found.</status>
+</test>
+<test id="s1-t3" name="Test Modifier Languages" line="38">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-14T16:35:06.046930" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-14T16:35:05.955782" elapsed="0.091148"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.047930" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.047930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.047930" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.047930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.047930" level="INFO">${Langue1} = Langues et saisie</msg>
+<var>${Langue1}</var>
+<arg>Langues et saisie</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.047930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.047930" level="INFO">${Langue2} = Langues</msg>
+<var>${Langue2}</var>
+<arg>Langues</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.047930" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-14T16:35:06.047930" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.048930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.048930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue1}</var>
+<arg>Languages &amp; input</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.048930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue2}</var>
+<arg>Languages</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.048930" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.048930" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-04-14T16:35:06.046930" elapsed="0.002000"/>
+</if>
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-04-14T16:35:06.048930" level="FAIL">Variable '${driver}' not found.</msg>
+<arg>${driver}</arg>
+<status status="FAIL" start="2025-04-14T16:35:06.048930" elapsed="0.000000">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.048930" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>English</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>English (United States)</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.049930" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>en-US</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue1}</var>
+<arg>Langues et saisie</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue2}</var>
+<arg>Langues</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue1}</var>
+<arg>Languages &amp; input</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue2}</var>
+<arg>Languages</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.001000"/>
+</branch>
+<status status="NOT RUN" start="2025-04-14T16:35:06.050929" elapsed="0.001000"/>
+</if>
+<kw name="Revenir A La Home Page" owner="Integration">
+<arg>${driver}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Français</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Français (France)</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.051929" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.052929" elapsed="0.000000"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>fr-FR</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.052929" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.052929" elapsed="0.000000"/>
+</kw>
+<doc>Ce test vérifie si la modification de la langue du système fonctionne correctement sur l'appareil, en fonction de la langue actuelle de l'appareil.</doc>
+<status status="FAIL" start="2025-04-14T16:35:05.955782" elapsed="0.097147">Variable '${driver}' not found.</status>
+</test>
+<test id="s1-t4" name="Test Notification Réception" line="96">
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-04-14T16:35:06.053930" level="FAIL">Variable '${driver}' not found.</msg>
+<arg>${driver}</arg>
+<arg>automotive-Notification_Test.apk</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="FAIL" start="2025-04-14T16:35:06.053930" elapsed="0.000000">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000000"/>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000999"/>
+</branch>
+<status status="NOT RUN" start="2025-04-14T16:35:06.053930" elapsed="0.000999"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Noti}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Activer Notification Si Desactive" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>ENVOYER NOTIFICATION</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Afficher Notification" owner="Integration">
+<arg>${driver}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>com.android.systemui:id/notifications</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Notification n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.054929" elapsed="0.000000"/>
+</kw>
+<doc>Ce test vérifie la réception d'une notification après l'activation des paramètres nécessaires et l'envoi de la notification depuis une application tierce.</doc>
+<status status="FAIL" start="2025-04-14T16:35:06.052929" elapsed="0.003000">Variable '${driver}' not found.</status>
+</test>
+<test id="s1-t5" name="Test Notification Supprimer" line="131">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-14T16:35:06.150931" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-14T16:35:06.055929" elapsed="0.095002"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.150931" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.150931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.150931" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.150931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.150931" level="INFO">${Langue1} = Langues et saisie</msg>
+<var>${Langue1}</var>
+<arg>Langues et saisie</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.150931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.150931" level="INFO">${Langue2} = Langues</msg>
+<var>${Langue2}</var>
+<arg>Langues</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.150931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.151929" level="INFO">${Btn_clear} = Tout effacer</msg>
+<var>${Btn_clear}</var>
+<arg>Tout effacer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.150931" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2025-04-14T16:35:06.150931" elapsed="0.000998"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.151929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.151929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Langue2}</var>
+<arg>Languages</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.151929" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Btn_clear}</var>
+<arg>Clear all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.151929" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.151929" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-04-14T16:35:06.150931" elapsed="0.000998"/>
+</if>
+<kw name="Afficher Notification" owner="Integration">
+<msg time="2025-04-14T16:35:06.151929" level="FAIL">Variable '${driver}' not found.</msg>
+<arg>${driver}</arg>
+<status status="FAIL" start="2025-04-14T16:35:06.151929" elapsed="0.000000">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.151929" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${VerfierNotif}</arg>
+<arg>La notification n'est pas affichée.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Btn_clear}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${VerfierNotif}' == 'False'</arg>
+<arg>Log</arg>
+<arg>La notification a été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${VerfierNotif}' == 'True'</arg>
+<arg>Fail</arg>
+<arg>La notification n'a pas été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.152928" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-14T16:35:06.055929" elapsed="0.096999">Variable '${driver}' not found.</status>
+</test>
+<test id="s1-t6" name="Test Disable Notification" line="168">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-14T16:35:06.233457" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-14T16:35:06.152928" elapsed="0.080529"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.233457" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.233457" elapsed="0.000992"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.234449" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.234449" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.234449" level="INFO">${Noti} = Notifications</msg>
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.234449" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-14T16:35:06.233457" elapsed="0.000992"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.234449" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.234449" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.234449" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.234449" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-04-14T16:35:06.233457" elapsed="0.000992"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-14T16:35:06.235450" level="FAIL">Variable '${driver}' not found.</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="FAIL" start="2025-04-14T16:35:06.234449" elapsed="0.001001">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235450" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Noti}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Desactive Notification Si Activer" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>ENVOYER NOTIFICATION</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Afficher Notification" owner="Integration">
+<arg>${driver}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${VerfierNotif}' == 'True'</arg>
+<arg>Fail</arg>
+<arg>La notification a été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${VerfierNotif}' == 'False'</arg>
+<arg>Log</arg>
+<arg>La notification n'a pas été supprimée correctement.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.235979" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-14T16:35:06.152928" elapsed="0.083051">Variable '${driver}' not found.</status>
+</test>
+<test id="s1-t7" name="Test Modifier Manuellement Date" line="212">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-14T16:35:06.316970" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-14T16:35:06.236972" elapsed="0.079998"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.317972" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.317972" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.317972" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.317972" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.317972" level="INFO">${Date} = Date et heure</msg>
+<var>${Date}</var>
+<arg>Date et heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.317972" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.317972" level="INFO">${Btn_Heure} = Définir l'heure</msg>
+<var>${Btn_Heure}</var>
+<arg>Définir l'heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.317972" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-14T16:35:06.316970" elapsed="0.001002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.317972" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.317972" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Date}</var>
+<arg>Date &amp; time</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.318971" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Btn_Heure}</var>
+<arg>Définir l'heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.318971" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.317972" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-04-14T16:35:06.316970" elapsed="0.002001"/>
+</if>
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-04-14T16:35:06.318971" level="FAIL">Variable '${driver}' not found.</msg>
+<arg>${driver}</arg>
+<status status="FAIL" start="2025-04-14T16:35:06.318971" elapsed="0.000000">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.318971" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.318971" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.318971" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.318971" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.318971" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Date}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Btn_Heure}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Compose Time" owner="Integration">
+<var>${heure_act}</var>
+<arg>${driver}</arg>
+<doc>Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
+:param driver: Instance de WebDriver Appium.
+:return: L'heure composée sous forme de chaîne (HH:MM).</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${heure_act}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Heure Aleatoire" owner="Integration">
+<var>${random_heure}</var>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${random_heure}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Change Date" owner="Integration">
+<arg>${driver}</arg>
+<arg>${random_heure}</arg>
+<doc>Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
+:param driver: Instance de WebDriver Appium.
+:return: L'heure composée sous forme de chaîne (HH:MM).</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<arg>${driver}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${date_ini}</arg>
+<arg>${random_heure}</arg>
+<arg>La date n'a pas été modifiée !</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.319971" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-14T16:35:06.236972" elapsed="0.082999">Variable '${driver}' not found.</status>
+</test>
+<test id="s1-t8" name="Test Modifier Synchronisation Automatique Date" line="258">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-14T16:35:06.444073" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-14T16:35:06.320970" elapsed="0.123103"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.444073" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.444073" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.445077" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.444073" elapsed="0.001004"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.445077" level="INFO">${Date} = Date et heure</msg>
+<var>${Date}</var>
+<arg>Date et heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.445077" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-14T16:35:06.445077" level="INFO">${Btn_Heure} = Définir l'heure</msg>
+<var>${Btn_Heure}</var>
+<arg>Définir l'heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-14T16:35:06.445077" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-14T16:35:06.444073" elapsed="0.001004"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.445077" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.445077" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Date}</var>
+<arg>Date &amp; time</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.445077" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Btn_Heure}</var>
+<arg>Définir l'heure</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.445077" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:35:06.445077" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-04-14T16:35:06.444073" elapsed="0.001004"/>
+</if>
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-04-14T16:35:06.446076" level="FAIL">Variable '${driver}' not found.</msg>
+<arg>${driver}</arg>
+<status status="FAIL" start="2025-04-14T16:35:06.445077" elapsed="0.000999">Variable '${driver}' not found.</status>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.446076" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Date}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Btn_Heure}</arg>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Compose Time" owner="Integration">
+<var>${heure_act}</var>
+<arg>${driver}</arg>
+<doc>Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
+:param driver: Instance de WebDriver Appium.
+:return: L'heure composée sous forme de chaîne (HH:MM).</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${heure_act}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Heure Aleatoire" owner="Integration">
+<var>${random_heure}</var>
+<status status="NOT RUN" start="2025-04-14T16:35:06.447076" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${random_heure}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.448075" elapsed="0.000000"/>
+</kw>
+<kw name="Change Date" owner="Integration">
+<arg>${driver}</arg>
+<arg>${random_heure}</arg>
+<doc>Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
+:param driver: Instance de WebDriver Appium.
+:return: L'heure composée sous forme de chaîne (HH:MM).</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.448075" elapsed="0.000000"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<arg>${driver}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.448075" elapsed="0.000000"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.448075" elapsed="0.000753"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${date_ini}</arg>
+<arg>${random_heure}</arg>
+<arg>La date n'a pas été modifiée !</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-04-14T16:35:06.449083" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-14T16:35:06.319971" elapsed="0.129112">Variable '${driver}' not found.</status>
+</test>
+<doc>Ce fichier contient des tests pour vérifier l'activation, la désactivation et la gestion des notifications, la modification de la langue, la synchronisation de l'heure, etc. sur un appareil Android. Les tests prennent en charge les interfaces en français et en anglais.</doc>
+<status status="FAIL" start="2025-04-14T16:34:27.202347" elapsed="39.246736"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="7" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteDeBase" id="s1" pass="1" fail="7" skip="0">FonctionnaliteDeBase</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

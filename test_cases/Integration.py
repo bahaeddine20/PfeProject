@@ -1145,18 +1145,37 @@ def install_apk(driver, apk_path):
         return False
 
 
+import subprocess
+
+
 def is_app_installed(driver, package_name):
     """
-    Vérifie si une application est installée sur l'appareil via ADB.
+    Vérifie de manière fiable si une application est installée sur l'appareil via ADB.
+    Utilise 'pm path' pour s'assurer que le package est vraiment présent.
+
+    Args:
+        driver: Instance du driver Appium.
+        package_name (str): Nom du package à vérifier.
+
+    Returns:
+        bool: True si le package est installé (présence de l'APK), False sinon.
     """
     device_id = driver.capabilities.get("deviceName")
     if not device_id:
         raise ValueError("Impossible de récupérer l'ID du device depuis le driver.")
 
-    result = subprocess.run(["adb", "-s", device_id, "shell", "pm", "list", "packages", package_name],
-                            capture_output=True, text=True)
+    try:
+        result = subprocess.run(
+            ["adb", "-s", device_id, "shell", "pm", "path", package_name],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        return bool(result.stdout.strip())
 
-    return package_name in result.stdout
+    except subprocess.CalledProcessError:
+        # La commande échoue si le package n'existe pas
+        return False
 
 
 def get_device_datetime(driver):
@@ -1858,8 +1877,6 @@ def verify_notification_state(driver: webdriver.Remote, expected_state: bool) ->
         return False
 
 
-
-
 @retry_on_failure()
 def verify_application_state(driver: webdriver.Remote, package_name: str, expected_state: bool) -> bool:
     """Vérifie l'état d'une application et le compare avec l'état attendu."""
@@ -1910,3 +1927,166 @@ def verify_location_state(driver: webdriver.Remote, expected_state: bool) -> boo
     except Exception as e:
         logger.error(f"Erreur lors de la vérification de l'état de la localisation: {str(e)}")
         return False
+
+
+@retry_on_failure()
+def record_audio(driver: webdriver.Remote, duration_sec, output_file: str = 'emulator_audio.wav',
+                 sample_rate: int = 44100) -> bool:
+    """
+    Enregistre l'audio du système via l'API Flask.
+
+    Args:
+        driver: Instance Appium WebDriver
+        duration_sec: Durée de l'enregistrement en secondes (défaut: 10)
+        output_file: Nom du fichier de sortie (défaut: 'emulator_audio.wav')
+        sample_rate: Taux d'échantillonnage (défaut: 44100 Hz)
+
+    Returns:
+        bool: True si l'enregistrement a réussi, False sinon
+    """
+    try:
+        payload = {
+            "duration_sec": duration_sec,
+            "output_file": output_file,
+            "sample_rate": sample_rate
+        }
+
+        response = requests.post(url_host + "/record_audio", json=payload)
+
+        if response.status_code == 200:
+            logger.info(f"✅ Enregistrement audio réussi : {response.json()['message']}")
+            return True
+        else:
+            logger.error(f"❌ Échec de l'enregistrement audio : {response.text}")
+            return False
+
+    except requests.RequestException as e:
+        logger.error(f"❌ Erreur lors de la requête d'enregistrement audio : {str(e)}")
+        return False
+    except Exception as e:
+        logger.error(f"❌ Erreur inattendue lors de l'enregistrement audio : {str(e)}")
+        return False
+
+
+@retry_on_failure()
+def play_audio(driver: webdriver.Remote, audio_file: str) -> bool:
+    """
+    Joue un fichier audio via l'API Flask.
+    """
+    try:
+        # Get all possible paths
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        possible_paths = [
+            os.path.join(base_dir, audio_file),
+            os.path.join(base_dir, "recordings", audio_file),
+            os.path.join(os.getcwd(), "test_cases", audio_file),
+            audio_file
+        ]
+
+        # Find the first valid path
+        file_path = None
+        for path in possible_paths:
+            if os.path.exists(path):
+                file_path = path
+                break
+
+        if not file_path:
+            logger.error(f"❌ Fichier audio non trouvé. Recherché dans: {possible_paths}")
+            return False
+
+        payload = {
+            "audio_file": os.path.basename(file_path),
+            "full_path": file_path
+        }
+
+        response = requests.post(url_host + "/play_audio", json=payload, timeout=30)
+
+        if response.status_code == 200:
+            logger.info(f"✅ Lecture audio réussie : {response.json()['message']}")
+            return True
+
+        logger.error(f"❌ Échec de la lecture audio : {response.status_code} - {response.text}")
+        return False
+
+    except requests.exceptions.RequestException as e:
+        logger.error(f"❌ Erreur réseau lors de la lecture audio : {str(e)}")
+        return False
+    except Exception as e:
+        logger.error(f"❌ Erreur inattendue lors de la lecture audio : {str(e)}")
+        return False
+
+
+def click_element_by_xpath_bounds(driver, xpath):
+    """
+    Trouve un élément par XPath et clique dessus en utilisant ses bounds.
+
+    :param driver: L'instance du WebDriver.
+    :param xpath: Le XPath de l'élément à cliquer.
+    :return: True si le clic a réussi, False sinon.
+    """
+    try:
+        # Rechercher l'élément par XPath
+        element = driver.find_element(By.XPATH, xpath)
+
+        # Obtenir les bounds de l'élément
+        bounds_str = element.get_attribute('bounds')
+        if not bounds_str:
+            print(f"Impossible de récupérer les bounds de l'élément: {xpath}")
+            return False
+
+        # Parser les bounds (format: "[x1,y1][x2,y2]")
+        bounds = bounds_str.replace('][', ',').replace('[', '').replace(']', '').split(',')
+        x1, y1, x2, y2 = map(int, bounds)
+
+        # Calculer le centre de l'élément
+        center_x = (x1 + x2) // 2
+        center_y = (y1 + y2) // 2
+
+        # Cliquer au centre de l'élément
+        driver.tap([(center_x, center_y)])
+        return True
+
+    except NoSuchElementException:
+        print(f"Élément non trouvé: {xpath}")
+        return False
+    except Exception as e:
+        print(f"Erreur lors du clic sur l'élément: {str(e)}")
+        return False
+
+import os
+
+
+def get_audio_duration(driver: webdriver.Remote, audio_file: str) -> float:
+    """
+    Obtient la durée d'un fichier audio en secondes.
+    """
+    try:
+        import soundfile as sf
+
+        # Search in multiple possible locations
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        possible_paths = [
+            os.path.join(base_dir, audio_file),
+            os.path.join(base_dir, "recordings", audio_file),
+            os.path.join(os.getcwd(), "test_cases", audio_file),
+            audio_file
+        ]
+
+        file_path = None
+        for path in possible_paths:
+            if os.path.exists(path):
+                file_path = path
+                break
+
+        if not file_path:
+            logger.error(f"❌ Fichier audio non trouvé. Recherché dans: {possible_paths}")
+            return 0.0
+
+        info = sf.info(file_path)
+        duration = info.duration
+        logger.info(f"✅ Durée du fichier audio {file_path}: {duration:.2f} secondes")
+        return duration
+
+    except Exception as e:
+        logger.error(f"❌ Erreur lors de la lecture de la durée du fichier audio : {str(e)}")
+        return 0.0

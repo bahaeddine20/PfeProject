@@ -1,0 +1,1609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-05-12T13:13:17.097562" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="C:\Users\bahae\Documents\PfeProject\test_cases\InstallationApplications.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-05-12T13:13:27.744620" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="ed241b06-be2a-4114-897b-6057f37bb81b")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-05-12T13:13:20.107990" elapsed="7.636630"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:13:27.744620" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="ed241b06-be2a-4114-897b-6057f37bb81b")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-12T13:13:27.744620" elapsed="0.000000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-05-12T13:13:27.808621" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-05-12T13:13:27.745618" elapsed="0.063003"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-05-12T13:13:27.808621" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-05-12T13:13:27.808621" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:13:27.809622" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-12T13:13:27.808621" elapsed="0.001001"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-05-12T13:13:27.744620" elapsed="0.065002"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-05-12T13:13:20.107990" elapsed="7.701632"/>
+</kw>
+<test id="s1-t1" name="Test Install Apk" line="198">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:13:27.810623" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T13:13:27.810623" elapsed="0.000995"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:13:27.811618" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T13:13:27.811618" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-05-12T13:14:10.214715" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+3333333333333333333
+1090 209 1331 247</msg>
+<msg time="2025-05-12T13:14:10.214715" level="INFO">${is_visible} = True</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-05-12T13:13:27.812620" elapsed="42.402095"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T13:14:30.241440" level="INFO">📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+📌 First Home Page détectée : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T13:14:30.242439" level="INFO">${result} = True</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T13:14:10.216712" elapsed="20.025727"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:14:30.743091" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:14:30.242439" elapsed="0.500652"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:14:30.744091" elapsed="0.041130"/>
+</kw>
+<msg time="2025-05-12T13:14:30.785221" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:14:30.744091" elapsed="0.041130"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:14:30.785221" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:14:30.785221" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:14:30.785221" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:14:30.785221" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:14:30.744091" elapsed="0.041130"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:14:30.743091" elapsed="0.042130"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:14:30.785221" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:14:30.786223" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:14:30.743091" elapsed="0.043132"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:14:30.786223" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:14:34.587186" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+✅ 'Applis' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T13:14:30.786223" elapsed="3.800963"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:14:35.087452" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:14:34.587186" elapsed="0.500266"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:14:35.088454" elapsed="0.663706"/>
+</kw>
+<msg time="2025-05-12T13:14:35.752160" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:14:35.088454" elapsed="0.663706"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:14:35.753158" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:14:35.753158" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:14:35.753158" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:14:35.753158" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:14:35.088454" elapsed="0.664704"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:14:35.087452" elapsed="0.665706"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:14:35.753158" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:14:35.753158" level="INFO">${view_all_exists} = True</msg>
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:14:35.087452" elapsed="0.665706"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:14:35.753158" elapsed="0.000999"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-05-12T13:14:55.116246" level="INFO">📌 Liste des applications détectées : ['Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Ouvertes récemment', 'Maps', 'TestNotificationapk', 'YouTube', 'Voir les 21\xa0applis']
+📌 First Home Page détectée : ['Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Ouvertes récemment', 'Maps', 'TestNotificationapk', 'YouTube', 'Voir les 21\xa0applis']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'TestNotificationapk', 'YouTube', 'Voir les 21\xa0applis']
+🔄 Swipe #2 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'TestNotificationapk', 'YouTube', 'Voir les 21\xa0applis']
+✅ Retour à la first home page !
+First Home Page détectée : ['Il y a 2 minutes', 'Ouvertes récemment', 'Maps', 'TestNotificationapk', 'Il y a 22 secondes', 'YouTube', 'Voir les 21\xa0applis']
+ Voir les trouvé ! Appui sur le texte contenant 'Voir les 21 applis'.</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:14:35.754157" elapsed="19.362089"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:14:55.618112" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:14:55.116246" elapsed="0.501866"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:15:10.168032" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+✅ 'TestNotificationapk' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:14:55.618112" elapsed="14.549920"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:15:10.670082" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:15:10.168032" elapsed="0.502050"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="PASS" start="2025-05-12T13:15:10.670082" elapsed="0.719937"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:15:11.890489" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:15:11.390019" elapsed="0.500470"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-05-12T13:15:12.516435" level="INFO">Clic effectué sur l'élément avec le texte: OK</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="PASS" start="2025-05-12T13:15:11.890489" elapsed="0.625946"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:15:13.017365" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:15:12.516435" elapsed="0.500930"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="PASS" start="2025-05-12T13:14:10.215712" elapsed="62.801653"/>
+</kw>
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-05-12T13:14:10.215712" elapsed="62.801653"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:15:13.518015" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:15:13.017365" elapsed="0.500650"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="PASS" start="2025-05-12T13:13:27.812620" elapsed="105.705395"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-05-12T13:15:15.180103" level="INFO">Installation réussie : Performing Streamed Install
+Success</msg>
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-05-12T13:15:13.518015" elapsed="1.662088"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:15:15.680374" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:15:15.180103" elapsed="0.500271"/>
+</kw>
+<kw name="Verify App Installation">
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-05-12T13:15:16.198852" level="INFO">${is_installed} = True</msg>
+<var>${is_installed}</var>
+<arg>${driver}</arg>
+<arg>${package_name}</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="PASS" start="2025-05-12T13:15:15.680374" elapsed="0.518478"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<msg time="2025-05-12T13:15:38.885973" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+3333333333333333333
+1090 209 1331 247</msg>
+<msg time="2025-05-12T13:15:38.885973" level="INFO">${is_visible} = True</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-05-12T13:15:16.199850" elapsed="22.686123"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.885973" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.885973" elapsed="0.001001"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.886974" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.886974" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="PASS" start="2025-05-12T13:15:15.680374" elapsed="23.206600"/>
+</kw>
+<doc>Executes the APK installation test</doc>
+<status status="PASS" start="2025-05-12T13:13:27.812620" elapsed="131.074354"/>
+</kw>
+<msg time="2025-05-12T13:15:38.886974" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:13:27.811618" elapsed="131.075356"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T13:15:38.887975" level="INFO">Test Test Install Apk réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.886974" elapsed="0.001001"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-05-12T13:15:38.887975" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.887975" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:15:38.886974" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-05-12T13:15:38.887975" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:15:38.887975" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:15:38.887975" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:15:38.887975" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-05-12T13:15:38.887975" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-05-12T13:15:38.887975" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:15:38.886974" elapsed="0.001001"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-05-12T13:13:27.811618" elapsed="131.076357"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:13:27.811618" elapsed="131.076357"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-05-12T13:15:38.888976" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:15:38.887975" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:15:38.887975" elapsed="0.001001"/>
+</if>
+<arg>Execute Install Apk Test</arg>
+<arg>Test Install Apk</arg>
+<status status="PASS" start="2025-05-12T13:13:27.810623" elapsed="131.078353"/>
+</kw>
+<doc>Tests APK installation process
+- Checks pre-installation state
+- Installs the APK
+- Verifies installation in system and UI</doc>
+<tag>installation</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-05-12T13:13:27.809622" elapsed="131.079354"/>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="206">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:15:38.889976" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.889976" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-12T13:15:38.889976" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.889976" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Uninstall Application Test">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T13:16:00.291674" level="INFO">📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+📌 First Home Page détectée : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'TestNotificationapk']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T13:16:00.291674" level="INFO">${result} = True</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T13:15:38.890974" elapsed="21.400700"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:16:00.792188" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:16:00.291674" elapsed="0.500514"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:16:00.794189" elapsed="0.801016"/>
+</kw>
+<msg time="2025-05-12T13:16:01.595205" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:16:00.793191" elapsed="0.802014"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:16:01.595205" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:16:01.595205" elapsed="0.001024"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:16:01.595205" elapsed="0.001024"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:16:01.596229" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:16:00.793191" elapsed="0.803038"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:16:00.793191" elapsed="0.803038"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:16:01.596229" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:16:01.596229" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:16:00.792188" elapsed="0.804041"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:16:01.596229" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:16:03.507920" level="INFO">(0, 76, 550, 696)
+✅ 'Applis' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T13:16:01.596229" elapsed="1.911691"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:16:04.008718" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:16:03.507920" elapsed="0.500798"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:16:04.009721" elapsed="0.078630"/>
+</kw>
+<msg time="2025-05-12T13:16:04.089353" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:16:04.009721" elapsed="0.079632"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:16:04.089353" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:16:04.089353" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:16:04.089353" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:16:04.089353" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:16:04.008718" elapsed="0.080635"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:16:04.008718" elapsed="0.080635"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:16:04.089353" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:16:04.089353" level="INFO">${view_all_exists} = True</msg>
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:16:04.008718" elapsed="0.080635"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:16:04.089353" elapsed="0.001001"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-05-12T13:16:26.305880" level="INFO">📌 Liste des applications détectées : ['Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 21\xa0applis']
+📌 First Home Page détectée : ['Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 21\xa0applis']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 21\xa0applis']
+🔄 Swipe #2 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 21\xa0applis']
+✅ Retour à la first home page !
+First Home Page détectée : ['Ouvertes récemment', 'Maps', 'Voir les 21\xa0applis', 'Téléphone', 'Il y a 20 secondes', 'YouTube', 'Il y a 4 minutes']
+ Voir les trouvé ! Appui sur le texte contenant 'Voir les 21 applis'.</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:16:04.090354" elapsed="22.215526"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:16:26.807178" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:16:26.306881" elapsed="0.500297"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:16:40.950091" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+✅ 'TestNotificationapk' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:16:26.807178" elapsed="14.142913"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:16:41.452122" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:16:40.951090" elapsed="0.501032"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="PASS" start="2025-05-12T13:16:41.452122" elapsed="1.005784"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:16:42.959065" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:16:42.458905" elapsed="0.500160"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-05-12T13:16:43.529506" level="INFO">Clic effectué sur l'élément avec le texte: OK</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="PASS" start="2025-05-12T13:16:42.959065" elapsed="0.570441"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:16:44.030316" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:16:43.529506" elapsed="0.500810"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="PASS" start="2025-05-12T13:15:38.890974" elapsed="65.139342"/>
+</kw>
+<kw name="Verify App Uninstallation">
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-05-12T13:16:44.169938" level="INFO">${is_installed} = True</msg>
+<var>${is_installed}</var>
+<arg>${driver}</arg>
+<arg>${package_name}</arg>
+<doc>Vérifie si une application est installée sur l'appareil via ADB.</doc>
+<status status="PASS" start="2025-05-12T13:16:44.030316" elapsed="0.139622"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<msg time="2025-05-12T13:17:09.291728" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-05-12T13:17:09.292731" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-05-12T13:16:44.169938" elapsed="25.122793"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be True" owner="BuiltIn">
+<msg time="2025-05-12T13:17:09.293729" level="FAIL">Application is still installed via ADB</msg>
+<arg>${is_installed}</arg>
+<arg>Application is still installed via ADB</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="FAIL" start="2025-05-12T13:17:09.292731" elapsed="0.000998">Application is still installed via ADB</status>
+</kw>
+<arg>Should Not Be True</arg>
+<arg>${is_installed}</arg>
+<arg>Application is still installed via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-05-12T13:17:09.292731" elapsed="0.000998">Application is still installed via ADB</status>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Application is still visible in UI</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-05-12T13:17:09.293729" elapsed="0.000000"/>
+</kw>
+<arg>Should Not Be True</arg>
+<arg>${is_visible}</arg>
+<arg>Application is still visible in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-05-12T13:17:09.293729" elapsed="0.001001"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is completely uninstalled</doc>
+<status status="FAIL" start="2025-05-12T13:16:44.030316" elapsed="25.264414">Application is still installed via ADB</status>
+</kw>
+<doc>Executes the application uninstallation test</doc>
+<status status="FAIL" start="2025-05-12T13:15:38.890974" elapsed="90.403756">Application is still installed via ADB</status>
+</kw>
+<msg time="2025-05-12T13:17:09.294730" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:15:38.890974" elapsed="90.403756"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:17:09.294730" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-05-12T13:17:09.294730" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:17:09.294730" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-12T13:17:09.295728" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-12T13:17:09.295728" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T13:17:09.295728" level="INFO">Test Test Uninstall Application échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T13:17:09.295728" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:17:11.295990" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:17:09.295728" elapsed="2.000262"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:17:09.295728" elapsed="2.000262"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:17:09.295728" elapsed="2.000262"/>
+</if>
+<status status="PASS" start="2025-05-12T13:17:09.294730" elapsed="2.001260"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:17:09.294730" elapsed="2.001260"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-05-12T13:15:38.889976" elapsed="92.406014"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Uninstall Application Test">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T13:17:27.707822" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T13:17:27.707822" level="INFO">${result} = True</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T13:17:11.296992" elapsed="16.410830"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:17:28.209326" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:17:27.707822" elapsed="0.501504"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:17:28.210328" elapsed="0.597518"/>
+</kw>
+<msg time="2025-05-12T13:17:28.807846" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:17:28.210328" elapsed="0.597518"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:17:28.807846" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:17:28.807846" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:17:28.807846" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:17:28.807846" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:17:28.210328" elapsed="0.597518"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:17:28.210328" elapsed="0.597518"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:17:28.808865" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:17:28.808865" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:17:28.209326" elapsed="0.599539"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:17:28.808865" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:17:30.404588" level="INFO">(0, 76, 550, 696)
+✅ 'Applis' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T13:17:28.808865" elapsed="1.595723"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:17:30.905828" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:17:30.404588" elapsed="0.501240"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:17:30.906827" elapsed="0.037002"/>
+</kw>
+<msg time="2025-05-12T13:17:30.943829" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:17:30.906827" elapsed="0.037002"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:17:30.943829" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:17:30.943829" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:17:30.943829" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:17:30.943829" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:17:30.906827" elapsed="0.037002"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:17:30.905828" elapsed="0.038001"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:17:30.943829" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:17:30.944829" level="INFO">${view_all_exists} = True</msg>
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:17:30.905828" elapsed="0.039001"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:17:30.944829" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-05-12T13:17:49.018149" level="INFO">📌 Liste des applications détectées : ['Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+📌 First Home Page détectée : ['Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+🔄 Swipe #2 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+✅ Retour à la first home page !
+First Home Page détectée : ['Ouvertes récemment', 'Maps', 'Téléphone', 'Voir les 20\xa0applis', 'Il y a 14 secondes', 'YouTube', 'Il y a 5 minutes']
+ Voir les trouvé ! Appui sur le texte contenant 'Voir les 20 applis'.</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:17:30.944829" elapsed="18.073320"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:17:49.519394" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:17:49.018149" elapsed="0.501245"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:18:05.253635" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'TestNotificationapk' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:17:49.519394" elapsed="15.735242"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:18:05.755231" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:18:05.254636" elapsed="0.500595"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-05-12T13:18:26.305520" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="FAIL" start="2025-05-12T13:18:05.755231" elapsed="20.554287">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:18:26.309518" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="NOT RUN" start="2025-05-12T13:18:26.309518" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:18:26.309518" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="FAIL" start="2025-05-12T13:17:11.296992" elapsed="75.012526">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Verify App Uninstallation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is completely uninstalled</doc>
+<status status="NOT RUN" start="2025-05-12T13:18:26.310518" elapsed="0.000000"/>
+</kw>
+<doc>Executes the application uninstallation test</doc>
+<status status="FAIL" start="2025-05-12T13:17:11.295990" elapsed="75.014528">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-05-12T13:18:26.310518" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:17:11.295990" elapsed="75.014528"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:18:26.310518" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-05-12T13:18:26.310518" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:18:26.310518" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-12T13:18:26.311518" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-12T13:18:26.311518" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T13:18:26.311518" level="INFO">Test Test Uninstall Application échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T13:18:26.311518" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:18:28.313126" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:18:26.311518" elapsed="2.001608"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:18:26.311518" elapsed="2.001608"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:18:26.311518" elapsed="2.001608"/>
+</if>
+<status status="PASS" start="2025-05-12T13:18:26.310518" elapsed="2.002608"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:18:26.310518" elapsed="2.003130"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-05-12T13:17:11.295990" elapsed="77.017658"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Uninstall Application Test">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-05-12T13:18:42.787371" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-05-12T13:18:42.787371" level="INFO">${result} = True</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-05-12T13:18:28.314653" elapsed="14.472718"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:18:43.288470" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:18:42.788370" elapsed="0.500100"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:18:43.289469" elapsed="0.548043"/>
+</kw>
+<msg time="2025-05-12T13:18:43.837512" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:18:43.289469" elapsed="0.548043"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:18:43.837512" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:18:43.837512" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:18:43.837512" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:18:43.838511" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:18:43.289469" elapsed="0.549042"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:18:43.289469" elapsed="0.549042"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:18:43.838511" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:18:43.838511" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:18:43.288470" elapsed="0.550041"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:18:43.838511" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:18:45.713953" level="INFO">(0, 76, 550, 696)
+✅ 'Applis' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-05-12T13:18:43.839513" elapsed="1.875437"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:18:46.215053" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:18:45.714950" elapsed="0.500103"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-05-12T13:18:46.216056" elapsed="0.091565"/>
+</kw>
+<msg time="2025-05-12T13:18:46.307621" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:18:46.216056" elapsed="0.091565"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-05-12T13:18:46.307621" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-05-12T13:18:46.307621" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:18:46.307621" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:18:46.308635" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-05-12T13:18:46.216056" elapsed="0.092579"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:18:46.216056" elapsed="0.092579"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-05-12T13:18:46.308635" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-12T13:18:46.308635" level="INFO">${view_all_exists} = True</msg>
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-05-12T13:18:46.215053" elapsed="0.093582"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-05-12T13:18:46.308635" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-05-12T13:19:09.768913" level="INFO">📌 Liste des applications détectées : ['Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+📌 First Home Page détectée : ['Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+🔄 Swipe #2 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Ouvertes récemment', 'Maps', 'YouTube', 'Téléphone', 'Voir les 20\xa0applis']
+✅ Retour à la first home page !
+First Home Page détectée : ['Ouvertes récemment', 'Maps', 'Il y a 6 minutes', 'Téléphone', 'Voir les 20\xa0applis', 'Il y a 14 secondes', 'YouTube']
+ Voir les trouvé ! Appui sur le texte contenant 'Voir les 20 applis'.</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:18:46.308635" elapsed="23.460278"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:19:10.269623" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:19:09.768913" elapsed="0.500710"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-05-12T13:19:22.353322" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'TestNotificationapk' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-05-12T13:19:10.269623" elapsed="12.083699"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-12T13:19:22.854329" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-12T13:19:22.353322" elapsed="0.501007"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-05-12T13:19:42.907121" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="FAIL" start="2025-05-12T13:19:22.854329" elapsed="20.052792">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.908121" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="NOT RUN" start="2025-05-12T13:19:42.908121" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.908121" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="FAIL" start="2025-05-12T13:18:28.314653" elapsed="74.593468">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Verify App Uninstallation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is completely uninstalled</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.908121" elapsed="0.000000"/>
+</kw>
+<doc>Executes the application uninstallation test</doc>
+<status status="FAIL" start="2025-05-12T13:18:28.313648" elapsed="74.594473">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-05-12T13:19:42.908121" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:18:28.313648" elapsed="74.594473"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.909121" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.909121" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:19:42.909121" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-12T13:19:42.910123" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-12T13:19:42.909121" elapsed="0.001002"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.910123" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.910123" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:19:42.910123" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:19:42.910123" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-05-12T13:19:42.909121" elapsed="0.001002"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:19:42.909121" elapsed="0.001002"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-05-12T13:18:28.313648" elapsed="74.596475"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-05-12T13:15:38.889976" elapsed="244.020147"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-05-12T13:19:42.911123" level="FAIL">Le test Test Uninstall Application a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-05-12T13:19:42.910123" elapsed="0.001000">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-05-12T13:19:42.910123" elapsed="0.001000">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-05-12T13:19:42.910123" elapsed="0.001000">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Uninstall Application Test</arg>
+<arg>Test Uninstall Application</arg>
+<status status="FAIL" start="2025-05-12T13:15:38.889976" elapsed="244.021147">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</kw>
+<doc>Tests application uninstallation
+- Navigates through settings
+- Performs uninstallation
+- Verifies complete removal</doc>
+<tag>smoke</tag>
+<tag>uninstallation</tag>
+<status status="FAIL" start="2025-05-12T13:15:38.888976" elapsed="244.022147">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-05-12T13:19:42.913123" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-05-12T13:19:42.913123" elapsed="0.001999">No application is open</status>
+</kw>
+<msg time="2025-05-12T13:19:42.917124" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-05-12T13:19:42.917124" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-05-12T13:19:42.913123" elapsed="0.005000">No application is open</status>
+</kw>
+<msg time="2025-05-12T13:19:42.918123" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-05-12T13:19:42.912122" elapsed="0.006001"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.918123" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.918123" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:19:42.918123" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-12T13:19:42.918123" level="INFO">Le driver n'était pas actif</msg>
+<arg>Le driver n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-12T13:19:42.918123" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-12T13:19:42.918123" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:19:42.918123" elapsed="0.001001"/>
+</if>
+<status status="PASS" start="2025-05-12T13:19:42.912122" elapsed="0.007002"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-05-12T13:19:42.919124" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-05-12T13:19:42.919124" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-05-12T13:19:42.912122" elapsed="0.007002"/>
+</try>
+<doc>Cleans up and closes the test driver</doc>
+<status status="PASS" start="2025-05-12T13:19:42.912122" elapsed="0.007002"/>
+</kw>
+<doc>Tests for APK installation and uninstallation
+- Verifies APK installation via ADB
+- Checks application visibility in UI
+- Tests complete uninstallation flow</doc>
+<status status="FAIL" start="2025-05-12T13:13:17.099563" elapsed="385.819561"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">installation</stat>
+<stat pass="1" fail="1" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">uninstallation</stat>
+</tag>
+<suite>
+<stat name="InstallationApplications" id="s1" pass="1" fail="1" skip="0">InstallationApplications</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-12T13:19:42.917124" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>

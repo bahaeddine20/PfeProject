@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-15T13:50:42.837358" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteMaps" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteMaps.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-15T13:50:50.878448" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="16697abb-1169-4a52-bd60-99cd592612ab")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-04-15T13:50:43.117431" elapsed="7.761017"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-15T13:50:50.878448" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="16697abb-1169-4a52-bd60-99cd592612ab")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-15T13:50:50.878448" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-15T13:50:43.116432" elapsed="7.762016"/>
+</kw>
+<test id="s1-t1" name="Test GPS Location Functionality" line="29">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-04-15T13:50:50.917449" level="INFO">Position définie à Longitude: -74.0060, Latitude: 40.7128</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS sur l'émulateur ou l'appareil.</doc>
+<status status="PASS" start="2025-04-15T13:50:50.879449" elapsed="0.038000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T13:50:52.918830" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T13:50:50.918448" elapsed="2.000382"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-04-15T13:50:52.976400" level="INFO">${current_latitude} = 40.7128</msg>
+<msg time="2025-04-15T13:50:52.976400" level="INFO">${current_longitude} = -74.006</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-15T13:50:52.918830" elapsed="0.057570"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-15T13:50:52.977401" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-15T13:50:52.977401" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-15T13:50:52.977401" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-15T13:50:52.977401" elapsed="0.000000"/>
+</kw>
+<doc>Ce test définit la localisation GPS et vérifie qu'elle est correcte.</doc>
+<tag>gps</tag>
+<status status="PASS" start="2025-04-15T13:50:50.878448" elapsed="2.098953"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-04-15T13:50:52.978401" elapsed="0.242954"/>
+</kw>
+<status status="PASS" start="2025-04-15T13:50:52.977401" elapsed="0.243954"/>
+</kw>
+<status status="PASS" start="2025-04-15T13:50:42.839358" elapsed="10.381997"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">gps</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteMaps" id="s1" pass="1" fail="0" skip="0">FonctionnaliteMaps</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

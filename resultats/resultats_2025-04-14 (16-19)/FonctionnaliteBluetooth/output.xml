@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-14T16:20:01.957130" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteBluetooth" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteBluetooth.robot">
+<test id="s1-t1" name="Test Ouvrir Bluetooth" line="25">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-14T16:20:04.877145" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177D97F0&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:07.176103" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE17006300&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:09.451536" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DA570&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:11.725812" level="FAIL">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DAF90&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-04-14T16:20:02.447750" elapsed="9.283062">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DAF90&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.001000"/>
+</branch>
+<status status="NOT RUN" start="2025-04-14T16:20:11.730812" elapsed="0.001000"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Activer Bluetooth Si Desactive" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:11.731812" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.732813" elapsed="0.000000"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:11.732813" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne s'active pas (ui).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.732813" elapsed="0.000000"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:11.732813" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:11.732813" elapsed="0.000000"/>
+</kw>
+<doc>Ce test vérifie si le Bluetooth peut être activé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de activer Bluetooth et de vérifier son statut.</doc>
+<status status="FAIL" start="2025-04-14T16:20:02.445748" elapsed="9.287065">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DAF90&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</status>
+</test>
+<test id="s1-t2" name="Test Pairing Bluetooth" line="61">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-14T16:20:14.004197" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178C5460&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:16.292387" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178C57C0&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:18.584090" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178C5B20&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:20.868657" level="FAIL">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DB560&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-04-14T16:20:11.732813" elapsed="9.138845">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DB560&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.871658" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.871658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.871658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.871658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.871658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:20:20.871658" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:20:20.872658" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-04-14T16:20:20.871658" elapsed="0.001000"/>
+</if>
+<kw name="Setup Driver Mobile" owner="script_mobile">
+<var>${driver_mobile}</var>
+<arg>${Device_mobile}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.873658" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.874557" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:20.874557" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-14T16:20:11.732813" elapsed="9.141744">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DB560&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</status>
+</test>
+<test id="s1-t3" name="Test Fermer Bluetooth" line="119">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-14T16:20:23.155633" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CDC70&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:25.441837" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CDEB0&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:27.737349" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CE150&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:30.007276" level="FAIL">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CE480&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-04-14T16:20:20.874557" elapsed="9.135720">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CE480&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:30.010277" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.010277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.010277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:20:30.010277" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-14T16:20:30.011277" elapsed="0.001001"/>
+</branch>
+<status status="NOT RUN" start="2025-04-14T16:20:30.010277" elapsed="0.002001"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:30.012278" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.013277" elapsed="0.000000"/>
+</kw>
+<kw name="Desactive Bluetooth Si Activer" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:30.013277" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.013277" elapsed="0.000000"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:30.013277" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne desactive pas (ui).</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.013277" elapsed="0.000000"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-14T16:20:30.013277" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne desactive pas (via adb).</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-04-14T16:20:30.013277" elapsed="0.000000"/>
+</kw>
+<doc>Ce test vérifie si le Bluetooth peut être désactivé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de désactiver Bluetooth et de vérifier son statut.</doc>
+<status status="FAIL" start="2025-04-14T16:20:20.874557" elapsed="9.139718">MaxRetryError: HTTPConnectionPool(host='appium', port=4723): Max retries exceeded with url: /session (Caused by NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CE480&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)"))</status>
+</test>
+<doc>Ce fichier contient des tests d'activation et de désactivation du Bluetooth sur un appareil Android. Les tests vérifient que les paramètres Bluetooth sont accessibles et que les actions d'activation/désactivation fonctionnent correctement. Les tests prennent en charge les interfaces en français et en anglais.</doc>
+<status status="FAIL" start="2025-04-14T16:20:01.959129" elapsed="28.055146"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteBluetooth" id="s1" pass="0" fail="3" skip="0">FonctionnaliteBluetooth</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-04-14T16:20:04.877145" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177D97F0&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:07.176103" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE17006300&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:09.451536" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE177DA570&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:14.004197" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178C5460&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:16.292387" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178C57C0&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:18.584090" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178C5B20&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:23.155633" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CDC70&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:25.441837" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CDEB0&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+<msg time="2025-04-14T16:20:27.737349" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001AE178CE150&gt;: Failed to resolve 'appium' ([Errno 11001] getaddrinfo failed)")': /session</msg>
+</errors>
+</robot>

@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.9 on linux)" generated="2025-04-07T13:34:36.163538" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteBluetooth" source="/app/test_cases/FonctionnaliteBluetooth.robot">
+<test id="s1-t1" name="Test Ouvrir Bluetooth" line="25">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-07T13:34:39.453575" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76b7f80&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:42.566261" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a782f1a0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:45.686254" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e0530&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:48.806514" level="FAIL">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e1610&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-04-07T13:34:36.309914" elapsed="12.503389">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e1610&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813509" elapsed="0.000030"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813703" elapsed="0.000014"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813779" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813845" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813907" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813967" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814031" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813621" elapsed="0.000451"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814168" elapsed="0.000013"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814234" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814296" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814358" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814421" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814483" elapsed="0.000010"/>
+</kw>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814101" elapsed="0.000409"/>
+</branch>
+<status status="NOT RUN" start="2025-04-07T13:34:48.813597" elapsed="0.000928"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814583" elapsed="0.000012"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814648" elapsed="0.000014"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814715" elapsed="0.000011"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814782" elapsed="0.000010"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814843" elapsed="0.000010"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814904" elapsed="0.000011"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.814966" elapsed="0.000011"/>
+</kw>
+<kw name="Activer Bluetooth Si Desactive" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-07T13:34:48.815027" elapsed="0.000010"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.815104" elapsed="0.000014"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-07T13:34:48.815170" elapsed="0.000013"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne s'active pas (ui).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.815237" elapsed="0.000011"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-07T13:34:48.815663" elapsed="0.000031"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:34:48.815781" elapsed="0.000015"/>
+</kw>
+<doc>Ce test vérifie si le Bluetooth peut être activé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de activer Bluetooth et de vérifier son statut.</doc>
+<status status="FAIL" start="2025-04-07T13:34:36.308132" elapsed="12.507873">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e1610&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</status>
+</test>
+<test id="s1-t2" name="Test Pairing Bluetooth" line="61">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-07T13:34:51.926286" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e3620&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:55.046603" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e38c0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:58.176375" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e25d0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:35:01.286365" level="FAIL">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e3c20&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-04-07T13:34:48.816482" elapsed="12.472361">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e3c20&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289010" elapsed="0.000022"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289176" elapsed="0.000013"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289274" elapsed="0.000017"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289354" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289419" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289481" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289543" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289603" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289663" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289723" elapsed="0.000010"/>
+</kw>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289100" elapsed="0.000651"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289827" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289892" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289951" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290010" elapsed="0.000009"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290069" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290128" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290186" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290260" elapsed="0.000014"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290331" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289772" elapsed="0.000589"/>
+</branch>
+<status status="NOT RUN" start="2025-04-07T13:35:01.289080" elapsed="0.001295"/>
+</if>
+<kw name="Setup Driver Mobile" owner="script_mobile">
+<var>${driver_mobile}</var>
+<arg>${Device_mobile}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290430" elapsed="0.000011"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.290971" elapsed="0.000026"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291084" elapsed="0.000015"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291157" elapsed="0.000012"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291237" elapsed="0.000016"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291318" elapsed="0.000013"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291388" elapsed="0.000013"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291458" elapsed="0.000012"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291521" elapsed="0.000011"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291580" elapsed="0.000011"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291642" elapsed="0.000012"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291712" elapsed="0.000011"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291775" elapsed="0.000011"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291844" elapsed="0.000014"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291917" elapsed="0.000012"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.291992" elapsed="0.000012"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.292077" elapsed="0.000015"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:01.292169" elapsed="0.000015"/>
+</kw>
+<status status="FAIL" start="2025-04-07T13:34:48.816234" elapsed="12.476155">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e3c20&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</status>
+</test>
+<test id="s1-t3" name="Test Fermer Bluetooth" line="119">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-07T13:35:04.406263" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b6b40&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:35:07.526754" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b6db0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:35:10.657481" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b7110&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:35:13.767760" level="FAIL">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b74d0&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-04-07T13:35:01.293118" elapsed="12.477560">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b74d0&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</status>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:13.770912" elapsed="0.000028"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771105" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771175" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771237" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771297" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771356" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771415" elapsed="0.000009"/>
+</kw>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771021" elapsed="0.000421"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771512" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771582" elapsed="0.000015"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771857" elapsed="0.000020"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771936" elapsed="0.000011"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771997" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772056" elapsed="0.000010"/>
+</kw>
+<status status="NOT RUN" start="2025-04-07T13:35:13.771460" elapsed="0.000625"/>
+</branch>
+<status status="NOT RUN" start="2025-04-07T13:35:13.770993" elapsed="0.001109"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772163" elapsed="0.000012"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772228" elapsed="0.000010"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772291" elapsed="0.000010"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772354" elapsed="0.000009"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772413" elapsed="0.000010"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772471" elapsed="0.000011"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772539" elapsed="0.000014"/>
+</kw>
+<kw name="Desactive Bluetooth Si Activer" owner="Integration">
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772620" elapsed="0.000013"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772684" elapsed="0.000011"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772745" elapsed="0.000011"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne desactive pas (ui).</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772807" elapsed="0.000011"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772869" elapsed="0.000011"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne desactive pas (via adb).</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-04-07T13:35:13.772927" elapsed="0.000010"/>
+</kw>
+<doc>Ce test vérifie si le Bluetooth peut être désactivé sur l'appareil en accédant aux paramètres.  Il vérifie que l'élément Bluetooth est bien présent, puis tente de désactiver Bluetooth et de vérifier son statut.</doc>
+<status status="FAIL" start="2025-04-07T13:35:01.292624" elapsed="12.480481">MaxRetryError: HTTPConnectionPool(host='172.21.0.3', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b74d0&gt;: Failed to establish a new connection: [Errno 113] No route to host'))</status>
+</test>
+<doc>Ce fichier contient des tests d'activation et de désactivation du Bluetooth sur un appareil Android. Les tests vérifient que les paramètres Bluetooth sont accessibles et que les actions d'activation/désactivation fonctionnent correctement. Les tests prennent en charge les interfaces en français et en anglais.</doc>
+<status status="FAIL" start="2025-04-07T13:34:36.164976" elapsed="37.608521"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteBluetooth" id="s1" pass="0" fail="3" skip="0">FonctionnaliteBluetooth</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-04-07T13:34:39.453575" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76b7f80&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:42.566261" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a782f1a0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:45.686254" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e0530&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:51.926286" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e3620&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:55.046603" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e38c0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:34:58.176375" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a76e25d0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:35:04.406263" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b6b40&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:35:07.526754" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b6db0&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+<msg time="2025-04-07T13:35:10.657481" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f44a75b7110&gt;: Failed to establish a new connection: [Errno 113] No route to host')': /session</msg>
+</errors>
+</robot>

@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-04-16T11:23:01.807851" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteProfilsConducteurs" source="C:\Users\bahae\Desktop\PfeProject\test_cases\FonctionnaliteProfilsConducteurs.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-04-16T11:23:08.080320" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="8491fe08-f99c-46b4-8c93-052898706359")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-04-16T11:23:02.696991" elapsed="5.383329"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:08.080320" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="8491fe08-f99c-46b4-8c93-052898706359")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-16T11:23:08.080320" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-16T11:23:02.696991" elapsed="5.384328"/>
+</kw>
+<test id="s1-t1" name="Test Ajouter Utilisateur" line="29">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-16T11:23:08.122325" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-16T11:23:08.081319" elapsed="0.041006"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:08.122325" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:08.122325" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:08.122325" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Ajouter un profil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:08.122325" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:08.122325" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-16T11:23:08.122325" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:08.123321" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:08.123321" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:08.123321" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:08.123321" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:08.123321" level="INFO">${Profils} = Profils et comptes</msg>
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:08.123321" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:08.123321" level="INFO">${Ajouter} = Add Profile</msg>
+<var>${Ajouter}</var>
+<arg>Add Profile</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:08.123321" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:08.123321" level="INFO">${Ok} = OK</msg>
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:08.123321" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-16T11:23:08.122325" elapsed="0.000996"/>
+</branch>
+<status status="PASS" start="2025-04-16T11:23:08.122325" elapsed="0.000996"/>
+</if>
+<kw name="Get Android Users" owner="Integration">
+<msg time="2025-04-16T11:23:08.203919" level="INFO">${old_users} = [{'id': '0', 'name': 'Driver', 'status': 'running'}, {'id': '10', 'name': 'Driver', 'status': 'active'}, {'id': '17', 'name': 'Nouveau profil', 'status': 'inactive'}]</msg>
+<var>${old_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="PASS" start="2025-04-16T11:23:08.123321" elapsed="0.080598"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-16T11:23:24.449823" level="INFO">📌 Liste des applications détectées : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+📌 First Home Page détectée : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+
+📌 Liste des applications détectées : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+146 619 248 657</msg>
+<msg time="2025-04-16T11:23:24.449823" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-16T11:23:08.203919" elapsed="16.245904"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-16T11:23:25.450566" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-16T11:23:24.449823" elapsed="1.000743"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-16T11:23:25.502035" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-16T11:23:25.450566" elapsed="0.051469"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-16T11:23:25.503037" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-16T11:23:25.503037" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-16T11:23:36.735516" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🔽 Swipe vers le bas #3
+🔽 Swipe vers le bas #4
+🔽 Swipe vers le bas #5
+🔽 Swipe vers le bas #6
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Profils et comptes' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-16T11:23:25.503037" elapsed="11.232479"/>
+</kw>
+<arg>Clique Sur Setting</arg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-16T11:23:25.503037" elapsed="11.232479"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-04-16T11:23:47.272408" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${Ajouter}</arg>
+<status status="FAIL" start="2025-04-16T11:23:36.735516" elapsed="10.538891">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.274407" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Ok}</arg>
+<status status="NOT RUN" start="2025-04-16T11:23:47.274407" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.274407" elapsed="0.000000"/>
+</kw>
+<kw name="Get Android Users" owner="Integration">
+<var>${new_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.274407" elapsed="0.000000"/>
+</kw>
+<kw name="Get Added User" owner="Integration">
+<var>${verifie_adb_add_user}</var>
+<arg>${old_users}</arg>
+<arg>${new_users}</arg>
+<doc>Compare deux listes d'utilisateurs et retourne l'utilisateur ajouté.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.274407" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Should Not Be Equal</arg>
+<arg>${verifie_adb_add_user}</arg>
+<arg>${None}</arg>
+<arg>Aucun utilisateur n'a été ajouté.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.274407" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Utilisateur ajouté : ${verifie_adb_add_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.274407" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-16T11:23:08.081319" elapsed="39.193088">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</test>
+<test id="s1-t2" name="Test renommer Utilisateur" line="78">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-04-16T11:23:47.314922" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-04-16T11:23:47.275408" elapsed="0.039514"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.314922" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.314922" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.315923" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ajouter}</var>
+<arg>Ajouter un profil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.315923" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-04-16T11:23:47.315923" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-04-16T11:23:47.314922" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:47.315923" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:47.315923" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:47.315923" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:47.315923" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:47.315923" level="INFO">${Profils} = Profils et comptes</msg>
+<var>${Profils}</var>
+<arg>Profils et comptes</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:47.315923" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:47.316925" level="INFO">${Ajouter} = Add Profile</msg>
+<var>${Ajouter}</var>
+<arg>Add Profile</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:47.315923" elapsed="0.001002"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-16T11:23:47.316925" level="INFO">${Ok} = OK</msg>
+<var>${Ok}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-16T11:23:47.316925" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-16T11:23:47.315923" elapsed="0.001002"/>
+</branch>
+<status status="PASS" start="2025-04-16T11:23:47.314922" elapsed="0.002003"/>
+</if>
+<kw name="Get Android Users" owner="Integration">
+<msg time="2025-04-16T11:23:47.398925" level="INFO">${old_users} = [{'id': '0', 'name': 'Driver', 'status': 'running'}, {'id': '10', 'name': 'Driver', 'status': 'active'}, {'id': '17', 'name': 'Nouveau profil', 'status': 'inactive'}]</msg>
+<var>${old_users}</var>
+<arg>${driver}</arg>
+<doc>Récupère la liste des utilisateurs Android via ADB.</doc>
+<status status="PASS" start="2025-04-16T11:23:47.316925" elapsed="0.082000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-04-16T11:24:04.291753" level="INFO">📌 Liste des applications détectées : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+📌 First Home Page détectée : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+
+📌 Liste des applications détectées : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Calendar', 'Appium Settings', 'ARD Audiothek', 'Bluetooth Audio', 'Crunchyroll', 'Google Assistant', 'News', 'Home Assistant', 'Local Media Player', 'Maps', 'Settings', 'Play Store', 'Prime Video', 'SMS', 'Spotify']
+146 619 248 657</msg>
+<msg time="2025-04-16T11:24:04.291753" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<status status="PASS" start="2025-04-16T11:23:47.398925" elapsed="16.892828"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-16T11:24:05.292711" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-16T11:24:04.291753" elapsed="1.000958"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-04-16T11:24:05.346167" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-04-16T11:24:05.292711" elapsed="0.053456"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-16T11:24:05.347167" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-16T11:24:05.347167" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-04-16T11:24:13.133012" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🔽 Swipe vers le bas #3
+🔽 Swipe vers le bas #4
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Profils et comptes' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-04-16T11:24:05.347167" elapsed="7.785845"/>
+</kw>
+<arg>Clique Sur Setting</arg>
+<arg>${driver}</arg>
+<arg>${Profils}</arg>
+<arg>${Setting_menu}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-04-16T11:24:05.347167" elapsed="7.785845"/>
+</kw>
+<status status="PASS" start="2025-04-16T11:23:47.275408" elapsed="25.857604"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-04-16T11:24:13.134015" elapsed="0.164170"/>
+</kw>
+<status status="PASS" start="2025-04-16T11:24:13.134015" elapsed="0.165170"/>
+</kw>
+<status status="FAIL" start="2025-04-16T11:23:01.809851" elapsed="71.489334"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteProfilsConducteurs" id="s1" pass="1" fail="1" skip="0">FonctionnaliteProfilsConducteurs</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
