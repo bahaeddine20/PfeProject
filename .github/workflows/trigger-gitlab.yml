@@ -1,14 +1,20 @@
-name: Trigger GitLab Pipeline
+name: Mirror to GitLab
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  trigger:
+  push-to-gitlab:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger GitLab Pipeline
+      - name: Checkout GitHub repo
+        uses: actions/checkout@v3
+
+      - name: Push to GitLab
         run: |
-          curl -X POST \
-            -H "PRIVATE-TOKEN: ${{ secrets.GITLAB_TOKEN }}" \
-            -F "ref=main" \
-            https://gitlab.com/api/v4/projects/70183509/pipeline
+          git config --global user.name "GITLAB_TOKEN"
+          git config --global user.email "bahaeddine.Somrani@esprit.tn"
+          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/bahaeddine.somrani1/PfeProject
+          git push gitlab main
