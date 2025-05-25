@@ -11,6 +11,7 @@ Library    Integration.py
 Library    script_mobile.py
 Library    AppiumLibrary
 
+
 Suite Setup     Démarrer Driver
 Suite Teardown  Fermer Driver
 
