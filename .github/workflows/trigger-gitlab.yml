@@ -11,10 +11,12 @@ jobs:
     steps:
       - name: Checkout GitHub repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # This fetches all history and tags
 
       - name: Push to GitLab
         run: |
           git config --global user.name "bahaeddine20"
           git config --global user.email "bahaeddine.somrani@esprit.tn"
-          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/bahaeddine.somrani1/PfeProject
-          git push gitlab main
+          git remote add gitlab https://gitlab.com/bahaeddine.somrani1/PfeProject.git
+          git push https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/bahaeddine.somrani1/PfeProject.git main
