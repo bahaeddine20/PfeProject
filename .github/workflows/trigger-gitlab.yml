@@ -11,10 +11,15 @@ jobs:
     steps:
       - name: Checkout GitHub repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Required for full history
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
       - name: Push to GitLab
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/bahaeddine.somrani1/PfeProject
-          git push gitlab main
+          git remote add gitlab "https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/bahaeddine.somrani1/PfeProject.git"
+          git push --force --mirror gitlab
