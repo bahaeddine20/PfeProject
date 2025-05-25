@@ -223,7 +223,7 @@ def upload_audio():
     # Sauvegarder le fichier
     audio_file.save(filepath)
 
-    return {'message': 'Audio reçu avec succès', 'filename': filename}, 200
+    return {'message': 'Audio  reçu avec succès', 'filename': filename}, 200
 
 from glob import glob
 
