@@ -186,7 +186,51 @@ Compare Audio Files
     
     RETURN    ${test_passed}    ${metrics}
 
+Click Play Button
+    Wait For Record Button
+    ${button_exists}=    check_element_exists    ${driver}    //android.widget.Button[@text="PLAY TEST WAV"]
+    Should Be True    ${button_exists}    Le bouton PLAY TEST WAV n'est pas visible
+    ${success}=    Run Keyword And Return Status    click_element_by_xpath_bounds    ${driver}    //android.widget.Button[@text="PLAY TEST WAV"]
+    Should Be True    ${success}    Impossible de cliquer sur le bouton START
 
+
+Navigate To Audio Player App
+    Start Activity Code    ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
+    Sleep    3s    # Attendre que l'application se charge
+    ${current_activity}=    Print Activity    ${driver}
+    Should Contain    ${current_activity}    com.example.audioapplicationtest/.AudioPlayerActivity    L'application n'est pas correctement lancée
+
+
+Compare Audio Files Play
+    [Arguments]    ${original_audio}
+    ${test_passed}    ${metrics}=    Compare With Latest Recorded Play   ${original_audio}
+
+    # Log all metrics for debugging
+    Log    SNR: ${metrics['snr']} dB (seuil: 20 dB)
+    Log    Corrélation: ${metrics['correlation']} (seuil: 0.9)
+    Log    MOS: ${metrics['mos']}/5 (seuil: 3.0)
+    Log    Clarté: ${metrics['clarity']} (seuil: 0.8)
+
+    # Inclure l'image dans le rapport
+    ${plot_file}=    Set Variable    ${metrics['plot_file']}
+    Log    <img src="${plot_file}" width="800px"/>
+
+    # Test is considered passed only if ALL critical metrics meet their thresholds
+    ${snr_ok}=    Evaluate    ${metrics['snr']} >= 20
+    ${correlation_ok}=    Evaluate    ${metrics['correlation']} >= 0.9
+    ${mos_ok}=    Evaluate    ${metrics['mos']} >= 3.0
+    ${clarity_ok}=    Evaluate    ${metrics['clarity']} >= 0.8
+
+    ${test_passed}=    Evaluate    ${snr_ok} and ${correlation_ok} and ${mos_ok} and ${clarity_ok}
+
+    IF    not ${test_passed}
+        Log    ❌ Test échoué - Métriques critiques non satisfaites
+        Fail    Test audio échoué - Vérifiez les métriques dans les logs
+    ELSE
+        Log    ✅ Test réussi - Toutes les métriques sont satisfaites
+    END
+
+    RETURN    ${test_passed}    ${metrics}
 
 *** Test Cases ***
 Test Audio Recording And Playback
@@ -196,6 +240,25 @@ Test Audio Recording And Playback
     ...                - Plays back the recorded audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
+
     Execute Test With Retry    Verify Audio Recording    Test Audio Recording And Playback
+
+
+Test Audio Player And Playback
+    [Documentation]    Verifies audio recording and playback functionality
+    ...                - Navigates to audio recording app
+    ...                - Records audio for a specified duration
+    ...                - Plays audio
+    ...                - Supports both French and English interfaces
+    [Tags]    audio    recording    playback
+    Navigate To Audio Player App
+    ${recording_success}=    Record Audio    ${driver}     23    # Démarre l'enregistrement
+    Should Be True    ${recording_success}    L'enregistrement audio a échoué
+    Sleep    1s    # Petit délai pour s'assurer que l'enregistrement a bien démarré
+    Click Play Button    # Démarre la lecture immédiatement après
+    Sleep    22s
+    Compare Audio Files Play       ${CURDIR}${/}test.wav
+
+
 
 

@@ -1049,20 +1049,20 @@ if __name__ == "__main__":
     main()
 
     driver = setup_driver("emulator-5554")
-    device_id = "emulator-5554"  # Remplacer par votre ID d'émulateur
-    destination = "./enregistrements"  # Dossier de destination
-
-    # Créer le dossier s'il n'existe pas
-    os.makedirs(destination, exist_ok=True)
-
-    downloaded_file = download_latest_recording(
-        device="emulator-5554",
-        destination_dir="./enregistrements"
-    )
-    if downloaded_file:
-        print(f"Fichier téléchargé: {downloaded_file}")
-    else:
-        print("Échec du téléchargement")
+    # device_id = "emulator-5554"  # Remplacer par votre ID d'émulateur
+    # destination = "./enregistrements"  # Dossier de destination
+    #
+    # # Créer le dossier s'il n'existe pas
+    # os.makedirs(destination, exist_ok=True)
+    #
+    # downloaded_file = download_latest_recording(
+    #     device="emulator-5554",
+    #     destination_dir="./enregistrements"
+    # )
+    # if downloaded_file:
+    #     print(f"Fichier téléchargé: {downloaded_file}")
+    # else:
+    #     print("Échec du téléchargement")
     #set_location(driver, -74.0060, 40.7128)  # Exemples de coordonnées pour New York
     # Exemple d'utilisation dans un test Appium :
     # driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)

@@ -6,6 +6,9 @@ from scipy.signal import find_peaks, stft, correlation_lags
 import os
 from datetime import datetime
 import requests
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def load_and_preprocess(audio_path, target_fs=None):
@@ -208,8 +211,8 @@ def calculate_metrics(original, recorded, fs):
     }
 
 
-def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
-    """Affiche les graphiques de comparaison"""
+def plot_comparison(original, recorded, noise, fs, metrics, time_shift, test_type="enregistrement"):
+    """Sauvegarde les graphiques de comparaison"""
     # Décimer les signaux pour la visualisation
     decimation_factor = 10
     time = np.arange(len(original))[::decimation_factor] / fs
@@ -217,7 +220,9 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
     rec_plot = recorded[::decimation_factor]
     noise_plot = noise[::decimation_factor]
 
+    # Créer la figure avec un titre principal
     plt.figure(figsize=(15, 15))
+    plt.suptitle(f'Analyse de Qualité Audio - Test de {test_type}', fontsize=16, y=0.95)
 
     # Signaux alignés
     plt.subplot(4, 2, 1)
@@ -237,7 +242,7 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
 
     # Spectrogramme original
     plt.subplot(4, 2, 3)
-    f, t, Sxx = stft(original, fs, nperseg=512, noverlap=256)  # Réduit de 1024 à 512
+    f, t, Sxx = stft(original, fs, nperseg=512, noverlap=256)
     plt.pcolormesh(t, f, 20 * np.log10(np.abs(Sxx) + 1e-10), shading='gouraud', cmap='viridis')
     plt.colorbar(label='dB')
     plt.title('Spectrogramme - Original')
@@ -246,7 +251,7 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
 
     # Spectrogramme enregistré
     plt.subplot(4, 2, 4)
-    f, t, Sxx = stft(recorded, fs, nperseg=512, noverlap=256)  # Réduit de 1024 à 512
+    f, t, Sxx = stft(recorded, fs, nperseg=512, noverlap=256)
     plt.pcolormesh(t, f, 20 * np.log10(np.abs(Sxx) + 1e-10), shading='gouraud', cmap='viridis')
     plt.colorbar(label='dB')
     plt.title('Spectrogramme - Enregistré')
@@ -255,7 +260,6 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
 
     # Analyse fréquentielle (FFT)
     plt.subplot(4, 2, 5)
-    # Utiliser une FFT plus petite pour accélérer
     n_fft = min(4096, len(original))
     f_orig = np.fft.rfft(original[:n_fft])
     f_rec = np.fft.rfft(recorded[:n_fft])
@@ -270,7 +274,6 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
 
     # Corrélation temporelle
     plt.subplot(4, 2, 6)
-    # Utiliser un sous-échantillonnage pour la corrélation
     corr = np.correlate(original[::decimation_factor], recorded[::decimation_factor], mode='full')
     lags = np.arange(-len(original[::decimation_factor]) + 1, len(original[::decimation_factor]))
     plt.plot(lags / fs * decimation_factor, corr)
@@ -281,7 +284,7 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
 
     # Enveloppe RMS
     plt.subplot(4, 2, 7)
-    window_size = int(fs * 0.05)  # 50ms
+    window_size = int(fs * 0.05)
     rms_orig = np.sqrt(np.convolve(original[::decimation_factor] ** 2, np.ones(window_size//decimation_factor) / (window_size//decimation_factor), mode='same'))
     rms_rec = np.sqrt(np.convolve(recorded[::decimation_factor] ** 2, np.ones(window_size//decimation_factor) / (window_size//decimation_factor), mode='same'))
     plt.plot(time, rms_orig, label='Original')
@@ -303,18 +306,39 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift):
 
     plt.tight_layout()
 
-    # Affichage des métriques
+    # Créer une boîte de texte avec les métriques et le statut du test
+    test_status = "✅ TEST RÉUSSI" if (metrics['snr'] >= 20 and metrics['correlation'] >= 0.9 and 
+                                     metrics['mos'] >= 3.0 and metrics['clarity'] >= 0.8) else "❌ TEST ÉCHEC"
+    
     metrics_text = (
-        f"SNR: {metrics['snr']:.2f} dB\n"
-        f"Corrélation: {metrics['correlation']:.3f}\n"
-        f"RMSE: {metrics['rmse']:.4f}\n"
-        f"Rapport d'énergie: {metrics['energy_ratio']:.3f}\n"
-        f"MOS estimé: {metrics['mos']:.2f}/5\n"
-        f"Clarté: {metrics['clarity']:.3f} ({metrics['clarity_db']:.2f} dB)"
+        f"{test_status}\n\n"
+        f"Type de test: {test_type.upper()}\n\n"
+        f"Métriques de Qualité:\n"
+        f"• SNR: {metrics['snr']:.2f} dB (seuil: 20 dB)\n"
+        f"• Corrélation: {metrics['correlation']:.3f} (seuil: 0.9)\n"
+        f"• MOS: {metrics['mos']:.2f}/5 (seuil: 3.0)\n"
+        f"• Clarté: {metrics['clarity']:.3f} (seuil: 0.8)\n\n"
+        f"Métriques Additionnelles:\n"
+        f"• RMSE: {metrics['rmse']:.4f}\n"
+        f"• Rapport d'énergie: {metrics['energy_ratio']:.3f}\n"
+        f"• Clarté (dB): {metrics['clarity_db']:.2f} dB\n"
+        f"• Décalage temporel: {time_shift:.3f} s"
     )
-    plt.gcf().text(0.95, 0.5, metrics_text, bbox=dict(facecolor='white', alpha=0.5))
 
-    plt.show()
+    # Ajouter la boîte de texte avec un fond blanc semi-transparent
+    plt.gcf().text(0.95, 0.5, metrics_text, 
+                  bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray', boxstyle='round,pad=1'),
+                  fontsize=10, ha='right', va='center')
+
+    # Sauvegarder la figure au lieu de l'afficher
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'log', 'plots')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, f'audio_comparison_{test_type}_{timestamp}.png')
+    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    return output_file
 
 
 def find_best_segments(original, recorded, fs, search_window_ms=1000):
@@ -414,7 +438,7 @@ def find_best_segments(original, recorded, fs, search_window_ms=1000):
 
 
 def audio_quality_test(original_path, recorded_path, snr_threshold=20, corr_threshold=0.9,
-                       mos_threshold=3.0, clarity_threshold=0.8):
+                       mos_threshold=3.0, clarity_threshold=0.8, test_type="enregistrement"):
     """Test complet de qualité audio"""
     print(f"\n{' Début du test audio ':=^80}")
     print(f"Original: {original_path}")
@@ -452,8 +476,9 @@ def audio_quality_test(original_path, recorded_path, snr_threshold=20, corr_thre
         for k, v in metrics.items():
             print(f"{k:>12}: {v:.4f}" if isinstance(v, float) else f"{k:>12}: {v}")
 
-        # Visualisation
-        plot_comparison(orig_aligned, rec_aligned, noise, fs, metrics, time_shift)
+        # Sauvegarder les graphiques
+        plot_file = plot_comparison(orig_aligned, rec_aligned, noise, fs, metrics, time_shift, test_type)
+        logger.info(f"Graphiques sauvegardés dans: {plot_file}")
 
         # Résultat du test
         test_passed = ((metrics['snr'] >= snr_threshold) and
@@ -481,7 +506,7 @@ def compare_with_latest_recorded(original_audio, latest_audio_path='latest_downl
     Télécharge le dernier audio enregistré via l'API Flask et le compare à l'original.
     :param original_audio: Chemin du fichier original (wav)
     :param latest_audio_path: Chemin où sauvegarder le fichier téléchargé
-    :param api_url: URL de l'API Flask pour récupérer le dernier audio
+    :param api_url: URL de l'API Flask pour récupérer le dernier audio enregistré
     :return: (test_passed, metrics)
     """
     # Télécharger le dernier audio enregistré
@@ -491,16 +516,43 @@ def compare_with_latest_recorded(original_audio, latest_audio_path='latest_downl
         with open(latest_audio_path, 'wb') as f:
             f.write(response.content)
     except Exception as e:
-        print(f"Erreur lors du téléchargement de l'audio: {e}")
+        print(f"Erreur lors du téléchargement de l'audio enregistré: {e}")
         return False, {"error": str(e)}
 
     # Comparer avec la fonction audio_quality_test
     try:
-        test_passed, metrics = audio_quality_test(original_audio, latest_audio_path)
+        test_passed, metrics = audio_quality_test(original_audio, latest_audio_path, test_type="enregistrement")
         return test_passed, metrics
     except Exception as e:
         print(f"Erreur lors de la comparaison audio: {e}")
         return False, {"error": str(e)}
+
+def compare_with_latest_recorded_play(original_audio, latest_audio_path='latest_playback.wav', api_url='http://localhost:6000/latest-audio-record-play'):
+    """
+    Télécharge le dernier audio lu via l'API Flask et le compare à l'original.
+    :param original_audio: Chemin du fichier original (wav)
+    :param latest_audio_path: Chemin où sauvegarder le fichier téléchargé
+    :param api_url: URL de l'API Flask pour récupérer le dernier audio lu
+    :return: (test_passed, metrics)
+    """
+    # Télécharger le dernier audio lu
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        with open(latest_audio_path, 'wb') as f:
+            f.write(response.content)
+    except Exception as e:
+        print(f"Erreur lors du téléchargement de l'audio lu: {e}")
+        return False, {"error": str(e)}
+
+    # Comparer avec la fonction audio_quality_test
+    try:
+        test_passed, metrics = audio_quality_test(original_audio, latest_audio_path, test_type="lecture")
+        return test_passed, metrics
+    except Exception as e:
+        print(f"Erreur lors de la comparaison audio: {e}")
+        return False, {"error": str(e)}
+
 
 
 if __name__ == "__main__":

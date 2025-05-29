@@ -4,6 +4,7 @@ import sounddevice as sd
 import soundfile as sf
 from scipy.io.wavfile import write
 import os
+import threading
 
 app = Flask(__name__)
 
@@ -66,6 +67,23 @@ def set_location():
     except subprocess.CalledProcessError as e:
         return jsonify({"success": False, "message": f"Erreur ADB : {e.stderr.strip()}"}), 500
 
+def record_audio_thread(duration_sec, file_path, sample_rate):
+    try:
+        # Enregistrement de l'audio
+        recording = sd.rec(
+            int(duration_sec * sample_rate),
+            samplerate=sample_rate,
+            channels=2,
+            device=None  # Utilise le périphérique par défaut
+        )
+        sd.wait()
+        
+        # Sauvegarde le fichier
+        write(file_path, sample_rate, recording)
+        print(f"Recording saved to {file_path}")
+    except Exception as e:
+        print(f"Error in recording thread: {str(e)}")
+
 @app.route('/record_audio', methods=['POST'])
 def record_audio():
     """
@@ -105,30 +123,22 @@ def record_audio():
         os.makedirs('recordings', exist_ok=True)
         file_path = os.path.join('recordings', output_file)
         
-        # Enregistrement de l'audio
-        print(f"Starting recording: duration={duration_sec}s, file={file_path}, sample_rate={sample_rate}")
-        
         # Vérifie les périphériques disponibles
         devices = sd.query_devices()
         print("\nAvailable devices:")
         print(devices)
         
-        # Enregistrement de l'audio
-        recording = sd.rec(
-            int(duration_sec * sample_rate),
-            samplerate=sample_rate,
-            channels=2,
-            device=None  # Utilise le périphérique par défaut
+        # Démarre l'enregistrement dans un thread séparé
+        recording_thread = threading.Thread(
+            target=record_audio_thread,
+            args=(duration_sec, file_path, sample_rate)
         )
-        sd.wait()
+        recording_thread.start()
         
-        # Sauvegarde le fichier
-        write(file_path, sample_rate, recording)
-        print(f"Recording saved to {file_path}")
-        
+        # Répond immédiatement
         return jsonify({
             "success": True,
-            "message": f"Enregistrement audio terminé et sauvegardé dans {file_path}",
+            "message": "Enregistrement audio démarré",
             "file_path": file_path,
             "duration": duration_sec,
             "sample_rate": sample_rate,
@@ -136,10 +146,10 @@ def record_audio():
         }), 200
         
     except Exception as e:
-        print("Error during recording:", str(e))
+        print("Error during recording setup:", str(e))
         return jsonify({
             "success": False,
-            "message": f"Erreur lors de l'enregistrement audio: {str(e)}"
+            "message": f"Erreur lors de la configuration de l'enregistrement audio: {str(e)}"
         }), 500
 
 
@@ -231,22 +241,29 @@ from flask import  send_file, abort
 
 @app.route('/latest-audio', methods=['GET'])
 def get_latest_audio():
-    folder_path = 'received_audio'
+    folder_path = 'received_audio'  # Pour le test d'enregistrement qui reçoit l'audio ici
     # Cherche tous les fichiers .wav dans le dossier
     wav_files = glob(os.path.join(folder_path, '*.wav'))
 
     if not wav_files:
         return abort(404, description="Aucun fichier .wav trouvé.")
 
-    # Trouver le fichier le plus récemment modifié
-    latest_file = max(wav_files, key=os.path.getmtime)
+    # Trouve le fichier le plus récent
+    latest_file = max(wav_files, key=os.path.getctime)
+    return send_file(latest_file, mimetype='audio/wav')
 
-    try:
-        return send_file(latest_file, mimetype='audio/wav', as_attachment=True)
-    except Exception as e:
-        return abort(500, description=f"Erreur lors de l'envoi du fichier : {str(e)}")
+@app.route('/latest-audio-record-play', methods=['GET'])
+def get_latest_audio_record_play():
+    folder_path = 'recordings'  # Pour le test de lecture qui enregistre l'audio ici
+    # Cherche tous les fichiers .wav dans le dossier
+    wav_files = glob(os.path.join(folder_path, '*.wav'))
 
+    if not wav_files:
+        return abort(404, description="Aucun fichier .wav trouvé.")
 
+    # Trouve le fichier le plus récent
+    latest_file = max(wav_files, key=os.path.getctime)
+    return send_file(latest_file, mimetype='audio/wav')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6000)

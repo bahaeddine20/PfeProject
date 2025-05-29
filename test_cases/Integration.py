@@ -1930,7 +1930,7 @@ def verify_location_state(driver: webdriver.Remote, expected_state: bool) -> boo
 
 
 @retry_on_failure()
-def record_audio(driver: webdriver.Remote, duration_sec, output_file: str = 'emulator_audio.wav',
+def record_audio(driver: webdriver.Remote, duration_sec, output_file: str = 'test.wav',
                  sample_rate: int = 44100) -> bool:
     """
     Enregistre l'audio du système via l'API Flask.
