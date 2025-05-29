@@ -233,6 +233,9 @@ Compare Audio Files Play
     RETURN    ${test_passed}    ${metrics}
 
 *** Test Cases ***
+Test fgdya
+        Close Activity Robot      ${driver}     com.example.audioapplicationtest
+
 Test Audio Recording And Playback
     [Documentation]    Verifies audio recording and playback functionality
     ...                - Navigates to audio recording app
@@ -240,7 +243,7 @@ Test Audio Recording And Playback
     ...                - Plays back the recorded audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
-
+    Close Activity       ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
     Execute Test With Retry    Verify Audio Recording    Test Audio Recording And Playback
 
 
