@@ -25,7 +25,5 @@ jobs:
           git config --global user.email "action@github.com"
           git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/bahaeddine.somrani1/PfeProject.git
           git fetch gitlab
-          git checkout -b gitlab-main gitlab/main
-          git checkout main
-          git merge gitlab-main --allow-unrelated-histories -m "Merge GitLab changes"
+          git merge -s ours gitlab/main -m "Ignore GitLab changes and keep GitHub version"
           git push gitlab main
