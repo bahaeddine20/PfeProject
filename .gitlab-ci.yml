@@ -29,7 +29,7 @@ push:
     - if: '$CI_COMMIT_MESSAGE =~ /\[push\]/'
       when: always
   script:
-    - docker login -u "$DOCKERHUB_USERNAME" --password-stdin <<< "$DOCKERHUB_PASSWORD"
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker push "$IMAGE_NAME"
 
 deploy:
