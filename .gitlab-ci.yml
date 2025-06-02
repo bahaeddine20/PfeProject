@@ -14,23 +14,16 @@ build:
   services:
     - docker:dind
   script:
+    - docker system prune -f  # Nettoyage avant la construction
     - docker build -t $IMAGE_NAME .
-    - docker save $IMAGE_NAME > image.tar
-  artifacts:
-    paths:
-      - image.tar
-    expire_in: 1 hour
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    - docker push "$IMAGE_NAME"  # Pousse directement l'image
 
 push:
   stage: push
-  image: docker:latest
-  services:
-    - docker:dind
   needs: ["build"]
   script:
-    - docker load < image.tar
-    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    - docker push "$IMAGE_NAME"
+    - echo "L'image a déjà été poussée dans l'étape build."
 
 deploy:
   stage: deploy
