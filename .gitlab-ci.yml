@@ -11,32 +11,27 @@ build:
   image: docker:latest
   services:
     - docker:dind
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
   script:
     - docker build -t $IMAGE_NAME .
 
 push:
   stage: push
+  needs: ["build"]  # Attend que le job build soit terminé
   image: docker:latest
   services:
     - docker:dind
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
-  rules:
-    - if: '$CI_COMMIT_MESSAGE =~ /\[push\]/'
-      when: always
   script:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker push "$IMAGE_NAME"
 
 deploy:
   stage: deploy
+  needs: ["push"]  # Attend que le job push soit terminé
   tags:
     - LocalRunner
   script:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    - docker pull $IMAGE_NAME
-    - docker run -d --name mon-app $IMAGE_NAME
+    - docker pull "$IMAGE_NAME"
+    - docker stop mon-app || true
+    - docker rm mon-app || true
+    - docker run -d --name mon-app -p 5000:5000 "$IMAGE_NAME"
