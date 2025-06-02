@@ -16,9 +16,9 @@ build:
     - docker:24.0-dind
   script:
     - docker info
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker system prune -f --all
     - docker build -t $IMAGE_NAME .
-    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker push "$IMAGE_NAME"
   artifacts:
     paths:
