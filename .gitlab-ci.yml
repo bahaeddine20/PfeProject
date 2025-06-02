@@ -1,8 +1,11 @@
 stages:
   - build
 
-build_image:
+docker_test:
   stage: build
+  tags:
+    - LocalRunner
   script:
+    - docker version
+    - docker-compose version
     - docker-compose build
-    - docker images
