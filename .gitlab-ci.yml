@@ -38,8 +38,9 @@ deploy:
   tags:
     - LocalRunner
   image: docker:latest
-  services:
-    - docker:dind
+  # Remove services section for docker:dind
+  variables:
+    DOCKER_HOST: unix:///var/run/docker.sock
   script:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker pull "$IMAGE_NAME"
