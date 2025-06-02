@@ -10,9 +10,14 @@ build_image:
     - docker:dind
   variables:
     DOCKER_HOST: tcp://localhost:2375/
+
     DOCKER_DRIVER: overlay2
   before_script:
     - apk add --no-cache docker-compose
   script:
     - docker-compose build
     - docker images
+
+    #- docker push aestoolscelad/flask-app-baha:v4.0
+
+
