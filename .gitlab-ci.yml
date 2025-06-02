@@ -1,14 +1,11 @@
-variables:
-  DOCKER_HOST: tcp://docker:2375
-  DOCKER_TLS_CERTDIR: ""
-  # Add these for better DinD stability
-  DOCKER_DRIVER: overlay2
-  DOCKER_TLS: "false"  # Explicitly disable TLS if not using it
+stages:
+  - build
+  - push
+  - deploy
 
-services:
-  - name: docker:dind
-    alias: docker
-    command: ["--tls=false", "--host=tcp://0.0.0.0:2375"]  # Explicit configuration
+variables:
+  IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
+
 build:
   stage: build
   image: docker:latest
