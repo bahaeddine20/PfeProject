@@ -1,7 +1,7 @@
 # Étape 1: Utiliser une image de base Python
 FROM python:3.12-slim
 
-# Installer les dépendances système nécessaires
+# Étape 2: Installer les dépendances système nécessaires
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglib2.0-0 \
@@ -9,23 +9,26 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Mettre à jour pip et setuptools
+# Étape 3: Mettre à jour pip et setuptools
 RUN pip install --upgrade pip setuptools
 
-# Étape 2: Définir le répertoire de travail
+# Étape 4: Définir le répertoire de travail
 WORKDIR /app
 
-# Étape 3: Copier les fichiers du projet
-COPY . .
+# Étape 5: Copier uniquement les fichiers de dépendances d'abord (si présents)
+COPY requirements.txt .
 
-# Étape 4: Installer les dépendances Python
+# Étape 6: Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Installer doctr après pour éviter des conflits potentiels
-#RUN pip install --no-cache-dir "python-doctr[torch]"
+# Étape 7: Copier le reste du projet (code source, etc.)
+COPY . .
 
-# Étape 5: Exposer le port Flask
+# Étape 8: Installer doctr si nécessaire (décommenter si utilisé)
+# RUN pip install --no-cache-dir "python-doctr[torch]"
+
+# Étape 9: Exposer le port Flask
 EXPOSE 5000
 
-# Étape 6: Démarrer l'application Flask
+# Étape 10: Démarrer l'application Flask
 CMD ["python", "flaskProject.py"]
