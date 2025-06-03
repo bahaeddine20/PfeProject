@@ -40,7 +40,7 @@ deploy:
     DOCKER_HOST: unix:///var/run/docker.sock
   script:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    - docker pull "$IMAGE_NAME"
+    - sudo docker pull "$IMAGE_NAME"
     - docker stop mon-app || true
     - docker rm mon-app || true
     - docker compose up -d --remove-orphans
