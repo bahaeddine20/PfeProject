@@ -9,11 +9,9 @@ services:
       - "5000:5000"
     volumes:
       - /dev/bus/usb:/dev/bus/usb
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     environment:
-      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
-      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
+      - ADB_SERVER_SOCKET=tcp:172.17.0.1:5037
+      - ANDROID_ADB_SERVER_ADDRESS=172.17.0.1
       - ANDROID_ADB_SERVER_PORT=5037
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
@@ -23,13 +21,11 @@ services:
   appium:
     image: appium/appium
     container_name: appium
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     environment:
-      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
-      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
+      - ADB_SERVER_SOCKET=tcp:172.17.0.1:5037
+      - ANDROID_ADB_SERVER_ADDRESS=172.17.0.1
       - ANDROID_ADB_SERVER_PORT=5037
-      - ANDROID_HOSTNAME=host.docker.internal:8201
+      - ANDROID_HOSTNAME=172.17.0.1:8201
     volumes:
       - /dev/bus/usb:/dev/bus/usb
     ports:
