@@ -14,16 +14,13 @@ services:
       - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
       - ANDROID_ADB_SERVER_PORT=5037
       - ANDROID_HOSTNAME=host.docker.internal:8201
-
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
     privileged: true
     depends_on:
       - appium
-
-
-
-
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   appium:
     image: appium/appium
@@ -37,6 +34,7 @@ services:
       - /dev/bus/usb:/dev/bus/usb
     ports:
       - "4723:4723"
-      - "8201:8200"  # Changed from 8200:8200
-
+      - "8201:8200"
     privileged: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
