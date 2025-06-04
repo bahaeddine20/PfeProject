@@ -5,7 +5,7 @@ stages:
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
-  DOCKER_HOST: tcp://docker:2375
+  DOCKER_HOST: unix:///var/run/docker.sock
   DOCKER_TLS_CERTDIR: ""
 
 build:
@@ -20,7 +20,7 @@ build:
       variables:
         DOCKER_TLS_CERTDIR: ""
   variables:
-    DOCKER_HOST: tcp://docker:2375
+    DOCKER_HOST: unix:///var/run/docker.sock
     DOCKER_TLS_CERTDIR: ""
 
   before_script:
@@ -49,7 +49,7 @@ deploy:
       variables:
         DOCKER_TLS_CERTDIR: ""
   variables:
-    DOCKER_HOST: tcp://docker:2375
+    DOCKER_HOST: unix:///var/run/docker.sock
     DOCKER_TLS_CERTDIR: ""
 
 
