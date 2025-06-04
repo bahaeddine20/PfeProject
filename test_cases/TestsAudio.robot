@@ -233,7 +233,9 @@ Compare Audio Files Play
     RETURN    ${test_passed}    ${metrics}
 
 *** Test Cases ***
-Test fgdya
+Test install
+        Install Apk    ${driver}        AudioTestApplication.apk
+
         Close Activity Robot      ${driver}     com.example.audioapplicationtest
 
 Test Audio Recording And Playback
