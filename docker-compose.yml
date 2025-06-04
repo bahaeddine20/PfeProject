@@ -5,21 +5,17 @@ services:
       context: .
       dockerfile: Dockerfile
     image: aestoolscelad/flask-app-baha:v4.0
-    ports:
-      - "5000:5000"
-
+    network_mode: host
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
-      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
+      - ADB_SERVER_SOCKET=tcp:127.0.0.1:5037
+      - ANDROID_ADB_SERVER_ADDRESS=127.0.0.1
       - ANDROID_ADB_SERVER_PORT=5037
-      - ANDROID_HOSTNAME=host.docker.internal:8201
+      - ANDROID_HOSTNAME=127.0.0.1:8201
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     privileged: true
     depends_on:
       - appium
@@ -27,17 +23,13 @@ services:
   appium:
     image: appium/appium
     container_name: appium
+    network_mode: host
     environment:
-      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
-      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
+      - ADB_SERVER_SOCKET=tcp:127.0.0.1:5037
+      - ANDROID_ADB_SERVER_ADDRESS=127.0.0.1
       - ANDROID_ADB_SERVER_PORT=5037
-      - ANDROID_HOSTNAME=host.docker.internal:8201
+      - ANDROID_HOSTNAME=127.0.0.1:8201
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - "4723:4723"
-      - "8201:8200"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     privileged: true
