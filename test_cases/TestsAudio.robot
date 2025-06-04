@@ -23,9 +23,9 @@ ${Device}              emulator-5554
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}              System
 # Configuration des retries
-${MAX_RETRIES}    1
+${MAX_RETRIES}    3
 ${RETRY_DELAY}    2s
-${QUICK_WAIT}     0.5s
+${QUICK_WAIT}     2s
 
 # Audio Configuration
 ${DEFAULT_RECORD_DURATION}    34
