@@ -25,7 +25,6 @@ build:
       when: on_success
     - when: never
 
-
 deploy:
   stage: deploy
   image: docker:latest
@@ -44,3 +43,4 @@ deploy:
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
+    - when: never
