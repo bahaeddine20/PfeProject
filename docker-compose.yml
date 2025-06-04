@@ -7,23 +7,22 @@ services:
     image: aestoolscelad/flask-app-baha:v4.0
     ports:
       - "5000:5000"
-      - "5038:5037"
-      - "4724:4723"
+      - "5037:5037"
+      - "4723:4723"
       - "8201:8200"
     volumes:
       - /dev/bus/usb:/dev/bus/usb
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5038
+      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
       - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
-      - ANDROID_ADB_SERVER_PORT=5038
+      - ANDROID_ADB_SERVER_PORT=5037
       - ANDROID_HOSTNAME=host.docker.internal:8201
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
     privileged: true
     depends_on:
       - appium
-    networks:
-      - app-network
 
   appium:
     image: appium/appium
@@ -35,14 +34,10 @@ services:
       - ANDROID_HOSTNAME=host.docker.internal:8201
     volumes:
       - /dev/bus/usb:/dev/bus/usb
+      - /var/run/docker.sock:/var/run/docker.sock
+
     ports:
       - "4723:4723"
       - "5037:5037"
       - "8201:8200"
     privileged: true
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
