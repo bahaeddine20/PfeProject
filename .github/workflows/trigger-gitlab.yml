@@ -23,7 +23,7 @@ jobs:
         run: |
           git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/bahaeddine.somrani1/PfeProject.git
           git fetch gitlab
-          # Reset to match GitLab's state
-          git reset --hard gitlab/main
-          # Force push to GitLab
+          # Merge or rebase GitLab changes into local branch
+          git pull gitlab main --rebase
+          # Force push to overwrite GitLab history (use with caution)
           git push gitlab main --force
