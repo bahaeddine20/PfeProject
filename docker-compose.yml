@@ -18,6 +18,8 @@ services:
       - ANDROID_HOSTNAME=host.docker.internal:8201
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     privileged: true
     depends_on:
       - appium
@@ -36,4 +38,6 @@ services:
     ports:
       - "4723:4723"
       - "8201:8200"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     privileged: true
