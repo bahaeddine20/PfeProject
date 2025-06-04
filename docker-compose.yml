@@ -5,7 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     image: aestoolscelad/flask-app-baha:v4.0
-    network_mode: host
     ports:
       - "5000:5000"
       - "5037:5037"
@@ -24,11 +23,12 @@ services:
     privileged: true
     depends_on:
       - appium
+    networks:
+      - app-network
 
   appium:
     image: appium/appium
     container_name: appium
-    network_mode: host
     environment:
       - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
       - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
@@ -37,9 +37,14 @@ services:
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /var/run/docker.sock:/var/run/docker.sock
-
     ports:
       - "4723:4723"
       - "5037:5037"
       - "8201:8200"
     privileged: true
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
