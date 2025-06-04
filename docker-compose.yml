@@ -8,11 +8,10 @@ services:
     ports:
       - "5000:5000"
       - "5037:5037"
-      - "4723:4723"
+      - "4724:4723"
       - "8201:8200"
     volumes:
       - /dev/bus/usb:/dev/bus/usb
-      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
       - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
@@ -36,7 +35,6 @@ services:
       - ANDROID_HOSTNAME=host.docker.internal:8201
     volumes:
       - /dev/bus/usb:/dev/bus/usb
-      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "4723:4723"
       - "5037:5037"
