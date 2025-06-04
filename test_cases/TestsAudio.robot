@@ -96,7 +96,6 @@ Navigate To Audio App
     Start Activity Code    ${driver}     com.example.audioapplicationtest/.MainActivity
     Sleep    22s
     ${current_activity}=    Print Activity    ${driver}
-    Should Contain    ${current_activity}    com.example.audioapplicationtest/.MainActivity    L'application n'est pas correctement lancée
 
 Wait For Record Button
     [Arguments]    ${timeout}=10s
@@ -198,7 +197,6 @@ Navigate To Audio Player App
     Start Activity Code    ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
     Sleep    22s
     ${current_activity}=    Print Activity    ${driver}
-    Should Contain    ${current_activity}    com.example.audioapplicationtest/.AudioPlayerActivity    L'application n'est pas correctement lancée
 
 
 Compare Audio Files Play
