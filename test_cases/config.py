@@ -6,9 +6,9 @@ import socket
 
 # Docker configuration
 DOCKER_CONFIG = {
-    'appium_url': 'http://appium:4723',
-    'host_url': 'http://host.docker.internal:6000',
-    'remote_adb_host': 'host.docker.internal'
+    'appium_url': 'http://127.0.0.1:4723',
+    'host_url': 'http://127.0.0.1:6000',
+    'remote_adb_host': '127.0.0.1'
 }
 
 # Local configuration
@@ -36,7 +36,7 @@ def is_running_in_docker():
 
         # Vérifier si on peut se connecter à appium:4723
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        result = sock.connect_ex(('appium', 4723))
+        result = sock.connect_ex(('127.0.0.1', 4723))
         sock.close()
         if result == 0:
             return True
@@ -52,7 +52,12 @@ USE_DOCKER = is_running_in_docker()
 
 # Get current configuration
 def get_config():
-    return DOCKER_CONFIG if USE_DOCKER else LOCAL_CONFIG
+    """
+    Retourne la configuration appropriée en fonction de l'environnement.
+    """
+    if is_running_in_docker():
+        return DOCKER_CONFIG
+    return LOCAL_CONFIG
 
 
 # Helper functions
