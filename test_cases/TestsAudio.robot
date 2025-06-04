@@ -196,7 +196,7 @@ Click Play Button
 
 Navigate To Audio Player App
     Start Activity Code    ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
-    Sleep    3s    # Attendre que l'application se charge
+    Sleep    10s
     ${current_activity}=    Print Activity    ${driver}
     Should Contain    ${current_activity}    com.example.audioapplicationtest/.AudioPlayerActivity    L'application n'est pas correctement lancée
 
@@ -246,6 +246,7 @@ Test Audio Recording And Playback
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
     Close Activity       ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
+    Sleep    10s
     Execute Test With Retry    Verify Audio Recording    Test Audio Recording And Playback
 
 
