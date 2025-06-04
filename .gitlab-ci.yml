@@ -33,6 +33,9 @@ build:
       when: on_success
     - when: never
 
+before_script:
+  - docker info
+  
 deploy:
   stage: deploy
   image: docker:latest
