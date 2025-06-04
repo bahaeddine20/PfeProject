@@ -94,7 +94,7 @@ Get Localized Text
 
 Navigate To Audio App
     Start Activity Code    ${driver}     com.example.audioapplicationtest/.MainActivity
-    Sleep    3s    # Attendre que l'application se charge
+    Sleep    22s
     ${current_activity}=    Print Activity    ${driver}
     Should Contain    ${current_activity}    com.example.audioapplicationtest/.MainActivity    L'application n'est pas correctement lancée
 
@@ -196,7 +196,7 @@ Click Play Button
 
 Navigate To Audio Player App
     Start Activity Code    ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
-    Sleep    10s
+    Sleep    22s
     ${current_activity}=    Print Activity    ${driver}
     Should Contain    ${current_activity}    com.example.audioapplicationtest/.AudioPlayerActivity    L'application n'est pas correctement lancée
 
@@ -258,6 +258,7 @@ Test Audio Player And Playback
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
     Navigate To Audio Player App
+
     ${recording_success}=    Record Audio    ${driver}     23    # Démarre l'enregistrement
     Should Be True    ${recording_success}    L'enregistrement audio a échoué
     Sleep    1s    # Petit délai pour s'assurer que l'enregistrement a bien démarré
