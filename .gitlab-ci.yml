@@ -4,6 +4,10 @@ stages:
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "/certs/client"
 
 build:
   stage: build
@@ -13,6 +17,7 @@ build:
   services:
     - name: docker:dind
       alias: docker
+      command: ["--tls=true", "--tlscert=/certs/server/cert.pem", "--tlskey=/certs/server/key.pem"]
   script:
     - sleep 10
     - docker info
@@ -24,6 +29,7 @@ build:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
     - when: never
+
 deploy:
   stage: deploy
   image: docker:latest
@@ -32,6 +38,7 @@ deploy:
   services:
     - name: docker:dind
       alias: docker
+      command: ["--tls=true", "--tlscert=/certs/server/cert.pem", "--tlskey=/certs/server/key.pem"]
   script:
     - sleep 10
     - docker info
