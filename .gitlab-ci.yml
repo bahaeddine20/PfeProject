@@ -4,19 +4,13 @@ stages:
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
-  DOCKER_HOST: npipe:////./pipe/docker_engine
   DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
-  FF_NETWORK_PER_BUILD: "true"
 
 build:
   stage: build
-  image: docker:latest
   tags:
     - windows-runner
-  before_script:
-    - apk add --no-cache curl
-    - docker info
   script:
     - docker system prune -f
     - docker compose build
@@ -29,12 +23,8 @@ build:
 
 deploy:
   stage: deploy
-  image: docker:latest
   tags:
     - windows-runner
-  before_script:
-    - apk add --no-cache curl
-    - docker info
   script:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker compose down
