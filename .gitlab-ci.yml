@@ -7,6 +7,7 @@ variables:
   DOCKER_HOST: tcp://docker:2375
   DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
+  FF_NETWORK_PER_BUILD: "true"
 
 build:
   stage: build
@@ -17,11 +18,13 @@ build:
     - name: docker:dind
       alias: docker
       command: ["--tls=false", "--storage-driver=overlay2"]
+      variables:
+        DOCKER_TLS_CERTDIR: ""
   before_script:
     - apk add --no-cache curl
+    - docker info
     - until curl -s http://docker:2375/version > /dev/null; do echo "Waiting for Docker daemon..."; sleep 1; done
   script:
-    - docker info
     - docker system prune -f
     - docker compose build
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
@@ -41,11 +44,13 @@ deploy:
     - name: docker:dind
       alias: docker
       command: ["--tls=false", "--storage-driver=overlay2"]
+      variables:
+        DOCKER_TLS_CERTDIR: ""
   before_script:
     - apk add --no-cache curl
+    - docker info
     - until curl -s http://docker:2375/version > /dev/null; do echo "Waiting for Docker daemon..."; sleep 1; done
   script:
-    - docker info
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker compose down
     - docker pull "$IMAGE_NAME"
