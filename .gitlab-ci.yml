@@ -9,8 +9,16 @@ variables:
 
 build:
   stage: build
+  image: docker:24.0.7
   tags:
     - windows-runner
+  services:
+    - name: docker:dind
+      alias: docker
+      command: ["--tls=false"]
+  before_script:
+    - apk add --no-cache curl
+    - until curl -s http://docker:2375/version > /dev/null; do echo "Waiting for Docker daemon..."; sleep 1; done
   script:
     - docker system prune -f
     - docker compose build
@@ -23,8 +31,16 @@ build:
 
 deploy:
   stage: deploy
+  image: docker:24.0.7
   tags:
     - windows-runner
+  services:
+    - name: docker:dind
+      alias: docker
+      command: ["--tls=false"]
+  before_script:
+    - apk add --no-cache curl
+    - until curl -s http://docker:2375/version > /dev/null; do echo "Waiting for Docker daemon..."; sleep 1; done
   script:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker compose down
