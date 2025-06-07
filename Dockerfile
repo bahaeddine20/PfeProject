@@ -24,7 +24,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Étape 7: Copier uniquement les fichiers nécessaires
 COPY flaskProject.py .
 COPY config.py .
-COPY static/ static/
 COPY templates/ templates/
 COPY test_cases/ test_cases/
 # Étape 8: Exposer le port Flask
