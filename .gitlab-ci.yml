@@ -7,7 +7,7 @@ variables:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
   DOCKER_TLS_CERTDIR: ""
-  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_HOST: npipe:////./pipe/docker_engine
 
 build:
   stage: build
@@ -22,7 +22,8 @@ build:
         DOCKER_TLS_CERTDIR: ""
   before_script:
     - apk add --no-cache docker-compose
-    - until docker info; do sleep 1; done
+    - docker version
+    - docker info
   script:
     - docker system prune -f
     - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
@@ -49,7 +50,8 @@ deploy:
         DOCKER_TLS_CERTDIR: ""
   before_script:
     - apk add --no-cache docker-compose
-    - until docker info; do sleep 1; done
+    - docker version
+    - docker info
   script:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker compose down
