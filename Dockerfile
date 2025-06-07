@@ -15,20 +15,20 @@ RUN pip install --upgrade pip setuptools
 # Étape 4: Définir le répertoire de travail
 WORKDIR /app
 
-# Étape 5: Copier uniquement les fichiers de dépendances d'abord (si présents)
+# Étape 5: Copier uniquement les fichiers de dépendances d'abord
 COPY requirements.txt .
 
-# Étape 6: Installer les dépendances Python
+# Étape 6: Installer les dépendances Python avec mise en cache
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Étape 7: Copier le reste du projet (code source, etc.)
-COPY . .
-
-# Étape 8: Installer doctr si nécessaire (décommenter si utilisé)
-# RUN pip install --no-cache-dir "python-doctr[torch]"
-
-# Étape 9: Exposer le port Flask
+# Étape 7: Copier uniquement les fichiers nécessaires
+COPY flaskProject.py .
+COPY config.py .
+COPY static/ static/
+COPY templates/ templates/
+COPY test_cases/ test_cases/
+# Étape 8: Exposer le port Flask
 EXPOSE 5000
 
-# Étape 10: Démarrer l'application Flask
+# Étape 9: Démarrer l'application Flask
 CMD ["python", "flaskProject.py"]
