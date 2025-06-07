@@ -1,3 +1,4 @@
+
 version: '3.8'
 services:
   flask:
@@ -5,39 +6,41 @@ services:
       context: .
       dockerfile: Dockerfile
     image: aestoolscelad/flask-app-baha:v4.0
-    network_mode: host
+    ports:
+      - "5000:5000"
     volumes:
       - /dev/bus/usb:/dev/bus/usb
-      - /var/run/docker.sock:/var/run/docker.sock
       - ${ANDROID_HOME:-$HOME/.android}:/root/.android
     environment:
       - ADB_SERVER_SOCKET=tcp:127.0.0.1:5037
       - ANDROID_ADB_SERVER_ADDRESS=127.0.0.1
       - ANDROID_ADB_SERVER_PORT=5037
-      - ANDROID_HOSTNAME=127.0.0.1:8201
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
-      - APPIUM_HOST=127.0.0.1
+      - APPIUM_HOST=appium
       - APPIUM_PORT=4723
     privileged: true
     depends_on:
       - appium
-
-
+    networks:
+      - app-network
   appium:
     image: appium/appium
     container_name: appium
-    network_mode: host
     environment:
       - ADB_SERVER_SOCKET=tcp:127.0.0.1:5037
       - ANDROID_ADB_SERVER_ADDRESS=127.0.0.1
       - ANDROID_ADB_SERVER_PORT=5037
       - ANDROID_HOSTNAME=127.0.0.1:8201
-      - APPIUM_HOST=127.0.0.1
-      - APPIUM_PORT=4723
     volumes:
       - /dev/bus/usb:/dev/bus/usb
-      - /var/run/docker.sock:/var/run/docker.sock
       - ${ANDROID_HOME:-$HOME/.android}:/root/.android
+    ports:
+      - "4723:4723"
+      - "8201:8200"
     privileged: true
-    command: appium --allow-insecure chromedriver_autodownload
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
