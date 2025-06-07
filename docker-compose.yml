@@ -11,6 +11,8 @@ services:
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - ${ANDROID_HOME:-$HOME/.android}:/root/.android
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /var/run/adb.sock:/var/run/adb.sock
     environment:
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
@@ -28,6 +30,8 @@ services:
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - ${ANDROID_HOME:-$HOME/.android}:/root/.android
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /var/run/adb.sock:/var/run/adb.sock
     ports:
       - "4723:4723"
       - "8201:8200"
