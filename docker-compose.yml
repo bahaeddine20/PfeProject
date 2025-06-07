@@ -6,39 +6,29 @@ services:
       context: .
       dockerfile: Dockerfile
     image: aestoolscelad/flask-app-baha:v4.0
+    network_mode: host
     ports:
       - "5000:5000"
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - ${ANDROID_HOME:-$HOME/.android}:/root/.android
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - /var/run/adb.sock:/var/run/adb.sock
     environment:
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
-      - APPIUM_HOST=appium
+      - APPIUM_HOST=localhost
       - APPIUM_PORT=4723
     privileged: true
     depends_on:
       - appium
-    networks:
-      - app-network
 
   appium:
     image: appium/appium
     container_name: appium
-    volumes:
-      - /dev/bus/usb:/dev/bus/usb
-      - ${ANDROID_HOME:-$HOME/.android}:/root/.android
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - /var/run/adb.sock:/var/run/adb.sock
+    network_mode: host
     ports:
       - "4723:4723"
       - "8201:8200"
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - ${ANDROID_HOME:-$HOME/.android}:/root/.android
     privileged: true
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
