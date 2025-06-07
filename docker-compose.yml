@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   flask:
     build:
@@ -11,9 +12,6 @@ services:
       - /dev/bus/usb:/dev/bus/usb
       - ${ANDROID_HOME:-$HOME/.android}:/root/.android
     environment:
-      - ADB_SERVER_SOCKET=tcp:127.0.0.1:5037
-      - ANDROID_ADB_SERVER_ADDRESS=127.0.0.1
-      - ANDROID_ADB_SERVER_PORT=5037
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
       - APPIUM_HOST=appium
@@ -23,14 +21,10 @@ services:
       - appium
     networks:
       - app-network
+
   appium:
     image: appium/appium
     container_name: appium
-    environment:
-      - ADB_SERVER_SOCKET=tcp:127.0.0.1:5037
-      - ANDROID_ADB_SERVER_ADDRESS=127.0.0.1
-      - ANDROID_ADB_SERVER_PORT=5037
-      - ANDROID_HOSTNAME=127.0.0.1:8201
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - ${ANDROID_HOME:-$HOME/.android}:/root/.android
@@ -40,6 +34,7 @@ services:
     privileged: true
     networks:
       - app-network
+
 networks:
   app-network:
     driver: bridge
