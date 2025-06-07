@@ -7,7 +7,7 @@ build:
   stage: build
   image: docker:latest
   tags:
-    - LocalRunner2
+    - windows-runner
   services:
     - name: docker:dind
       alias: docker
@@ -17,7 +17,7 @@ build:
     - docker system prune -f
     - docker compose build
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    - docker compose push
+    #- docker compose push
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -26,7 +26,7 @@ deploy:
   stage: deploy
   image: docker:latest
   tags:
-    - LocalRunner2
+    - windows-runner
   services:
     - name: docker:dind
       alias: docker
