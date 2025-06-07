@@ -16,9 +16,10 @@ build:
   before_script:
     - apk add --no-cache docker-compose
   script:
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+
     - docker system prune -f
     - DOCKER_BUILDKIT=1 docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
-    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
