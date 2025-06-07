@@ -6,7 +6,10 @@ variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
-
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+services:
+  - docker:dind
 build:
   stage: build
   image: docker:24.0.7
