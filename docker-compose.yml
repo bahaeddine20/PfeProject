@@ -18,10 +18,12 @@ services:
       - FLASK_RUN_HOST=0.0.0.0
       - APPIUM_HOST=appium
       - APPIUM_PORT=4723
-      - ADB_SERVER_SOCKET=tcp:172.17.0.1:5037
-      - ANDROID_ADB_SERVER_ADDRESS=172.17.0.1
+      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
+      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
       - ANDROID_ADB_SERVER_PORT=5037
     privileged: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - appium
     networks:
@@ -39,15 +41,16 @@ services:
       - "4723:4723"
       - "8201:8200"
     environment:
-      - ADB_SERVER_SOCKET=tcp:172.17.0.1:5037
-      - ANDROID_ADB_SERVER_ADDRESS=172.17.0.1
+      - ADB_SERVER_SOCKET=tcp:host.docker.internal:5037
+      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
       - ANDROID_ADB_SERVER_PORT=5037
-      - ANDROID_HOSTNAME=172.17.0.1:8201
+      - ANDROID_HOSTNAME=host.docker.internal:8201
     privileged: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
-
