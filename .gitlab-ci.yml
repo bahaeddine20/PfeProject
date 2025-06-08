@@ -6,6 +6,15 @@ variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
+  GIT_STRATEGY: clone
+  GIT_DEPTH: 1
+  GIT_CLEAN_FLAGS: none
+
+before_script:
+  - git config --system core.longpaths true
+  - git config --global core.longpaths true
+  - git config --global --add safe.directory "$CI_PROJECT_DIR"
+
 
 build:
   stage: build
