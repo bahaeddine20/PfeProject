@@ -34,6 +34,10 @@ deploy:
     - windows-runner
   script:
     - echo "Deploy stage on Windows"
+    - echo "Username: $env:DOCKERHUB_USERNAME"
+    - echo "Password Length: $($env:DOCKERHUB_PASSWORD.Length)"
+    - if (!$env:DOCKERHUB_PASSWORD) { Write-Host "❌ Password is empty" }
+
     - docker version
     - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
     - docker compose down
