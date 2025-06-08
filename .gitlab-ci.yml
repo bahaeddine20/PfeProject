@@ -44,10 +44,22 @@ deploy:
 run_flask:
   stage: run
   tags:
-    - windows-runner
+    - windows-runner2
   script:
+    # Vérifier si Python est installé
+    - python --version
+    - $pythonCommand = if (Get-Command python -ErrorAction SilentlyContinue) { "python" } else { "py" }
+
+    # Créer et activer un environnement virtuel
     - cd ServeurFlaskHost
+    - & $pythonCommand -m venv venv
+    - .\venv\Scripts\Activate.ps1
+
+    # Mettre à jour pip et installer les dépendances
+    - python -m pip install --upgrade pip
     - pip install -r requirements.txt
+
+    # Lancer le serveur Flask dans l'environnement virtuel
     - python flaskhost.py
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
