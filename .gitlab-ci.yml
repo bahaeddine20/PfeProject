@@ -21,7 +21,7 @@ build:
   tags:
     - windows-runner
   script:
-    - export DOCKER_BUILDKIT=1
+    - $env:DOCKER_BUILDKIT = "1"
     - pwsh --version
     #- echo "%DOCKERHUB_PASSWORD%" | docker login -u "%DOCKERHUB_USERNAME%" --password-stdin
     - docker system prune -f
