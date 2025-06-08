@@ -22,7 +22,7 @@ build:
     - windows-runner
   script:
     - pwsh --version
-    - echo "%DOCKERHUB_PASSWORD%" | docker login -u "%DOCKERHUB_USERNAME%" --password-stdin
+    #- echo "%DOCKERHUB_PASSWORD%" | docker login -u "%DOCKERHUB_USERNAME%" --password-stdin
 
     - docker system prune -f
     - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
