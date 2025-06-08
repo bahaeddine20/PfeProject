@@ -43,11 +43,10 @@ deploy:
 run_flask:
   stage: run
   tags:
-    - windows-runner
+    - python-shell
   script:
     # Vérifier si Python est installé
     - python --version
-    - $pythonCommand = if (Get-Command python -ErrorAction SilentlyContinue) { "python" } else { "py" }
 
     # Créer et activer un environnement virtuel
     - cd ServeurFlaskHost
