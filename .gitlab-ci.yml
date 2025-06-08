@@ -5,22 +5,24 @@ stages:
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
   DOCKER_BUILDKIT: "1"
-  PIP_CACHE_DIR: "C:/gitlab-runner/builds/pip_cache"
+  COMPOSE_DOCKER_CLI_BUILD: "1"
+  GIT_STRATEGY: clone
+  GIT_DEPTH: 1
+  GIT_CLEAN_FLAGS: none
 
-cache:
-  key: pip-cache
-  paths:
-    - pip_cache/
+before_script:
+  - git config --system core.longpaths true
+  - git config --global core.longpaths true
+  - git config --global --add safe.directory "$CI_PROJECT_DIR"
 
 build:
   stage: build
   tags:
-    - windows-runner
+    - windows-runner2
   script:
-    - echo "Build stage on Windows"
-    - docker version
+    - pwsh --version
     - docker system prune -f
-    - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
+    - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -29,15 +31,12 @@ build:
 deploy:
   stage: deploy
   tags:
-    - windows-runner
+    - windows-runner2
   script:
-    - echo "Deploy stage on Windows"
-    - docker version
-    # Secure Docker login using trimmed password
-    - cmd.exe /C "echo %DOCKERHUB_PASSWORD% | docker login -u %DOCKERHUB_USERNAME% --password-stdin"
-    - docker pull $env:IMAGE_NAME
+    - pwsh --version
     - docker compose down
     - docker compose up -d --remove-orphans
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
+    - when: never
