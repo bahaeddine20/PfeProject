@@ -5,6 +5,13 @@ stages:
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
+  DOCKER_BUILDKIT: "1"  # Active BuildKit si disponible
+  PIP_CACHE_DIR: "C:/gitlab-runner/builds/pip_cache"  # Pour cache pip dans Docker
+
+cache:
+  key: pip-cache
+  paths:
+    - pip_cache/
 
 build:
   stage: build
@@ -14,8 +21,8 @@ build:
     - echo "Build stage on Windows"
     - docker version
     - docker system prune -f
-    - docker compose build
-    - echo $Env:DOCKERHUB_PASSWORD | docker login -u $Env:DOCKERHUB_USERNAME --password-stdin
+    - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
+    - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -28,7 +35,7 @@ deploy:
   script:
     - echo "Deploy stage on Windows"
     - docker version
-    - echo $Env:DOCKERHUB_PASSWORD | docker login -u $Env:DOCKERHUB_USERNAME --password-stdin
+    - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
     - docker compose down
     - docker compose up -d --remove-orphans
   rules:

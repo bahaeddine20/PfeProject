@@ -1,5 +1,4 @@
 # syntax=docker/dockerfile:1.4
-
 FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y \
@@ -15,10 +14,10 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install -r requirements.txt
-
-RUN mkdir -p static templates test_cases
+# Utiliser un dossier de cache montable
+ARG PIP_CACHE_DIR=/tmp/pip-cache
+RUN mkdir -p ${PIP_CACHE_DIR}
+RUN pip install --cache-dir=${PIP_CACHE_DIR} -r requirements.txt
 
 COPY . .
 
