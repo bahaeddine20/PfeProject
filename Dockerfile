@@ -20,7 +20,8 @@ COPY requirements.txt .
 
 # Étape 6: Installer les dépendances Python avec mise en cache
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --no-cache-dir -r requirements.txt
+    pip install -r requirements.txt
+
 
 # Étape 7: Créer les dossiers nécessaires
 RUN mkdir -p static templates test_cases
