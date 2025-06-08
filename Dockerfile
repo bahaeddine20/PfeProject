@@ -1,7 +1,7 @@
-# Étape 1: Utiliser une image de base Python
+# syntax=docker/dockerfile:1.4
+
 FROM python:3.12-slim
 
-# Étape 2: Installer les dépendances système nécessaires
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglib2.0-0 \
@@ -9,28 +9,19 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Étape 3: Mettre à jour pip et setuptools
 RUN pip install --upgrade pip setuptools
 
-# Étape 4: Définir le répertoire de travail
 WORKDIR /app
 
-# Étape 5: Copier uniquement les fichiers de dépendances d'abord
 COPY requirements.txt .
 
-# Étape 6: Installer les dépendances Python avec mise en cache
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r requirements.txt
 
-
-# Étape 7: Créer les dossiers nécessaires
 RUN mkdir -p static templates test_cases
 
-# Étape 8: Copier les fichiers nécessaires
 COPY . .
 
-# Étape 9: Exposer le port Flask
 EXPOSE 5000
 
-# Étape 10: Démarrer l'application Flask
 CMD ["python", "flaskProject.py"]
