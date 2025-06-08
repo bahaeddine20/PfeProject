@@ -42,7 +42,8 @@ deploy:
   script:
     - echo "Deploy stage on Windows"
     - docker version
-
+    - echo "Username: $env:DOCKERHUB_USERNAME"
+    - echo "Trimmed password ends with: $($trimpwd.Substring($trimpwd.Length-3))"
     # Use trimmed credentials for login
     - $trimmedPassword = $env:DOCKERHUB_PASSWORD.Trim()
     - $trimmedPassword | docker login -u $env:DOCKERHUB_USERNAME --password-stdin || (
