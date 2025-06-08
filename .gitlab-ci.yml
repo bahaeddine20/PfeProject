@@ -33,14 +33,14 @@ deploy:
   tags:
     - windows-runner
   script:
-    - echo "Deploy stage on Windows"
-    - echo "Username: $env:DOCKERHUB_USERNAME"
-    - echo "Password Length: $($env:DOCKERHUB_PASSWORD.Length)"
-    - if ([string]::IsNullOrEmpty($env:DOCKERHUB_PASSWORD)) { echo "❌ Password is empty" }
-    - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
-    - docker version
-    - docker compose down
-    - docker compose up -d --remove-orphans
+    - 'echo "Deploy stage on Windows"'
+    - 'echo "Username: $env:DOCKERHUB_USERNAME"'
+    - 'echo "Password Length: $($env:DOCKERHUB_PASSWORD.Length)"'
+    - 'if ([string]::IsNullOrEmpty($env:DOCKERHUB_PASSWORD)) { Write-Host "❌ Password is empty" }'
+    - 'echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin'
+    - 'docker version'
+    - 'docker compose down'
+    - 'docker compose up -d --remove-orphans'
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
