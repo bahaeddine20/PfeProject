@@ -36,7 +36,8 @@ deploy:
     - echo "Deploy stage on Windows"
     - echo "Username: $env:DOCKERHUB_USERNAME"
     - echo "Password Length: $($env:DOCKERHUB_PASSWORD.Length)"
-    - if (!$env:DOCKERHUB_PASSWORD) { Write-Host "❌ Password is empty" }
+    - '[string]::IsNullOrEmpty($env:DOCKERHUB_PASSWORD) && echo "❌ Password is empty"'
+    - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
 
     - docker version
     - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
