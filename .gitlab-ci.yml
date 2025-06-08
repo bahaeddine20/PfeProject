@@ -22,9 +22,14 @@ build:
     - docker version
     - docker system prune -f
     - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
-    # Fixed login using password file method
-    - $env:DOCKERHUB_PASSWORD | Out-File -FilePath "pass.txt" -NoNewline -Encoding ASCII
-    - Get-Content -Raw "pass.txt" | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+
+    # Enhanced credential validation and debugging
+    - $trimmedPassword = $env:DOCKERHUB_PASSWORD.Trim()
+    - echo "Trimmed password length: $($trimmedPassword.Length)"
+    - $trimmedPassword | docker login -u $env:DOCKERHUB_USERNAME --password-stdin || (
+        Write-Host "❌ Docker login failed";
+        exit 1
+      )
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -37,12 +42,15 @@ deploy:
   script:
     - echo "Deploy stage on Windows"
     - docker version
-    # Fixed login using password file method
-    - $env:DOCKERHUB_PASSWORD | Out-File -FilePath "pass.txt" -NoNewline -Encoding ASCII
-    - Get-Content -Raw "pass.txt" | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+
+    # Use trimmed credentials for login
+    - $trimmedPassword = $env:DOCKERHUB_PASSWORD.Trim()
+    - $trimmedPassword | docker login -u $env:DOCKERHUB_USERNAME --password-stdin || (
+        Write-Host "❌ Docker login failed";
+        exit 1
+      )
+
     - docker compose down
-    # Re-login after compose down
-    - Get-Content -Raw "pass.txt" | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
     - docker compose up -d --remove-orphans
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
