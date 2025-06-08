@@ -45,14 +45,16 @@ run_flask:
   tags:
     - python-shell
   before_script:
-    # Mise à jour et installation de la lib PortAudio (et pip tools utiles)
     - cd ServeurFlaskHost
-    - apt-get update && apt-get install -y portaudio19-dev
+    # Créer un environnement virtuel Python
     - python -m venv venv
-    - source venv/bin/activate
-    - pip install --upgrade pip
+    # Activer l'environnement virtuel sous Windows PowerShell
+    - venv\Scripts\Activate.ps1
+    # Mettre à jour pip et installer les dépendances
+    - python -m pip install --upgrade pip
     - pip install -r requirements.txt
   script:
+    # Lancer le serveur Flask
     - python flaskhost.py
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
