@@ -21,12 +21,7 @@ build:
     - docker version
     - docker system prune -f
     - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
-
-    # Simplified credential handling
-    - $trimpwd = $env:DOCKERHUB_PASSWORD.Trim()
-    - echo "Trimmed password length: $($trimpwd.Length)"
-    - echo $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
-    - if ($LASTEXITCODE -ne 0) { exit 1 }
+    - 'pwsh -Command "$trimpwd = $env:DOCKERHUB_PASSWORD.Trim(); echo $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin; if ($LASTEXITCODE -ne 0) { exit 1 }"'
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -39,16 +34,7 @@ deploy:
   script:
     - echo "Deploy stage on Windows"
     - docker version
-
-    # Simple credential verification
-    - echo "Username: $env:DOCKERHUB_USERNAME"
-    - $trimpwd = $env:DOCKERHUB_PASSWORD.Trim()
-    - echo "Trimmed password ends with: $($trimpwd.Substring([math]::Max(0, $trimpwd.Length-3)))"
-
-    # Docker login with error check
-    - echo $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
-    - if ($LASTEXITCODE -ne 0) { exit 1 }
-
+    - 'pwsh -Command "$trimpwd = $env:DOCKERHUB_PASSWORD.Trim(); echo $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin; if ($LASTEXITCODE -ne 0) { exit 1 }"'
     - docker compose down
     - docker compose up -d --remove-orphans
   rules:
