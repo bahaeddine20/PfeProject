@@ -22,7 +22,7 @@ build:
     - docker version
     - docker system prune -f
     - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
-    - $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+    - 'docker login -u $env:DOCKERHUB_USERNAME -p $env:DOCKERHUB_PASSWORD'
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -37,7 +37,7 @@ deploy:
     - 'echo "Username: $env:DOCKERHUB_USERNAME"'
     - 'echo "Password Length: $($env:DOCKERHUB_PASSWORD.Length)"'
     - 'if ([string]::IsNullOrEmpty($env:DOCKERHUB_PASSWORD)) { Write-Host "❌ Password is empty" }'
-    - '$env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin'
+    - 'docker login -u $env:DOCKERHUB_USERNAME -p $env:DOCKERHUB_PASSWORD'
     - 'docker version'
     - 'docker compose down'
     - 'docker compose up -d --remove-orphans'
