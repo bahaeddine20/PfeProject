@@ -1,28 +1,21 @@
 stages:
   - build
+  - push
   - deploy
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
-  DOCKER_BUILDKIT: "1"
-  COMPOSE_DOCKER_CLI_BUILD: "1"
-  GIT_STRATEGY: clone
-  GIT_DEPTH: 1
-  GIT_CLEAN_FLAGS: none
-
-before_script:
-  - git config --system core.longpaths true
-  - git config --global core.longpaths true
-  - git config --global --add safe.directory "$CI_PROJECT_DIR"
-
 
 build:
   stage: build
   tags:
     - windows-runner
   script:
+    - echo "Build stage on Windows"
+    - docker version
     - docker system prune -f
     - docker compose build
+    - echo $Env:DOCKERHUB_PASSWORD | docker login -u $Env:DOCKERHUB_USERNAME --password-stdin
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -33,10 +26,11 @@ deploy:
   tags:
     - windows-runner
   script:
-    - pwsh --version
+    - echo "Deploy stage on Windows"
+    - docker version
+    - echo $Env:DOCKERHUB_PASSWORD | docker login -u $Env:DOCKERHUB_USERNAME --password-stdin
     - docker compose down
     - docker compose up -d --remove-orphans
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
-    - when: never
