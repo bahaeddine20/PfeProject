@@ -44,21 +44,15 @@ run_flask:
   stage: run
   tags:
     - python-shell
-  script:
-    # Vérifier si Python est installé
-    - python --version
-
-    # Créer et activer un environnement virtuel
-    - cd ServeurFlaskHost
-    - python  -m venv venv
+  before_script:
+    # Mise à jour et installation de la lib PortAudio (et pip tools utiles)
+    - apt-get update && apt-get install -y portaudio19-dev
+    - python -m venv venv
     - source venv/bin/activate
-
-    # Mettre à jour pip et installer les dépendances
-    - python -m pip install --upgrade pip
+    - pip install --upgrade pip
     - pip install -r requirements.txt
-
-    # Lancer le serveur Flask dans l'environnement virtuel
-    - python flaskhost.py
+  script:
+    - python ServeurFlaskHost/flaskhost.py
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
       when: on_success
