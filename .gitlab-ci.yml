@@ -37,6 +37,7 @@ deploy:
     - 'pwsh -Command "$trimpwd = $env:DOCKERHUB_PASSWORD.Trim(); echo $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin; if ($LASTEXITCODE -ne 0) { exit 1 }"'
     - docker compose down
     - docker compose up -d --remove-orphans
+
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
