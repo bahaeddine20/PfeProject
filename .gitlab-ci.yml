@@ -1,13 +1,14 @@
 stages:
   - build
   - deploy
+  - run  # Nouvelle étape ajoutée
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
   DOCKER_BUILDKIT: "1"
   COMPOSE_DOCKER_CLI_BUILD: "1"
   GIT_STRATEGY: clone
-  GIT_DEPTH: 1
+  GIT_DEPTH: "1"
   GIT_CLEAN_FLAGS: none
 
 before_script:
@@ -30,11 +31,25 @@ build:
 deploy:
   stage: deploy
   tags:
-    - windows-runner2
+    - windows-runner
   script:
     - docker compose down
     - docker compose up -d --remove-orphans
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
+      when: on_success
+    - when: never
+
+# Nouveau job pour exécuter le serveur Flask
+run_flask:
+  stage: run
+  tags:
+    - windows-runner
+  script:
+    - cd ServeurFlaskHost
+    - pip install -r requirements.txt
+    - python flaskhost.py
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
       when: on_success
     - when: never
