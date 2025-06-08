@@ -14,14 +14,12 @@ before_script:
   - git config --system core.longpaths true
   - git config --global core.longpaths true
   - git config --global --add safe.directory "$CI_PROJECT_DIR"
-  - powershell --version
+
 build:
   stage: build
   tags:
     - windows-runner2
   script:
-
-    - pwsh --version
     - docker system prune -f
     - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
   rules:
@@ -34,7 +32,6 @@ deploy:
   tags:
     - windows-runner2
   script:
-    - pwsh --version
     - docker compose down
     - docker compose up -d --remove-orphans
   rules:
