@@ -1,6 +1,5 @@
 stages:
   - build
-  - push
   - deploy
 
 variables:
@@ -23,13 +22,11 @@ build:
     - docker system prune -f
     - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
 
-    # Enhanced credential validation and debugging
-    - $trimmedPassword = $env:DOCKERHUB_PASSWORD.Trim()
-    - echo "Trimmed password length: $($trimmedPassword.Length)"
-    - $trimmedPassword | docker login -u $env:DOCKERHUB_USERNAME --password-stdin || (
-        Write-Host "❌ Docker login failed";
-        exit 1
-      )
+    # Simplified credential handling
+    - $trimpwd = $env:DOCKERHUB_PASSWORD.Trim()
+    - echo "Trimmed password length: $($trimpwd.Length)"
+    - echo $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+    - if ($LASTEXITCODE -ne 0) { exit 1 }
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -42,14 +39,15 @@ deploy:
   script:
     - echo "Deploy stage on Windows"
     - docker version
+
+    # Simple credential verification
     - echo "Username: $env:DOCKERHUB_USERNAME"
-    - echo "Trimmed password ends with: $($trimpwd.Substring($trimpwd.Length-3))"
-    # Use trimmed credentials for login
-    - $trimmedPassword = $env:DOCKERHUB_PASSWORD.Trim()
-    - $trimmedPassword | docker login -u $env:DOCKERHUB_USERNAME --password-stdin || (
-        Write-Host "❌ Docker login failed";
-        exit 1
-      )
+    - $trimpwd = $env:DOCKERHUB_PASSWORD.Trim()
+    - echo "Trimmed password ends with: $($trimpwd.Substring([math]::Max(0, $trimpwd.Length-3)))"
+
+    # Docker login with error check
+    - echo $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+    - if ($LASTEXITCODE -ne 0) { exit 1 }
 
     - docker compose down
     - docker compose up -d --remove-orphans
