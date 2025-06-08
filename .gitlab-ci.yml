@@ -21,7 +21,6 @@ build:
     - docker version
     - docker system prune -f
     - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
-    - 'pwsh -Command "$trimpwd = $env:DOCKERHUB_PASSWORD.Trim(); $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin; if ($LASTEXITCODE -ne 0) { exit 1 }"'
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -34,10 +33,10 @@ deploy:
   script:
     - echo "Deploy stage on Windows"
     - docker version
-    - 'pwsh -Command "$trimpwd = $env:DOCKERHUB_PASSWORD.Trim(); $trimpwd | docker login -u $env:DOCKERHUB_USERNAME --password-stdin; if ($LASTEXITCODE -ne 0) { exit 1 }"'
+    # Secure Docker login using trimmed password
+    - cmd.exe /C "echo %DOCKERHUB_PASSWORD% | docker login -u %DOCKERHUB_USERNAME% --password-stdin"
     - docker compose down
     - docker compose up -d --remove-orphans
-
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
