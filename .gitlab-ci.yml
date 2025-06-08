@@ -5,8 +5,8 @@ stages:
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
-  DOCKER_BUILDKIT: "1"  # Active BuildKit si disponible
-  PIP_CACHE_DIR: "C:/gitlab-runner/builds/pip_cache"  # Pour cache pip dans Docker
+  DOCKER_BUILDKIT: "1"
+  PIP_CACHE_DIR: "C:/gitlab-runner/builds/pip_cache"
 
 cache:
   key: pip-cache
@@ -22,7 +22,9 @@ build:
     - docker version
     - docker system prune -f
     - docker build --build-arg PIP_CACHE_DIR=%PIP_CACHE_DIR% --progress=plain -t $env:IMAGE_NAME .
-    - 'docker login -u $env:DOCKERHUB_USERNAME -p $env:DOCKERHUB_PASSWORD'
+    # Fixed login using password file method
+    - $env:DOCKERHUB_PASSWORD | Out-File -FilePath "pass.txt" -NoNewline -Encoding ASCII
+    - Get-Content -Raw "pass.txt" | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -33,14 +35,15 @@ deploy:
   tags:
     - windows-runner
   script:
-    - 'echo "Deploy stage on Windows"'
-    - 'echo "Username: $env:DOCKERHUB_USERNAME"'
-    - 'echo "Password Length: $($env:DOCKERHUB_PASSWORD.Length)"'
-    - 'if ([string]::IsNullOrEmpty($env:DOCKERHUB_PASSWORD)) { Write-Host "❌ Password is empty" }'
-    - 'docker login -u $env:DOCKERHUB_USERNAME -p $env:DOCKERHUB_PASSWORD'
-    - 'docker version'
-    - 'docker compose down'
-    - 'docker compose up -d --remove-orphans'
+    - echo "Deploy stage on Windows"
+    - docker version
+    # Fixed login using password file method
+    - $env:DOCKERHUB_PASSWORD | Out-File -FilePath "pass.txt" -NoNewline -Encoding ASCII
+    - Get-Content -Raw "pass.txt" | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+    - docker compose down
+    # Re-login after compose down
+    - Get-Content -Raw "pass.txt" | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+    - docker compose up -d --remove-orphans
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
