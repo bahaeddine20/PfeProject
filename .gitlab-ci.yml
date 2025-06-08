@@ -20,9 +20,8 @@ build:
   tags:
     - windows-runner
   script:
-    - pwsh --version
     - docker system prune -f
-    - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
+    - docker compose build
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
