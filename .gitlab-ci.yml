@@ -46,13 +46,14 @@ run_flask:
     - python-shell
   before_script:
     # Mise à jour et installation de la lib PortAudio (et pip tools utiles)
+    - cd ServeurFlaskHost
     - apt-get update && apt-get install -y portaudio19-dev
     - python -m venv venv
     - source venv/bin/activate
     - pip install --upgrade pip
     - pip install -r requirements.txt
   script:
-    - python ServeurFlaskHost/flaskhost.py
+    - python flaskhost.py
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
       when: on_success
