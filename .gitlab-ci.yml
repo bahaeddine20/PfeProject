@@ -37,6 +37,8 @@ deploy:
     - docker version
     - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
     - docker compose down
+    - echo $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+
     - docker compose up -d --remove-orphans
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
