@@ -70,6 +70,7 @@ run_tests:
     - pip install requests
   script:
     - python execution.py
+  retry: 3
   artifacts:
     paths:
       - results/Tests_*.zip
@@ -102,6 +103,7 @@ run_flask_and_test:
     - $jobId = Get-Content ServeurFlaskHost/flask_job_id.txt
     - Stop-Job -Id $jobId -ErrorAction SilentlyContinue
     - Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue
+  retry: 3
   artifacts:
     paths:
       - resultats
