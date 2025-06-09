@@ -68,7 +68,9 @@ run_tests:
     - python -m pip install --upgrade pip
     - pip install robotframework
     - pip install requests
+    -
   script:
+    -
     - python execution.py
   artifacts:
     paths:
@@ -79,3 +81,27 @@ run_tests:
       when: on_success
     - when: never
 
+run_flask_and_test:
+  stage: run
+  tags:
+    - python-shell
+  before_script:
+    - cd ServeurFlaskHost
+    - python -m venv venv
+    - venv\Scripts\Activate.ps1
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install robotframework requests
+  script:
+    - Start-Process -NoNewWindow -FilePath "python" -ArgumentList "flaskhost.py"
+    - Start-Sleep -Seconds 5  # attendre que Flask démarre
+    - cd ..
+    - python execution.py
+  artifacts:
+    paths:
+      - results/Tests_*.zip
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
+      when: on_success
+    - when: never
