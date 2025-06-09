@@ -21,6 +21,8 @@ build:
   stage: build
   tags:
     - python-shell
+  retry: 2
+
   script:
     - docker system prune -f
     - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
@@ -33,6 +35,8 @@ deploy:
   stage: deploy
   tags:
     - python-shell
+
+  retry: 2
   script:
     - docker compose down
     - docker compose up -d --remove-orphans
