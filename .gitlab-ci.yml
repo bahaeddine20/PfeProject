@@ -100,7 +100,7 @@ run_tests:
     - $headers = @{
         "Authorization" = "Basic $auth"
         "Content-Type" = "application/zip"
-    }
+      }
     - $filePath = "$results_dir.zip"
     - $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$results_dir.zip"
     - Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $filePath
