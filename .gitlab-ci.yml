@@ -69,21 +69,34 @@ run_tests:
     - pip install robotframework
     - pip install requests
   script:
+    # Vérifier le dossier test_cases
+    - $tests_dir = Join-Path $PWD "test_cases"
+    - if (-not (Test-Path $tests_dir)) {
+        Write-Host "Le dossier test_cases n'existe pas"
+        exit 1
+      }
+    # Vérifier s'il y a des fichiers de test
+    - $test_files = Get-ChildItem -Path $tests_dir -Filter "*.robot" -ErrorAction SilentlyContinue
+    - if (-not $test_files) {
+        Write-Host "Aucun fichier de test .robot trouvé dans le dossier test_cases"
+        exit 1
+      }
+    # Créer le dossier de résultats
     - $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
     - $results_dir = Join-Path $PWD "test_results_$timestamp"
     - New-Item -ItemType Directory -Path $results_dir -Force
     - New-Item -ItemType Directory -Path (Join-Path $results_dir "final_report") -Force
-    - $test_files = Get-ChildItem -Path "tests" -Filter "*.robot"
     - $total_tests = $test_files.Count
     - $completed = 0
     - $output_files = @()
+    # Exécuter les tests
     - |
       foreach ($test_file in $test_files) {
           $test_name = [System.IO.Path]::GetFileNameWithoutExtension($test_file.Name)
           $test_result_dir = Join-Path $results_dir $test_name
           New-Item -ItemType Directory -Path $test_result_dir -Force
           Write-Host "Exécution du test : $($test_file.Name)"
-          robot --outputdir $test_result_dir (Join-Path "tests" $test_file.Name)
+          robot --outputdir $test_result_dir $test_file.FullName
           $output_file = Join-Path $test_result_dir "output.xml"
           if (Test-Path $output_file) {
               $output_files += $output_file
@@ -91,12 +104,15 @@ run_tests:
           $completed++
           Write-Host "Progression : $completed/$total_tests"
       }
+    # Fusionner les résultats
     - |
       if ($output_files.Count -gt 0) {
           rebot --outputdir (Join-Path $results_dir "final_report") $output_files
       }
+    # Créer l'archive
     - $zipPath = Join-Path $PWD "$results_dir.zip"
     - Compress-Archive -Path "$results_dir\*" -DestinationPath $zipPath -Force
+    # Upload vers Artifactory
     - $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$env:ARTIFACTORY_USER:$env:ARTIFACTORY_PASSWORD"))
     - |
       $headers = @{
@@ -105,6 +121,7 @@ run_tests:
       }
     - $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$results_dir.zip"
     - Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $zipPath
+    # Nettoyage
     - Remove-Item -Path $results_dir -Recurse -Force
     - Remove-Item -Path $zipPath -Force
   artifacts:
