@@ -77,37 +77,36 @@ run_tests:
     - $results_dir = "test_results_$timestamp"
     - New-Item -ItemType Directory -Path $results_dir
     - New-Item -ItemType Directory -Path "$results_dir/final_report"
-    
-    # Exécuter les tests Robot Framework
+    # Initialiser les variables
     - $test_files = Get-ChildItem -Path "tests" -Filter "*.robot"
     - $total_tests = $test_files.Count
     - $completed = 0
-    
-    foreach ($test_file in $test_files) {
-        $test_name = [System.IO.Path]::GetFileNameWithoutExtension($test_file.Name)
-        $test_result_dir = Join-Path $results_dir $test_name
-        New-Item -ItemType Directory -Path $test_result_dir -Force
-        
-        Write-Host "Exécution du test : $($test_file.Name)"
-        robot --outputdir $test_result_dir (Join-Path "tests" $test_file.Name)
-        
-        $output_file = Join-Path $test_result_dir "output.xml"
-        if (Test-Path $output_file) {
-            $output_files += $output_file
-        }
-        
-        $completed++
-        Write-Host "Progression : $completed/$total_tests"
-    }
-    
-    # Fusionner les résultats avec rebot
-    if ($output_files.Count -gt 0) {
-        rebot --outputdir "$results_dir/final_report" $output_files
-    }
-    
-    # Créer l'archive des résultats
+    - $output_files = @()
+    # Exécuter les tests
+    - |
+      foreach ($test_file in $test_files) {
+          $test_name = [System.IO.Path]::GetFileNameWithoutExtension($test_file.Name)
+          $test_result_dir = Join-Path $results_dir $test_name
+          New-Item -ItemType Directory -Path $test_result_dir -Force
+          
+          Write-Host "Exécution du test : $($test_file.Name)"
+          robot --outputdir $test_result_dir (Join-Path "tests" $test_file.Name)
+          
+          $output_file = Join-Path $test_result_dir "output.xml"
+          if (Test-Path $output_file) {
+              $output_files += $output_file
+          }
+          
+          $completed++
+          Write-Host "Progression : $completed/$total_tests"
+      }
+    # Fusionner les résultats
+    - |
+      if ($output_files.Count -gt 0) {
+          rebot --outputdir "$results_dir/final_report" $output_files
+      }
+    # Créer l'archive
     - Compress-Archive -Path "$results_dir/*" -DestinationPath "$results_dir.zip"
-    
     # Upload vers Artifactory
     - $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$env:ARTIFACTORY_USER:$env:ARTIFACTORY_PASSWORD"))
     - $headers = @{
@@ -117,7 +116,6 @@ run_tests:
     - $filePath = "$results_dir.zip"
     - $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$results_dir.zip"
     - Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $filePath
-    
     # Nettoyage
     - Remove-Item -Path $results_dir -Recurse -Force
     - Remove-Item -Path "$results_dir.zip" -Force
