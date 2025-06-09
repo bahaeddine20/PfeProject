@@ -59,7 +59,7 @@ run_flask_extern:
       when: on_success
     - when: never
 
-run_tests:
+run_tests:  # FIXED: Removed empty commands
   stage: test
   tags:
     - python-shell
@@ -69,9 +69,7 @@ run_tests:
     - python -m pip install --upgrade pip
     - pip install robotframework
     - pip install requests
-    -
   script:
-    -
     - python execution.py
   artifacts:
     paths:
@@ -95,9 +93,9 @@ run_flask_and_test:
     - pip install robotframework requests
   script:
     - Start-Process -NoNewWindow -FilePath "python" -ArgumentList "flaskhost.py"
-    - Start-Sleep -Seconds 5  # attendre que Flask démarre
+    - Start-Sleep -Seconds 5
     - cd ..
-    - python execution.py
+    - python execution.py --list  FonctionnaliteMaps.robot
   artifacts:
     paths:
       - results/Tests_*.zip
