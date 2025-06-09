@@ -1,25 +1,25 @@
 # syntax=docker/dockerfile:1.4
 FROM python:3.12-slim
 
-ENV PIP_CACHE_DIR=/tmp/pip-cache
-
-RUN apt-get update && apt-get install -y \
+# Install system dependencies with cache optimization
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
-    android-tools-adb \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --upgrade pip setuptools
+    android-tools-adb && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
+# Install Python dependencies with persistent cache
 COPY requirements.txt .
-RUN mkdir -p ${PIP_CACHE_DIR}
-RUN pip install --cache-dir=${PIP_CACHE_DIR} -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install --upgrade pip setuptools && \
+    pip install -r requirements.txt
 
-# ⛔️ Ne pas copier tout le code sauf si nécessaire
- COPY . .
+# Copy application code (last step for cache optimization)
+COPY . .
 
 EXPOSE 5000
 
