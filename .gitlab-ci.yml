@@ -70,9 +70,9 @@ run_tests:
     - pip install requests
   script:
     - $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
-    - $results_dir = "test_results_$timestamp"
-    - New-Item -ItemType Directory -Path $results_dir
-    - New-Item -ItemType Directory -Path "$results_dir/final_report"
+    - $results_dir = Join-Path $PWD "test_results_$timestamp"
+    - New-Item -ItemType Directory -Path $results_dir -Force
+    - New-Item -ItemType Directory -Path (Join-Path $results_dir "final_report") -Force
     - $test_files = Get-ChildItem -Path "tests" -Filter "*.robot"
     - $total_tests = $test_files.Count
     - $completed = 0
@@ -93,19 +93,20 @@ run_tests:
       }
     - |
       if ($output_files.Count -gt 0) {
-          rebot --outputdir "$results_dir/final_report" $output_files
+          rebot --outputdir (Join-Path $results_dir "final_report") $output_files
       }
-    - Compress-Archive -Path "$results_dir/*" -DestinationPath "$results_dir.zip"
+    - $zipPath = Join-Path $PWD "$results_dir.zip"
+    - Compress-Archive -Path "$results_dir\*" -DestinationPath $zipPath -Force
     - $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$env:ARTIFACTORY_USER:$env:ARTIFACTORY_PASSWORD"))
-    - $headers = @{
-        "Authorization" = "Basic $auth"
-        "Content-Type" = "application/zip"
+    - |
+      $headers = @{
+          'Authorization' = "Basic $auth"
+          'Content-Type' = 'application/zip'
       }
-    - $filePath = "$results_dir.zip"
     - $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$results_dir.zip"
-    - Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $filePath
+    - Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $zipPath
     - Remove-Item -Path $results_dir -Recurse -Force
-    - Remove-Item -Path "$results_dir.zip" -Force
+    - Remove-Item -Path $zipPath -Force
   artifacts:
     paths:
       - test_results_*.zip
