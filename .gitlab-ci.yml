@@ -91,19 +91,21 @@ run_flask_and_test:
     - pip install -r requirements.txt
     - pip install robotframework requests
   script:
-    - $flaskProcess = Start-Process -NoNewWindow -FilePath "python" -ArgumentList "flaskhost.py" -PassThru
-    - $flaskProcess.Id | Out-File flask_pid.txt
+    # Démarrer Flask en arrière-plan avec redirection des logs
+    - $flaskJob = Start-Job -ScriptBlock { python flaskhost.py *> flask.log }
+    - $flaskJob.Id | Out-File flask_job_id.txt
     - Start-Sleep -Seconds 5
     - cd ..
+    # Exécuter les tests
     - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot
-  after_script:
-    - cd ServeurFlaskHost
-    - $pid = Get-Content flask_pid.txt -ErrorAction SilentlyContinue
-    - if ($pid) { Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue }
-    - Remove-Item flask_pid.txt -ErrorAction SilentlyContinue
+    # Arrêter Flask après les tests
+    - $jobId = Get-Content ServeurFlaskHost/flask_job_id.txt
+    - Stop-Job -Id $jobId -ErrorAction SilentlyContinue
+    - Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue
   artifacts:
     paths:
       - results/Tests_*.zip
+      - ServeurFlaskHost/flask.log  # Optionnel pour le débogage
     expire_in: 1 week
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
