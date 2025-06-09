@@ -7,25 +7,16 @@ stages:
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
-  DOCKER_BUILDKIT: "1"
-  COMPOSE_DOCKER_CLI_BUILD: "1"
-  GIT_STRATEGY: clone
-  GIT_DEPTH: "1"
-  GIT_CLEAN_FLAGS: none
 
-before_script:
-  - git config --system core.longpaths true
-  - git config --system --add safe.directory "$CI_PROJECT_DIR"
 
 build:
   stage: build
   tags:
     - python-shell
-  retry: 2
-
   script:
-    - docker system prune -f
-    - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
+    - docker compose down
+
+    - docker compose build
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[build\]/'
       when: on_success
@@ -35,8 +26,6 @@ deploy:
   stage: deploy
   tags:
     - python-shell
-
-  retry: 2
   script:
     - docker compose down
     - docker compose up -d --remove-orphans
@@ -44,7 +33,6 @@ deploy:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
     - when: never
-
 run_flask_extern:
   stage: run
   tags:
