@@ -1,7 +1,8 @@
 stages:
   - build
   - deploy
-  - run  # Nouvelle étape ajoutée
+  - run
+  - test
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
@@ -10,6 +11,9 @@ variables:
   GIT_STRATEGY: clone
   GIT_DEPTH: "1"
   GIT_CLEAN_FLAGS: none
+  ARTIFACTORY_URL: "http://your-artifactory-url"
+  ARTIFACTORY_USER: "your-username"
+  ARTIFACTORY_PASSWORD: "your-password"
 
 before_script:
   - git config --system core.longpaths true
@@ -46,17 +50,82 @@ run_flask:
     - windows-runner2
   before_script:
     - cd ServeurFlaskHost
-    # Créer un environnement virtuel Python
     - python -m venv venv
-    # Activer l'environnement virtuel sous Windows PowerShell
     - venv\Scripts\Activate.ps1
-    # Mettre à jour pip et installer les dépendances
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
   script:
-    # Lancer le serveur Flask
     - python flaskhost.py
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
+      when: on_success
+    - when: never
+
+run_tests:
+  stage: test
+  tags:
+    - windows-runner2
+  before_script:
+    - python -m venv venv
+    - venv\Scripts\Activate.ps1
+    - python -m pip install --upgrade pip
+    - pip install robotframework
+    - pip install requests
+  script:
+    # Créer le dossier de résultats avec timestamp
+    - $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
+    - $results_dir = "test_results_$timestamp"
+    - New-Item -ItemType Directory -Path $results_dir
+    - New-Item -ItemType Directory -Path "$results_dir/final_report"
+    
+    # Exécuter les tests Robot Framework
+    - $test_files = Get-ChildItem -Path "tests" -Filter "*.robot"
+    - $total_tests = $test_files.Count
+    - $completed = 0
+    
+    foreach ($test_file in $test_files) {
+        $test_name = [System.IO.Path]::GetFileNameWithoutExtension($test_file.Name)
+        $test_result_dir = Join-Path $results_dir $test_name
+        New-Item -ItemType Directory -Path $test_result_dir -Force
+        
+        Write-Host "Exécution du test : $($test_file.Name)"
+        robot --outputdir $test_result_dir (Join-Path "tests" $test_file.Name)
+        
+        $output_file = Join-Path $test_result_dir "output.xml"
+        if (Test-Path $output_file) {
+            $output_files += $output_file
+        }
+        
+        $completed++
+        Write-Host "Progression : $completed/$total_tests"
+    }
+    
+    # Fusionner les résultats avec rebot
+    if ($output_files.Count -gt 0) {
+        rebot --outputdir "$results_dir/final_report" $output_files
+    }
+    
+    # Créer l'archive des résultats
+    - Compress-Archive -Path "$results_dir/*" -DestinationPath "$results_dir.zip"
+    
+    # Upload vers Artifactory
+    - $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$env:ARTIFACTORY_USER:$env:ARTIFACTORY_PASSWORD"))
+    - $headers = @{
+        "Authorization" = "Basic $auth"
+        "Content-Type" = "application/zip"
+    }
+    - $filePath = "$results_dir.zip"
+    - $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$results_dir.zip"
+    - Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $filePath
+    
+    # Nettoyage
+    - Remove-Item -Path $results_dir -Recurse -Force
+    - Remove-Item -Path "$results_dir.zip" -Force
+  artifacts:
+    paths:
+      - test_results_*.zip
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[test\]/'
       when: on_success
     - when: never
