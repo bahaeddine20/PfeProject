@@ -14,13 +14,14 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-# Utiliser un dossier de cache montable
 ARG PIP_CACHE_DIR=/tmp/pip-cache
 RUN mkdir -p ${PIP_CACHE_DIR}
 RUN pip install --cache-dir=${PIP_CACHE_DIR} -r requirements.txt
 
-COPY . .
+# ❌ Ne pas copier tout le code source
+# COPY . . ← supprime cette ligne
 
 EXPOSE 5000
 
-CMD ["python", "flaskProject.py"]
+# ⚠️ Corrige le chemin vers ton script principal s’il est dans un dossier
+CMD ["python", "ServeurFlaskHost/flaskProject.py"]
