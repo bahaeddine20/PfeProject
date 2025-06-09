@@ -80,7 +80,6 @@ run_flask_and_test:
   stage: run2
   tags:
     - windows-runner2
-
   script:
     - powershell -Command "
         cd ServeurFlaskHost;
@@ -91,17 +90,23 @@ run_flask_and_test:
         pip install robotframework requests;
         $flaskJob = Start-Job -ScriptBlock { python flaskhost.py *> flask.log };
         $flaskJob.Id | Out-File flask_job_id.txt;
-        $timeout = 30; $elapsed = 0;
+        $timeout = 30;
+        $elapsed = 0;
         while ($elapsed -lt $timeout) {
-            if (Test-NetConnection -ComputerName localhost -Port 6000 | Where-Object { $_.TcpTestSucceeded }) { break }
-            Start-Sleep -Seconds 1; $elapsed++
+            if (Test-NetConnection -ComputerName localhost -Port 6000 | Where-Object { $_.TcpTestSucceeded }) { break };
+            Start-Sleep -Seconds 1;
+            $elapsed++
         };
-        if ($elapsed -eq $timeout) { Write-Error 'Flask ne s\'est pas lancé à temps.'; exit 1 }
+        if ($elapsed -ge $timeout) { 
+            Write-Error 'Flask ne s''est pas lancé à temps.';
+            exit 1 
+        };
         cd ..;
         docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot;
         $jobId = Get-Content ServeurFlaskHost/flask_job_id.txt;
         Stop-Job -Id $jobId -ErrorAction SilentlyContinue;
-        Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue; "
+        Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue;
+      "
   retry: 2
   artifacts:
     paths:
