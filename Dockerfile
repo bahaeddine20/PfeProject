@@ -24,4 +24,4 @@ RUN pip install --cache-dir=${PIP_CACHE_DIR} -r requirements.txt
 EXPOSE 5000
 
 # ⚠️ Corrige le chemin vers ton script principal s’il est dans un dossier
-CMD ["python", "ServeurFlaskHost/flaskProject.py"]
+CMD ["python", "flaskProject.py"]
