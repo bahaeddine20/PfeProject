@@ -88,29 +88,26 @@ run_flask_and_test:
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
     - pip install robotframework requests
-
   script:
-    - $flaskProcess = Start-Process python -ArgumentList "flaskhost.py" -PassThru -RedirectStandardOutput flask.log
-    - $flaskProcess.Id | Out-File flask_pid.txt
-    - $timeout = 60
-    - $interval = 5
-    - $totalAttempts = $timeout / $interval
-    - $attempt = 0
-    - $started = $false
-    - while ($attempt -lt $totalAttempts -and -not $started) { $attempt++; if (Test-NetConnection localhost -Port 5000 -InformationLevel Quiet) { $started = $true; Write-Host "✅ Flask démarré"; } else { Start-Sleep $interval; Write-Host "Attente... ($($attempt*$interval)s)"; } }
-    - if (-not $started) { Get-Content flask.log; Write-Error "❌ Échec démarrage Flask" -ErrorAction Stop; }
+    # Démarrer Flask en arrière-plan avec redirection des logs
+    - $flaskJob = Start-Job -ScriptBlock { python flaskhost.py *> flask.log }
+    - $flaskJob.Id | Out-File flask_job_id.txt
+    - Start-Sleep -Seconds 5
     - cd ..
+    # Exécuter les tests
     - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot
-    - $pid = Get-Content ServeurFlaskHost/flask_pid.txt
-    - Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
-
+    # Arrêter Flask après les tests
+    - $jobId = Get-Content ServeurFlaskHost/flask_job_id.txt
+    - Stop-Job -Id $jobId -ErrorAction SilentlyContinue
+    - Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue
   retry: 2
   artifacts:
     paths:
       - resultats
-      - ServeurFlaskHost/flask.log
+      - ServeurFlaskHost/flask.log  # Optionnel pour le débogage
     expire_in: 1 week
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
       when: on_success
     - when: never
+
