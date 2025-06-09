@@ -26,6 +26,7 @@ progress_data = {
     "total": 0,
     "completed": 0
 }
+
 stop_execution = False
 current_process = None
 
