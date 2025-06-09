@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-06-09T02:02:19.588089" rpa="false" schemaversion="5">
+<suite id="s1" name="WiFiAndConnectivite" source="C:\Users\bahae\Documents\PfeProject\test_cases\WiFiAndConnectivite.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-06-09T02:02:22.134899" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBB410&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-09T02:02:24.161232" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBB650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-09T02:02:26.204797" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBB8F0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-09T02:02:28.242923" level="FAIL">MaxRetryError: HTTPConnectionPool(host='host.docker.internal', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBBB90&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="FAIL" start="2025-06-09T02:02:20.087012" elapsed="8.159861">MaxRetryError: HTTPConnectionPool(host='host.docker.internal', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBBB90&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2025-06-09T02:02:28.246873" elapsed="0.000000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="NOT RUN" start="2025-06-09T02:02:28.246873" elapsed="0.000000"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="FAIL" start="2025-06-09T02:02:20.086000" elapsed="8.160873">MaxRetryError: HTTPConnectionPool(host='host.docker.internal', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBBB90&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Wifi" line="143">
+<doc>Teste l'activation du WiFi
+- Ouvre les paramètres
+- Active le WiFi
+- Vérifie l'activation via UI et ADB</doc>
+<tag>smoke</tag>
+<tag>wifi</tag>
+<status status="FAIL" start="2025-06-09T02:02:28.247862" elapsed="0.000000">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='host.docker.internal', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBBB90&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-06-09T02:02:28.248840" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-06-09T02:02:28.248840" elapsed="0.001035">No application is open</status>
+</kw>
+<msg time="2025-06-09T02:02:28.250859" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-06-09T02:02:28.250859" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-06-09T02:02:28.248840" elapsed="0.002019">No application is open</status>
+</kw>
+<msg time="2025-06-09T02:02:28.250859" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-09T02:02:28.248840" elapsed="0.002019"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-06-09T02:02:28.250859" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T02:02:28.250859" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T02:02:28.250859" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T02:02:28.251853" level="INFO">Le driver n'était pas actif</msg>
+<arg>Le driver n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T02:02:28.251853" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-09T02:02:28.250859" elapsed="0.000994"/>
+</branch>
+<status status="PASS" start="2025-06-09T02:02:28.250859" elapsed="0.000994"/>
+</if>
+<status status="PASS" start="2025-06-09T02:02:28.248840" elapsed="0.003013"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T02:02:28.251853" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T02:02:28.251853" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-09T02:02:28.247862" elapsed="0.003991"/>
+</try>
+<doc>Cleans up and closes the test driver</doc>
+<status status="PASS" start="2025-06-09T02:02:28.247862" elapsed="0.003991"/>
+</kw>
+<doc>Tests de connectivité WiFi pour appareil Android
+- Activation du WiFi
+- Désactivation du WiFi
+- Vérification de l'état via UI et ADB
+- Prend en charge les interfaces en français et en anglais</doc>
+<status status="FAIL" start="2025-06-09T02:02:19.589090" elapsed="8.662763">Suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='host.docker.internal', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBBB90&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">wifi</stat>
+</tag>
+<suite>
+<stat name="WiFiAndConnectivite" id="s1" pass="0" fail="1" skip="0">WiFiAndConnectivite</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-06-09T02:02:22.134899" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBB410&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-09T02:02:24.161232" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBB650&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-09T02:02:26.204797" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000019026BBB8F0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-09T02:02:28.250859" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>

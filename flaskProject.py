@@ -383,6 +383,118 @@ def add_rf_log(line):
     if len(rf_live_log) > 1000:
         rf_live_log = rf_live_log[-1000:]
 
+def execute_test_command(test_file, test_result_dir):
+    """
+    Exécute un test Robot Framework et retourne les informations de résultat.
+    
+    Args:
+        test_file (str): Le chemin du fichier de test à exécuter
+        test_result_dir (str): Le dossier où sauvegarder les résultats
+        
+    Returns:
+        tuple: (output_file_path, return_code)
+    """
+    process = subprocess.Popen(
+        ["robot", "--outputdir", test_result_dir, os.path.join(TESTS_FOLDER, test_file)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1
+    )
+    
+    add_rf_log(f"================= {test_file} =================")
+    for line in process.stdout:
+        add_rf_log(line.rstrip())
+    
+    process.wait()
+    
+    output_file = os.path.join(test_result_dir, "output.xml")
+    return output_file if os.path.exists(output_file) else None, process.returncode
+
+@app.route('/execute', methods=['POST'])
+def execute_single_test():
+    """
+    API endpoint pour exécuter un test spécifique.
+    Attend un JSON avec les champs:
+    - test_file: nom du fichier de test à exécuter
+    - test_name: nom du test spécifique à exécuter (optionnel)
+    """
+    try:
+        data = request.get_json()
+        if not data or 'test_file' not in data:
+            return jsonify({"error": "Le fichier de test est requis"}), 400
+
+        test_file = data['test_file']
+        test_name = data.get('test_name')  # Optionnel
+
+        # Vérifier si le fichier existe
+        if not os.path.exists(os.path.join(TESTS_FOLDER, test_file)):
+            return jsonify({"error": f"Le fichier de test {test_file} n'existe pas"}), 404
+
+        # Créer un dossier de résultats unique
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        test_result_dir = os.path.join(RESULTS_FOLDER, f"Single_Test_{timestamp}_{os.path.splitext(test_file)[0]}")
+        os.makedirs(test_result_dir, exist_ok=True)
+
+        # Construire la commande robot
+        robot_command = ["robot"]
+        if test_name:
+            robot_command.extend(["--test", test_name])
+        robot_command.extend(["--outputdir", test_result_dir, os.path.join(TESTS_FOLDER, test_file)])
+
+        # Exécuter le test
+        process = subprocess.Popen(
+            robot_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1
+        )
+
+        # Capturer les logs en temps réel
+        logs = []
+        for line in process.stdout:
+            log_line = line.rstrip()
+            logs.append(log_line)
+            add_rf_log(log_line)
+
+        process.wait()
+
+        # Vérifier le résultat
+        output_file = os.path.join(test_result_dir, "output.xml")
+        if not os.path.exists(output_file):
+            return jsonify({
+                "error": "Le test n'a pas généré de fichier de sortie",
+                "logs": logs,
+                "return_code": process.returncode
+            }), 500
+
+        # Générer le rapport final
+        final_report_dir = os.path.join(test_result_dir, "final_report")
+        os.makedirs(final_report_dir, exist_ok=True)
+        
+        subprocess.run(
+            ["rebot", "--outputdir", final_report_dir, output_file],
+            capture_output=True,
+            text=True
+        )
+
+        return jsonify({
+            "success": True,
+            "test_file": test_file,
+            "test_name": test_name,
+            "result_dir": test_result_dir,
+            "return_code": process.returncode,
+            "logs": logs,
+            "report_path": os.path.join(final_report_dir, "report.html")
+        })
+
+    except Exception as e:
+        return jsonify({
+            "error": str(e),
+            "success": False
+        }), 500
+
 app.run(host='0.0.0.0', port=5000)
 if __name__ == '__main__':
     app.run(debug=True)

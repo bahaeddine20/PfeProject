@@ -20,7 +20,7 @@ before_script:
 build:
   stage: build
   tags:
-    - windows-runner2
+    - python-shell
   script:
     - docker system prune -f
     - docker compose build --build-arg BUILDKIT_INLINE_CACHE=1
@@ -32,7 +32,7 @@ build:
 deploy:
   stage: deploy
   tags:
-    - windows-runner
+    - python-shell
   script:
     - docker compose down
     - docker compose up -d --remove-orphans
@@ -41,10 +41,10 @@ deploy:
       when: on_success
     - when: never
 
-run_flask:
+run_flask_extern:
   stage: run
   tags:
-    - windows-runner2
+    - python-shell
   before_script:
     - cd ServeurFlaskHost
     - python -m venv venv
@@ -52,7 +52,7 @@ run_flask:
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
   script:
-    - python flaskhost.py
+    - python flaskhost.py &
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
       when: on_success
@@ -61,7 +61,7 @@ run_flask:
 run_tests:
   stage: test
   tags:
-    - windows-runner2
+    - python-shell
   before_script:
     - python -m venv venv
     - venv\Scripts\Activate.ps1
@@ -69,66 +69,94 @@ run_tests:
     - pip install robotframework
     - pip install requests
   script:
-    # Vérifier le dossier test_cases
-    - $tests_dir = Join-Path $PWD "test_cases"
-    - if (-not (Test-Path $tests_dir)) {
-        Write-Host "Le dossier test_cases n'existe pas"
-        exit 1
-      }
-    # Vérifier s'il y a des fichiers de test
-    - $test_files = Get-ChildItem -Path $tests_dir -Filter "*.robot" -ErrorAction SilentlyContinue
-    - if (-not $test_files) {
-        Write-Host "Aucun fichier de test .robot trouvé dans le dossier test_cases"
-        exit 1
-      }
-    # Créer le dossier de résultats
-    - $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
-    - $results_dir = Join-Path $PWD "test_results_$timestamp"
-    - New-Item -ItemType Directory -Path $results_dir -Force
-    - New-Item -ItemType Directory -Path (Join-Path $results_dir "final_report") -Force
-    - $total_tests = $test_files.Count
-    - $completed = 0
-    - $output_files = @()
-    # Exécuter les tests
     - |
-      foreach ($test_file in $test_files) {
-          $test_name = [System.IO.Path]::GetFileNameWithoutExtension($test_file.Name)
-          $test_result_dir = Join-Path $results_dir $test_name
-          New-Item -ItemType Directory -Path $test_result_dir -Force
-          Write-Host "Exécution du test : $($test_file.Name)"
-          robot --outputdir $test_result_dir $test_file.FullName
-          $output_file = Join-Path $test_result_dir "output.xml"
-          if (Test-Path $output_file) {
-              $output_files += $output_file
+      function Execute-TestCommand {
+          param (
+              [string]$TestsFolder = "tests",
+              [string]$ResultsFolder = "results"
+          )
+          
+          # Créer le dossier de résultats avec timestamp
+          $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
+          $testFiles = Get-ChildItem -Path $TestsFolder -Filter "*.robot"
+          $testNames = ($testFiles | ForEach-Object { [System.IO.Path]::GetFileNameWithoutExtension($_.Name) }) -join "_"
+          $resultsDir = Join-Path $ResultsFolder "Tests_${timestamp}_${testNames}"
+          New-Item -ItemType Directory -Path $resultsDir -Force | Out-Null
+          
+          # Initialiser les variables de progression
+          $totalTests = $testFiles.Count
+          $completed = 0
+          $outputFiles = @()
+          
+          # Exécuter chaque test
+          foreach ($testFile in $testFiles) {
+              $testName = [System.IO.Path]::GetFileNameWithoutExtension($testFile.Name)
+              $testResultDir = Join-Path $resultsDir $testName
+              New-Item -ItemType Directory -Path $testResultDir -Force | Out-Null
+              
+              Write-Host "================= $($testFile.Name) ================="
+              Write-Host "Exécution du test : $($testFile.Name)"
+              
+              # Exécuter le test Robot Framework
+              $process = Start-Process -FilePath "robot" `
+                  -ArgumentList "--outputdir", $testResultDir, (Join-Path $TestsFolder $testFile.Name) `
+                  -NoNewWindow -Wait -PassThru -RedirectStandardOutput "output.txt"
+              
+              # Lire et afficher la sortie
+              Get-Content "output.txt" | ForEach-Object { Write-Host $_ }
+              Remove-Item "output.txt" -Force
+              
+              # Vérifier le fichier output.xml
+              $outputFile = Join-Path $testResultDir "output.xml"
+              if (Test-Path $outputFile) {
+                  $outputFiles += $outputFile
+              }
+              
+              Write-Host "--- Exécution du test : $($testFile.Name) ---"
+              Write-Host "Code de retour : $($process.ExitCode)"
+              Write-Host "----------------------------------------"
+              
+              $completed++
+              $percentage = [math]::Round(($completed / $totalTests) * 100)
+              Write-Host "Progression : $completed/$totalTests ($percentage%)"
           }
-          $completed++
-          Write-Host "Progression : $completed/$total_tests"
+          
+          # Créer le rapport final
+          if ($outputFiles.Count -gt 0) {
+              $finalReportDir = Join-Path $resultsDir "final_report"
+              New-Item -ItemType Directory -Path $finalReportDir -Force | Out-Null
+              rebot --outputdir $finalReportDir $outputFiles
+          }
+          
+          # Créer l'archive
+          $zipPath = "$resultsDir.zip"
+          Compress-Archive -Path "$resultsDir\*" -DestinationPath $zipPath -Force
+          
+          Write-Host "✅ Tous les tests sont terminés !"
+          return $zipPath
       }
-    # Fusionner les résultats
-    - |
-      if ($output_files.Count -gt 0) {
-          rebot --outputdir (Join-Path $results_dir "final_report") $output_files
-      }
-    # Créer l'archive
-    - $zipPath = Join-Path $PWD "$results_dir.zip"
-    - Compress-Archive -Path "$results_dir\*" -DestinationPath $zipPath -Force
-    # Upload vers Artifactory
-    - $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$env:ARTIFACTORY_USER:$env:ARTIFACTORY_PASSWORD"))
-    - |
+      
+      # Exécuter les tests
+      $zipPath = Execute-TestCommand -TestsFolder "tests" -ResultsFolder "results"
+      
+      # Upload vers Artifactory
+      $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$env:ARTIFACTORY_USER:$env:ARTIFACTORY_PASSWORD"))
       $headers = @{
           'Authorization' = "Basic $auth"
           'Content-Type' = 'application/zip'
       }
-    - $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$results_dir.zip"
-    - Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $zipPath
-    # Nettoyage
-    - Remove-Item -Path $results_dir -Recurse -Force
-    - Remove-Item -Path $zipPath -Force
+      $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$(Split-Path $zipPath -Leaf)"
+      Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $zipPath
+      
+      # Nettoyage
+      Remove-Item -Path (Split-Path $zipPath -Parent) -Recurse -Force
+      Remove-Item -Path $zipPath -Force
   artifacts:
     paths:
-      - test_results_*.zip
+      - results/Tests_*.zip
     expire_in: 1 week
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[test\]/'
       when: on_success
     - when: never
+
