@@ -52,7 +52,7 @@ run_flask_extern:
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
   script:
-    - python flaskhost.py &
+    - Start-Process -NoNewWindow -FilePath "python" -ArgumentList "flaskhost.py"
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run\]/'
       when: on_success
@@ -69,88 +69,7 @@ run_tests:
     - pip install robotframework
     - pip install requests
   script:
-    - |
-      function Execute-TestCommand {
-          param (
-              [string]$TestsFolder = "tests",
-              [string]$ResultsFolder = "results"
-          )
-          
-          # Créer le dossier de résultats avec timestamp
-          $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
-          $testFiles = Get-ChildItem -Path $TestsFolder -Filter "*.robot"
-          $testNames = ($testFiles | ForEach-Object { [System.IO.Path]::GetFileNameWithoutExtension($_.Name) }) -join "_"
-          $resultsDir = Join-Path $ResultsFolder "Tests_${timestamp}_${testNames}"
-          New-Item -ItemType Directory -Path $resultsDir -Force | Out-Null
-          
-          # Initialiser les variables de progression
-          $totalTests = $testFiles.Count
-          $completed = 0
-          $outputFiles = @()
-          
-          # Exécuter chaque test
-          foreach ($testFile in $testFiles) {
-              $testName = [System.IO.Path]::GetFileNameWithoutExtension($testFile.Name)
-              $testResultDir = Join-Path $resultsDir $testName
-              New-Item -ItemType Directory -Path $testResultDir -Force | Out-Null
-              
-              Write-Host "================= $($testFile.Name) ================="
-              Write-Host "Exécution du test : $($testFile.Name)"
-              
-              # Exécuter le test Robot Framework
-              $process = Start-Process -FilePath "robot" `
-                  -ArgumentList "--outputdir", $testResultDir, (Join-Path $TestsFolder $testFile.Name) `
-                  -NoNewWindow -Wait -PassThru -RedirectStandardOutput "output.txt"
-              
-              # Lire et afficher la sortie
-              Get-Content "output.txt" | ForEach-Object { Write-Host $_ }
-              Remove-Item "output.txt" -Force
-              
-              # Vérifier le fichier output.xml
-              $outputFile = Join-Path $testResultDir "output.xml"
-              if (Test-Path $outputFile) {
-                  $outputFiles += $outputFile
-              }
-              
-              Write-Host "--- Exécution du test : $($testFile.Name) ---"
-              Write-Host "Code de retour : $($process.ExitCode)"
-              Write-Host "----------------------------------------"
-              
-              $completed++
-              $percentage = [math]::Round(($completed / $totalTests) * 100)
-              Write-Host "Progression : $completed/$totalTests ($percentage%)"
-          }
-          
-          # Créer le rapport final
-          if ($outputFiles.Count -gt 0) {
-              $finalReportDir = Join-Path $resultsDir "final_report"
-              New-Item -ItemType Directory -Path $finalReportDir -Force | Out-Null
-              rebot --outputdir $finalReportDir $outputFiles
-          }
-          
-          # Créer l'archive
-          $zipPath = "$resultsDir.zip"
-          Compress-Archive -Path "$resultsDir\*" -DestinationPath $zipPath -Force
-          
-          Write-Host "✅ Tous les tests sont terminés !"
-          return $zipPath
-      }
-      
-      # Exécuter les tests
-      $zipPath = Execute-TestCommand -TestsFolder "tests" -ResultsFolder "results"
-      
-      # Upload vers Artifactory
-      $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$env:ARTIFACTORY_USER:$env:ARTIFACTORY_PASSWORD"))
-      $headers = @{
-          'Authorization' = "Basic $auth"
-          'Content-Type' = 'application/zip'
-      }
-      $uploadUrl = "$env:ARTIFACTORY_URL/test-results/$CI_COMMIT_SHA/$(Split-Path $zipPath -Leaf)"
-      Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $zipPath
-      
-      # Nettoyage
-      Remove-Item -Path (Split-Path $zipPath -Parent) -Recurse -Force
-      Remove-Item -Path $zipPath -Force
+    - python execution.py
   artifacts:
     paths:
       - results/Tests_*.zip

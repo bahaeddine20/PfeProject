@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-06-09T08:56:53.791935" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteMaps" source="C:\Users\bahae\Documents\PfeProject\test_cases\FonctionnaliteMaps.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-06-09T08:57:01.162185" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="f851040d-df53-4ed4-a4e9-ff4dd1d33531")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-06-09T08:56:56.810602" elapsed="4.351583"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-09T08:57:01.163185" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="f851040d-df53-4ed4-a4e9-ff4dd1d33531")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-09T08:57:01.162185" elapsed="0.001000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-06-09T08:57:01.232785" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-09T08:57:01.163185" elapsed="0.069600"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-06-09T08:57:01.233771" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'Gps': 'Position', 'use_loc': 'Utiliser la localisation', 'acces': 'Accès à la position'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-06-09T08:57:01.232785" elapsed="0.000986"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-09T08:57:01.233771" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'Gps': 'Position', 'use_loc': 'Utiliser la localisation', 'acces': 'Accès à la position'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-09T08:57:01.233771" elapsed="0.000000"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-06-09T08:57:01.163185" elapsed="0.070586"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-06-09T08:56:56.809602" elapsed="4.424169"/>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Gps" line="149">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-09T08:57:01.234766" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-09T08:57:01.234766" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-09T08:57:01.234766" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-09T08:57:01.234766" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Open Gps Test">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-06-09T08:57:16.934706" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+378 619 522 657</msg>
+<msg time="2025-06-09T08:57:16.934706" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<status status="PASS" start="2025-06-09T08:57:01.235766" elapsed="15.698940"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-09T08:57:17.435172" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-09T08:57:16.934706" elapsed="0.500466"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-06-09T08:57:43.212522" level="INFO">📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Utiliser la localisation', "Fonctionnalités d'aide à la conduite"]
+📌 First Home Page détectée : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Utiliser la localisation', "Fonctionnalités d'aide à la conduite"]
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Utiliser la localisation', "Fonctionnalités d'aide à la conduite"]
+✅ Retour à la first home page !
+First Home Page détectée : ['Notifications', 'Son', 'Profils et comptes', 'Réseau et Internet', 'Bluetooth', 'Position', 'Écran']
+ Position trouvé ! Appui sur le texte contenant 'Position'.</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Gps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-06-09T08:57:17.435172" elapsed="25.777350"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-06-09T08:57:55.643019" level="INFO">📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Accès à la position', 'Autorisations des applis', 'Accès récent(s)', 'Google\xa0Maps', 'Appium Settings']
+📌 First Home Page détectée : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Accès à la position', 'Autorisations des applis', 'Accès récent(s)', 'Google\xa0Maps', 'Appium Settings']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Accès à la position', 'Autorisations des applis', 'Accès récent(s)', 'Google\xa0Maps', 'Appium Settings']
+✅ Retour à la first home page !
+First Home Page détectée : ['Autorisations des applis', 'Gérez les autorisations de chaque appli', 'Google\xa0Maps', 'Accès récent(s)', 'Appium Settings', 'Accès à la position', 'il y a 0\xa0min', 'Choisissez si les applis ont accès la position de votre voiture']
+ Accès à la position trouvé ! Appui sur le texte contenant 'Accès à la position'.</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.acces}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-06-09T08:57:43.213524" elapsed="12.429495"/>
+</kw>
+<kw name="Activer Toggle Si Desactive" owner="Integration">
+<msg time="2025-06-09T08:57:56.568337" level="INFO">true</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.use_loc}</arg>
+<status status="PASS" start="2025-06-09T08:57:55.643019" elapsed="0.925318"/>
+</kw>
+<kw name="Is Gps Enabled Adb" owner="Integration">
+<msg time="2025-06-09T08:57:56.611338" level="INFO">✅ Le GPS est activé (location_mode = 3).</msg>
+<msg time="2025-06-09T08:57:56.612337" level="INFO">${verfier_gps_adb} = True</msg>
+<var>${verfier_gps_adb}</var>
+<arg>${driver}</arg>
+<doc>Vérifie si le GPS (services de localisation) est activé via ADB pour un device donné.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.568337" elapsed="0.044000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_gps_adb}</arg>
+<arg>Le GPS ne s'active pas (via ADB)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.612337" elapsed="0.000000"/>
+</kw>
+<doc>Tests GPS activation</doc>
+<status status="PASS" start="2025-06-09T08:57:01.235766" elapsed="55.376571"/>
+</kw>
+<msg time="2025-06-09T08:57:56.612337" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-09T08:57:01.234766" elapsed="55.377571"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T08:57:56.613339" level="INFO">Test Test Ouvrir Gps réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-06-09T08:57:56.613339" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-09T08:57:56.612337" elapsed="0.001002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:57:56.612337" elapsed="0.001002"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-06-09T08:57:01.234766" elapsed="55.378573"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-06-09T08:57:01.234766" elapsed="55.378573"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:57:56.613339" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:57:56.613339" elapsed="0.000998"/>
+</if>
+<arg>Execute Open Gps Test</arg>
+<arg>Test Ouvrir Gps</arg>
+<status status="PASS" start="2025-06-09T08:57:01.234766" elapsed="55.379571"/>
+</kw>
+<doc>Teste l'activation du GPS
+- Ouvre les paramètres
+- Active le GPS
+- Vérifie l'activation via ADB</doc>
+<tag>gps</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-06-09T08:57:01.233771" elapsed="55.380566"/>
+</test>
+<test id="s1-t2" name="Test GPS Location Functionality" line="157">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-09T08:57:56.615338" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.614337" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-09T08:57:56.615338" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.615338" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Gps Location Test">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:57:58.658451" level="INFO">[ERREUR] Exception lors de la requête : HTTPConnectionPool(host='127.0.0.1', port=6000): Max retries exceeded with url: /setlocation (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000022FF802C4A0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS via une API Flask sur le host.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.615338" elapsed="2.043113"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-09T08:57:59.158814" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-09T08:57:58.658451" elapsed="0.500363"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:57:59.204381" level="INFO">${current_latitude} = 35.6895</msg>
+<msg time="2025-06-09T08:57:59.204381" level="INFO">${current_longitude} = 139.691698</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-09T08:57:59.158814" elapsed="0.045567"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-06-09T08:57:59.205382" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-06-09T08:57:59.206382" level="FAIL">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<arg>La latitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2025-06-09T08:57:59.204381" elapsed="0.002001">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<arg>La longitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-06-09T08:57:59.206382" elapsed="0.000000"/>
+</kw>
+<doc>Tests GPS location functionality</doc>
+<status status="FAIL" start="2025-06-09T08:57:56.615338" elapsed="2.591044">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<msg time="2025-06-09T08:57:59.206382" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-09T08:57:56.615338" elapsed="2.591044"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T08:57:59.206382" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-06-09T08:57:59.206382" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:57:59.206382" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-09T08:57:59.207383" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-09T08:57:59.206382" elapsed="0.001001"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T08:57:59.207383" level="INFO">Test Test GPS Location Functionality échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T08:57:59.207383" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-09T08:58:01.208684" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-09T08:57:59.207383" elapsed="2.001301"/>
+</kw>
+<status status="PASS" start="2025-06-09T08:57:59.207383" elapsed="2.001301"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:57:59.207383" elapsed="2.001301"/>
+</if>
+<status status="PASS" start="2025-06-09T08:57:59.206382" elapsed="2.002302"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:57:59.206382" elapsed="2.002302"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-06-09T08:57:56.615338" elapsed="4.593346"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Gps Location Test">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:58:03.253345" level="INFO">[ERREUR] Exception lors de la requête : HTTPConnectionPool(host='127.0.0.1', port=6000): Max retries exceeded with url: /setlocation (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000022FF8016390&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS via une API Flask sur le host.</doc>
+<status status="PASS" start="2025-06-09T08:58:01.208684" elapsed="2.044661"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-09T08:58:03.754821" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-09T08:58:03.253345" elapsed="0.501476"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:58:03.798822" level="INFO">${current_latitude} = 35.6895</msg>
+<msg time="2025-06-09T08:58:03.798822" level="INFO">${current_longitude} = 139.691698</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-09T08:58:03.754821" elapsed="0.044001"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-06-09T08:58:03.798822" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-06-09T08:58:03.798822" level="FAIL">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<arg>La latitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2025-06-09T08:58:03.798822" elapsed="0.000000">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<arg>La longitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:03.799843" elapsed="0.000000"/>
+</kw>
+<doc>Tests GPS location functionality</doc>
+<status status="FAIL" start="2025-06-09T08:58:01.208684" elapsed="2.591159">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<msg time="2025-06-09T08:58:03.799843" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-09T08:58:01.208684" elapsed="2.591159"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:03.799843" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:03.799843" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:58:03.799843" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-09T08:58:03.799843" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-09T08:58:03.799843" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T08:58:03.800822" level="INFO">Test Test GPS Location Functionality échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T08:58:03.800822" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-09T08:58:05.801272" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-09T08:58:03.800822" elapsed="2.000450"/>
+</kw>
+<status status="PASS" start="2025-06-09T08:58:03.799843" elapsed="2.001429"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:58:03.799843" elapsed="2.001429"/>
+</if>
+<status status="PASS" start="2025-06-09T08:58:03.799843" elapsed="2.001429"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:58:03.799843" elapsed="2.001429"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-06-09T08:58:01.208684" elapsed="4.592588"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Gps Location Test">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:58:07.836241" level="INFO">[ERREUR] Exception lors de la requête : HTTPConnectionPool(host='127.0.0.1', port=6000): Max retries exceeded with url: /setlocation (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000022FF802E960&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</msg>
+<arg>${Device}</arg>
+<arg>${Longitude}</arg>
+<arg>${Latitude}</arg>
+<doc>Définit une nouvelle position GPS via une API Flask sur le host.</doc>
+<status status="PASS" start="2025-06-09T08:58:05.802269" elapsed="2.033972"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-09T08:58:08.337231" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-09T08:58:07.836241" elapsed="0.500990"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:58:08.395178" level="INFO">${current_latitude} = 35.6895</msg>
+<msg time="2025-06-09T08:58:08.395178" level="INFO">${current_longitude} = 139.691698</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-09T08:58:08.337231" elapsed="0.057947"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-06-09T08:58:08.395178" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-06-09T08:58:08.395178" level="FAIL">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</msg>
+<arg>${current_latitude}</arg>
+<arg>${Latitude}</arg>
+<arg>La latitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2025-06-09T08:58:08.395178" elapsed="0.001003">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${current_longitude}</arg>
+<arg>${Longitude}</arg>
+<arg>La longitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</kw>
+<doc>Tests GPS location functionality</doc>
+<status status="FAIL" start="2025-06-09T08:58:05.801272" elapsed="2.594909">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<msg time="2025-06-09T08:58:08.396181" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-09T08:58:05.801272" elapsed="2.594909"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-09T08:58:08.396181" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:58:08.396181" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:58:08.396181" elapsed="0.001000"/>
+</if>
+<status status="PASS" start="2025-06-09T08:58:08.396181" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:58:08.396181" elapsed="0.001000"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-06-09T08:58:05.801272" elapsed="2.595909"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-06-09T08:57:56.615338" elapsed="11.781843"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-06-09T08:58:08.397181" level="FAIL">Le test Test GPS Location Functionality a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-06-09T08:58:08.397181" elapsed="0.000000">Le test Test GPS Location Functionality a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-06-09T08:58:08.397181" elapsed="0.000000">Le test Test GPS Location Functionality a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-06-09T08:58:08.397181" elapsed="0.000000">Le test Test GPS Location Functionality a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Gps Location Test</arg>
+<arg>Test GPS Location Functionality</arg>
+<status status="FAIL" start="2025-06-09T08:57:56.614337" elapsed="11.782844">Le test Test GPS Location Functionality a échoué après 3 tentatives</status>
+</kw>
+<doc>Teste la fonctionnalité de modification de position GPS
+- Définit une position GPS spécifique via ADB
+- Vérifie que la position a bien été mise à jour</doc>
+<tag>gps</tag>
+<tag>location</tag>
+<status status="FAIL" start="2025-06-09T08:57:56.614337" elapsed="11.782844">Le test Test GPS Location Functionality a échoué après 3 tentatives</status>
+</test>
+<test id="s1-t3" name="Test GPS Multi-Location" line="164">
+<for flavor="IN">
+<iter>
+<kw name="Test GPS Location For Coordinates">
+<kw name="Set Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:58:10.428641" level="INFO">[ERREUR] Exception lors de la requête : HTTPConnectionPool(host='127.0.0.1', port=6000): Max retries exceeded with url: /setlocation (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000022FF802E270&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</msg>
+<arg>${Device}</arg>
+<arg>${longitude}</arg>
+<arg>${latitude}</arg>
+<doc>Définit une nouvelle position GPS via une API Flask sur le host.</doc>
+<status status="PASS" start="2025-06-09T08:58:08.398180" elapsed="2.030461"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-09T08:58:12.429409" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-09T08:58:10.428641" elapsed="2.000768"/>
+</kw>
+<kw name="Get Location ViaAdb" owner="Integration">
+<msg time="2025-06-09T08:58:12.474710" level="INFO">${current_latitude} = 35.6895</msg>
+<msg time="2025-06-09T08:58:12.474710" level="INFO">${current_longitude} = 139.691698</msg>
+<var>${current_latitude}</var>
+<var>${current_longitude}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-09T08:58:12.429409" elapsed="0.045301"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T08:58:12.474710" level="INFO">Vérification: attendu 40.7128, obtenu 35.6895</msg>
+<arg>Vérification: attendu ${latitude}, obtenu ${current_latitude}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T08:58:12.474710" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-06-09T08:58:12.474710" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-06-09T08:58:12.474710" level="FAIL">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</msg>
+<arg>${current_latitude}</arg>
+<arg>${latitude}</arg>
+<arg>La latitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2025-06-09T08:58:12.474710" elapsed="0.000000">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${current_longitude}</arg>
+<arg>${longitude}</arg>
+<arg>La longitude n'a pas été mise à jour correctement</arg>
+<arg>precision=0.0001</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:12.475710" elapsed="0.000000"/>
+</kw>
+<arg>${lat}</arg>
+<arg>${lon}</arg>
+<status status="FAIL" start="2025-06-09T08:58:08.398180" elapsed="4.077530">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</kw>
+<var name="${lat}">40.7128</var>
+<var name="${lon}">-74.0060</var>
+<status status="FAIL" start="2025-06-09T08:58:08.398180" elapsed="4.077530">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</iter>
+<var>${lat}</var>
+<var>${lon}</var>
+<value>@{GPS_LOCATIONS}</value>
+<status status="FAIL" start="2025-06-09T08:58:08.398180" elapsed="4.077530">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</for>
+<doc>Teste la modification de position GPS pour plusieurs emplacements</doc>
+<status status="FAIL" start="2025-06-09T08:58:08.397181" elapsed="4.078529">La latitude n'a pas été mise à jour correctement: 36.0 != 41.0</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-06-09T08:58:12.477710" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-06-09T08:58:12.476712" elapsed="0.004999">No application is open</status>
+</kw>
+<msg time="2025-06-09T08:58:12.482712" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-06-09T08:58:12.482712" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-06-09T08:58:12.476712" elapsed="0.006999">No application is open</status>
+</kw>
+<msg time="2025-06-09T08:58:12.483711" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-09T08:58:12.475710" elapsed="0.008001"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:12.483711" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:12.484711" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:58:12.483711" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T08:58:12.484711" level="INFO">Le driver n'était pas actif</msg>
+<arg>Le driver n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T08:58:12.484711" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-09T08:58:12.484711" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:58:12.483711" elapsed="0.001000"/>
+</if>
+<status status="PASS" start="2025-06-09T08:58:12.475710" elapsed="0.009001"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-09T08:58:12.484711" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T08:58:12.484711" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-09T08:58:12.475710" elapsed="0.009001"/>
+</try>
+<doc>Cleans up and closes the test driver</doc>
+<status status="PASS" start="2025-06-09T08:58:12.475710" elapsed="0.009001"/>
+</kw>
+<doc>Tests de fonctionnalité GPS pour appareil Android
+- Vérification de la modification de position GPS
+- Utilisation des commandes ADB pour contrôler l'émulateur</doc>
+<status status="FAIL" start="2025-06-09T08:56:53.792935" elapsed="78.691776"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="1" skip="0">gps</stat>
+<stat pass="0" fail="1" skip="0">location</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteMaps" id="s1" pass="1" fail="2" skip="0">FonctionnaliteMaps</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-06-09T08:58:12.482712" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>
