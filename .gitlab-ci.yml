@@ -101,8 +101,7 @@ run_flask_and_test:
         docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot;
         $jobId = Get-Content ServeurFlaskHost/flask_job_id.txt;
         Stop-Job -Id $jobId -ErrorAction SilentlyContinue;
-        Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue;
-    "
+        Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue; "
   retry: 2
   artifacts:
     paths:
