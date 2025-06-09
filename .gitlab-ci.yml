@@ -12,7 +12,8 @@ variables:
 build:
   stage: build
   tags:
-    - python-shell
+    - windows-runner2
+
   script:
     - docker compose down
 
@@ -25,7 +26,8 @@ build:
 deploy:
   stage: deploy
   tags:
-    - python-shell
+    - windows-runner2
+
   script:
     - docker compose down
     - docker compose up -d --remove-orphans
@@ -36,7 +38,8 @@ deploy:
 run_flask_extern:
   stage: run
   tags:
-    - python-shell
+    - windows-runner2
+
   before_script:
     - cd ServeurFlaskHost
     - python -m venv venv
@@ -53,7 +56,8 @@ run_flask_extern:
 run_tests:
   stage: test
   tags:
-    - python-shell
+    - windows-runner2
+
   before_script:
     - python -m venv venv
     - venv\Scripts\Activate.ps1
