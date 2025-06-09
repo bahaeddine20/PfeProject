@@ -91,16 +91,16 @@ run_flask_and_test:
     - pip install -r requirements.txt
     - pip install robotframework requests
   script:
-    - Start-Process -NoNewWindow -FilePath "python" -ArgumentList "flaskhost.py" -PassThru | Out-File flask_pid.txt
+    - $flaskProcess = Start-Process -NoNewWindow -FilePath "python" -ArgumentList "flaskhost.py" -PassThru
+    - $flaskProcess.Id | Out-File flask_pid.txt
     - Start-Sleep -Seconds 5
     - cd ..
     - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot
-    - |
-      $flask = Get-Content ServeurFlaskHost\flask_pid.txt | Out-String
-      $processes = Get-Process python | Where-Object { $_.Path -like "*flaskhost.py*" }
-      if ($processes) {
-        $processes | Stop-Process -Force
-      }
+  after_script:
+    - cd ServeurFlaskHost
+    - $pid = Get-Content flask_pid.txt -ErrorAction SilentlyContinue
+    - if ($pid) { Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue }
+    - Remove-Item flask_pid.txt -ErrorAction SilentlyContinue
   artifacts:
     paths:
       - results/Tests_*.zip
