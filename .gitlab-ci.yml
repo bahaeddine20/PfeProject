@@ -80,33 +80,49 @@ run_flask_and_test:
   stage: run2
   tags:
     - windows-runner2
+
+  before_script:
+    - cd ServeurFlaskHost
+    - python -m venv venv
+    - venv\Scripts\Activate.ps1
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install robotframework requests
+
   script:
-    - powershell -Command "
-        cd ServeurFlaskHost;
-        python -m venv venv;
-        .\venv\Scripts\Activate.ps1;
-        python -m pip install --upgrade pip;
-        pip install -r requirements.txt;
-        pip install robotframework requests;
-        $flaskJob = Start-Job -ScriptBlock { python flaskhost.py *> flask.log };
-        $flaskJob.Id | Out-File flask_job_id.txt;
-        $timeout = 30;
-        $elapsed = 0;
-        while ($elapsed -lt $timeout) {
-            if (Test-NetConnection -ComputerName localhost -Port 6000 | Where-Object { $_.TcpTestSucceeded }) { break };
-            Start-Sleep -Seconds 1;
-            $elapsed++
-        };
-        if ($elapsed -ge $timeout) { 
-            Write-Error 'Flask ne s''est pas lancé à temps.';
-            exit 1 
-        };
-        cd ..;
-        docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot;
-        $jobId = Get-Content ServeurFlaskHost/flask_job_id.txt;
-        Stop-Job -Id $jobId -ErrorAction SilentlyContinue;
-        Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue;
-      "
+    # Démarrer Flask avec vérification explicite
+    - $flaskProcess = Start-Process python -ArgumentList "flaskhost.py" -PassThru -RedirectStandardOutput flask.log
+    - $flaskProcess.Id | Out-File flask_pid.txt
+    - Write-Host "Démarrage de Flask (PID: $($flaskProcess.Id))"
+
+    # Vérification du démarrage avec timeout
+    - $timeout = 60  # secondes max d'attente
+    - $interval = 5
+    - $started = $false
+    - for ($i=0; $i -lt $timeout/$interval; $i++) {
+        if (Test-NetConnection localhost -Port 5000 | Where-Object { $_.TcpTestSucceeded }) {
+          $started = $true
+          break
+        }
+        Start-Sleep -Seconds $interval
+        Write-Host "Attente du démarrage du serveur ($($i*$interval)s)..."
+      }
+
+    # Gestion des erreurs si échec
+    - if (-not $started) {
+        Get-Content flask.log
+        Write-Error "❌ Échec du démarrage de Flask (timeout après $timeout secondes)" -ErrorAction Stop
+      }
+
+    # Exécution des tests
+    - Write-Host "✅ Flask démarré avec succès"
+    - cd ..
+    - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot
+
+    # Arrêt propre de Flask
+    - $pid = Get-Content ServeurFlaskHost/flask_pid.txt
+    - Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
+
   retry: 2
   artifacts:
     paths:
