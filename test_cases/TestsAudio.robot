@@ -23,9 +23,9 @@ ${Device}              emulator-5554
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}              System
 # Configuration des retries
-${MAX_RETRIES}    3
+${MAX_RETRIES}    1
 ${RETRY_DELAY}    2s
-${QUICK_WAIT}     2s
+${QUICK_WAIT}     0.5s
 
 # Audio Configuration
 ${DEFAULT_RECORD_DURATION}    34
@@ -94,8 +94,9 @@ Get Localized Text
 
 Navigate To Audio App
     Start Activity Code    ${driver}     com.example.audioapplicationtest/.MainActivity
-    Sleep    22s
+    Sleep    3s    # Attendre que l'application se charge
     ${current_activity}=    Print Activity    ${driver}
+    Should Contain    ${current_activity}    com.example.audioapplicationtest/.MainActivity    L'application n'est pas correctement lancée
 
 Wait For Record Button
     [Arguments]    ${timeout}=10s
@@ -147,7 +148,7 @@ Start Audio Recording And Playback
 
     # Attendre que la lecture soit terminée
     Sleep    ${duration}s
-    
+
     # Arrêter l'enregistrement avec STOP
     Click Stop Button
 
@@ -161,28 +162,28 @@ Verify Audio Recording
 Compare Audio Files
     [Arguments]    ${original_audio}
     ${test_passed}    ${metrics}=    Compare With Latest Recorded    ${original_audio}
-    
+
     # Log all metrics for debugging
     Log    SNR: ${metrics['snr']} dB (seuil: 20 dB)
     Log    Corrélation: ${metrics['correlation']} (seuil: 0.9)
     Log    MOS: ${metrics['mos']}/5 (seuil: 3.0)
     Log    Clarté: ${metrics['clarity']} (seuil: 0.8)
-    
+
     # Test is considered passed only if ALL critical metrics meet their thresholds
     ${snr_ok}=    Evaluate    ${metrics['snr']} >= 20
     ${correlation_ok}=    Evaluate    ${metrics['correlation']} >= 0.9
     ${mos_ok}=    Evaluate    ${metrics['mos']} >= 3.0
     ${clarity_ok}=    Evaluate    ${metrics['clarity']} >= 0.8
-    
+
     ${test_passed}=    Evaluate    ${snr_ok} and ${correlation_ok} and ${mos_ok} and ${clarity_ok}
-    
+
     IF    not ${test_passed}
         Log    ❌ Test échoué - Métriques critiques non satisfaites
         Fail    Test audio échoué - Vérifiez les métriques dans les logs
     ELSE
         Log    ✅ Test réussi - Toutes les métriques sont satisfaites
     END
-    
+
     RETURN    ${test_passed}    ${metrics}
 
 Click Play Button
@@ -195,8 +196,9 @@ Click Play Button
 
 Navigate To Audio Player App
     Start Activity Code    ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
-    Sleep    22s
+    Sleep    3s    # Attendre que l'application se charge
     ${current_activity}=    Print Activity    ${driver}
+    Should Contain    ${current_activity}    com.example.audioapplicationtest/.AudioPlayerActivity    L'application n'est pas correctement lancée
 
 
 Compare Audio Files Play
@@ -231,9 +233,7 @@ Compare Audio Files Play
     RETURN    ${test_passed}    ${metrics}
 
 *** Test Cases ***
-Test install
-        Install Apk    ${driver}        AudioTestApplication.apk
-
+Test fgdya
         Close Activity Robot      ${driver}     com.example.audioapplicationtest
 
 Test Audio Recording And Playback
@@ -244,7 +244,6 @@ Test Audio Recording And Playback
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
     Close Activity       ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
-    Sleep    10s
     Execute Test With Retry    Verify Audio Recording    Test Audio Recording And Playback
 
 
@@ -256,14 +255,11 @@ Test Audio Player And Playback
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
     Navigate To Audio Player App
-
     ${recording_success}=    Record Audio    ${driver}     23    # Démarre l'enregistrement
     Should Be True    ${recording_success}    L'enregistrement audio a échoué
     Sleep    1s    # Petit délai pour s'assurer que l'enregistrement a bien démarré
     Click Play Button    # Démarre la lecture immédiatement après
     Sleep    22s
     Compare Audio Files Play       ${CURDIR}${/}test.wav
-
-
 
 

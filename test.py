@@ -1081,6 +1081,7 @@ if __name__ == "__main__":
     #print(check_language_change("emulator-5554","fr-FR"))
     #revenir_a_la_home_page(driver)
     #
+    start_Activity_code(driver,"com.android.car.settings/.Settings_Launcher_Homepage")
     print(Print_Activity(driver))
     # #afficher_noms_setting(driver)
     afficheraLL_infos_elements(driver)

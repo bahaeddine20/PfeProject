@@ -534,27 +534,57 @@ def extract_bounds(bounds_str):
 
 
 def open_application_with_click(driver, text):
+
+    """
+    Ouvre une application soit par son activité si connue, soit par recherche visuelle
+    """
+    # Dictionnaire des activités connues
+    known_activities = {
+        "Paramètres": "com.android.car.settings/.Settings_Launcher_Homepage",
+        "Settings": "com.android.car.settings/.Settings_Launcher_Homepage",
+    }
+
+    # Vérifier si l'application a une activité connue
+    if text in known_activities:
+        try:
+            # Essayer d'ouvrir directement par l'activité
+            activity = known_activities[text]
+            print(f"🔄 Tentative d'ouverture de {text} via l'activité: {activity}")
+            start_activity_code(driver, activity)
+            print(Print_Activity(driver))
+            
+            # Vérifier si l'activité a bien démarré
+            current_activity = Print_Activity(driver)
+            if activity.split('/')[0] in current_activity:
+                print(f"✅ {text} ouvert avec succès via l'activité")
+                return True
+            else:
+                print(f"⚠️ L'activité n'a pas démarré correctement, tentative par recherche visuelle")
+        except Exception as e:
+            print(f"⚠️ Erreur lors de l'ouverture par activité: {str(e)}")
+            print("🔄 Tentative par recherche visuelle...")
+
+    # Si l'activité n'est pas connue ou si l'ouverture a échoué, utiliser la méthode visuelle
     revenir_a_la_home_page(driver)
     page = True
     while page:
-        first = afficher_noms_applications(driver)  # Vérifier les apps après swipe
+        first = afficher_noms_applications(driver)
         if text in first:
             if get_element_bounds(driver, text) is not None:
                 bounds = get_element_bounds(driver, text)
                 x1, y1, x2, y2 = extract_bounds(bounds)
-                print(x1, y1, x2, y2)
                 x_center = (x1 + x2) // 2
                 y_center = (y1 + y2) // 2
                 click_sur(driver, x_center, y_center)
                 page = False
                 return True
         else:
-            driver.swipe(1200, 600, 500, 600, 200)  # Swipe vers la droite (modifie si nécessaire)
-            seconde = afficher_noms_applications(driver)  # Vérifier les apps après swipe
+            driver.swipe(1200, 600, 500, 600, 200)
+            seconde = afficher_noms_applications(driver)
 
             if first == seconde:
-                print("✅ Retour à la first home page !")
-                return False  # Sortir de la boucle une fois la home page atteinte
+                print("✅ Retour à la première page !")
+                return False
             else:
                 first = seconde
             print("🔄 Swipe en cours...")
