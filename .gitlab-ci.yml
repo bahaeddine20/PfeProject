@@ -85,37 +85,39 @@ run_flask_and_test:
   stage: run2
   tags:
     - python-shell
-
+  variables:
+    SHELL: "pwsh"  # Force l'utilisation de PowerShell Core
 
   before_script:
     - cd ServeurFlaskHost
     - python -m venv venv
-    - venv\Scripts\Activate.ps1
+    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
     - pip install robotframework requests
+
   script:
-    # Démarrer Flask en arrière-plan avec redirection des logs
-    - $flaskJob = Start-Job -ScriptBlock { python flaskhost.py *> flask.log }
-    - $flaskJob.Id | Out-File flask_job_id.txt
+    # Démarrer Flask en arrière-plan
+    - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
+    - $flaskProcess.Id | Out-File flask_pid.txt
     - Start-Sleep -Seconds 5
-    - cd ..
-    # Exécuter les tests
+
+    # Exécuter les tests (reste dans le même répertoire)
     - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot
-    # Arrêter Flask après les tests
-    - $jobId = Get-Content ServeurFlaskHost/flask_job_id.txt
-    - Stop-Job -Id $jobId -ErrorAction SilentlyContinue
-    - Remove-Job -Id $jobId -Force -ErrorAction SilentlyContinue
+
+    # Arrêter Flask proprement
+    - $flaskId = Get-Content flask_pid.txt
+    - Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue
+    - Remove-Item flask_pid.txt -Force -ErrorAction SilentlyContinue
+
   retry: 2
   artifacts:
     paths:
       - resultats
-      - ServeurFlaskHost/flask.log  # Optionnel pour le débogage
+      - ServeurFlaskHost/flask.log
+      - ServeurFlaskHost/flask_error.log  # Pour le débogage
     expire_in: 1 week
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
       when: on_success
     - when: never
-
-
-
