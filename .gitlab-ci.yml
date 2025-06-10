@@ -12,7 +12,8 @@ variables:
 build:
   stage: build
   tags:
-    - windows-runner2
+    - python-shell
+
   retry: 2
   script:
     - docker compose down
@@ -26,7 +27,8 @@ build:
 deploy:
   stage: deploy
   tags:
-    - windows-runner2
+    - python-shell
+
   retry: 2
   script:
     - docker compose down
@@ -38,7 +40,8 @@ deploy:
 run_flask_extern:
   stage: run
   tags:
-    - windows-runner2
+    - python-shell
+
 
   before_script:
     - cd ServeurFlaskHost
@@ -57,7 +60,8 @@ run_flask_extern:
 run_tests:
   stage: test
   tags:
-    - windows-runner2
+    - python-shell
+
 
   before_script:
     - python -m venv venv
@@ -80,7 +84,8 @@ run_tests:
 run_flask_and_test:
   stage: run2
   tags:
-    - windows-runner2
+    - python-shell
+
 
   before_script:
     - cd ServeurFlaskHost
