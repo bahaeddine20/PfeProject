@@ -160,6 +160,8 @@ def play_audio():
     """
     try:
         data = request.get_json()
+        print(f"Received play_audio request with data: {data}")
+        
         if not data or 'audio_file' not in data:
             return jsonify({
                 "success": False,
@@ -170,17 +172,21 @@ def play_audio():
         audio_file = data['audio_file']
         full_path = data.get('full_path', '')
 
+        # Liste des chemins possibles à essayer
         possible_paths = [
-            os.path.join('recordings', audio_file),
             os.path.join(os.getcwd(), 'test_cases', audio_file),
+            os.path.join(os.getcwd(), audio_file),
             full_path,
             audio_file
         ]
+
+        print(f"Searching for audio file in paths: {possible_paths}")
 
         file_path = None
         for path in possible_paths:
             if path and os.path.exists(path):
                 file_path = path
+                print(f"Found audio file at: {file_path}")
                 break
 
         if not file_path:
@@ -191,9 +197,14 @@ def play_audio():
             }), 404
 
         # Read and play audio
+        print(f"Reading audio file: {file_path}")
         data, samplerate = sf.read(file_path)
+        print(f"Audio file loaded. Sample rate: {samplerate}, Duration: {len(data)/samplerate:.2f}s")
+        
+        print("Starting audio playback...")
         sd.play(data, samplerate)
         sd.wait()
+        print("Audio playback completed")
 
         return jsonify({
             "success": True,
@@ -203,6 +214,7 @@ def play_audio():
         }), 200
 
     except Exception as e:
+        print(f"Error in play_audio: {str(e)}")
         return jsonify({
             "success": False,
             "message": f"Erreur lors de la lecture audio: {str(e)}"
