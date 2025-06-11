@@ -4,6 +4,7 @@ stages:
   - run
   - run2
   - test
+  - fasktest
 
 variables:
   IMAGE_NAME: aestoolscelad/flask-app-baha:v4.0
@@ -86,7 +87,7 @@ run_flask_and_test:
   tags:
     - python-shell
   variables:
-    SHELL: "pwsh"  # Force l'utilisation de PowerShell Core
+    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
 
 
   before_script:
@@ -110,6 +111,46 @@ run_flask_and_test:
     - $flaskId = Get-Content flask_pid.txt
     - Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue
     - Remove-Item flask_pid.txt -Force -ErrorAction SilentlyContinue
+
+  retry: 2
+  artifacts:
+    paths:
+      - resultats
+      - ServeurFlaskHost/flask.log
+      - ServeurFlaskHost/flask_error.log  # Pour le débogage
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
+      when: on_success
+    - when: never
+
+
+
+
+run_flask_and_test2:
+  stage: fasktest
+  tags:
+    - python-shell
+  variables:
+    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
+
+
+  before_script:
+    - cd ServeurFlaskHost
+    - python -m venv venv
+    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install robotframework requests
+
+  script:
+    # Démarrer Flask en arrière-plan
+    - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
+    - $flaskProcess.Id | Out-File flask_pid.txt
+    - Start-Sleep -Seconds 5
+
+    # Exécuter les tests (reste dans le même répertoire)
+
 
   retry: 2
   artifacts:
