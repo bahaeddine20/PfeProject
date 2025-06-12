@@ -110,8 +110,10 @@ run_flask_and_test:
     # Créer un dossier temporaire pour les résultats
     - New-Item -ItemType Directory -Force -Path "$PWD\latest_results"
 
-    # Copier les résultats directement depuis le conteneur
-    - docker exec pfeproject-flask-1 sh -c "cd /app/resultats && tar -czf - Tests_*" | tar -xzf - -C "$PWD\latest_results"
+    # Copier les résultats depuis le conteneur
+    - $latestDir = docker exec pfeproject-flask-1 sh -c "ls -t /app/resultats | head -n 1"
+    - docker exec pfeproject-flask-1 sh -c "cp -r /app/resultats/$latestDir/* /tmp/results/"
+    - docker cp pfeproject-flask-1:/tmp/results/. "$PWD\latest_results"
 
     # Arrêter Flask proprement
     - $flaskId = Get-Content flask_pid.txt
