@@ -104,16 +104,20 @@ run_flask_and_test:
     - $flaskProcess.Id | Out-File flask_pid.txt
     - Start-Sleep -Seconds 5
 
-    # Exécuter les tests dans le conteneur
-    - docker exec pfeproject-flask-1 python execution.py --list TestsAudio.robot
+    # Créer un volume pour partager les résultats
+    - docker volume create test-results
+
+    # Exécuter les tests dans le conteneur avec le volume monté
+    - docker run --rm -v test-results:/app/resultats pfeproject-flask-1 python execution.py --list TestsAudio.robot
 
     # Créer un dossier temporaire pour les résultats
     - New-Item -ItemType Directory -Force -Path "$PWD\latest_results"
 
-    # Vérifier et copier le dernier dossier de résultats
-    - docker exec pfeproject-flask-1 sh -c "if [ -d '/app/resultats' ]; then ls -t /app/resultats | head -n 1; else echo 'No results directory found'; fi"
-    - $latestDir = docker exec pfeproject-flask-1 sh -c "ls -t /app/resultats | head -n 1"
-    - if ($latestDir) { docker cp "pfeproject-flask-1:/app/resultats/$latestDir" "$PWD\latest_results" }
+    # Copier les résultats du volume vers le dossier local
+    - docker run --rm -v test-results:/source -v "$PWD\latest_results:/target" alpine sh -c "cp -r /source/* /target/"
+
+    # Nettoyer le volume
+    - docker volume rm test-results
 
     # Arrêter Flask proprement
     - $flaskId = Get-Content flask_pid.txt
