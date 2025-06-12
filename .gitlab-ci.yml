@@ -108,13 +108,13 @@ run_flask_and_test:
     - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot
 
     # Créer le dossier resultats_container s'il n'existe pas
-    - New-Item -ItemType Directory -Path "resultats_container" -Force
+    - New-Item -ItemType Directory -Path "ServeurFlaskHost/resultats_container" -Force
 
     # Vérifier si le conteneur est en cours d'exécution et copier les résultats
     - $containerStatus = docker ps -q -f name=pfeproject-flask-1
     - if ($containerStatus) {
         Write-Host "Container is running, copying results..."
-        docker cp pfeproject-flask-1:/resultats ./resultats_container
+        docker cp pfeproject-flask-1:/resultats ./ServeurFlaskHost/resultats_container
       } else {
         Write-Host "Container is not running!"
         exit 1
@@ -130,7 +130,7 @@ run_flask_and_test:
   retry: 2
   artifacts:
     paths:
-      - ./resultats_container/
+      - ServeurFlaskHost/resultats_container/
       - ServeurFlaskHost/flask.log
       - ServeurFlaskHost/flask_error.log  # Pour le débogage
     expire_in: 1 week
