@@ -116,11 +116,11 @@ run_flask_and_test:
     - if ($containerStatus) {
         Write-Host "Container is running, checking contents...";
         Write-Host "Listing contents of /app in container:";
-        docker exec pfeproject-flask-1 ls -la /;
+        docker exec pfeproject-flask-1 ls -la /app
         Write-Host "Listing contents of /resultats in container:";
-        docker exec pfeproject-flask-1 ls -la /resultats;
+        docker exec pfeproject-flask-1 ls -la app/resultats;
         Write-Host "Copying results...";
-        docker cp pfeproject-flask-1:/resultats/. ./resultats_container/;
+        docker cp pfeproject-flask-1:app/resultats/. ./resultats_container/;
         Write-Host "Listing contents of local resultats_container:";
         Get-ChildItem -Path "resultats_container" -Recurse;
       } else {
@@ -129,11 +129,9 @@ run_flask_and_test:
       }
 
     # Arrêter Flask proprement
-    - if (Test-Path -Path "flask_pid.txt") {
-        $flaskId = Get-Content -Path "flask_pid.txt";
-        Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue;
-        Remove-Item -Path "flask_pid.txt" -Force -ErrorAction SilentlyContinue;
-      }
+    
+        Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue;
+     
 
   retry: 2
   artifacts:
