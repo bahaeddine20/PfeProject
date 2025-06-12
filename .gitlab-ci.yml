@@ -108,10 +108,18 @@ run_flask_and_test:
     - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot 
 
     # Créer le dossier resultats_container s'il n'existe pas
-    - if (-not (Test-Path -Path "resultats_container")) { New-Item -ItemType Directory -Path "resultats_container" }
+    - $resultPath = Join-Path $PWD.Path "resultats_container"
+    - if (-not (Test-Path -Path $resultPath)) { New-Item -ItemType Directory -Path $resultPath -Force }
 
-    # Copier les résultats du conteneur
-    - docker cp pfeproject-flask-1:/resultats ./resultats_container
+    # Vérifier si le conteneur est en cours d'exécution et copier les résultats
+    - $containerStatus = docker ps -q -f name=pfeproject-flask-1
+    - if ($containerStatus) {
+        - Write-Host "Container is running, copying results..."
+        - docker cp pfeproject-flask-1:/resultats $resultPath
+      } else {
+        - Write-Host "Container is not running!"
+        - exit 1
+      }
 
     # Arrêter Flask proprement
     - $flaskId = Get-Content flask_pid.txt
