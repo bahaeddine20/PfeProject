@@ -36,9 +36,12 @@ def execute_single_test(test_file: str, test_name: Optional[str] = None) -> Dict
             }
 
         # Create unique results directory
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        test_result_dir = os.path.join(RESULTS_FOLDER, f"Single_Test_{timestamp}_{os.path.splitext(test_file)[0]}")
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        test_result_dir = os.path.join(RESULTS_FOLDER, f"Tests_{timestamp}_{os.path.splitext(test_file)[0]}")
         os.makedirs(test_result_dir, exist_ok=True)
+
+        # Définir la variable d'environnement pour le dossier de sortie Flask
+        os.environ['FLASK_OUTPUT_DIR'] = test_result_dir
 
         # Build robot command
         robot_command = ["robot"]
@@ -84,6 +87,9 @@ def execute_single_test(test_file: str, test_name: Optional[str] = None) -> Dict
             text=True
         )
 
+        # Create zip archive of results
+        shutil.make_archive(test_result_dir, 'zip', test_result_dir)
+
         return {
             "success": True,
             "test_file": test_file,
@@ -119,6 +125,9 @@ def execute_test_list(test_files: List[str]) -> Dict[str, Any]:
         test_names = "_".join([os.path.splitext(f)[0] for f in test_files])
         results_dir = os.path.join(RESULTS_FOLDER, f"Tests_{timestamp}_{test_names}")
         os.makedirs(results_dir, exist_ok=True)
+
+        # Définir la variable d'environnement pour le dossier de sortie Flask
+        os.environ['FLASK_OUTPUT_DIR'] = results_dir
 
         output_files = []
         results = []
@@ -183,9 +192,12 @@ def execute_test_with_tags(test_file: str, tags: List[str]) -> Dict[str, Any]:
             }
 
         # Create results directory
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        test_result_dir = os.path.join(RESULTS_FOLDER, f"Tagged_Test_{timestamp}_{os.path.splitext(test_file)[0]}")
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        test_result_dir = os.path.join(RESULTS_FOLDER, f"Tests_{timestamp}_{os.path.splitext(test_file)[0]}")
         os.makedirs(test_result_dir, exist_ok=True)
+
+        # Définir la variable d'environnement pour le dossier de sortie Flask
+        os.environ['FLASK_OUTPUT_DIR'] = test_result_dir
 
         # Build robot command with tags
         robot_command = ["robot"]
@@ -230,6 +242,9 @@ def execute_test_with_tags(test_file: str, tags: List[str]) -> Dict[str, Any]:
             capture_output=True,
             text=True
         )
+
+        # Create zip archive of results
+        shutil.make_archive(test_result_dir, 'zip', test_result_dir)
 
         return {
             "success": True,

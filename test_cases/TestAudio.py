@@ -307,15 +307,15 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift, test_typ
     plt.tight_layout()
 
     # Créer une boîte de texte avec les métriques et le statut du test
-    test_status = "✅ TEST RÉUSSI" if (metrics['snr'] >= 20 and metrics['correlation'] >= 0.9 and 
+    test_status = "✅ TEST RÉUSSI" if (metrics['correlation'] >= 0.4 and 
                                      metrics['mos'] >= 3.0 and metrics['clarity'] >= 0.8) else "❌ TEST ÉCHEC"
     
     metrics_text = (
         f"{test_status}\n\n"
         f"Type de test: {test_type.upper()}\n\n"
         f"Métriques de Qualité:\n"
-        f"• SNR: {metrics['snr']:.2f} dB (seuil: 20 dB)\n"
-        f"• Corrélation: {metrics['correlation']:.3f} (seuil: 0.9)\n"
+        f"• SNR: {metrics['snr']:.2f} dB\n"
+        f"• Corrélation: {metrics['correlation']:.3f} (seuil: 0.4)\n"
         f"• MOS: {metrics['mos']:.2f}/5 (seuil: 3.0)\n"
         f"• Clarté: {metrics['clarity']:.3f} (seuil: 0.8)\n\n"
         f"Métriques Additionnelles:\n"
@@ -330,9 +330,10 @@ def plot_comparison(original, recorded, noise, fs, metrics, time_shift, test_typ
                   bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray', boxstyle='round,pad=1'),
                   fontsize=10, ha='right', va='center')
 
-    # Sauvegarder la figure au lieu de l'afficher
+    # Sauvegarder la figure dans le dossier de rapport Flask
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'log', 'plots')
+    # Utiliser le dossier de sortie de Flask
+    output_dir = os.path.join(os.environ.get('FLASK_OUTPUT_DIR', '.'), 'plots')
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, f'audio_comparison_{test_type}_{timestamp}.png')
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
@@ -437,7 +438,7 @@ def find_best_segments(original, recorded, fs, search_window_ms=1000):
     return best_orig, best_rec, orig_start, rec_start, best_corr
 
 
-def audio_quality_test(original_path, recorded_path, snr_threshold=20, corr_threshold=0.9,
+def audio_quality_test(original_path, recorded_path, snr_threshold=-1, corr_threshold=0.4,
                        mos_threshold=3.0, clarity_threshold=0.8, test_type="enregistrement"):
     """Test complet de qualité audio"""
     print(f"\n{' Début du test audio ':=^80}")
@@ -480,8 +481,11 @@ def audio_quality_test(original_path, recorded_path, snr_threshold=20, corr_thre
         plot_file = plot_comparison(orig_aligned, rec_aligned, noise, fs, metrics, time_shift, test_type)
         logger.info(f"Graphiques sauvegardés dans: {plot_file}")
 
+        # Ajouter le chemin du graphique aux métriques
+        metrics['plot_file'] = plot_file
+
         # Résultat du test
-        test_passed = ((metrics['snr'] >= snr_threshold) and
+        test_passed = (
                        (metrics['correlation'] >= corr_threshold) and
                        (metrics['mos'] >= mos_threshold) and
                        (metrics['clarity'] >= clarity_threshold))

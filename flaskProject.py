@@ -270,6 +270,10 @@ def execute_tests():
         test_names = "_".join([os.path.splitext(f)[0] for f in selected_tests])
         results_dir = os.path.join(RESULTS_FOLDER, f"Tests_{timestamp}_{test_names}")
         os.makedirs(results_dir, exist_ok=True)
+        
+        # Définir la variable d'environnement pour le dossier de sortie Flask
+        os.environ['FLASK_OUTPUT_DIR'] = results_dir
+        
         total_tests = len(selected_tests)
         progress_data.update({"total": total_tests, "completed": 0})
         output_files = []  # Liste des fichiers output.xml à fusionner
