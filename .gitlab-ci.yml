@@ -114,8 +114,15 @@ run_flask_and_test:
     # Vérifier si le conteneur est en cours d'exécution et copier les résultats
     - $containerStatus = docker ps -q -f name=pfeproject-flask-1
     - if ($containerStatus) {
-        Write-Host "Container is running, copying results..."
-        docker cp pfeproject-flask-1:/app/resultats ./resultats_container
+        Write-Host "Container is running, checking contents..."
+        Write-Host "Listing contents of /app in container:"
+        docker exec pfeproject-flask-1 ls -la /app
+        Write-Host "Listing contents of /app/resultats in container:"
+        docker exec pfeproject-flask-1 ls -la /app/resultats
+        Write-Host "Copying results..."
+        docker cp pfeproject-flask-1:/app/resultats/. ./resultats_container/
+        Write-Host "Listing contents of local resultats_container:"
+        Get-ChildItem -Path "resultats_container" -Recurse
       } else {
         Write-Host "Container is not running!"
         exit 1
