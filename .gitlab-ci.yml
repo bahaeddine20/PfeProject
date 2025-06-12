@@ -108,7 +108,7 @@ run_flask_and_test:
     - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot
 
     # Créer le dossier resultats_container s'il n'existe pas
-    - New-Item -ItemType Directory -Path "ServeurFlaskHost/resultats_container" -Force
+    - New-Item -ItemType Directory -Path "/resultats_container" -Force
 
     # Vérifier si le conteneur est en cours d'exécution et copier les résultats
     - $containerStatus = docker ps -q -f name=pfeproject-flask-1
