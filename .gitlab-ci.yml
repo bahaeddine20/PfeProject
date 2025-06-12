@@ -104,16 +104,10 @@ run_flask_and_test:
     - $flaskProcess.Id | Out-File flask_pid.txt
     - Start-Sleep -Seconds 5
 
-    # Exécuter les tests dans le conteneur existant
-    - docker exec pfeproject-flask-1 python execution.py --list TestsAudio.robot
-
-    # Créer un dossier temporaire pour les résultats
-    - New-Item -ItemType Directory -Force -Path "$PWD\latest_results"
-
-    # Copier les résultats depuis le conteneur
-    - $latestDir = docker exec pfeproject-flask-1 sh -c "ls -t /app/resultats | head -n 1"
-    - docker exec pfeproject-flask-1 sh -c "cp -r /app/resultats/$latestDir/* /tmp/results/"
-    - docker cp pfeproject-flask-1:/tmp/results/. "$PWD\latest_results"
+    # Exécuter les tests dans le conteneur
+    - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteMaps.robot  TestsAudio.robot  FonctionnaliteBluetooth.robot
+    # Copier les résultats du conteneur vers l'hôte
+    - docker cp pfeproject-flask-1:/app/resultats ./resultats
 
     # Arrêter Flask proprement
     - $flaskId = Get-Content flask_pid.txt
@@ -123,7 +117,7 @@ run_flask_and_test:
   retry: 2
   artifacts:
     paths:
-      - latest_results
+      - resultats
     expire_in: 1 week
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
