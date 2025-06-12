@@ -107,6 +107,12 @@ run_flask_and_test:
     # Exécuter les tests (reste dans le même répertoire)
     - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot 
 
+    # Créer le dossier resultats_container s'il n'existe pas
+    - if (-not (Test-Path -Path "resultats_container")) { New-Item -ItemType Directory -Path "resultats_container" }
+
+    # Copier les résultats du conteneur
+    - docker cp pfeproject-flask-1:/resultats ./resultats_container
+
     # Arrêter Flask proprement
     - $flaskId = Get-Content flask_pid.txt
     - Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue
@@ -115,7 +121,7 @@ run_flask_and_test:
   retry: 2
   artifacts:
     paths:
-      - resultats
+      - resultats_container
       - ServeurFlaskHost/flask.log
       - ServeurFlaskHost/flask_error.log  # Pour le débogage
     expire_in: 1 week
