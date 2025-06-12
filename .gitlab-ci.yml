@@ -101,7 +101,7 @@ run_flask_and_test:
   script:
     # Démarrer Flask en arrière-plan
     - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
-    - $flaskProcess.Id | Out-File flask_pid.txt
+    - $flaskProcess.Id | Out-File -FilePath "flask_pid.txt"
     - Start-Sleep -Seconds 5
 
     # Exécuter les tests (reste dans le même répertoire)
@@ -114,17 +114,19 @@ run_flask_and_test:
     # Vérifier si le conteneur est en cours d'exécution et copier les résultats
     - $containerStatus = docker ps -q -f name=pfeproject-flask-1
     - if ($containerStatus) {
-        - Write-Host "Container is running, copying results..."
-        - docker cp pfeproject-flask-1:/resultats $resultPath
+        Write-Host "Container is running, copying results..."
+        docker cp pfeproject-flask-1:/resultats $resultPath
       } else {
-        - Write-Host "Container is not running!"
-        - exit 1
+        Write-Host "Container is not running!"
+        exit 1
       }
 
     # Arrêter Flask proprement
-    - $flaskId = Get-Content flask_pid.txt
-    - Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue
-    - Remove-Item flask_pid.txt -Force -ErrorAction SilentlyContinue
+    - if (Test-Path -Path "flask_pid.txt") {
+        $flaskId = Get-Content -Path "flask_pid.txt"
+        Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue
+        Remove-Item -Path "flask_pid.txt" -Force -ErrorAction SilentlyContinue
+      }
 
   retry: 2
   artifacts:
