@@ -112,26 +112,25 @@ run_flask_and_test:
     - New-Item -ItemType Directory -Path "resultats_container" -Force
 
     # Vérifier si le conteneur est en cours d'exécution et copier les résultats
-    - $containerStatus = docker ps -q -f name=pfeproject-flask-1
-    - if ($containerStatus) {
-        Write-Host "Container is running, checking contents...";
-        Write-Host "Listing contents of /app in container:";
+    - |
+      $containerStatus = docker ps -q -f name=pfeproject-flask-1
+      if ($containerStatus) {
+        Write-Host "Container is running, checking contents..."
+        Write-Host "Listing contents of /app in container:"
         docker exec pfeproject-flask-1 ls -la /app
-        Write-Host "Listing contents of /resultats in container:";
-        docker exec pfeproject-flask-1 ls -la app/resultats;
-        Write-Host "Copying results...";
-        docker cp pfeproject-flask-1:app/resultats/. ./resultats_container/;
-        Write-Host "Listing contents of local resultats_container:";
-        Get-ChildItem -Path "resultats_container" -Recurse;
+        Write-Host "Listing contents of /resultats in container:"
+        docker exec pfeproject-flask-1 ls -la app/resultats
+        Write-Host "Copying results..."
+        docker cp pfeproject-flask-1:app/resultats/. ./resultats_container/
+        Write-Host "Listing contents of local resultats_container:"
+        Get-ChildItem -Path "resultats_container" -Recurse
       } else {
-        Write-Host "Container is not running!";
-        exit 1;
+        Write-Host "Container is not running!"
+        exit 1
       }
 
     # Arrêter Flask proprement
-    
-        Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue;
-     
+    - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
 
   retry: 2
   artifacts:
