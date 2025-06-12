@@ -123,9 +123,9 @@ run_flask_and_test:
 
     # Arrêter Flask proprement
     - if (Test-Path -Path "flask_pid.txt") {
-        $flaskId = Get-Content -Path "flask_pid.txt"
-        Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue
-        Remove-Item -Path "flask_pid.txt" -Force -ErrorAction SilentlyContinue
+        $flaskId = Get-Content -Path "flask_pid.txt";
+        Stop-Process -Id $flaskId -Force -ErrorAction SilentlyContinue;
+        Remove-Item -Path "flask_pid.txt" -Force -ErrorAction SilentlyContinue;
       }
 
   retry: 2
