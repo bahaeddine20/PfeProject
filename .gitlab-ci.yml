@@ -104,11 +104,24 @@ run_flask_and_test:
     - $flaskProcess.Id | Out-File flask_pid.txt
     - Start-Sleep -Seconds 5
 
+    # Créer le dossier resultats2 s'il n'existe pas
+    - mkdir -Force resultats2
+
+    # S'assurer que le dossier resultats existe dans le conteneur
+    - docker exec pfeproject-flask-1 mkdir -p /app/resultats
+
     # Exécuter les tests (reste dans le même répertoire)
     - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot 
 
+    # Attendre un peu pour s'assurer que les fichiers sont créés
+    - Start-Sleep -Seconds 10
+
     # Copier les résultats du conteneur vers l'hôte
-    - docker cp pfeproject-flask-1:/app/resultats/Tests_*.zip ./resultats/
+    - docker cp pfeproject-flask-1:/app/resultats/. ./resultats2/
+    - if ($LASTEXITCODE -ne 0) { Write-Host "Warning: No files found in container" }
+
+    # Vérifier si des fichiers ont été copiés
+    - Get-ChildItem -Path ./resultats2 -Filter "*.zip" | ForEach-Object { Write-Host "Found zip file: $($_.Name)" }
 
     # Arrêter Flask proprement
     - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
@@ -116,7 +129,7 @@ run_flask_and_test:
   retry: 2
   artifacts:
     paths:
-      - resultats/Tests_*.zip
+      - resultats2/Tests_*.zip
       - ServeurFlaskHost/flask.log
       - ServeurFlaskHost/flask_error.log  # Pour le débogage
     expire_in: 1 week
