@@ -104,16 +104,30 @@ run_flask_and_test:
       $flaskProcess.Id | Out-File flask_pid.txt
       Start-Sleep -Seconds 5
       mkdir -Force resultats2
+      
+      # Vérifier le contenu initial du conteneur
+      Write-Host "Contenu initial du conteneur:"
+      docker exec pfeproject-flask-1 ls -la /app
+      
       docker exec pfeproject-flask-1 mkdir -p /app/resultats
-      docker exec pfeproject-flask-1 python execution.py --list   MisesAJourAndReseau.robot 
+      docker exec pfeproject-flask-1 python execution.py --list MisesAJourAndReseau.robot 
+      
+      # Vérifier le contenu après l'exécution des tests
+      Write-Host "Contenu du dossier resultats dans le conteneur après les tests:"
+      docker exec pfeproject-flask-1 ls -la /app/resultats
+      
       Start-Sleep -Seconds 10
+      
+      # Copier avec plus de détails
+      Write-Host "Copie des fichiers depuis le conteneur..."
       docker cp pfeproject-flask-1:/app/resultats/. ./resultats2/
+      Write-Host "Code de retour de docker cp: $LASTEXITCODE"
       
       # Vérifier le contenu du dossier resultats2
-      Write-Host "Contenu du dossier resultats2:"
+      Write-Host "Contenu du dossier resultats2 après la copie:"
       Get-ChildItem -Path ./resultats2 -Recurse
       
-      # Créer un fichier de test pour vérifier que le dossier est accessible
+      # Créer un fichier de test
       "Test file" | Out-File -FilePath "./resultats2/test.txt"
       
       Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
