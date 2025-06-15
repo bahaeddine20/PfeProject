@@ -99,32 +99,18 @@ run_flask_and_test:
     - pip install robotframework requests
 
   script:
-    # Démarrer Flask en arrière-plan
-    - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
-    - $flaskProcess.Id | Out-File flask_pid.txt
-    - Start-Sleep -Seconds 5
-
-    # Créer le dossier resultats2 s'il n'existe pas
-    - mkdir -Force resultats2
-
-    # S'assurer que le dossier resultats existe dans le conteneur
-    - docker exec pfeproject-flask-1 mkdir -p /app/resultats
-
-    # Exécuter les tests (reste dans le même répertoire)
-    - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot 
-
-    # Attendre un peu pour s'assurer que les fichiers sont créés
-    - Start-Sleep -Seconds 10
-
-    # Copier les résultats du conteneur vers l'hôte
-    - docker cp pfeproject-flask-1:/app/resultats/. ./resultats2/
-    - if ($LASTEXITCODE -ne 0) { Write-Host "Warning: No files found in container" }
-
-    # Vérifier si des fichiers ont été copiés
-    - Get-ChildItem -Path ./resultats2 -Filter "*.zip" | ForEach-Object { Write-Host "Found zip file: $($_.Name)" }
-
-    # Arrêter Flask proprement
-    - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
+    - |
+      $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
+      $flaskProcess.Id | Out-File flask_pid.txt
+      Start-Sleep -Seconds 5
+      mkdir -Force resultats2
+      docker exec pfeproject-flask-1 mkdir -p /app/resultats
+      docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot 
+      Start-Sleep -Seconds 10
+      docker cp pfeproject-flask-1:/app/resultats/. ./resultats2/
+      if ($LASTEXITCODE -ne 0) { Write-Host "Warning: No files found in container" }
+      Get-ChildItem -Path ./resultats2 -Filter "*.zip" | ForEach-Object { Write-Host "Found zip file: $($_.Name)" }
+      Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
 
   retry: 2
   artifacts:
@@ -141,39 +127,3 @@ run_flask_and_test:
 
 
 
-run_flask_and_test2:
-  stage: fasktest
-  tags:
-    - python-shell
-  variables:
-    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
-
-
-  before_script:
-    - cd ServeurFlaskHost
-    - python -m venv venv
-    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
-    - python -m pip install --upgrade pip
-    - pip install -r requirements.txt
-    - pip install robotframework requests
-
-  script:
-    # Démarrer Flask en arrière-plan
-    - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
-    - $flaskProcess.Id | Out-File flask_pid.txt
-    - Start-Sleep -Seconds 5
-
-    # Exécuter les tests (reste dans le même répertoire)
-
-
-  retry: 2
-  artifacts:
-    paths:
-      - resultats/Tests_*.zip
-      - ServeurFlaskHost/flask.log
-      - ServeurFlaskHost/flask_error.log  # Pour le débogage
-    expire_in: 1 week
-  rules:
-    - if: '$CI_COMMIT_MESSAGE =~ /\[fasktest\]/'
-      when: on_success
-    - when: never
