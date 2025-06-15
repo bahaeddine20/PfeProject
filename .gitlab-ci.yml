@@ -87,13 +87,12 @@ run_flask_and_test:
   tags:
     - python-shell
   variables:
-    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
-
+    SHELL: "powershell"
 
   before_script:
     - cd ServeurFlaskHost
     - python -m venv venv
-    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
+    - ./venv/Scripts/Activate.ps1
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
     - pip install robotframework requests
@@ -102,53 +101,53 @@ run_flask_and_test:
     - |
       $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
       $flaskProcess.Id | Out-File flask_pid.txt
+      Write-Host "Flask server started with PID $($flaskProcess.Id)."
       Start-Sleep -Seconds 5
-      
-      # Définir le chemin absolu pour resultats2
+
       $resultatsPath = Join-Path $PWD.Path "resultats2"
-      mkdir -Force $resultatsPath
+      New-Item -ItemType Directory -Force -Path $resultatsPath
       
-      # Vérifier le contenu initial du conteneur
       Write-Host "Contenu initial du conteneur:"
       docker exec pfeproject-flask-1 ls -la /app
       
-      docker exec pfeproject-flask-1 mkdir -p /app/resultats
       docker exec pfeproject-flask-1 python execution.py --list MisesAJourAndReseau.robot 
       
-      # Vérifier le contenu après l'exécution des tests
       Write-Host "Contenu du dossier resultats dans le conteneur après les tests:"
       docker exec pfeproject-flask-1 ls -la /app/resultats
-      
+
       Start-Sleep -Seconds 10
       
-      # Copier avec plus de détails
-      Write-Host "Copie des fichiers depuis le conteneur..."
-      Write-Host "Chemin source: /app/resultats"
-      Write-Host "Chemin destination: $resultatsPath"
+      Write-Host "Tentative de copie des fichiers depuis le conteneur..."
+      Write-Host "Source: pfeproject-flask-1:/app/resultats/."
+      Write-Host "Destination: $resultatsPath"
       docker cp pfeproject-flask-1:/app/resultats/. $resultatsPath
-      Write-Host "Code de retour de docker cp: $LASTEXITCODE"
       
-      # Vérifier le contenu du dossier resultats2
+      if ($LASTEXITCODE -ne 0) {
+        Write-Error "La commande 'docker cp' a échoué avec le code de sortie $LASTEXITCODE."
+        exit 1
+      }
+      
       Write-Host "Contenu du dossier resultats2 après la copie:"
       Get-ChildItem -Path $resultatsPath -Recurse
-      
-      # Créer un fichier de test
-      "Test file" | Out-File -FilePath (Join-Path $resultatsPath "test.txt")
-      
-      Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
+
+  after_script:
+    - |
+      if (Test-Path -Path "ServeurFlaskHost/flask_pid.txt") {
+        $pid = Get-Content "ServeurFlaskHost/flask_pid.txt"
+        Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
+        Write-Host "Flask server with PID $pid stopped."
+      }
 
   retry: 2
   artifacts:
     paths:
-      - resultats2/
+      - ServeurFlaskHost/resultats2/
       - ServeurFlaskHost/flask.log
-      - ServeurFlaskHost/flask_error.log  # Pour le débogage
+      - ServeurFlaskHost/flask_error.log
     expire_in: 1 week
+    when: always
+
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
       when: on_success
     - when: never
-
-
-
-
