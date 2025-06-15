@@ -103,7 +103,10 @@ run_flask_and_test:
       $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
       $flaskProcess.Id | Out-File flask_pid.txt
       Start-Sleep -Seconds 5
-      mkdir -Force resultats2
+      
+      # Définir le chemin absolu pour resultats2
+      $resultatsPath = Join-Path $PWD.Path "resultats2"
+      mkdir -Force $resultatsPath
       
       # Vérifier le contenu initial du conteneur
       Write-Host "Contenu initial du conteneur:"
@@ -120,15 +123,17 @@ run_flask_and_test:
       
       # Copier avec plus de détails
       Write-Host "Copie des fichiers depuis le conteneur..."
-      docker cp pfeproject-flask-1:/app/resultats/. ./resultats2/
+      Write-Host "Chemin source: /app/resultats"
+      Write-Host "Chemin destination: $resultatsPath"
+      docker cp pfeproject-flask-1:/app/resultats/. $resultatsPath
       Write-Host "Code de retour de docker cp: $LASTEXITCODE"
       
       # Vérifier le contenu du dossier resultats2
       Write-Host "Contenu du dossier resultats2 après la copie:"
-      Get-ChildItem -Path ./resultats2 -Recurse
+      Get-ChildItem -Path $resultatsPath -Recurse
       
       # Créer un fichier de test
-      "Test file" | Out-File -FilePath "./resultats2/test.txt"
+      "Test file" | Out-File -FilePath (Join-Path $resultatsPath "test.txt")
       
       Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
 
