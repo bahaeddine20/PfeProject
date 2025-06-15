@@ -196,7 +196,7 @@ Click Play Button
 
 
 Navigate To Audio Player App
-    Start Activity Code    ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
+    Start Activity Code    ${driver}       com.example.audioapplicationtest/.AudioPlayerActivity
     Sleep    3s    # Attendre que l'application se charge
     ${current_activity}=    Print Activity    ${driver}
     Should Contain    ${current_activity}    com.example.audioapplicationtest/.AudioPlayerActivity    L'application n'est pas correctement lancée
@@ -243,7 +243,7 @@ Test Audio Recording And Playback
     ...                - Plays back the recorded audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
-    Close Activity       ${driver}     com.example.audioapplicationtest/.AudioPlayerActivity
+    Close Activity Robot      ${driver}      com.example.audioapplicationtest
     Execute Test With Retry    Verify Audio Recording    Test Audio Recording And Playback
 
 
@@ -254,6 +254,8 @@ Test Audio Player And Playback
     ...                - Plays audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
+   Close Activity Robot      ${driver}      com.example.audioapplicationtest
+
     Navigate To Audio Player App
     ${recording_success}=    Record Audio    ${driver}     23    # Démarre l'enregistrement
     Should Be True    ${recording_success}    L'enregistrement audio a échoué

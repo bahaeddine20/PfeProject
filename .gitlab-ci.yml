@@ -101,33 +101,14 @@ run_flask_and_test:
   script:
     # Démarrer Flask en arrière-plan
     - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
-    - $flaskProcess.Id | Out-File -FilePath "flask_pid.txt"
+    - $flaskProcess.Id | Out-File flask_pid.txt
     - Start-Sleep -Seconds 5
-    - cd ..
 
     # Exécuter les tests (reste dans le même répertoire)
     - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot 
 
-    # Créer le dossier resultats_container s'il n'existe pas
-    - New-Item -ItemType Directory -Path "resultats_container" -Force
-
-    # Vérifier si le conteneur est en cours d'exécution et copier les résultats
-    - |
-      $containerStatus = docker ps -q -f name=pfeproject-flask-1
-      if ($containerStatus) {
-        Write-Host "Container is running, checking contents..."
-        Write-Host "Listing contents of /app in container:"
-        docker exec pfeproject-flask-1 ls -la /app
-        Write-Host "Listing contents of /resultats in container:"
-        docker exec pfeproject-flask-1 ls -la app/resultats
-        Write-Host "Copying results..."
-        docker cp pfeproject-flask-1:app/resultats/. ./resultats_container/
-        Write-Host "Listing contents of local resultats_container:"
-        Get-ChildItem -Path "resultats_container" -Recurse
-      } else {
-        Write-Host "Container is not running!"
-        exit 1
-      }
+    # Copier les résultats du conteneur vers l'hôte
+    - docker cp pfeproject-flask-1:/app/resultats/Tests_*.zip ./resultats/
 
     # Arrêter Flask proprement
     - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
@@ -135,7 +116,7 @@ run_flask_and_test:
   retry: 2
   artifacts:
     paths:
-      - resultats_container/
+      - resultats/Tests_*.zip
       - ServeurFlaskHost/flask.log
       - ServeurFlaskHost/flask_error.log  # Pour le débogage
     expire_in: 1 week
@@ -145,3 +126,41 @@ run_flask_and_test:
     - when: never
 
 
+
+
+run_flask_and_test2:
+  stage: fasktest
+  tags:
+    - python-shell
+  variables:
+    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
+
+
+  before_script:
+    - cd ServeurFlaskHost
+    - python -m venv venv
+    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install robotframework requests
+
+  script:
+    # Démarrer Flask en arrière-plan
+    - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
+    - $flaskProcess.Id | Out-File flask_pid.txt
+    - Start-Sleep -Seconds 5
+
+    # Exécuter les tests (reste dans le même répertoire)
+
+
+  retry: 2
+  artifacts:
+    paths:
+      - resultats/Tests_*.zip
+      - ServeurFlaskHost/flask.log
+      - ServeurFlaskHost/flask_error.log  # Pour le débogage
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[fasktest\]/'
+      when: on_success
+    - when: never

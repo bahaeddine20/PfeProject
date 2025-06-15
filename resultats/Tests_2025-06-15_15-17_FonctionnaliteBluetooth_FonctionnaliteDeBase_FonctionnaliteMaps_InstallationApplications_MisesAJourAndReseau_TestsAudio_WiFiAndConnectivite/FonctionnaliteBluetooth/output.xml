@@ -1,0 +1,2083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-06-15T15:17:29.186920" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteBluetooth" source="C:\Users\bahae\Documents\PfeProject\test_cases\FonctionnaliteBluetooth.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-06-15T15:17:59.207294" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="28a79432-02ca-42d0-9d42-1328cb77dc08")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-06-15T15:17:53.186112" elapsed="6.021182"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:17:59.207294" level="INFO">Driver for emulator-5554: &lt;appium.webdriver.webdriver.WebDriver (session="28a79432-02ca-42d0-9d42-1328cb77dc08")&gt;</msg>
+<arg>Driver for ${Device}: ${driver}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:17:59.207294" elapsed="0.000000"/>
+</kw>
+<kw name="Setup Driver Mobile" owner="script_mobile">
+<msg time="2025-06-15T15:18:21.637256" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="ebe9b92f-f246-4cf0-a5b0-a535a977d385")&gt;</msg>
+<var>${driver_mobile}</var>
+<arg>${Device_mobile}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-06-15T15:17:59.207294" elapsed="22.429962"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.638253" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="28a79432-02ca-42d0-9d42-1328cb77dc08")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.638253" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.639257" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="ebe9b92f-f246-4cf0-a5b0-a535a977d385")&gt;</msg>
+<arg>${driver_mobile}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.638253" elapsed="0.001004"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:17:53.185093" elapsed="28.454164"/>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Bluetooth" line="101">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.641255" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.641255" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.641255" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.641255" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Open Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-06-15T15:18:21.736782" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-15T15:18:21.643257" elapsed="0.093525"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:21.737782" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:21.737782" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:21.737782" elapsed="0.001000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:21.738782" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:21.738782" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:21.738782" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:18:21.737782" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.739781" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.738782" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.739781" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.739781" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.739781" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.739781" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.740780" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.740780" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.740780" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.740780" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:21.740780" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.740780" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:18:21.738782" elapsed="0.002998"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:18:21.737782" elapsed="0.003998"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-06-15T15:18:22.340356" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-06-15T15:18:22.340356" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-06-15T15:18:21.741780" elapsed="0.598576"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-15T15:18:24.341734" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-15T15:18:22.341357" elapsed="2.000377"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-06-15T15:18:24.464473" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-06-15T15:18:24.341734" elapsed="0.122739"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-06-15T15:18:24.464473" elapsed="0.000997"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-06-15T15:18:26.597496" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-06-15T15:18:24.465470" elapsed="2.132026"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<msg time="2025-06-15T15:18:26.670034" level="INFO">${ble} = True</msg>
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="PASS" start="2025-06-15T15:18:26.597496" elapsed="0.072538"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-06-15T15:18:26.671049" elapsed="0.000000"/>
+</kw>
+<kw name="Activer Bluetooth Si Desactive" owner="Integration">
+<msg time="2025-06-15T15:18:27.466730" level="INFO">❌ Le Bluetooth est désactivé. Activation en cours...
+✅ Bluetooth activé avec succès !</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-06-15T15:18:26.671049" elapsed="0.796682"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.468709" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-15T15:18:27.467731" elapsed="3.000978"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<msg time="2025-06-15T15:18:30.586380" level="INFO">${verifier_ble_ui} = True</msg>
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-06-15T15:18:30.468709" elapsed="0.117671"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne s'active pas (ui).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.586380" elapsed="0.001003"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<msg time="2025-06-15T15:18:30.649269" level="INFO">✅ Bluetooth est activé.</msg>
+<msg time="2025-06-15T15:18:30.650267" level="INFO">${verfier_ble_adb} = True</msg>
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-15T15:18:30.587383" elapsed="0.062884"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.650267" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:18:21.643257" elapsed="9.007010"/>
+</kw>
+<msg time="2025-06-15T15:18:30.650267" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-15T15:18:21.642255" elapsed="9.008012"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.651282" level="INFO">Test Test Ouvrir Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.651282" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.651282" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.651282" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:18:30.650267" elapsed="0.001015"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.651282" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.651282" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.652287" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:18:30.651282" elapsed="0.001005"/>
+</branch>
+<status status="NOT RUN" start="2025-06-15T15:18:30.651282" elapsed="0.001005"/>
+</if>
+<status status="NOT RUN" start="2025-06-15T15:18:30.651282" elapsed="0.001005"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:18:30.650267" elapsed="0.002020"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-06-15T15:18:21.642255" elapsed="9.010032"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-06-15T15:18:21.641255" elapsed="9.011032"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.652287" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:18:30.652287" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:18:30.652287" elapsed="0.000000"/>
+</if>
+<arg>Execute Open Bluetooth Test</arg>
+<arg>Test Ouvrir Bluetooth</arg>
+<status status="PASS" start="2025-06-15T15:18:21.640253" elapsed="9.012034"/>
+</kw>
+<doc>Teste l'activation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Active le Bluetooth s'il est désactivé
+- Vérifie que le Bluetooth est bien activé (UI et ADB)</doc>
+<status status="PASS" start="2025-06-15T15:18:21.639257" elapsed="9.013030"/>
+</test>
+<test id="s1-t2" name="Test Pairing Bluetooth" line="111">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.654267" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.654267" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.655282" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.655282" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Pairing Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-06-15T15:18:30.720267" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-15T15:18:30.656268" elapsed="0.063999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.721265" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.721265" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.721265" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.721265" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.721265" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.721265" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.721265" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.722268" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:18:30.722268" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:18:30.720267" elapsed="0.002001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.722268" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.722268" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.722268" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.722268" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.723269" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.722268" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.723269" level="INFO">${Consulter_allapps} = See all</msg>
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.723269" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.723269" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.723269" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.723269" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.723269" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.724266" level="INFO">${pairing} = Pair new device</msg>
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.724266" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.724266" level="INFO">${pairing_conf} = Pair</msg>
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.724266" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:18:30.724266" level="INFO">${pairing_conf2} = Continue</msg>
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.724266" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:18:30.722268" elapsed="0.001998"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:18:30.720267" elapsed="0.003999"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-06-15T15:18:31.026247" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-06-15T15:18:31.027245" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-06-15T15:18:30.724266" elapsed="0.302979"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-06-15T15:18:32.223255" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-06-15T15:18:31.027245" elapsed="1.196010"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<msg time="2025-06-15T15:18:32.561104" level="INFO">${name_bluetooth_mobile} = sdk_gphone64_x86_64</msg>
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="PASS" start="2025-06-15T15:18:32.223255" elapsed="0.337849"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:18:32.562106" level="INFO">sdk_gphone64_x86_64</msg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:18:32.562106" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-06-15T15:18:32.636106" level="INFO">${verif_adb} = False</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-06-15T15:18:32.562106" elapsed="0.074000"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${verif_adb}">
+<kw name="Press Key" owner="Integration">
+<msg time="2025-06-15T15:18:33.121505" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-06-15T15:18:32.637106" elapsed="0.484399"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-06-15T15:18:34.071090" level="INFO">Keycode 176 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-06-15T15:18:33.122510" elapsed="0.948580"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="PASS" start="2025-06-15T15:18:34.072089" elapsed="1.805059"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-06-15T15:18:34.072089" elapsed="1.805059"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<status status="PASS" start="2025-06-15T15:18:35.878151" elapsed="0.213999"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-06-15T15:18:35.878151" elapsed="0.213999"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-06-15T15:18:56.667155" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="FAIL" start="2025-06-15T15:18:36.093152" elapsed="20.583000">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-06-15T15:19:19.087464" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="FAIL" start="2025-06-15T15:18:58.676546" elapsed="20.410918">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-06-15T15:19:19.088421" level="FAIL">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="FAIL" start="2025-06-15T15:18:36.093152" elapsed="42.995269">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.088421" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.088421" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.089419" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.089419" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-06-15T15:18:32.637106" elapsed="46.452313">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</branch>
+<status status="FAIL" start="2025-06-15T15:18:32.637106" elapsed="46.452313">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</if>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.089419" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.089419" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-06-15T15:18:30.656268" elapsed="48.433151">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-06-15T15:19:19.090418" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-15T15:18:30.655282" elapsed="48.435136"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.090418" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:19.090418" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:19:19.090418" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-15T15:19:19.090418" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-15T15:19:19.090418" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:19:19.091417" level="INFO">Test Test Pairing Bluetooth échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:19:19.091417" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.092366" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-15T15:19:19.091417" elapsed="2.000949"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:19:19.090418" elapsed="2.001948"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:19:19.090418" elapsed="2.001948"/>
+</if>
+<status status="PASS" start="2025-06-15T15:19:19.090418" elapsed="2.001948"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:19:19.090418" elapsed="2.001948"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-06-15T15:18:30.655282" elapsed="50.437084"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Pairing Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-06-15T15:19:21.154737" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-15T15:19:21.093886" elapsed="0.060851"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.155738" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.155738" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.155738" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.155738" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.155738" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.155738" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.156721" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.156721" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:19:21.156721" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:19:21.154737" elapsed="0.001984"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.156721" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.156721" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.156721" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.156721" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.157750" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.157750" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.157750" level="INFO">${Consulter_allapps} = See all</msg>
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.157750" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.158740" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.157750" elapsed="0.000990"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.158740" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.158740" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.158740" level="INFO">${pairing} = Pair new device</msg>
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.158740" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.158740" level="INFO">${pairing_conf} = Pair</msg>
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.158740" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:19:21.159743" level="INFO">${pairing_conf2} = Continue</msg>
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.158740" elapsed="0.001003"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:19:21.156721" elapsed="0.003022"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:19:21.154737" elapsed="0.005006"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-06-15T15:19:21.476252" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-06-15T15:19:21.476252" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-06-15T15:19:21.159743" elapsed="0.316509"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-06-15T15:19:22.932083" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-06-15T15:19:21.476252" elapsed="1.455831"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<msg time="2025-06-15T15:19:22.996671" level="INFO">${name_bluetooth_mobile} = sdk_gphone64_x86_64</msg>
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="PASS" start="2025-06-15T15:19:22.932083" elapsed="0.064588"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:19:22.997670" level="INFO">sdk_gphone64_x86_64</msg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:19:22.997670" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-06-15T15:19:23.074670" level="INFO">${verif_adb} = False</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-06-15T15:19:22.997670" elapsed="0.077000"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${verif_adb}">
+<kw name="Press Key" owner="Integration">
+<msg time="2025-06-15T15:19:23.632457" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-06-15T15:19:23.075670" elapsed="0.556787"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-06-15T15:19:24.268049" level="INFO">Keycode 176 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-06-15T15:19:23.633455" elapsed="0.634594"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="PASS" start="2025-06-15T15:19:24.269048" elapsed="0.875085"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-06-15T15:19:24.268049" elapsed="0.876084"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<status status="PASS" start="2025-06-15T15:19:25.144133" elapsed="0.201351"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-06-15T15:19:25.144133" elapsed="0.201351"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-06-15T15:19:45.850046" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="FAIL" start="2025-06-15T15:19:25.345484" elapsed="20.504562">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-06-15T15:20:07.934276" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="FAIL" start="2025-06-15T15:19:47.851753" elapsed="20.082523">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-06-15T15:20:07.935187" level="FAIL">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="FAIL" start="2025-06-15T15:19:25.345484" elapsed="42.589703">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.935187" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.935187" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.935187" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.936185" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-06-15T15:19:23.075670" elapsed="44.860515">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</branch>
+<status status="FAIL" start="2025-06-15T15:19:23.075670" elapsed="44.860515">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</if>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.936185" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.936185" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-06-15T15:19:21.092888" elapsed="46.843297">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-06-15T15:20:07.936185" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-15T15:19:21.092888" elapsed="46.843297"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.937174" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:07.937174" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:20:07.936185" elapsed="0.000989"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-15T15:20:07.937174" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-15T15:20:07.937174" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:20:07.938181" level="INFO">Test Test Pairing Bluetooth échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:20:07.937174" elapsed="0.001007"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-15T15:20:09.938509" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-15T15:20:07.938181" elapsed="2.000328"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:20:07.937174" elapsed="2.001335"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:20:07.937174" elapsed="2.001335"/>
+</if>
+<status status="PASS" start="2025-06-15T15:20:07.937174" elapsed="2.001335"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:20:07.936185" elapsed="2.002324"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-06-15T15:19:21.092888" elapsed="48.845621"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Pairing Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-06-15T15:20:10.009164" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-15T15:20:09.940497" elapsed="0.068667"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.010165" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.010165" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.010165" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.010165" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.011164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.011164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.011164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.011164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:10.011164" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:20:10.009164" elapsed="0.002000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.012164" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.012164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.012164" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.012164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.012164" level="INFO">${apps} = Apps</msg>
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.012164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.013339" level="INFO">${Consulter_allapps} = See all</msg>
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.013339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.013339" level="INFO">${DesButton} = Uninstall</msg>
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.013339" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.014323" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.013339" elapsed="0.000984"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.014323" level="INFO">${pairing} = Pair new device</msg>
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.014323" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.014323" level="INFO">${pairing_conf} = Pair</msg>
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.014323" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:10.015323" level="INFO">${pairing_conf2} = Continue</msg>
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:10.015323" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:20:10.011164" elapsed="0.004159"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:20:10.009164" elapsed="0.006159"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-06-15T15:20:10.396065" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-06-15T15:20:10.396065" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-06-15T15:20:10.015323" elapsed="0.380742"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-06-15T15:20:11.494005" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-06-15T15:20:10.397069" elapsed="1.096936"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<msg time="2025-06-15T15:20:11.598737" level="INFO">${name_bluetooth_mobile} = sdk_gphone64_x86_64</msg>
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="PASS" start="2025-06-15T15:20:11.495004" elapsed="0.103733"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:20:11.599738" level="INFO">sdk_gphone64_x86_64</msg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:20:11.599738" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-06-15T15:20:11.663722" level="INFO">${verif_adb} = False</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-06-15T15:20:11.599738" elapsed="0.063984"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${verif_adb}">
+<kw name="Press Key" owner="Integration">
+<msg time="2025-06-15T15:20:12.234358" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-06-15T15:20:11.664769" elapsed="0.569589"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-06-15T15:20:12.699523" level="INFO">Keycode 176 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-06-15T15:20:12.234358" elapsed="0.466163"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="PASS" start="2025-06-15T15:20:12.700521" elapsed="0.955109"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-06-15T15:20:12.700521" elapsed="0.955109"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<status status="PASS" start="2025-06-15T15:20:13.656630" elapsed="0.189549"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-06-15T15:20:13.655630" elapsed="0.190549"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-06-15T15:20:33.933161" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="FAIL" start="2025-06-15T15:20:13.847177" elapsed="20.085984">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-06-15T15:20:56.160775" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="FAIL" start="2025-06-15T15:20:35.934231" elapsed="20.226544">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-06-15T15:20:56.160775" level="FAIL">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="FAIL" start="2025-06-15T15:20:13.846179" elapsed="42.316099">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.162278" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.162278" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.162278" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.162278" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-06-15T15:20:11.663722" elapsed="44.499530">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</branch>
+<status status="FAIL" start="2025-06-15T15:20:11.663722" elapsed="44.499530">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</if>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.163252" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.163252" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-06-15T15:20:09.940497" elapsed="46.222755">Keyword 'Click Element By Text Att' failed after retrying for 30 seconds. The last error was: TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-06-15T15:20:56.163252" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-15T15:20:09.939498" elapsed="46.223754"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.164253" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.164253" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:20:56.164253" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-15T15:20:56.164253" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-15T15:20:56.164253" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.165251" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-15T15:20:56.165251" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:20:56.164253" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:20:56.164253" elapsed="0.000998"/>
+</if>
+<status status="PASS" start="2025-06-15T15:20:56.164253" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:20:56.163252" elapsed="0.001999"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-06-15T15:20:09.938509" elapsed="46.226742"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-06-15T15:18:30.655282" elapsed="145.509969"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-06-15T15:20:56.166250" level="FAIL">Le test Test Pairing Bluetooth a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-06-15T15:20:56.166250" elapsed="0.000000">Le test Test Pairing Bluetooth a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-06-15T15:20:56.165251" elapsed="0.000999">Le test Test Pairing Bluetooth a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-06-15T15:20:56.165251" elapsed="0.000999">Le test Test Pairing Bluetooth a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Pairing Bluetooth Test</arg>
+<arg>Test Pairing Bluetooth</arg>
+<status status="FAIL" start="2025-06-15T15:18:30.654267" elapsed="145.511983">Le test Test Pairing Bluetooth a échoué après 3 tentatives</status>
+</kw>
+<doc>Teste l'appairage Bluetooth entre les deux appareils
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Vérifie si l'appairage existe déjà
+- Si non, initie le processus d'appairage
+- Valide l'appairage des deux côtés
+- Vérifie que l'appairage est effectif via ADB</doc>
+<status status="FAIL" start="2025-06-15T15:18:30.653297" elapsed="145.512953">Le test Test Pairing Bluetooth a échoué après 3 tentatives</status>
+</test>
+<test id="s1-t3" name="Test Call Bluetooth" line="123">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:56.168253" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:56.168253" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:20:56.168253" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:20:56.168253" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Call Bluetooth Test">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Simulate Incoming Call" owner="Integration">
+<msg time="2025-06-15T15:20:56.244280" level="INFO">[OK] Appel simulé : 52440030 vers emulator-5556.</msg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Simule un appel entrant sur un émulateur Android en envoyant une requête à l'endpoint /call.</doc>
+<status status="PASS" start="2025-06-15T15:20:56.170252" elapsed="0.074028"/>
+</kw>
+<msg time="2025-06-15T15:20:56.244280" level="INFO">${call} = True</msg>
+<var>${call}</var>
+<arg>Simulate Incoming Call</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-06-15T15:20:56.169252" elapsed="0.075028"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-15T15:21:01.245806" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-15T15:20:56.245279" elapsed="5.000527"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-06-15T15:21:01.246806" elapsed="5.448155"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-06-15T15:21:01.245806" elapsed="5.449155"/>
+</kw>
+<msg time="2025-06-15T15:21:06.694961" level="INFO">${bounds} = (251, 147, 446, 187)</msg>
+<var>${bounds}</var>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-06-15T15:21:01.245806" elapsed="5.449155"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.695962" level="INFO">(251, 147, 446, 187)</msg>
+<arg>${bounds}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.695962" elapsed="0.000000"/>
+</kw>
+<arg>Log</arg>
+<arg>${bounds}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.694961" elapsed="0.001001"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.696963" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;class 'NoneType'&gt;</msg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.695962" elapsed="0.001001"/>
+</kw>
+<arg>Should Not Be Equal</arg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.695962" elapsed="0.001001"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:20:56.169252" elapsed="10.527711"/>
+</kw>
+<msg time="2025-06-15T15:21:06.696963" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-15T15:20:56.169252" elapsed="10.527711"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.697962" level="INFO">Test Test Call Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.696963" elapsed="0.000999"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.697962" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.697962" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:21:06.696963" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:06.697962" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:06.698961" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:06.698961" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:21:06.698961" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-06-15T15:21:06.698961" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-06-15T15:21:06.697962" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:06.696963" elapsed="0.001998"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-06-15T15:20:56.169252" elapsed="10.529709"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-06-15T15:20:56.168253" elapsed="10.530708"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:06.699961" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:21:06.698961" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:06.698961" elapsed="0.001000"/>
+</if>
+<arg>Execute Call Bluetooth Test</arg>
+<arg>Test Call Bluetooth</arg>
+<status status="PASS" start="2025-06-15T15:20:56.168253" elapsed="10.531708"/>
+</kw>
+<doc>Teste la réception d'un appel via Bluetooth
+- Simule un appel entrant sur le mobile
+- Vérifie que le numéro appelant est affiché à l'écran
+- Continue l'exécution même en cas d'échec partiel</doc>
+<status status="PASS" start="2025-06-15T15:20:56.167253" elapsed="10.532708"/>
+</test>
+<test id="s1-t4" name="Test Answer Call Bluetooth" line="131">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.701961" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.701961" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.701961" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.701961" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Answer Call Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-06-15T15:21:06.784401" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-15T15:21:06.703964" elapsed="0.080437"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${answer}</var>
+<arg>Répondre</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:06.785419" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${accept}</var>
+<arg>Accepter</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:06.785419" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:06.785419" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:21:06.785419" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.786418" level="INFO">${answer} = Answer</msg>
+<var>${answer}</var>
+<arg>Answer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.785419" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.786418" level="INFO">${accept} = Accept</msg>
+<var>${accept}</var>
+<arg>Accept</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.786418" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:21:06.786418" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.786418" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-15T15:21:06.785419" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:06.785419" elapsed="0.001983"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-15T15:21:11.787656" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-15T15:21:06.787402" elapsed="5.000254"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-06-15T15:21:11.787656" level="INFO">${possible_texts} = ['Answer', 'Accept', 'Accept', 'Answer', 'Répondre', 'Accepter']</msg>
+<var>${possible_texts}</var>
+<arg>${answer}</arg>
+<arg>${accept}</arg>
+<arg>Accept</arg>
+<arg>Answer</arg>
+<arg>Répondre</arg>
+<arg>Accepter</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-06-15T15:21:11.787656" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-15T15:21:11.788486" level="INFO">${call_answered} = False</msg>
+<var>${call_answered}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-15T15:21:11.788486" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<try>
+<branch type="TRY">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-06-15T15:21:14.229311" level="INFO">${bounds} = (743, 344, 872, 379)</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-06-15T15:21:11.788486" elapsed="2.440825"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<msg time="2025-06-15T15:21:14.636903" level="INFO">Clic effectué aux coordonnées (807, 361)</msg>
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="PASS" start="2025-06-15T15:21:14.229311" elapsed="0.407592"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-06-15T15:21:19.637181" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-06-15T15:21:14.636903" elapsed="5.000278"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Find Icon Position" owner="script_IA">
+<msg time="2025-06-15T15:21:20.128165" level="INFO">${Verifcall} = None</msg>
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="PASS" start="2025-06-15T15:21:19.637181" elapsed="0.490984"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès (vérifié via icône)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129164" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129164" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129164" elapsed="0.000509"/>
+</break>
+<status status="NOT RUN" start="2025-06-15T15:21:20.128165" elapsed="0.001508"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:20.128165" elapsed="0.001508"/>
+</if>
+<status status="PASS" start="2025-06-15T15:21:19.637181" elapsed="0.492590"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la recherche de l'icône: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129771" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129771" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:19.637181" elapsed="0.492590"/>
+</try>
+<status status="PASS" start="2025-06-15T15:21:14.229311" elapsed="5.900460"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:14.229311" elapsed="5.900460"/>
+</if>
+<status status="PASS" start="2025-06-15T15:21:11.788486" elapsed="8.341285"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la tentative avec "${text}": ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129771" elapsed="0.000000"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129771" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:21:20.129771" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:11.788486" elapsed="8.341285"/>
+</try>
+<var name="${text}">Answer</var>
+<status status="PASS" start="2025-06-15T15:21:11.788486" elapsed="8.341285"/>
+</iter>
+<iter>
+<try>
+<branch type="TRY">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-06-15T15:21:22.861322" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-06-15T15:21:20.130686" elapsed="2.730636"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.862327" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.862327" elapsed="0.000000"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.863323" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès (vérifié via icône)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.863323" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.863323" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-06-15T15:21:22.864322" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-06-15T15:21:22.863323" elapsed="0.000999"/>
+</branch>
+<status status="NOT RUN" start="2025-06-15T15:21:22.863323" elapsed="0.000999"/>
+</if>
+<status status="NOT RUN" start="2025-06-15T15:21:22.862327" elapsed="0.001995"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la recherche de l'icône: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.864322" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:21:22.864322" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-06-15T15:21:22.862327" elapsed="0.001995"/>
+</try>
+<status status="NOT RUN" start="2025-06-15T15:21:22.861322" elapsed="0.003000"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:22.861322" elapsed="0.003539"/>
+</if>
+<status status="PASS" start="2025-06-15T15:21:20.130686" elapsed="2.734175"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la tentative avec "${text}": ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.864861" elapsed="0.000000"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:22.864861" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-15T15:21:22.864861" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-15T15:21:20.130686" elapsed="2.734175"/>
+</try>
+<var name="${text}">Accept</var>
+<status status="PASS" start="2025-06-15T15:21:20.130686" elapsed="2.734175"/>
+</iter>
+<iter>
+<try>
+<branch type="TRY">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-06-15T15:21:25.276239" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-06-15T15:21:22.865844" elapsed="2.410395"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277239" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès (vérifié via icône)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-06-15T15:21:25.277845" elapsed="0.000000"/>
