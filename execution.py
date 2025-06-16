@@ -9,6 +9,9 @@ from typing import List, Optional, Tuple, Dict, Any
 TESTS_FOLDER = "test_cases"
 RESULTS_FOLDER = "resultats"
 
+from config import get_host_url, get_appium_url, get_remote_adb_host
+
+url_host = get_host_url()
 def send_results_to_api(zip_path: str) -> Dict[str, Any]:
     """
     Envoie le fichier ZIP des résultats à l'API Flask.
@@ -27,7 +30,7 @@ def send_results_to_api(zip_path: str) -> Dict[str, Any]:
             }
 
         # Préparer la requête
-        url = "http://127.0.0.1:6000/upload-zip"
+        url = url_host+"/upload-zip"
         files = {'file': open(zip_path, 'rb')}
 
         # Envoyer la requête
