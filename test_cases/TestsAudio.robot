@@ -245,7 +245,8 @@ Test Audio Recording And Playback
     [Tags]    audio    recording    playback
     Close Activity Robot      ${driver}      com.example.audioapplicationtest
     Execute Test With Retry    Verify Audio Recording    Test Audio Recording And Playback
-
+    Sleep    10s
+    Close Activity Robot      ${driver}     com.example.audioapplicationtest
 
 Test Audio Player And Playback
     [Documentation]    Verifies audio recording and playback functionality
