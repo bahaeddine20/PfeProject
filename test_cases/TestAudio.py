@@ -9,7 +9,9 @@ import requests
 import logging
 
 logger = logging.getLogger(__name__)
+from config import get_host_url, get_appium_url, get_remote_adb_host
 
+url_host = get_host_url()
 
 def load_and_preprocess(audio_path, target_fs=None):
     """Charge et prétraite un fichier audio"""
@@ -505,7 +507,7 @@ def audio_quality_test(original_path, recorded_path, snr_threshold=-1, corr_thre
         return False, None
 
 
-def compare_with_latest_recorded(original_audio, latest_audio_path='latest_download.wav', api_url='http://localhost:6000/latest-audio'):
+def compare_with_latest_recorded(original_audio, latest_audio_path='latest_download.wav', api_url=url_host+'/latest-audio'):
     """
     Télécharge le dernier audio enregistré via l'API Flask et le compare à l'original.
     :param original_audio: Chemin du fichier original (wav)
@@ -531,7 +533,7 @@ def compare_with_latest_recorded(original_audio, latest_audio_path='latest_downl
         print(f"Erreur lors de la comparaison audio: {e}")
         return False, {"error": str(e)}
 
-def compare_with_latest_recorded_play(original_audio, latest_audio_path='latest_playback.wav', api_url='http://localhost:6000/latest-audio-record-play'):
+def compare_with_latest_recorded_play(original_audio, latest_audio_path='latest_playback.wav', api_url=url_host+'/latest-audio-record-play'):
     """
     Télécharge le dernier audio lu via l'API Flask et le compare à l'original.
     :param original_audio: Chemin du fichier original (wav)
