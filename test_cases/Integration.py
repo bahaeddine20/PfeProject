@@ -38,7 +38,6 @@ def setup_driver(device):
     options.new_command_timeout = 300  # Augmente le timeout pour les commandes
     
     # Options de performance et stabilité
-    options.set_capability('uiautomator2ServerLaunchTimeout', 60000)  # Timeout pour le lancement du serveur
     options.set_capability('uiautomator2ServerInstallTimeout', 60000)  # Timeout pour l'installation
     options.set_capability('androidInstallTimeout', 90000)  # Timeout pour l'installation d'APK
     options.set_capability('adbExecTimeout', 60000)  # Timeout pour les commandes ADB
