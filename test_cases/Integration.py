@@ -90,7 +90,7 @@ def close_activity_robot(driver, app_package):
     try:
         # Méthode 1: Utiliser terminateApp de manière plus douce
         try:
-            driver.execute_script('mobile: terminateApp', {'bundleId': app_package})
+            driver.execute_script('mobile: terminateApp', {'appId': app_package})
             print(f"Application {app_package} fermée avec terminateApp")
             time.sleep(1)  # Attendre un peu après terminateApp
         except Exception as e:

@@ -233,8 +233,6 @@ Compare Audio Files Play
     RETURN    ${test_passed}    ${metrics}
 
 *** Test Cases ***
-Test fgdya
-        Close Activity Robot      ${driver}     com.example.audioapplicationtest
 
 Test Audio Recording And Playback
     [Documentation]    Verifies audio recording and playback functionality
