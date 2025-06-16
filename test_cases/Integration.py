@@ -24,19 +24,35 @@ apps_page = "com.android.car.carlauncher/.GASAppGridActivity"
 
 
 def setup_driver(device):
-    """Initialise et retourne le driver Appium."""
+    """Initialise et retourne le driver Appium avec des options de stabilité."""
     options = UiAutomator2Options()
     options.platform_name = "Android"
     options.platform_version = "14"
     options.device_name = device
-    # options.adb_exec_timeout = 60000
     options.remote_adb_host = get_remote_adb_host()
-    # remote_url = "http://127.0.0.1:4723"
-    # remote_url = "http://172.21.0.3:4723"
     remote_url = get_appium_url()
 
+    # Options de stabilité
     options.uiautomator2ServerPort = 8201
-
+    options.no_reset = True  # Évite la réinitialisation de l'application entre les tests
+    options.new_command_timeout = 300  # Augmente le timeout pour les commandes
+    
+    # Options de performance et stabilité
+    options.set_capability('uiautomator2ServerLaunchTimeout', 60000)  # Timeout pour le lancement du serveur
+    options.set_capability('uiautomator2ServerInstallTimeout', 60000)  # Timeout pour l'installation
+    options.set_capability('androidInstallTimeout', 90000)  # Timeout pour l'installation d'APK
+    options.set_capability('adbExecTimeout', 60000)  # Timeout pour les commandes ADB
+    options.set_capability('uiautomator2ServerReadTimeout', 60000)  # Timeout pour la lecture
+    
+    # Options de débogage et logging
+    options.set_capability('debugLogSpacing', True)  # Améliore la lisibilité des logs
+    options.set_capability('skipDeviceInitialization', True)  # Skip l'initialisation du device
+    options.set_capability('skipServerInstallation', True)  # Skip l'installation du serveur
+    
+    # Options de sécurité
+    options.set_capability('autoGrantPermissions', True)  # Auto-grant des permissions
+    options.set_capability('disableWindowAnimation', True)  # Désactive les animations
+    
     return webdriver.Remote(remote_url, options=options)
 
 
