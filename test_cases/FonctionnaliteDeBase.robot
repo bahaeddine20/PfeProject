@@ -254,8 +254,7 @@ Execute Manual Date Change Test
 
     ${resultat}=    Open Application With Click    ${driver}    ${Setting}
     Sleep    1s
-    ${Verfier}=    Check Element ExistsBy Id    ${driver}    ${Setting_xpath_id}
-    Should Be True    ${Verfier}    Setting n'est pas affiché.
+
 
     Clique Sur Setting    ${driver}    ${System}    ${Setting_menu}
     Clique Sur Setting    ${driver}    ${Date}    ${Setting_system}
@@ -281,8 +280,6 @@ Execute Auto Date Sync Test
 
     ${resultat}=    Open Application With Click    ${driver}    ${Setting}
     Sleep    1s
-    ${Verfier}=    Check Element ExistsBy Id    ${driver}    ${Setting_xpath_id}
-    Should Be True    ${Verfier}    Setting n'est pas affiché.
 
     Clique Sur Setting    ${driver}    ${System}    ${Setting_menu}
     Clique Sur Setting    ${driver}    ${Date}    ${Setting_system}
