@@ -2,11 +2,59 @@ import os
 import subprocess
 import datetime
 import shutil
+import requests
 from typing import List, Optional, Tuple, Dict, Any
 
 # Constants
 TESTS_FOLDER = "test_cases"
 RESULTS_FOLDER = "resultats"
+
+def send_results_to_api(zip_path: str) -> Dict[str, Any]:
+    """
+    Envoie le fichier ZIP des résultats à l'API Flask.
+    
+    Args:
+        zip_path (str): Chemin vers le fichier ZIP à envoyer
+        
+    Returns:
+        Dict contenant la réponse de l'API
+    """
+    try:
+        if not os.path.exists(zip_path):
+            return {
+                "success": False,
+                "error": f"Le fichier ZIP {zip_path} n'existe pas"
+            }
+
+        # Préparer la requête
+        url = "http://127.0.0.1:6000/upload-zip"
+        files = {'file': open(zip_path, 'rb')}
+
+        # Envoyer la requête
+        response = requests.post(url, files=files)
+        
+        # Fermer le fichier
+        files['file'].close()
+
+        # Vérifier la réponse
+        if response.status_code == 200:
+            return {
+                "success": True,
+                "message": "Fichier ZIP envoyé avec succès",
+                "response": response.json()
+            }
+        else:
+            return {
+                "success": False,
+                "error": f"Erreur lors de l'envoi du fichier: {response.text}",
+                "status_code": response.status_code
+            }
+
+    except Exception as e:
+        return {
+            "success": False,
+            "error": f"Erreur lors de l'envoi du fichier: {str(e)}"
+        }
 
 def execute_single_test(test_file: str, test_name: Optional[str] = None) -> Dict[str, Any]:
     """
@@ -88,7 +136,12 @@ def execute_single_test(test_file: str, test_name: Optional[str] = None) -> Dict
         )
 
         # Create zip archive of results
-        shutil.make_archive(test_result_dir, 'zip', test_result_dir)
+        zip_path = shutil.make_archive(test_result_dir, 'zip', test_result_dir)
+        
+        # Envoyer le fichier ZIP à l'API
+        api_result = send_results_to_api(zip_path)
+        if not api_result["success"]:
+            print(f"Attention: Erreur lors de l'envoi du fichier ZIP à l'API: {api_result.get('error')}")
 
         return {
             "success": True,
@@ -97,7 +150,9 @@ def execute_single_test(test_file: str, test_name: Optional[str] = None) -> Dict
             "result_dir": test_result_dir,
             "return_code": process.returncode,
             "logs": logs,
-            "report_path": os.path.join(final_report_dir, "report.html")
+            "report_path": os.path.join(final_report_dir, "report.html"),
+            "zip_path": zip_path,
+            "api_result": api_result
         }
 
     except Exception as e:
@@ -156,13 +211,20 @@ def execute_test_list(test_files: List[str]) -> Dict[str, Any]:
             combined_report_path = os.path.join(final_report_dir, "report.html")
 
         # Create zip archive of results
-        shutil.make_archive(results_dir, 'zip', results_dir)
+        zip_path = shutil.make_archive(results_dir, 'zip', results_dir)
+        
+        # Envoyer le fichier ZIP à l'API
+        api_result = send_results_to_api(zip_path)
+        if not api_result["success"]:
+            print(f"Attention: Erreur lors de l'envoi du fichier ZIP à l'API: {api_result.get('error')}")
 
         return {
             "success": all(r["success"] for r in results),
             "results": results,
             "combined_report_path": combined_report_path,
-            "results_dir": results_dir
+            "results_dir": results_dir,
+            "zip_path": zip_path,
+            "api_result": api_result
         }
 
     except Exception as e:
@@ -244,7 +306,12 @@ def execute_test_with_tags(test_file: str, tags: List[str]) -> Dict[str, Any]:
         )
 
         # Create zip archive of results
-        shutil.make_archive(test_result_dir, 'zip', test_result_dir)
+        zip_path = shutil.make_archive(test_result_dir, 'zip', test_result_dir)
+        
+        # Envoyer le fichier ZIP à l'API
+        api_result = send_results_to_api(zip_path)
+        if not api_result["success"]:
+            print(f"Attention: Erreur lors de l'envoi du fichier ZIP à l'API: {api_result.get('error')}")
 
         return {
             "success": True,
@@ -253,7 +320,9 @@ def execute_test_with_tags(test_file: str, tags: List[str]) -> Dict[str, Any]:
             "result_dir": test_result_dir,
             "return_code": process.returncode,
             "logs": logs,
-            "report_path": os.path.join(final_report_dir, "report.html")
+            "report_path": os.path.join(final_report_dir, "report.html"),
+            "zip_path": zip_path,
+            "api_result": api_result
         }
 
     except Exception as e:

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-06-16T00:55:25.600255" rpa="false" schemaversion="5">
+<suite id="s1" name="MisesAJourAndReseau" source="C:\Users\bahae\Documents\PfeProject\test_cases\MisesAJourAndReseau.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-06-16T00:55:31.803370" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001A8C4B2C920&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-16T00:55:33.842444" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001A8C480CDA0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-16T00:55:45.199122" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="c691fa5a-accf-4a66-9dde-3c3ae603958b")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-06-16T00:55:29.689328" elapsed="15.509794"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-16T00:55:45.200109" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="c691fa5a-accf-4a66-9dde-3c3ae603958b")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-16T00:55:45.200109" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:55:29.688325" elapsed="15.511784"/>
+</kw>
+<test id="s1-t1" name="Test Verfier Mise A Jour System" line="92">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-16T00:55:45.202108" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-16T00:55:45.202108" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-16T00:55:45.202108" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-16T00:55:45.202108" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Vérifier Mise A Jour System">
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-06-16T00:55:45.260105" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-06-16T00:55:45.204105" elapsed="0.056000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-06-16T00:55:45.260105" level="INFO">${lang_dict} = {'System': 'System', 'Setting': 'Settings', 'System_update': 'System update', 'System_update_check': 'Check for update'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-06-16T00:55:45.260105" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-16T00:55:45.261105" level="INFO">${LANG_DICT} = {'System': 'System', 'Setting': 'Settings', 'System_update': 'System update', 'System_update_check': 'Check for update'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-16T00:55:45.261105" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:55:45.203106" elapsed="0.057999"/>
+</kw>
+<kw name="Aller Dans Paramètres">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-06-16T00:55:45.262124" elapsed="0.000000"/>
+</return>
+<msg time="2025-06-16T00:55:45.262124" level="INFO">${setting} = Settings</msg>
+<var>${setting}</var>
+<arg>Setting</arg>
+<status status="PASS" start="2025-06-16T00:55:45.261105" elapsed="0.001019"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-06-16T00:55:45.718110" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<arg>${driver}</arg>
+<arg>${setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-06-16T00:55:45.263120" elapsed="0.454990"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-06-16T00:55:51.233609" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+✅ 'System' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-06-16T00:55:45.718110" elapsed="5.515499"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:55:45.261105" elapsed="5.972504"/>
+</kw>
+<kw name="Aller Dans Mise A Jour">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-06-16T00:55:51.234606" elapsed="0.000000"/>
+</return>
+<msg time="2025-06-16T00:55:51.235609" level="INFO">${system} = System</msg>
+<var>${system}</var>
+<arg>System</arg>
+<status status="PASS" start="2025-06-16T00:55:51.233609" elapsed="0.002000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-06-16T00:55:53.042660" level="INFO">(0, 76, 550, 696)
+✅ 'System' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${system}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-06-16T00:55:51.235609" elapsed="1.807051"/>
+</kw>
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-06-16T00:55:53.043661" elapsed="0.000000"/>
+</return>
+<msg time="2025-06-16T00:55:53.043661" level="INFO">${system_update} = System update</msg>
+<var>${system_update}</var>
+<arg>System_update</arg>
+<status status="PASS" start="2025-06-16T00:55:53.042660" elapsed="0.001001"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-06-16T00:56:27.918183" level="INFO">📌 Liste des applications détectées : ['Location', 'Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+📌 First Home Page détectée : ['Location', 'Privacy', 'Accessibility', 'Security', 'Apps', 'Assistant &amp; voice', 'System', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Network &amp; internet', 'Notifications', 'Sound', 'Display', 'Profiles &amp; accounts', 'Location', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+🔄 Swipe #2 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Network &amp; internet', 'Notifications', 'Sound', 'Display', 'Profiles &amp; accounts', 'Location', 'System update', 'Languages &amp; input', 'Units', 'Date &amp; time', 'Storage']
+✅ Retour à la first home page !
+First Home Page détectée : ['System update', 'Units', 'Storage', 'Languages &amp; input', 'Date &amp; time']
+ System update trouvé ! Appui sur le texte contenant 'System update'.</msg>
+<arg>${driver}</arg>
+<arg>${system_update}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-06-16T00:55:53.043661" elapsed="34.874522"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:55:51.233609" elapsed="36.685574"/>
+</kw>
+<kw name="Lancer Recherche Mise A Jour">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-06-16T00:56:27.919183" elapsed="0.000000"/>
+</return>
+<msg time="2025-06-16T00:56:27.919183" level="INFO">${system_update_check} = Check for update</msg>
+<var>${system_update_check}</var>
+<arg>System_update_check</arg>
+<status status="PASS" start="2025-06-16T00:56:27.919183" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-06-16T00:56:28.236529" level="INFO">Aucun élément trouvé avec le texte: Check for update</msg>
+<arg>${driver}</arg>
+<arg>${system_update_check}</arg>
+<status status="PASS" start="2025-06-16T00:56:27.920183" elapsed="0.316346"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:56:27.919183" elapsed="0.317346"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:55:45.203106" elapsed="43.033423"/>
+</kw>
+<msg time="2025-06-16T00:56:28.236529" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-06-16T00:55:45.203106" elapsed="43.033423"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-16T00:56:28.237531" level="INFO">Test Test Verfier Mise A Jour System réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-16T00:56:28.237531" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-06-16T00:56:28.237531" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-06-16T00:56:28.237531" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:56:28.237531" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-06-16T00:56:28.237531" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-06-16T00:56:28.237531" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-06-16T00:56:28.238530" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-16T00:56:28.237531" elapsed="0.000999"/>
+</branch>
+<status status="NOT RUN" start="2025-06-16T00:56:28.237531" elapsed="0.000999"/>
+</if>
+<status status="NOT RUN" start="2025-06-16T00:56:28.237531" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-06-16T00:56:28.237531" elapsed="0.000999"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-06-16T00:55:45.203106" elapsed="43.035424"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-06-16T00:55:45.202108" elapsed="43.036422"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-06-16T00:56:28.238530" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-16T00:56:28.238530" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-16T00:56:28.238530" elapsed="0.000000"/>
+</if>
+<arg>Vérifier Mise A Jour System</arg>
+<arg>Test Verfier Mise A Jour System</arg>
+<status status="PASS" start="2025-06-16T00:55:45.201124" elapsed="43.037406"/>
+</kw>
+<doc>Verifies system update functionality
+- Navigates to system update section
+- Checks for available updates
+- Supports both French and English interfaces</doc>
+<tag>system</tag>
+<tag>update</tag>
+<status status="PASS" start="2025-06-16T00:55:45.200109" elapsed="43.038421"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-06-16T00:56:28.239529" elapsed="0.217003"/>
+</kw>
+<status status="PASS" start="2025-06-16T00:56:28.239529" elapsed="0.217003"/>
+</kw>
+<doc>Tests for system update verification
+- Verifies system update functionality
+- Supports both French and English interfaces</doc>
+<status status="PASS" start="2025-06-16T00:55:25.602254" elapsed="62.854278"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">system</stat>
+<stat pass="1" fail="0" skip="0">update</stat>
+</tag>
+<suite>
+<stat name="MisesAJourAndReseau" id="s1" pass="1" fail="0" skip="0">MisesAJourAndReseau</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-06-16T00:55:31.803370" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001A8C4B2C920&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-06-16T00:55:33.842444" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001A8C480CDA0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+</errors>
+</robot>

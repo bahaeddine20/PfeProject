@@ -5,6 +5,7 @@ import soundfile as sf
 from scipy.io.wavfile import write
 import os
 import threading
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -226,27 +227,6 @@ UPLOAD_FOLDER = 'received_audio'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-from datetime import datetime
-
-@app.route('/upload_audio', methods=['POST'])
-def upload_audio():
-    if 'audio' not in request.files:
-        return {'error': 'Aucun fichier audio trouvé'}, 400
-
-    audio_file = request.files['audio']
-    if audio_file.filename == '':
-        return {'error': 'Aucun fichier sélectionné'}, 400
-
-    # Générer un nom de fichier unique avec timestamp
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    filename = f'audio_{timestamp}.wav'
-    filepath = os.path.join(UPLOAD_FOLDER, filename)
-
-    # Sauvegarder le fichier
-    audio_file.save(filepath)
-
-    return {'message': 'Audio  reçu avec succès', 'filename': filename}, 200
-
 from glob import glob
 
 from flask import  send_file, abort
@@ -276,6 +256,57 @@ def get_latest_audio_record_play():
     # Trouve le fichier le plus récent
     latest_file = max(wav_files, key=os.path.getctime)
     return send_file(latest_file, mimetype='audio/wav')
+
+# Créer le dossier resultats s'il n'existe pas
+RESULTS_FOLDER = os.path.join(os.getcwd(), 'resultats')
+if not os.path.exists(RESULTS_FOLDER):
+    os.makedirs(RESULTS_FOLDER)
+
+@app.route('/upload-zip', methods=['POST'])
+def upload_zip():
+    """
+    Reçoit un fichier ZIP et le sauvegarde dans le dossier resultats.
+    """
+    if 'file' not in request.files:
+        return jsonify({
+            'success': False,
+            'message': 'Aucun fichier trouvé dans la requête'
+        }), 400
+
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({
+            'success': False,
+            'message': 'Aucun fichier sélectionné'
+        }), 400
+
+    if not file.filename.endswith('.zip'):
+        return jsonify({
+            'success': False,
+            'message': 'Le fichier doit être au format ZIP'
+        }), 400
+
+    try:
+        # Générer un nom de fichier unique avec timestamp
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f'upload_{timestamp}.zip'
+        filepath = os.path.join(RESULTS_FOLDER, filename)
+
+        # Sauvegarder le fichier
+        file.save(filepath)
+
+        return jsonify({
+            'success': True,
+            'message': 'Fichier ZIP reçu avec succès',
+            'filename': filename,
+            'filepath': filepath
+        }), 200
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'Erreur lors de la sauvegarde du fichier: {str(e)}'
+        }), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6000)

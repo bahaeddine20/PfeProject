@@ -87,67 +87,77 @@ run_flask_and_test:
   tags:
     - python-shell
   variables:
-    SHELL: "powershell"
+    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
+
 
   before_script:
     - cd ServeurFlaskHost
     - python -m venv venv
-    - ./venv/Scripts/Activate.ps1
+    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
     - pip install robotframework requests
 
   script:
-    - |
-      $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
-      $flaskProcess.Id | Out-File flask_pid.txt
-      Write-Host "Flask server started with PID $($flaskProcess.Id)."
-      Start-Sleep -Seconds 5
+    # Démarrer Flask en arrière-plan
+    - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
+    - $flaskProcess.Id | Out-File flask_pid.txt
+    - Start-Sleep -Seconds 5
 
-      $resultatsPath = Join-Path $PWD.Path "resultats2"
-      New-Item -ItemType Directory -Force -Path $resultatsPath
-      
-      Write-Host "Contenu initial du conteneur:"
-      docker exec pfeproject-flask-1 ls -la /app
-      
-      docker exec pfeproject-flask-1 python execution.py --list MisesAJourAndReseau.robot 
-      
-      Write-Host "Contenu du dossier resultats dans le conteneur après les tests:"
-      docker exec pfeproject-flask-1 ls -la /app/resultats
+    # Exécuter les tests (reste dans le même répertoire)
+    - docker exec pfeproject-flask-1 python execution.py --list   TestsAudio.robot 
 
-      Start-Sleep -Seconds 10
-      
-      Write-Host "Tentative de copie des fichiers depuis le conteneur..."
-      Write-Host "Source: pfeproject-flask-1:/app/resultats/."
-      Write-Host "Destination: $resultatsPath"
-      docker cp pfeproject-flask-1:/app/resultats/. $resultatsPath
-      
-      if ($LASTEXITCODE -ne 0) {
-        Write-Error "La commande 'docker cp' a échoué avec le code de sortie $LASTEXITCODE."
-        exit 1
-      }
-      
-      Write-Host "Contenu du dossier resultats2 après la copie:"
-      Get-ChildItem -Path $resultatsPath -Recurse
-
-  after_script:
-    - |
-      if (Test-Path -Path "ServeurFlaskHost/flask_pid.txt") {
-        $pid = Get-Content "ServeurFlaskHost/flask_pid.txt"
-        Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
-        Write-Host "Flask server with PID $pid stopped."
-      }
+    # Arrêter Flask proprement
+    - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
 
   retry: 2
   artifacts:
     paths:
-      - ServeurFlaskHost/resultats2/
+      - ServeurFlaskHost/resultats
       - ServeurFlaskHost/flask.log
-      - ServeurFlaskHost/flask_error.log
+      - ServeurFlaskHost/flask_error.log  # Pour le débogage
     expire_in: 1 week
-    when: always
-
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
+      when: on_success
+    - when: never
+
+
+
+
+run_flask_and_test2:
+  stage: fasktest
+  tags:
+    - python-shell
+  variables:
+    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
+
+
+  before_script:
+    - cd ServeurFlaskHost
+    - python -m venv venv
+    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install robotframework requests
+
+  script:
+    # Démarrer Flask en arrière-plan
+    - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
+    - $flaskProcess.Id | Out-File flask_pid.txt
+    - Start-Sleep -Seconds 5
+
+    # Exécuter les tests (reste dans le même répertoire)
+
+
+  retry: 2
+  artifacts:
+    paths:
+      - resultats
+      - ServeurFlaskHost/flask.log
+      - ServeurFlaskHost/flask_error.log  # Pour le débogage
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[fasktest\]/'
       when: on_success
     - when: never
