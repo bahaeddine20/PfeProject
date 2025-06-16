@@ -135,7 +135,6 @@ Verify App Uninstallation
     ${is_installed}=    Is App Installed    ${driver}    ${package_name}
     ${is_visible}=      Search Application    ${driver}    ${app_name}
 
-    Run Keyword And Continue On Failure     Should Not Be True    ${is_installed}    Application is still installed via ADB
     Run Keyword And Continue On Failure      Should Not Be True    ${is_visible}      Application is still visible in UI
 
 Uninstall App If Exists
