@@ -254,7 +254,7 @@ Test Audio Player And Playback
     ...                - Plays audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
-   Close Activity Robot      ${driver}      com.example.audioapplicationtest
+    Close Activity Robot      ${driver}      com.example.audioapplicationtest
 
     Navigate To Audio Player App
     ${recording_success}=    Record Audio    ${driver}     23    # Démarre l'enregistrement
