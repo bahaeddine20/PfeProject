@@ -254,9 +254,22 @@ Test Audio Player And Playback
     ...                - Plays audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
+    
+    # Close the activity more gracefully
     Close Activity Robot      ${driver}      com.example.audioapplicationtest
-
-    Navigate To Audio Player App
+    Sleep    2s    # Add delay after closing activity
+    
+    # Navigate to the audio player app with retry
+    FOR    ${i}    IN RANGE    3
+        ${status}=    Run Keyword And Return Status    Navigate To Audio Player App
+        IF    ${status}
+            BREAK
+        END
+        Sleep    2s
+    END
+    Should Be True    ${status}    Failed to navigate to audio player app after 3 attempts
+    
+    # Record and play audio
     ${recording_success}=    Record Audio    ${driver}     23    # Démarre l'enregistrement
     Should Be True    ${recording_success}    L'enregistrement audio a échoué
     Sleep    1s    # Petit délai pour s'assurer que l'enregistrement a bien démarré

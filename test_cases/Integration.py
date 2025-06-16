@@ -88,63 +88,52 @@ def close_activity_robot(driver, app_package):
         app_package: Le package de l'application à fermer
     """
     try:
-        # Vérifier si le driver est valide
-        if not driver:
-            print("Driver non initialisé")
-            return True  # Retourner True car l'application est déjà fermée
-
-        # Vérifier si la session est active
-        try:
-            driver.current_activity
-        except Exception as e:
-            print(f"Session Appium terminée: {str(e)}")
-            return True  # Retourner True car l'application est déjà fermée
-
-        # Méthode 1: Utiliser terminateApp
+        # Méthode 1: Utiliser terminateApp de manière plus douce
         try:
             driver.execute_script('mobile: terminateApp', {'bundleId': app_package})
             print(f"Application {app_package} fermée avec terminateApp")
+            time.sleep(1)  # Attendre un peu après terminateApp
         except Exception as e:
             print(f"Échec de terminateApp: {str(e)}")
 
-        # Méthode 2: Utiliser la touche HOME
+        # Méthode 2: Utiliser la touche HOME si l'application est toujours active
         try:
-            driver.press_keycode(3)  # KEYCODE_HOME
-            print("Touche HOME pressée")
+            current_package = driver.current_package
+            if current_package == app_package:
+                driver.press_keycode(3)  # KEYCODE_HOME
+                print("Touche HOME pressée")
+                time.sleep(1)  # Attendre un peu après HOME
         except Exception as e:
             print(f"Échec de la touche HOME: {str(e)}")
 
-        # Méthode 3: Utiliser ADB pour forcer l'arrêt
+        # Méthode 3: Utiliser ADB pour forcer l'arrêt seulement si nécessaire
         try:
-            device = driver.capabilities.get('deviceName')
-            if device:
-                subprocess.run(
-                    ["adb", "-s", device, "shell", "am", "force-stop", app_package],
-                    check=True,
-                    capture_output=True
-                )
-                print(f"Application {app_package} fermée avec force-stop")
+            current_package = driver.current_package
+            if current_package == app_package:
+                device = driver.capabilities.get('deviceName')
+                if device:
+                    subprocess.run(
+                        ["adb", "-s", device, "shell", "am", "force-stop", app_package],
+                        check=True,
+                        capture_output=True
+                    )
+                    print(f"Application {app_package} fermée avec force-stop")
+                    time.sleep(1)  # Attendre un peu après force-stop
         except Exception as e:
             print(f"Échec de force-stop: {str(e)}")
 
         # Vérifier si l'application est toujours en cours d'exécution
         time.sleep(1)  # Attendre un peu
-        try:
-            current_package = driver.current_package
-            if current_package == app_package:
-                print(f"L'application {app_package} est toujours en cours d'exécution")
-                return False
-        except Exception as e:
-            print(f"Impossible de vérifier le package actuel: {str(e)}")
-            # Si on ne peut pas vérifier, on considère que l'application est fermée
-            return True
+        current_package = driver.current_package
+        if current_package == app_package:
+            print(f"L'application {app_package} est toujours en cours d'exécution")
+            return False
         
         print(f"Application {app_package} fermée avec succès")
         return True
     except Exception as e:
         print(f"Erreur lors de la fermeture de l'application {app_package}: {str(e)}")
-        # En cas d'erreur, on considère que l'application est fermée
-        return True
+        return False
 
 
 def is_activity_active(driver, expected_activity):
