@@ -1,0 +1,2519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-07-13T15:40:09.658691" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteDeBase" source="C:\Users\bahae\Documents\PfeProject\test_cases\FonctionnaliteDeBase.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-07-13T15:40:22.373038" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="5f208c92-0ac4-4ffd-a8d8-e13731cbd432")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-07-13T15:40:18.634949" elapsed="3.738089"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:40:22.374046" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="5f208c92-0ac4-4ffd-a8d8-e13731cbd432")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-07-13T15:40:22.374046" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:40:18.633906" elapsed="3.740140"/>
+</kw>
+<test id="s1-t1" name="Test Home_Button" line="75">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:40:22.375045" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:40:22.375045" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:40:22.375621" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:40:22.375621" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Home Button Test">
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-07-13T15:40:31.974791" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-07-13T15:40:22.376607" elapsed="9.598184"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:40:22.375621" elapsed="9.599170"/>
+</kw>
+<msg time="2025-07-13T15:40:31.974791" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:40:22.375621" elapsed="9.599170"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:40:31.975808" level="INFO">Test Test Home_Button réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:40:31.975808" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:40:31.975808" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:40:31.975808" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:40:31.974791" elapsed="0.001017"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:31.975808" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:31.975808" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:31.976792" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:40:31.975808" elapsed="0.000984"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:40:31.975808" elapsed="0.000984"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:40:31.975808" elapsed="0.000984"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:40:31.974791" elapsed="0.002001"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:40:22.375621" elapsed="9.601171"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:40:22.375621" elapsed="9.601171"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:31.976792" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:40:31.976792" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:40:31.976792" elapsed="0.000000"/>
+</if>
+<arg>Execute Home Button Test</arg>
+<arg>Test Home_Button</arg>
+<status status="PASS" start="2025-07-13T15:40:22.375045" elapsed="9.601747"/>
+</kw>
+<doc>Teste la fonctionnalité du bouton Home
+- Vérifie que le bouton Home ramène bien à l'écran d'accueil
+- Utilise la fonction 'Revenir A La Home Page'</doc>
+<status status="PASS" start="2025-07-13T15:40:22.374046" elapsed="9.602746"/>
+</test>
+<test id="s1-t2" name="Test Ouvrir YouTube App" line="81">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:40:31.978807" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:40:31.977806" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:40:31.978807" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:40:31.978807" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute YouTube App Test">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:40:33.979712" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:40:31.979404" elapsed="2.000308"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:40:52.080171" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'Téléphone', 'YouTube', 'Audio Recorder Auto']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'Téléphone', 'YouTube', 'Audio Recorder Auto']</msg>
+<msg time="2025-07-13T15:40:52.081173" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>YouTube</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:40:33.979712" elapsed="18.101461"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>L'activité YouTube n'est pas trouvée.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:40:52.081173" elapsed="0.000713"/>
+</kw>
+<kw name="Print Activity2" owner="Integration">
+<msg time="2025-07-13T15:40:52.160843" level="INFO">${Activity} = com.google.android.apps.automotive.youtube/.YoutubeWebviewFallbackActivity</msg>
+<var>${Activity}</var>
+<arg>${driver}</arg>
+<doc>Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'.</doc>
+<status status="PASS" start="2025-07-13T15:40:52.081886" elapsed="0.078957"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.162770" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:40:52.160843" elapsed="5.001927"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.162770" level="INFO">com.google.android.apps.automotive.youtube/.YoutubeWebviewFallbackActivity</msg>
+<arg>${Activity}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.162770" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-13T15:40:57.287365" level="INFO">${is_element_present} = True</msg>
+<var>${is_element_present}</var>
+<arg>${driver}</arg>
+<arg>com.google.android.apps.automotive.youtube:id/decor_content_parent</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.162770" elapsed="0.124595"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_element_present}</arg>
+<arg>L'élément YouTube n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.288359" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:40:31.979404" elapsed="25.308955"/>
+</kw>
+<msg time="2025-07-13T15:40:57.288359" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:40:31.979404" elapsed="25.308955"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.288359" level="INFO">Test Test Ouvrir YouTube App réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.288359" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.288359" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.288359" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:40:57.288359" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:40:57.288359" elapsed="0.001000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:40:31.979404" elapsed="25.309955"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:40:31.978807" elapsed="25.310552"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:40:57.289359" elapsed="0.000000"/>
+</if>
+<arg>Execute YouTube App Test</arg>
+<arg>Test Ouvrir YouTube App</arg>
+<status status="PASS" start="2025-07-13T15:40:31.977806" elapsed="25.312555"/>
+</kw>
+<doc>Teste le lancement de l'application YouTube
+- Ouvre l'application YouTube
+- Vérifie que l'activité YouTube est correctement lancée
+- Contrôle la présence d'éléments UI spécifiques à YouTube</doc>
+<status status="PASS" start="2025-07-13T15:40:31.976792" elapsed="25.313569"/>
+</test>
+<test id="s1-t3" name="Test Modifier Languages" line="88">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.291873" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.290879" elapsed="0.000994"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.291873" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.291873" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Language Change Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:40:57.332023" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:40:57.292873" elapsed="0.039150"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.332023" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.332023" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.333025" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.333025" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.333544" level="INFO">${Langue1} = Langues et saisie</msg>
+<var>${Langue1}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues et saisie</arg>
+<arg>Languages &amp; input</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.333025" elapsed="0.000519"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:40:57.333544" level="INFO">${Langue2} = Langues</msg>
+<var>${Langue2}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues</arg>
+<arg>Languages</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.333544" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:40:57.647801" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:40:57.647801" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:40:57.333544" elapsed="0.314257"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:40:58.649016" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.648401" elapsed="1.000615"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-13T15:40:58.694204" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-13T15:40:58.649016" elapsed="0.045188"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:40:58.694204" elapsed="0.001016"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:03.300028" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+✅ 'Système' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:40:58.695220" elapsed="4.604808"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:04.379090" level="INFO">(551, 172, 1408, 696)
+✅ 'Langues et saisie' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:03.301014" elapsed="1.078076"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:05.463612" level="INFO">(551, 172, 1408, 696)
+✅ 'Langues' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:04.379633" elapsed="1.083979"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:12.464552" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+✅ 'English' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:05.464134" elapsed="7.000418"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:16.074889" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+✅ 'English (United States)' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English (United States)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:12.464552" elapsed="3.610337"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:41:20.075367" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:41:16.074889" elapsed="4.000478"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-07-13T15:41:20.120141" level="INFO">Tentative 1 : Vérification de la langue...
+✅ La langue a bien été modifiée : en-US</msg>
+<msg time="2025-07-13T15:41:20.120141" level="INFO">${verfieadb} = True</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>en-US</arg>
+<status status="PASS" start="2025-07-13T15:41:20.075367" elapsed="0.044774"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:41:20.120141" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:41:20.340710" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:41:20.340710" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:41:20.120141" elapsed="0.220569"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:27.895388" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Système' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:41:20.340710" elapsed="7.554678"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:31.107411" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Langues et saisie' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:27.896389" elapsed="3.211022"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:34.315922" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Langues' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:31.107411" elapsed="3.208511"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:37.538883" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Français' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>Français</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:34.315922" elapsed="3.222961"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:40.823780" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Français (France)' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>Français (France)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:37.538883" elapsed="3.284897"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:41:44.824007" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:41:40.823780" elapsed="4.000227"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-07-13T15:41:48.936475" level="INFO">Tentative 1 : Vérification de la langue...
+🔁 Langue actuelle : en-US ≠ attendue : fr-FR
+⏳ Nouvelle tentative dans 2 secondes...
+Tentative 2 : Vérification de la langue...
+🔁 Langue actuelle : en-US ≠ attendue : fr-FR
+⏳ Nouvelle tentative dans 2 secondes...
+Tentative 3 : Vérification de la langue...
+🔁 Langue actuelle : en-US ≠ attendue : fr-FR
+❌ Échec : la langue n'a pas été modifiée après plusieurs tentatives.</msg>
+<msg time="2025-07-13T15:41:48.936475" level="INFO">${verfieadb} = False</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>fr-FR</arg>
+<status status="PASS" start="2025-07-13T15:41:44.824007" elapsed="4.112468"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-07-13T15:41:48.937474" level="FAIL">Modifier Languages ne s'active pas (via adb).</msg>
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-07-13T15:41:48.936475" elapsed="0.000999">Modifier Languages ne s'active pas (via adb).</status>
+</kw>
+<status status="FAIL" start="2025-07-13T15:40:57.292873" elapsed="51.644601">Modifier Languages ne s'active pas (via adb).</status>
+</kw>
+<msg time="2025-07-13T15:41:48.937474" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:40:57.291873" elapsed="51.645601"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:41:48.937474" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-07-13T15:41:48.937474" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:41:48.937474" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-13T15:41:48.938474" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-13T15:41:48.938474" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:41:48.939003" level="INFO">Test Test Modifier Languages échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:41:48.938474" elapsed="0.000529"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:41:50.939103" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:41:48.939003" elapsed="2.000100"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:41:48.938474" elapsed="2.000629"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:41:48.938474" elapsed="2.000629"/>
+</if>
+<status status="PASS" start="2025-07-13T15:41:48.937474" elapsed="2.001629"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:41:48.937474" elapsed="2.001629"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:40:57.291873" elapsed="53.647230"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Language Change Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:41:50.978299" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:41:50.940104" elapsed="0.038195"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:41:50.979299" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:41:50.979299" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:41:50.979299" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:41:50.979299" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:41:50.979299" level="INFO">${Langue1} = Languages &amp; input</msg>
+<var>${Langue1}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues et saisie</arg>
+<arg>Languages &amp; input</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:41:50.979299" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:41:50.980315" level="INFO">${Langue2} = Languages</msg>
+<var>${Langue2}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues</arg>
+<arg>Languages</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:41:50.980315" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:41:51.173320" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:41:51.173320" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:41:50.980315" elapsed="0.193005"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:41:52.173505" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:41:51.173320" elapsed="1.000185"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-13T15:41:52.231216" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-13T15:41:52.173505" elapsed="0.057711"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:41:52.231216" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:52.717652" level="INFO">(0, 76, 550, 696)
+✅ 'System' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:41:52.232236" elapsed="0.485416"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:53.782036" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages &amp; input' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:52.718645" elapsed="1.063391"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:41:54.848910" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:53.782036" elapsed="1.066874"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:02.165098" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+✅ 'English' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:41:54.849910" elapsed="7.315188"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:06.306627" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+✅ 'English (United States)' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English (United States)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:42:02.165098" elapsed="4.141529"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:42:10.306815" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:42:06.306627" elapsed="4.000188"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-07-13T15:42:10.342484" level="INFO">Tentative 1 : Vérification de la langue...
+✅ La langue a bien été modifiée : en-US</msg>
+<msg time="2025-07-13T15:42:10.342484" level="INFO">${verfieadb} = True</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>en-US</arg>
+<status status="PASS" start="2025-07-13T15:42:10.306815" elapsed="0.035669"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:42:10.342484" elapsed="0.001020"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:42:10.525127" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:42:10.525127" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:42:10.343504" elapsed="0.181623"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:12.098744" level="INFO">(0, 76, 550, 696)
+✅ 'System' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:42:10.525127" elapsed="1.573617"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:12.529356" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages &amp; input' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:42:12.098744" elapsed="0.431612"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:13.631164" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:42:12.530356" elapsed="1.100808"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:23.328581" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+✅ 'Français' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Français</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:42:13.631164" elapsed="9.697417"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:24.365892" level="INFO">(551, 172, 1408, 696)
+✅ 'Français (France)' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Français (France)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:42:23.328581" elapsed="1.037311"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:42:28.366823" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:42:24.365892" elapsed="4.000931"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-07-13T15:42:28.407020" level="INFO">Tentative 1 : Vérification de la langue...
+✅ La langue a bien été modifiée : fr-FR</msg>
+<msg time="2025-07-13T15:42:28.408004" level="INFO">${verfieadb} = True</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>fr-FR</arg>
+<status status="PASS" start="2025-07-13T15:42:28.366823" elapsed="0.041181"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:42:28.408004" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:41:50.940104" elapsed="37.467900"/>
+</kw>
+<msg time="2025-07-13T15:42:28.408004" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:41:50.939103" elapsed="37.468901"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:42:28.408004" level="INFO">Test Test Modifier Languages réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:42:28.408004" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:42:28.409006" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:42:28.409006" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:42:28.408004" elapsed="0.001002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:42:28.409006" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:42:28.409006" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:42:28.409006" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:42:28.409006" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:42:28.409006" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:42:28.409006" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:42:28.408004" elapsed="0.001002"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-07-13T15:41:50.939103" elapsed="37.469903"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:40:57.291873" elapsed="91.117133"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:42:28.410005" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:42:28.409006" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:42:28.409006" elapsed="0.000999"/>
+</if>
+<arg>Execute Language Change Test</arg>
+<arg>Test Modifier Languages</arg>
+<status status="PASS" start="2025-07-13T15:40:57.290879" elapsed="91.119126"/>
+</kw>
+<doc>Teste la modification de la langue système
+- Vérifie la langue actuelle du système
+- Change la langue en anglais puis en français
+- Vérifie les changements via ADB</doc>
+<status status="PASS" start="2025-07-13T15:40:57.290361" elapsed="91.119644"/>
+</test>
+<test id="s1-t4" name="Test Notification Réception" line="95">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:42:28.411019" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:42:28.411019" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:42:28.411019" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:42:28.411019" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Notification Reception Test">
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-07-13T15:42:29.006329" level="INFO">Installation réussie : Performing Streamed Install
+Success</msg>
+<arg>${driver}</arg>
+<arg>automotive-Notification_Test.apk</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-07-13T15:42:28.412023" elapsed="0.594306"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-07-13T15:42:29.068667" level="INFO">${isIns} = True</msg>
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie de manière fiable si une application est installée sur l'appareil via ADB.
+Utilise 'pm path' pour s'assurer que le package est vraiment présent.</doc>
+<status status="PASS" start="2025-07-13T15:42:29.006329" elapsed="0.062338"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:42:29.069667" level="INFO">True</msg>
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:42:29.068667" elapsed="0.001000"/>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:42:29.155627" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:42:29.069667" elapsed="0.085960"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:42:29.156627" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:42:29.156627" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:42:29.156627" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:42:29.156627" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:42:29.156627" level="INFO">${Noti} = Notifications</msg>
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:42:29.156627" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:42:29.436987" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:42:29.436987" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:42:29.156627" elapsed="0.280360"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:42:30.437811" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:42:29.436987" elapsed="1.000824"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-13T15:42:30.496221" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-13T15:42:30.437811" elapsed="0.058410"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:42:30.496221" elapsed="0.001008"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:33.872674" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+✅ 'Notifications' trouvé en bas ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Noti}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:42:30.497229" elapsed="3.375445"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:42:44.765603" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+✅ 'TestNotificationapk' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:42:33.872674" elapsed="10.892929"/>
+</kw>
+<kw name="Activer Notification Si Desactive" owner="Integration">
+<msg time="2025-07-13T15:42:45.780540" level="INFO">❌ Le notification est désactivé. Activation en cours...
+✅ notification activé avec succès !</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-07-13T15:42:44.765603" elapsed="1.014937"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:43:03.397830" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'Téléphone', 'YouTube', 'Audio Recorder Auto', 'TestNotificationapk']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'Téléphone', 'YouTube', 'Audio Recorder Auto', 'TestNotificationapk']</msg>
+<msg time="2025-07-13T15:43:03.397830" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:42:45.780540" elapsed="17.617290"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>ENVOYER NOTIFICATION</arg>
+<status status="PASS" start="2025-07-13T15:43:03.398828" elapsed="1.315931"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:06.715183" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:04.714759" elapsed="2.000424"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<msg time="2025-07-13T15:43:06.962388" level="INFO">Icône 'notif.png' non trouvée sur l'écran</msg>
+<arg>${driver}</arg>
+<arg>notif</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="PASS" start="2025-07-13T15:43:06.715183" elapsed="0.248198"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<arg>${driver}</arg>
+<arg>notif2</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="PASS" start="2025-07-13T15:43:06.963381" elapsed="0.544206"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:09.508018" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:07.507587" elapsed="2.000431"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-13T15:43:09.537094" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>com.android.systemui:id/notifications</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.508018" elapsed="0.029076"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Notification n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.537094" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<msg time="2025-07-13T15:43:09.828378" level="INFO">${VerfierNotif} = True</msg>
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.537094" elapsed="0.291284"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${VerfierNotif}</arg>
+<arg>La notification n'a pas été reçue.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.828378" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:42:28.412023" elapsed="41.416862"/>
+</kw>
+<msg time="2025-07-13T15:43:09.828910" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:42:28.411019" elapsed="41.417891"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:43:09.828910" level="INFO">Test Test Notification Réception réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.828910" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:43:09.828910" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.828910" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:43:09.828910" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:09.828910" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:09.829904" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:09.829904" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:43:09.828910" elapsed="0.000994"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:43:09.828910" elapsed="0.000994"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:43:09.828910" elapsed="0.000994"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:43:09.828910" elapsed="0.000994"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:42:28.411019" elapsed="41.418885"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:42:28.411019" elapsed="41.418885"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:09.829904" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:43:09.829904" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:43:09.829904" elapsed="0.000000"/>
+</if>
+<arg>Execute Notification Reception Test</arg>
+<arg>Test Notification Réception</arg>
+<status status="PASS" start="2025-07-13T15:42:28.410005" elapsed="41.419899"/>
+</kw>
+<doc>Teste la réception de notifications
+- Installe une application de test de notification
+- Active les notifications pour l'application
+- Envoie une notification de test
+- Vérifie l'affichage de la notification</doc>
+<status status="PASS" start="2025-07-13T15:42:28.410005" elapsed="41.419899"/>
+</test>
+<test id="s1-t5" name="Test Notification Supprimer" line="103">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:43:09.830907" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.830907" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:43:09.831909" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.831909" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Notification Delete Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:43:09.868663" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:43:09.832894" elapsed="0.035769"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:43:09.868663" level="INFO">${Btn_clear} = Tout effacer</msg>
+<var>${Btn_clear}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Tout effacer</arg>
+<arg>Clear all</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.868663" elapsed="0.000000"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<arg>${driver}</arg>
+<arg>notif</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.869662" elapsed="0.559660"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<msg time="2025-07-13T15:43:10.607373" level="INFO">Icône 'notif2.png' non trouvée sur l'écran</msg>
+<arg>${driver}</arg>
+<arg>notif2</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="PASS" start="2025-07-13T15:43:10.429322" elapsed="0.178051"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:12.607657" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:10.607373" elapsed="2.000284"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-07-13T15:43:12.652884" level="INFO">Aucun élément trouvé avec le texte: Tout effacer</msg>
+<arg>${driver}</arg>
+<arg>${Btn_clear}</arg>
+<status status="PASS" start="2025-07-13T15:43:12.607657" elapsed="0.045227"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.653595" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:12.652884" elapsed="1.000711"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<msg time="2025-07-13T15:43:13.878084" level="INFO">${VerfierNotif} = False</msg>
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.653595" elapsed="0.224489"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${VerfierNotif}</arg>
+<arg>La notification n'a pas été supprimée correctement.</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.878084" elapsed="0.001008"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:43:09.831909" elapsed="4.047183"/>
+</kw>
+<msg time="2025-07-13T15:43:13.879092" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:43:09.831909" elapsed="4.047183"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.879092" level="INFO">Test Test Notification Supprimer réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.879092" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.879092" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.879092" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:43:13.879092" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:13.880094" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:13.880094" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:13.880094" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:43:13.880094" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:43:13.880094" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:43:13.879092" elapsed="0.001002"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:43:13.879092" elapsed="0.001002"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:43:09.831909" elapsed="4.048185"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:43:09.831909" elapsed="4.048185"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:13.880668" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:43:13.880668" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:43:13.880668" elapsed="0.000000"/>
+</if>
+<arg>Execute Notification Delete Test</arg>
+<arg>Test Notification Supprimer</arg>
+<status status="PASS" start="2025-07-13T15:43:09.830907" elapsed="4.049761"/>
+</kw>
+<doc>Teste la suppression de notifications
+- Vérifie la présence d'une notification
+- Supprime toutes les notifications
+- Vérifie que la notification a bien disparu</doc>
+<status status="PASS" start="2025-07-13T15:43:09.829904" elapsed="4.050764"/>
+</test>
+<test id="s1-t6" name="Test Disable Notification" line="110">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.881749" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.881749" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.881749" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.881749" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Disable Notification Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:43:13.921613" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:43:13.882745" elapsed="0.038868"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.921613" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.921613" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.921613" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.921613" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:43:13.922612" level="INFO">${Noti} = Notifications</msg>
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.922612" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:43:14.264934" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:43:14.264934" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:43:13.922612" elapsed="0.342322"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:15.266443" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:14.264934" elapsed="1.001509"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-13T15:43:15.319060" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-13T15:43:15.266443" elapsed="0.052617"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-13T15:43:15.320077" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:43:16.937847" level="INFO">(0, 76, 550, 696)
+✅ 'Notifications' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Noti}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:43:15.320077" elapsed="1.617770"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:43:17.463740" level="INFO">(551, 172, 1408, 696)
+✅ 'TestNotificationapk' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:43:16.937847" elapsed="0.525893"/>
+</kw>
+<kw name="Desactive Notification Si Activer" owner="Integration">
+<msg time="2025-07-13T15:43:18.464913" level="INFO">❌ Le notification est activer. Activation en cours...
+✅ notification desactive avec succès !</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-07-13T15:43:17.463740" elapsed="1.001173"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:43:36.504935" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Home Assistant', 'Local Media Player', 'Google\xa0Maps', 'Paramètres', 'Play\xa0Store', 'Prime Video', 'SMS']
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'Téléphone', 'YouTube', 'Audio Recorder Auto', 'TestNotificationapk']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['Spotify', 'Vivaldi Browser', 'Téléphone', 'YouTube', 'Audio Recorder Auto', 'TestNotificationapk']</msg>
+<msg time="2025-07-13T15:43:36.505937" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:43:18.464913" elapsed="18.041024"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-07-13T15:43:37.064406" level="INFO">Clic effectué sur l'élément avec le texte: ENVOYER NOTIFICATION</msg>
+<arg>${driver}</arg>
+<arg>ENVOYER NOTIFICATION</arg>
+<status status="PASS" start="2025-07-13T15:43:36.505937" elapsed="0.558469"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:39.066009" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:37.065406" elapsed="2.000603"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<arg>${driver}</arg>
+<arg>notif</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="PASS" start="2025-07-13T15:43:39.066009" elapsed="0.557978"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<msg time="2025-07-13T15:43:39.857299" level="INFO">Icône 'notif2.png' non trouvée sur l'écran</msg>
+<arg>${driver}</arg>
+<arg>notif2</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="PASS" start="2025-07-13T15:43:39.623987" elapsed="0.233312"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:41.858228" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:39.857299" elapsed="2.000929"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<msg time="2025-07-13T15:43:42.455390" level="INFO">${VerfierNotif} = False</msg>
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="PASS" start="2025-07-13T15:43:41.858228" elapsed="0.597682"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${VerfierNotif}</arg>
+<arg>La notification est toujours active alors qu'elle devrait être désactivée.</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.455910" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:43:13.882745" elapsed="28.573165"/>
+</kw>
+<msg time="2025-07-13T15:43:42.455910" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:43:13.882745" elapsed="28.573165"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.455910" level="INFO">Test Test Disable Notification réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.455910" elapsed="0.000997"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.456907" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.456907" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:43:42.455910" elapsed="0.000997"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:42.456907" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:42.456907" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:42.456907" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:43:42.456907" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:43:42.456907" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:43:42.456907" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:43:42.455910" elapsed="0.001997"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:43:13.882745" elapsed="28.575162"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:43:13.881749" elapsed="28.576158"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:43:42.457907" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:43:42.457907" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:43:42.457907" elapsed="0.000000"/>
+</if>
+<arg>Execute Disable Notification Test</arg>
+<arg>Test Disable Notification</arg>
+<status status="PASS" start="2025-07-13T15:43:13.881749" elapsed="28.576701"/>
+</kw>
+<doc>Teste la désactivation des notifications
+- Désactive les notifications pour l'application de test
+- Envoie une notification de test
+- Vérifie que la notification n'apparaît pas</doc>
+<status status="PASS" start="2025-07-13T15:43:13.881228" elapsed="28.577222"/>
+</test>
+<test id="s1-t7" name="Test Modifier Manuellement Date" line="117">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.459441" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.459441" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.459441" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.459441" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Manual Date Change Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:43:42.497684" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:43:42.460945" elapsed="0.036739"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.498683" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.498683" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.498683" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.498683" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.498683" level="INFO">${Date} = Date et heure</msg>
+<var>${Date}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Date et heure</arg>
+<arg>Date &amp; time</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.498683" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:43:42.499683" level="INFO">${Btn_Heure} = Définir l'heure</msg>
+<var>${Btn_Heure}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Définir l'heure</arg>
+<arg>Set time</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.498683" elapsed="0.001000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:43:42.893176" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:43:42.893721" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:43:42.499683" elapsed="0.394038"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:43.893991" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.893721" elapsed="1.000270"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:43:47.773645" level="INFO">❌ Erreur : Impossible de récupérer les bounds pour 'com.android.car.settings:id/top_level_menu' -&gt; Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)
+(0, 0, 0, 0)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Système' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:43:43.893991" elapsed="3.879654"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:43:52.971122" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Date et heure' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Date}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:43:47.773645" elapsed="5.197477"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<msg time="2025-07-13T15:43:53.009199" level="INFO">${date_ini} = 13:30</msg>
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="PASS" start="2025-07-13T15:43:52.971122" elapsed="0.038077"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:43:54.010370" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:43:53.009199" elapsed="1.001171"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-07-13T15:44:14.312787" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>${Btn_Heure}</arg>
+<status status="FAIL" start="2025-07-13T15:43:54.010370" elapsed="20.307511">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Compose Time" owner="Integration">
+<var>${heure_act}</var>
+<arg>${driver}</arg>
+<doc>Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
+:param driver: Instance de WebDriver Appium.
+:return: L'heure composée sous forme de chaîne (HH:MM).</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.317881" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${heure_act}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.318879" elapsed="0.000000"/>
+</kw>
+<kw name="Heure Aleatoire" owner="Integration">
+<var>${random_heure}</var>
+<status status="NOT RUN" start="2025-07-13T15:44:14.318879" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${random_heure}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.318879" elapsed="0.000000"/>
+</kw>
+<kw name="Change Date" owner="Integration">
+<arg>${driver}</arg>
+<arg>${random_heure}</arg>
+<doc>Sets the time by using two buttons: one for hours and one for minutes.
+Uses adaptive swipe distances based on the difference between current and target values.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.318879" elapsed="0.000000"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<arg>${driver}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.318879" elapsed="0.000000"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.318879" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${date_ini}</arg>
+<arg>${random_heure}</arg>
+<arg>La date n'a pas été modifiée !</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.318879" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-07-13T15:43:42.460425" elapsed="31.858454">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-07-13T15:44:14.319878" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:43:42.460425" elapsed="31.859453"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.319878" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:14.319878" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:44:14.319878" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-13T15:44:14.319878" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-13T15:44:14.319878" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:44:14.320880" level="INFO">Test Test Modifier Manuellement Date échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:44:14.319878" elapsed="0.001002"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:44:16.321090" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:44:14.320880" elapsed="2.000210"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:44:14.319878" elapsed="2.001212"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:44:14.319878" elapsed="2.001212"/>
+</if>
+<status status="PASS" start="2025-07-13T15:44:14.319878" elapsed="2.001212"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:44:14.319878" elapsed="2.001212"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:43:42.459441" elapsed="33.861649"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Manual Date Change Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:44:16.365838" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:44:16.322090" elapsed="0.043748"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:16.365838" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:16.365838" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:16.365838" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:16.365838" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:16.366827" level="INFO">${Date} = Date et heure</msg>
+<var>${Date}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Date et heure</arg>
+<arg>Date &amp; time</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:16.365838" elapsed="0.000989"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:16.366827" level="INFO">${Btn_Heure} = Définir l'heure</msg>
+<var>${Btn_Heure}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Définir l'heure</arg>
+<arg>Set time</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:16.366827" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:44:16.559530" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:44:16.559530" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:44:16.367340" elapsed="0.192190"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:44:17.561192" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:44:16.559530" elapsed="1.001662"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:44:22.662719" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+✅ 'Système' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:44:17.561192" elapsed="5.101527"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:44:23.711569" level="INFO">(551, 172, 1408, 696)
+✅ 'Date et heure' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Date}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:44:22.662719" elapsed="1.048850"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<msg time="2025-07-13T15:44:23.746859" level="INFO">${date_ini} = 13:31</msg>
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="PASS" start="2025-07-13T15:44:23.712559" elapsed="0.034300"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:44:24.748038" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:44:23.746859" elapsed="1.001179"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Btn_Heure}</arg>
+<status status="PASS" start="2025-07-13T15:44:24.748038" elapsed="0.117020"/>
+</kw>
+<kw name="Compose Time" owner="Integration">
+<msg time="2025-07-13T15:44:25.535127" level="INFO">Hour: 13
+Minute: 31</msg>
+<msg time="2025-07-13T15:44:25.535127" level="INFO">${heure_act} = 13:31</msg>
+<var>${heure_act}</var>
+<arg>${driver}</arg>
+<doc>Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
+:param driver: Instance de WebDriver Appium.
+:return: L'heure composée sous forme de chaîne (HH:MM).</doc>
+<status status="PASS" start="2025-07-13T15:44:24.865058" elapsed="0.670069"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:44:25.536117" level="INFO">13:31</msg>
+<arg>${heure_act}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:44:25.535127" elapsed="0.000990"/>
+</kw>
+<kw name="Heure Aleatoire" owner="Integration">
+<msg time="2025-07-13T15:44:25.536117" level="INFO">${random_heure} = 08:02</msg>
+<var>${random_heure}</var>
+<status status="PASS" start="2025-07-13T15:44:25.536117" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:44:25.536117" level="INFO">08:02</msg>
+<arg>${random_heure}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:44:25.536117" elapsed="0.000000"/>
+</kw>
+<kw name="Change Date" owner="Integration">
+<msg time="2025-07-13T15:44:55.872412" level="INFO">Current time: 13:31
+Target time: 08:02
+Swiping down (difference: 5) from (894, 380) to (894, 476)
+Current time: 12:31
+Target time: 08:02
+Swiping down (difference: 4) from (894, 380) to (894, 476)
+Current time: 11:31
+Target time: 08:02
+Swiping down (difference: 3) from (894, 380) to (894, 476)
+Current time: 10:31
+Target time: 08:02
+Swiping down (difference: 2) from (894, 380) to (894, 476)
+Current time: 09:31
+Target time: 08:02
+Swiping down (difference: 1) from (894, 380) to (894, 476)
+Current time: 08:31
+Target time: 08:02
+Swiping down (difference: 29) from (1025, 380) to (1025, 764)
+Current time: 08:27
+Target time: 08:02
+Swiping down (difference: 25) from (1025, 380) to (1025, 764)
+Current time: 08:23
+Target time: 08:02
+Swiping down (difference: 21) from (1025, 380) to (1025, 764)
+Current time: 08:19
+Target time: 08:02
+Swiping down (difference: 17) from (1025, 380) to (1025, 764)
+Current time: 08:15
+Target time: 08:02
+Swiping down (difference: 13) from (1025, 380) to (1025, 764)
+Current time: 08:10
+Target time: 08:02
+Swiping down (difference: 8) from (1025, 380) to (1025, 572)
+Current time: 08:08
+Target time: 08:02
+Swiping down (difference: 6) from (1025, 380) to (1025, 572)
+Current time: 08:06
+Target time: 08:02
+Swiping down (difference: 4) from (1025, 380) to (1025, 476)
+Current time: 08:05
+Target time: 08:02
+Swiping down (difference: 3) from (1025, 380) to (1025, 476)
+Current time: 08:04
+Target time: 08:02
+Swiping down (difference: 2) from (1025, 380) to (1025, 476)
+Current time: 08:03
+Target time: 08:02
+Swiping down (difference: 1) from (1025, 380) to (1025, 476)
+Current time: 08:02
+Target time: 08:02</msg>
+<arg>${driver}</arg>
+<arg>${random_heure}</arg>
+<doc>Sets the time by using two buttons: one for hours and one for minutes.
+Uses adaptive swipe distances based on the difference between current and target values.</doc>
+<status status="PASS" start="2025-07-13T15:44:25.536117" elapsed="30.336295"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-07-13T15:44:56.036733" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-07-13T15:44:55.872412" elapsed="0.164321"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<msg time="2025-07-13T15:44:56.099126" level="INFO">${date_ini} = 08:02</msg>
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.036733" elapsed="0.062393"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${date_ini}</arg>
+<arg>${random_heure}</arg>
+<arg>La date n'a pas été modifiée !</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.099126" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:44:16.322090" elapsed="39.777036"/>
+</kw>
+<msg time="2025-07-13T15:44:56.099126" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:44:16.321090" elapsed="39.778036"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.100101" level="INFO">Test Test Modifier Manuellement Date réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.100101" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.100101" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.100101" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:44:56.100101" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:56.100101" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:56.101101" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:56.101101" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:44:56.101101" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:44:56.101101" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:44:56.100101" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:44:56.100101" elapsed="0.001000"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-07-13T15:44:16.321090" elapsed="39.780011"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:43:42.459441" elapsed="73.641660"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:44:56.101101" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:44:56.101101" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:44:56.101101" elapsed="0.000000"/>
+</if>
+<arg>Execute Manual Date Change Test</arg>
+<arg>Test Modifier Manuellement Date</arg>
+<status status="PASS" start="2025-07-13T15:43:42.458450" elapsed="73.642651"/>
+</kw>
+<doc>Teste la modification manuelle de la date/heure
+- Accède aux paramètres de date/heure
+- Modifie l'heure manuellement
+- Vérifie que le changement a bien été appliqué</doc>
+<status status="PASS" start="2025-07-13T15:43:42.458450" elapsed="73.642651"/>
+</test>
+<test id="s1-t8" name="Test Modifier Synchronisation Automatique Date" line="124">
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.102615" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.102615" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.103611" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.103611" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Auto Date Sync Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-13T15:44:56.167865" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-13T15:44:56.104611" elapsed="0.063254"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.168866" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.168866" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.168866" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.168866" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.168866" level="INFO">${Date} = Date et heure</msg>
+<var>${Date}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Date et heure</arg>
+<arg>Date &amp; time</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.168866" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-13T15:44:56.169867" level="INFO">${Btn_Heure} = Définir l'heure</msg>
+<var>${Btn_Heure}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Définir l'heure</arg>
+<arg>Set time</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.169867" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-13T15:44:56.503403" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-13T15:44:56.503403" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-13T15:44:56.169867" elapsed="0.333536"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-13T15:44:57.505098" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.504397" elapsed="1.000701"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:44:58.568472" level="INFO">(0, 76, 550, 696)
+✅ 'Système' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-13T15:44:57.505098" elapsed="1.063374"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-13T15:44:58.979647" level="INFO">(551, 172, 1408, 696)
+✅ 'Date et heure' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Date}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-13T15:44:58.568472" elapsed="0.411175"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<msg time="2025-07-13T15:44:59.014334" level="INFO">${date_ini} = 08:02</msg>
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="PASS" start="2025-07-13T15:44:58.979647" elapsed="0.034687"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${Btn_Heure}</arg>
+<status status="PASS" start="2025-07-13T15:44:59.014334" elapsed="0.718039"/>
+</kw>
+<kw name="Compose Time" owner="Integration">
+<msg time="2025-07-13T15:45:00.402669" level="INFO">Hour: 08
+Minute: 02</msg>
+<msg time="2025-07-13T15:45:00.403183" level="INFO">${heure_act} = 08:02</msg>
+<var>${heure_act}</var>
+<arg>${driver}</arg>
+<doc>Compose l'heure en utilisant deux boutons : un pour l'heure et un pour les minutes.
+:param driver: Instance de WebDriver Appium.
+:return: L'heure composée sous forme de chaîne (HH:MM).</doc>
+<status status="PASS" start="2025-07-13T15:44:59.732373" elapsed="0.670810"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:45:00.403183" level="INFO">08:02</msg>
+<arg>${heure_act}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:45:00.403183" elapsed="0.000000"/>
+</kw>
+<kw name="Heure Aleatoire" owner="Integration">
+<msg time="2025-07-13T15:45:00.403183" level="INFO">${random_heure} = 04:28</msg>
+<var>${random_heure}</var>
+<status status="PASS" start="2025-07-13T15:45:00.403183" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:45:00.403183" level="INFO">04:28</msg>
+<arg>${random_heure}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:45:00.403183" elapsed="0.000999"/>
+</kw>
+<kw name="Change Date" owner="Integration">
+<msg time="2025-07-13T15:45:26.975645" level="INFO">Current time: 08:02
+Target time: 04:28
+Swiping down (difference: 4) from (894, 380) to (894, 476)
+Current time: 07:02
+Target time: 04:28
+Swiping down (difference: 3) from (894, 380) to (894, 476)
+Current time: 06:02
+Target time: 04:28
+Swiping down (difference: 2) from (894, 380) to (894, 476)
+Current time: 05:02
+Target time: 04:28
+Swiping down (difference: 1) from (894, 380) to (894, 476)
+Current time: 04:02
+Target time: 04:28
+Swiping up (difference: 26) from (1025, 380) to (1025, -4)
+Current time: 04:07
+Target time: 04:28
+Swiping up (difference: 21) from (1025, 380) to (1025, -4)
+Current time: 04:11
+Target time: 04:28
+Swiping up (difference: 17) from (1025, 380) to (1025, -4)
+Current time: 04:16
+Target time: 04:28
+Swiping up (difference: 12) from (1025, 380) to (1025, -4)
+Current time: 04:20
+Target time: 04:28
+Swiping up (difference: 8) from (1025, 380) to (1025, 188)
+Current time: 04:22
+Target time: 04:28
+Swiping up (difference: 6) from (1025, 380) to (1025, 188)
+Current time: 04:24
+Target time: 04:28
+Swiping up (difference: 4) from (1025, 380) to (1025, 284)
+Current time: 04:25
+Target time: 04:28
+Swiping up (difference: 3) from (1025, 380) to (1025, 284)
+Current time: 04:26
+Target time: 04:28
+Swiping up (difference: 2) from (1025, 380) to (1025, 284)
+Current time: 04:27
+Target time: 04:28
+Swiping up (difference: 1) from (1025, 380) to (1025, 284)
+Current time: 04:28
+Target time: 04:28</msg>
+<arg>${driver}</arg>
+<arg>${random_heure}</arg>
+<doc>Sets the time by using two buttons: one for hours and one for minutes.
+Uses adaptive swipe distances based on the difference between current and target values.</doc>
+<status status="PASS" start="2025-07-13T15:45:00.404182" elapsed="26.571463"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-07-13T15:45:27.086213" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-07-13T15:45:26.976164" elapsed="0.110049"/>
+</kw>
+<kw name="Get Device Datetime Heure" owner="Integration">
+<msg time="2025-07-13T15:45:27.141512" level="INFO">${date_ini} = 04:28</msg>
+<var>${date_ini}</var>
+<arg>${driver}</arg>
+<doc>Retourne la date et l'heure du périphérique Android au format 'YYYY-MM-DD HH:MM:SS'.</doc>
+<status status="PASS" start="2025-07-13T15:45:27.086213" elapsed="0.055299"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${date_ini}</arg>
+<arg>${random_heure}</arg>
+<arg>La date n'a pas été modifiée !</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-07-13T15:45:27.141512" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:44:56.104611" elapsed="31.036901"/>
+</kw>
+<msg time="2025-07-13T15:45:27.141512" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:44:56.103611" elapsed="31.037901"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:45:27.142514" level="INFO">Test Test Modifier Synchronisation Automatique Date réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-13T15:45:27.142514" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:45:27.141512" elapsed="0.001002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-13T15:45:27.142514" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:45:27.141512" elapsed="0.002001"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-13T15:44:56.103611" elapsed="31.039902"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-13T15:44:56.103611" elapsed="31.039902"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-13T15:45:27.143513" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:45:27.143513" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:45:27.143513" elapsed="0.000000"/>
+</if>
+<arg>Execute Auto Date Sync Test</arg>
+<arg>Test Modifier Synchronisation Automatique Date</arg>
+<status status="PASS" start="2025-07-13T15:44:56.102615" elapsed="31.040898"/>
+</kw>
+<doc>Teste la synchronisation automatique de la date/heure
+- Accède aux paramètres de date/heure
+- Active la synchronisation automatique
+- Vérifie que l'heure est correctement synchronisée</doc>
+<status status="PASS" start="2025-07-13T15:44:56.102099" elapsed="31.041414"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-07-13T15:45:27.145515" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-07-13T15:45:27.145515" elapsed="0.001997">No application is open</status>
+</kw>
+<msg time="2025-07-13T15:45:27.148565" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-07-13T15:45:27.148565" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-07-13T15:45:27.144512" elapsed="0.005013">No application is open</status>
+</kw>
+<msg time="2025-07-13T15:45:27.149525" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-13T15:45:27.144512" elapsed="0.005013"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-07-13T15:45:27.149525" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:45:27.149525" elapsed="0.000651"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:45:27.149525" elapsed="0.000664"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-13T15:45:27.150189" level="INFO">Le driver n'était pas actif</msg>
+<arg>Le driver n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-13T15:45:27.150189" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-13T15:45:27.150189" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:45:27.149525" elapsed="0.000664"/>
+</if>
+<status status="PASS" start="2025-07-13T15:45:27.144512" elapsed="0.005677"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-13T15:45:27.150189" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-13T15:45:27.150189" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-13T15:45:27.144512" elapsed="0.005677"/>
+</try>
+<status status="PASS" start="2025-07-13T15:45:27.144512" elapsed="0.005677"/>
+</kw>
+<doc>Ce fichier contient des tests pour vérifier les fonctionnalités système d'un appareil Android :
+- Activation/désactivation des notifications
+- Modification de la langue
+- Synchronisation de l'heure
+- Gestion des notifications (réception/suppression)
+- Navigation de base (bouton Home, lancement d'applications)
+Les tests prennent en charge les interfaces en français et en anglais.</doc>
+<status status="PASS" start="2025-07-13T15:40:09.659665" elapsed="317.490524"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FonctionnaliteDeBase" id="s1" pass="8" fail="0" skip="0">FonctionnaliteDeBase</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-07-13T15:45:27.148565" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>
