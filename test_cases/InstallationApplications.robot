@@ -7,6 +7,7 @@ Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Library    resource_monitor.py
 Library    Collections
 Library    AppiumLibrary
 
@@ -200,7 +201,20 @@ Test Install Apk
     ...                - Installs the APK
     ...                - Verifies installation in system and UI
     [Tags]    installation    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Install Apk Test    Test Install Apk
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Install Apk:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Install Apk:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Uninstall Application
     [Documentation]    Tests application uninstallation
@@ -208,7 +222,20 @@ Test Uninstall Application
     ...                - Performs uninstallation
     ...                - Verifies complete removal
     [Tags]    uninstallation    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Uninstall Application Test    Test Uninstall Application
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Uninstall Application:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Uninstall Application:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 

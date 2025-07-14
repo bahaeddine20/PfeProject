@@ -7,6 +7,7 @@ Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Library    resource_monitor.py
 Library    TestAudio.py
 Library    Collections
 
@@ -241,10 +242,23 @@ Test Audio Recording And Playback
     ...                - Plays back the recorded audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Close Activity Robot      ${driver}      com.example.audioapplicationtest
     Execute Test With Retry    Verify Audio Recording    Test Audio Recording And Playback
     Sleep    10s
     Close Activity Robot      ${driver}     com.example.audioapplicationtest
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Audio Recording And Playback:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Audio Recording And Playback:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Audio Player And Playback
     [Documentation]    Verifies audio recording and playback functionality
@@ -253,8 +267,9 @@ Test Audio Player And Playback
     ...                - Plays audio
     ...                - Supports both French and English interfaces
     [Tags]    audio    recording    playback
-    
-
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     
     # Navigate to the audio player app with retry
     FOR    ${i}    IN RANGE    3
@@ -273,5 +288,15 @@ Test Audio Player And Playback
     Click Play Button    # Démarre la lecture immédiatement après
     Sleep    22s
     Compare Audio Files Play       ${CURDIR}${/}test.wav
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Audio Player And Playback:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Audio Player And Playback:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 

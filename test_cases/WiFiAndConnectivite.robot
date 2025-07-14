@@ -11,6 +11,8 @@ Library    Integration.py
 Library    script_mobile.py
 Library    AppiumLibrary
 
+Library    resource_monitor.py
+Library    DateTime
 
 Suite Setup     Démarrer Driver
 Suite Teardown  Fermer Driver
@@ -31,7 +33,7 @@ ${MessageActivity}     com.android.car.messenger/.ui.launcher.MessageLauncherAct
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
 ${Device}              emulator-5554
-${Device_mobile}       emulator-5556
+${Device_mobile}       None
 ${Setting_system}      com.android.car.settings:id/fragment_container
 
 # Language Configuration
@@ -146,7 +148,24 @@ Test Ouvrir Wifi
     ...                - Active le WiFi
     ...                - Vérifie l'activation via UI et ADB
     [Tags]    wifi    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Open Wifi Test    Test Ouvrir Wifi
+        Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Ouvrir Wifi:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File   mem_usage.log    Test Ouvrir Wifi:${mem}\n
+    Log    RAM value saved to mem_usage.log
+
+
+
+
 
 Test Fermer Wifi
     [Documentation]    Teste la désactivation du WiFi
@@ -154,5 +173,23 @@ Test Fermer Wifi
     ...                - Désactive le WiFi
     ...                - Vérifie la désactivation via UI et ADB
     [Tags]    wifi    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
+
     Execute Test With Retry    Execute Close Wifi Test    Test Fermer Wifi
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Fermer Wifi:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Fermer Wifi:${mem}\n
+    Log    RAM value saved to mem_usage.log
+
+
+    Append To File     mem_usage.log    Test Verfier Mise A Jour System:${mem}\n
+
 

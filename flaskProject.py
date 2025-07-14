@@ -6,7 +6,9 @@ import threading
 import time
 import subprocess
 import datetime
+import matplotlib.pyplot as plt
 import re
+from collections import defaultdict
 
 app = Flask(__name__)
 
@@ -246,6 +248,8 @@ def select_tests():
 def get_progress():
     return jsonify(progress_data)
 
+
+
 @app.route('/stop_tests', methods=['POST'])
 def stop_tests():
     global stop_execution, run, current_process
@@ -258,6 +262,51 @@ def stop_tests():
             pass
         current_process = None
     return jsonify({"message": "Tests stoppés !"})
+
+
+from collections import defaultdict
+
+def extract_data(file_path):
+    """Extract test names and average values from log files"""
+    raw_data = defaultdict(list)
+
+    with open(file_path, 'r') as f:
+        for line in f:
+            match = re.match(r'(.*?):(\d+\.?\d*)', line)
+            if match:
+                test_name = match.group(1).strip()
+                value = float(match.group(2))
+                raw_data[test_name].append(value)
+
+    # Calculer la moyenne par test
+    averaged_data = {name: sum(vals)/len(vals) for name, vals in raw_data.items()}
+    print(f"Extracted data: {averaged_data}")
+    return averaged_data
+
+
+def create_bar_chart(data, title, ylabel, output_file):
+    """Create and save bar chart"""
+    if not data:
+        print(f"No data to plot for {title}")
+        return
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(data.keys(), data.values(), color=['#1f77b4', '#ff7f0e', '#2ca02c'])
+    plt.title(title, fontsize=14)
+    plt.ylabel(ylabel, fontsize=12)
+    plt.xticks(rotation=15, ha='right', fontsize=10)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+    # Add values on top of bars
+    for i, value in enumerate(data.values()):
+        plt.text(i, value + max(data.values()) * 0.02, f'{value:.2f}',
+                 ha='center', va='bottom', fontsize=9)
+
+    plt.tight_layout()
+    plt.savefig(output_file)
+    plt.close()
+
+
 def execute_tests():
     global progress_data, stop_execution, run, current_process, rf_live_log
     rf_live_log = []
@@ -270,10 +319,10 @@ def execute_tests():
         test_names = "_".join([os.path.splitext(f)[0] for f in selected_tests])
         results_dir = os.path.join(RESULTS_FOLDER, f"Tests_{timestamp}_{test_names}")
         os.makedirs(results_dir, exist_ok=True)
-        
+
         # Définir la variable d'environnement pour le dossier de sortie Flask
         os.environ['FLASK_OUTPUT_DIR'] = results_dir
-        
+
         total_tests = len(selected_tests)
         progress_data.update({"total": total_tests, "completed": 0})
         output_files = []  # Liste des fichiers output.xml à fusionner
@@ -307,6 +356,7 @@ def execute_tests():
             log_step("----------------------------------------")
             progress_data.update({"completed": i + 1, "percentage": int((i + 1) / total_tests * 100)})
             time.sleep(1)
+
         # Création du dossier resumer + fusion des résultats avec rebot
         resumer_dir = os.path.join(results_dir, "final_report")
         os.makedirs(resumer_dir, exist_ok=True)
@@ -316,15 +366,46 @@ def execute_tests():
                 capture_output=True,
                 text=True
             )
+
+        # Générer les graphiques
+        try:
+            # Chemin des fichiers de logs (créés dans le répertoire racine)
+            cpu_log = os.path.join(os.getcwd(), "cpu_usage.log")
+            mem_log = os.path.join(os.getcwd(), "mem_usage.log")
+
+            # Vérifier si les fichiers existent
+            if os.path.exists(cpu_log):
+                cpu_data = extract_data(cpu_log)
+                create_bar_chart(cpu_data,
+                                 'CPU Usage by Test',
+                                 'CPU Usage (%)',
+                                 os.path.join(resumer_dir, 'cpu_usage_chart.png'))
+                print(f"CPU chart generated: {os.path.join(resumer_dir, 'cpu_usage_chart.png')}")
+
+            if os.path.exists(mem_log):
+                mem_data = extract_data(mem_log)
+                create_bar_chart(mem_data,
+                                 'Memory Usage by Test',
+                                 'Memory Usage (MB)',
+                                 os.path.join(resumer_dir, 'mem_usage_chart.png'))
+                print(f"Memory chart generated: {os.path.join(resumer_dir, 'mem_usage_chart.png')}")
+
+            print("Charts generated in final_report directory")
+        except Exception as e:
+            print(f"Error generating charts: {str(e)}")
+            import traceback
+            traceback.print_exc()
+
+        # Créer l'archive
+        shutil.make_archive(results_dir, 'zip', results_dir)
+
         run = 0
         progress_data.update({
             "current_file": "✅ Tous les tests sont terminés !",
             "percentage": 100
         })
-        shutil.make_archive(results_dir, 'zip', results_dir)
         run = 0
         current_process = None
-
 @app.route('/download_results')
 def download_results():
     latest_results = sorted(os.listdir(RESULTS_FOLDER), reverse=True)

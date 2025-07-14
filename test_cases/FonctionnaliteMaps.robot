@@ -10,6 +10,9 @@ Library    Integration.py
 Library    script_mobile.py
 Library    AppiumLibrary
 
+Library    resource_monitor.py
+Library    DateTime
+
 Suite Setup     Démarrer Driver
 Suite Teardown  Fermer Driver
 
@@ -29,7 +32,7 @@ ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
 ${Device}              emulator-5554
-${Device_mobile}       emulator-5556
+${Device_mobile}       None
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}              System
 
@@ -159,10 +162,40 @@ Test GPS Location Functionality
     ...                - Définit une position GPS spécifique via ADB
     ...                - Vérifie que la position a bien été mise à jour
     [Tags]    gps    location
+
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Gps Location Test    Test GPS Location Functionality
+
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File     cpu_usage.log    Test GPS Location Functionality:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File     mem_usage.log    Test GPS Location Functionality:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test GPS Multi-Location
     [Documentation]    Teste la modification de position GPS pour plusieurs emplacements
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
+
     FOR    ${lat}    ${lon}    IN    @{GPS_LOCATIONS}
         Test GPS Location For Coordinates    ${lat}    ${lon}
     END
+
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File     cpu_usage.log    Test GPS Multi-Location:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File     mem_usage.log    Test GPS Multi-Location:${mem}\n
+    Log    RAM value saved to mem_usage.log

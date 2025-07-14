@@ -6,6 +6,9 @@ Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Library    resource_monitor.py
+Library    DateTime
+
 Suite Setup     Démarrer Driver
 Suite Teardown  Fermer Driver
 *** Variables ***
@@ -94,5 +97,21 @@ Test Verfier Mise A Jour System
     ...                - Navigates to system update section
     ...                - Checks for available updates
     ...                - Supports both French and English interfaces
-    [Tags]    update    system
+
+
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
+
     Execute Test With Retry    Vérifier Mise A Jour System    Test Verfier Mise A Jour System
+
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File     cpu_usage.log    Test Verfier Mise A Jour System:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File     mem_usage.log    Test Verfier Mise A Jour System:${mem}\n
+    Log    RAM value saved to mem_usage.log

@@ -4,6 +4,9 @@ import datetime
 import shutil
 import requests
 from typing import List, Optional, Tuple, Dict, Any
+import matplotlib.pyplot as plt
+import re
+from collections import defaultdict
 
 # Constants
 TESTS_FOLDER = "test_cases"
@@ -213,7 +216,40 @@ def execute_test_list(test_files: List[str]) -> Dict[str, Any]:
             )
             combined_report_path = os.path.join(final_report_dir, "report.html")
 
+        # Générer les graphiques CPU et mémoire
+        try:
+            # Chemin des fichiers de logs (créés dans le répertoire racine)
+            cpu_log = os.path.join(os.getcwd(), "cpu_usage.log")
+            mem_log = os.path.join(os.getcwd(), "mem_usage.log")
+
+            # Vérifier si les fichiers existent et générer les graphiques
+            if os.path.exists(cpu_log):
+                cpu_data = extract_data(cpu_log)
+                if cpu_data:
+                    cpu_chart_path = os.path.join(final_report_dir, 'cpu_usage_chart.png')
+                    create_bar_chart(cpu_data,
+                                   'CPU Usage by Test',
+                                   'CPU Usage (%)',
+                                   cpu_chart_path)
+                    print(f"CPU chart generated: {cpu_chart_path}")
+
+            if os.path.exists(mem_log):
+                mem_data = extract_data(mem_log)
+                if mem_data:
+                    mem_chart_path = os.path.join(final_report_dir, 'mem_usage_chart.png')
+                    create_bar_chart(mem_data,
+                                   'Memory Usage by Test',
+                                   'Memory Usage (MB)',
+                                   mem_chart_path)
+                    print(f"Memory chart generated: {mem_chart_path}")
+
+            print("Charts generated in final_report directory")
+        except Exception as e:
+            print(f"Error generating charts: {str(e)}")
+            import traceback
+            traceback.print_exc()
         # Create zip archive of results
+
         zip_path = shutil.make_archive(results_dir, 'zip', results_dir)
         
         # Envoyer le fichier ZIP à l'API
@@ -334,6 +370,46 @@ def execute_test_with_tags(test_file: str, tags: List[str]) -> Dict[str, Any]:
             "error": str(e)
         }
 
+
+def extract_data(file_path):
+    """Extract test names and average values from log files"""
+    raw_data = defaultdict(list)
+
+    with open(file_path, 'r') as f:
+        for line in f:
+            match = re.match(r'(.*?):(\d+\.?\d*)', line)
+            if match:
+                test_name = match.group(1).strip()
+                value = float(match.group(2))
+                raw_data[test_name].append(value)
+
+    # Calculer la moyenne par test
+    averaged_data = {name: sum(vals)/len(vals) for name, vals in raw_data.items()}
+    print(f"Extracted data: {averaged_data}")
+    return averaged_data
+
+
+def create_bar_chart(data, title, ylabel, output_file):
+    """Create and save bar chart"""
+    if not data:
+        print(f"No data to plot for {title}")
+        return
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(data.keys(), data.values(), color=['#1f77b4', '#ff7f0e', '#2ca02c'])
+    plt.title(title, fontsize=14)
+    plt.ylabel(ylabel, fontsize=12)
+    plt.xticks(rotation=15, ha='right', fontsize=10)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+    # Add values on top of bars
+    for i, value in enumerate(data.values()):
+        plt.text(i, value + max(data.values()) * 0.02, f'{value:.2f}',
+                 ha='center', va='bottom', fontsize=9)
+
+    plt.tight_layout()
+    plt.savefig(output_file)
+    plt.close()
 import argparse
 
 if __name__ == "__main__":

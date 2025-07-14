@@ -7,6 +7,7 @@ Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Library    resource_monitor.py
 Library    script_mobile.py
 Library    script_IA.py
 Library    AppiumLibrary
@@ -22,7 +23,7 @@ ${Setting_fr}          Settings
 ${Setting_xpath_id}    com.android.car.settings:id/car_settings_activity_wrapper
 ${Setting_menu}        com.android.car.settings:id/top_level_menu
 ${Device}              emulator-5554
-${Device_mobile}       emulator-5556
+${Device_mobile}       None
 
 ${Setting_system}      com.android.car.settings:id/fragment_container
 ${System}               System
@@ -105,7 +106,21 @@ Test Ouvrir Bluetooth
     ...                - Accède aux paramètres Bluetooth
     ...                - Active le Bluetooth s'il est désactivé
     ...                - Vérifie que le Bluetooth est bien activé (UI et ADB)
+    [Tags]    bluetooth    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Open Bluetooth Test    Test Ouvrir Bluetooth
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Ouvrir Bluetooth:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Ouvrir Bluetooth:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 Test Pairing Bluetooth
@@ -117,7 +132,21 @@ Test Pairing Bluetooth
     ...                - Si non, initie le processus d'appairage
     ...                - Valide l'appairage des deux côtés
     ...                - Vérifie que l'appairage est effectif via ADB
+    [Tags]    bluetooth    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Pairing Bluetooth Test    Test Pairing Bluetooth
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Pairing Bluetooth:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Pairing Bluetooth:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 Test Call Bluetooth
@@ -125,7 +154,21 @@ Test Call Bluetooth
     ...                - Simule un appel entrant sur le mobile
     ...                - Vérifie que le numéro appelant est affiché à l'écran
     ...                - Continue l'exécution même en cas d'échec partiel
+    [Tags]    bluetooth    call
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Call Bluetooth Test    Test Call Bluetooth
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Call Bluetooth:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Call Bluetooth:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 Test Answer Call Bluetooth
@@ -133,7 +176,21 @@ Test Answer Call Bluetooth
     ...                - Localise et clique sur le bouton "Répondre"
     ...                - Vérifie que l'interface d'appel est active
     ...                - Continue l'exécution même en cas d'échec partiel
+    [Tags]    bluetooth    call
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Answer Call Bluetooth Test    Test Answer Call Bluetooth
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Answer Call Bluetooth:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Answer Call Bluetooth:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 Test End Call Bluetooth
@@ -141,7 +198,21 @@ Test End Call Bluetooth
     ...                - Ouvre l'application téléphone
     ...                - Localise et clique sur le bouton "Terminer l'appel"
     ...                - Continue l'exécution même en cas d'échec partiel
+    [Tags]    bluetooth    call
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute End Call Bluetooth Test    Test End Call Bluetooth
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test End Call Bluetooth:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test End Call Bluetooth:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 Test Supprimer Bluetooth
@@ -151,7 +222,21 @@ Test Supprimer Bluetooth
     ...                - Récupère le nom Bluetooth du mobile
     ...                - Supprime l'appareil appairé
     ...                - Vérifie que l'appairage n'est plus actif via ADB
+    [Tags]    bluetooth    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Supprimer Bluetooth Test    Test Supprimer Bluetooth
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Supprimer Bluetooth:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Supprimer Bluetooth:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 Test Fermer Bluetooth
@@ -161,7 +246,21 @@ Test Fermer Bluetooth
     ...                - Accède aux paramètres Bluetooth
     ...                - Désactive le Bluetooth s'il est activé
     ...                - Vérifie que le Bluetooth est bien désactivé (UI et ADB)
+    [Tags]    bluetooth    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Fermer Bluetooth Test    Test Fermer Bluetooth
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Fermer Bluetooth:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Fermer Bluetooth:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 
 *** Keywords ***

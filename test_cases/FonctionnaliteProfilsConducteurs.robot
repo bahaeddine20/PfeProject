@@ -8,6 +8,7 @@ Library    Process
 Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
+Library    resource_monitor.py
 Library    AppiumLibrary
 
 Suite Setup     Démarrer Driver
@@ -195,7 +196,20 @@ Test Ajouter Utilisateur
     ...                - Ajoute un nouveau profil
     ...                - Vérifie que l'utilisateur a bien été ajouté
     [Tags]    users    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Add User Test    Test Ajouter Utilisateur
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Ajouter Utilisateur:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Ajouter Utilisateur:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Supprimer Utilisateur
     [Documentation]    Teste la suppression d'un utilisateur
@@ -204,7 +218,20 @@ Test Supprimer Utilisateur
     ...                - Supprime le profil spécifié
     ...                - Vérifie que l'utilisateur a bien été supprimé
     [Tags]    users    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Delete User Test    Test Supprimer Utilisateur
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Supprimer Utilisateur:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Supprimer Utilisateur:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Renommer Utilisateur
     [Documentation]    Teste le renommage d'un utilisateur
@@ -212,4 +239,17 @@ Test Renommer Utilisateur
     ...                - Navigue dans les menus appropriés
     ...                - Modifie le nom du profil
     [Tags]    users    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Rename User Test    Test Renommer Utilisateur
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Renommer Utilisateur:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Renommer Utilisateur:${mem}\n
+    Log    RAM value saved to mem_usage.log

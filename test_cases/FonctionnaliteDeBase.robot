@@ -11,6 +11,7 @@ Library    BuiltIn
 Library    OperatingSystem
 Library    Integration.py
 Library    script_IA.py
+Library    resource_monitor.py
 Library    AppiumLibrary
 
 
@@ -76,21 +77,63 @@ Test Home_Button
     [Documentation]    Teste la fonctionnalité du bouton Home
     ...                - Vérifie que le bouton Home ramène bien à l'écran d'accueil
     ...                - Utilise la fonction 'Revenir A La Home Page'
+    [Tags]    home    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Home Button Test    Test Home_Button
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Home_Button:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Home_Button:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Ouvrir YouTube App
     [Documentation]    Teste le lancement de l'application YouTube
     ...                - Ouvre l'application YouTube
     ...                - Vérifie que l'activité YouTube est correctement lancée
     ...                - Contrôle la présence d'éléments UI spécifiques à YouTube
+    [Tags]    youtube    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute YouTube App Test    Test Ouvrir YouTube App
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Ouvrir YouTube App:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Ouvrir YouTube App:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Modifier Languages
     [Documentation]    Teste la modification de la langue système
     ...                - Vérifie la langue actuelle du système
     ...                - Change la langue en anglais puis en français
     ...                - Vérifie les changements via ADB
+    [Tags]    language    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Language Change Test    Test Modifier Languages
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Modifier Languages:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Modifier Languages:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Notification Réception
     [Documentation]    Teste la réception de notifications
@@ -98,35 +141,105 @@ Test Notification Réception
     ...                - Active les notifications pour l'application
     ...                - Envoie une notification de test
     ...                - Vérifie l'affichage de la notification
+    [Tags]    notification    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Notification Reception Test    Test Notification Réception
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Notification Réception:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Notification Réception:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Notification Supprimer
     [Documentation]    Teste la suppression de notifications
     ...                - Vérifie la présence d'une notification
     ...                - Supprime toutes les notifications
     ...                - Vérifie que la notification a bien disparu
+    [Tags]    notification    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Notification Delete Test    Test Notification Supprimer
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Notification Supprimer:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Notification Supprimer:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Disable Notification
     [Documentation]    Teste la désactivation des notifications
     ...                - Désactive les notifications pour l'application de test
     ...                - Envoie une notification de test
     ...                - Vérifie que la notification n'apparaît pas
+    [Tags]    notification    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Disable Notification Test    Test Disable Notification
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Disable Notification:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Disable Notification:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Modifier Manuellement Date
     [Documentation]    Teste la modification manuelle de la date/heure
     ...                - Accède aux paramètres de date/heure
     ...                - Modifie l'heure manuellement
     ...                - Vérifie que le changement a bien été appliqué
+    [Tags]    date    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Manual Date Change Test    Test Modifier Manuellement Date
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Modifier Manuellement Date:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Modifier Manuellement Date:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 Test Modifier Synchronisation Automatique Date
     [Documentation]    Teste la synchronisation automatique de la date/heure
     ...                - Accède aux paramètres de date/heure
     ...                - Active la synchronisation automatique
     ...                - Vérifie que l'heure est correctement synchronisée
+    [Tags]    date    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Auto Date Sync Test    Test Modifier Synchronisation Automatique Date
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
+
+    # Enregistrement CPU
+    Append To File    cpu_usage.log    Test Modifier Synchronisation Automatique Date:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File    mem_usage.log    Test Modifier Synchronisation Automatique Date:${mem}\n
+    Log    RAM value saved to mem_usage.log
 
 *** Keywords ***
 Execute Home Button Test
