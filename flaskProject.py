@@ -320,6 +320,17 @@ def execute_tests():
         results_dir = os.path.join(RESULTS_FOLDER, f"Tests_{timestamp}_{test_names}")
         os.makedirs(results_dir, exist_ok=True)
 
+
+        cpu_log = os.path.join(os.getcwd(), "cpu_usage.log")
+        mem_log = os.path.join(os.getcwd(), "mem_usage.log")
+
+        # Vider les fichiers
+        with open(cpu_log, "w") as f:
+            pass
+
+        with open(mem_log, "w") as f:
+            pass
+
         # Définir la variable d'environnement pour le dossier de sortie Flask
         os.environ['FLASK_OUTPUT_DIR'] = results_dir
 

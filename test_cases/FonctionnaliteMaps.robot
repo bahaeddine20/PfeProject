@@ -155,8 +155,20 @@ Test Ouvrir Gps
     ...                - Active le GPS
     ...                - Vérifie l'activation via ADB
     [Tags]    gps    smoke
+    ${monitor}=    Evaluate    __import__('resource_monitor').ResourceMonitor()
+    ${namespace}=    Create Dictionary    monitor=${monitor}
+    Evaluate    monitor.start()    namespace=${namespace}
     Execute Test With Retry    Execute Open Gps Test    Test Ouvrir Gps
+    Evaluate    monitor.stop()    namespace=${namespace}
+    ${cpu}    ${mem}=    Evaluate    monitor.get_averages()    namespace=${namespace}
 
+    # Enregistrement CPU
+    Append To File     cpu_usage.log    Test Ouvrir Gps:${cpu}\n
+    Log    CPU value saved to cpu_usage.log
+
+    # Enregistrement RAM
+    Append To File     mem_usage.log    Test Ouvrir Gps:${mem}\n
+    Log    RAM value saved to mem_usage.log
 Test GPS Location Functionality
     [Documentation]    Teste la fonctionnalité de modification de position GPS
     ...                - Définit une position GPS spécifique via ADB

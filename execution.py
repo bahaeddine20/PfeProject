@@ -190,6 +190,16 @@ def execute_test_list(test_files: List[str]) -> Dict[str, Any]:
         # Définir la variable d'environnement pour le dossier de sortie Flask
         os.environ['FLASK_OUTPUT_DIR'] = results_dir
 
+        cpu_log = os.path.join(os.getcwd(), "cpu_usage.log")
+        mem_log = os.path.join(os.getcwd(), "mem_usage.log")
+
+        # Vider les fichiers
+        with open(cpu_log, "w") as f:
+            pass
+
+        with open(mem_log, "w") as f:
+            pass
+
         output_files = []
         results = []
 
