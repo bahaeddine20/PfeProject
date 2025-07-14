@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-07-14T10:19:46.197498" rpa="false" schemaversion="5">
+<suite id="s1" name="WiFiAndConnectivite" source="C:\Users\bahae\Documents\PfeProject\test_cases\WiFiAndConnectivite.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-07-14T10:19:53.085908" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="eea8dc03-e1a7-4cf7-b7e8-e3a889b68711")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-07-14T10:19:49.154656" elapsed="3.931252"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.085908" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="eea8dc03-e1a7-4cf7-b7e8-e3a889b68711")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.085908" elapsed="0.000000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-14T10:19:53.125698" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-14T10:19:53.085908" elapsed="0.040304"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.126212" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'ReseauMenu': 'Réseau et Internet'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.126212" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.126212" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'ReseauMenu': 'Réseau et Internet'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.126212" elapsed="0.000000"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-07-14T10:19:53.085908" elapsed="0.040304"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-07-14T10:19:49.154656" elapsed="3.971556"/>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Wifi" line="145">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.127211" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-3, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.127211" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.127211" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-3, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.127211" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.127211" elapsed="0.001001"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.128731" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.128731" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.128731" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.128731" elapsed="0.001015"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Open Wifi Test">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-14T10:19:53.419457" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-14T10:19:53.420458" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-14T10:19:53.129746" elapsed="0.290712"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-14T10:19:53.921108" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.420458" elapsed="0.500650"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-14T10:19:54.033852" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.921108" elapsed="0.112744"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-14T10:19:54.033852" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-14T10:19:55.758494" level="INFO">(0, 76, 550, 696)
+✅ 'Réseau et Internet' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.ReseauMenu}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-14T10:19:54.033852" elapsed="1.724642"/>
+</kw>
+<kw name="Activer Wifi Si Desactive" owner="Integration">
+<msg time="2025-07-14T10:19:56.634974" level="INFO">false</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-07-14T10:19:55.758494" elapsed="0.876480"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-14T10:19:58.635783" level="INFO">Slept 2 seconds.</msg>
+<arg>${WAIT_TIME}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-14T10:19:56.635675" elapsed="2.000108"/>
+</kw>
+<kw name="Is Active Wifi Ui" owner="Integration">
+<msg time="2025-07-14T10:19:59.882990" level="INFO">État actuel du Wi-Fi : true</msg>
+<msg time="2025-07-14T10:19:59.883990" level="INFO">${verifier_wifi_ui} = True</msg>
+<var>${verifier_wifi_ui}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-07-14T10:19:58.635783" elapsed="1.248207"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-14T10:19:59.884533" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is not active in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-07-14T10:19:59.883990" elapsed="0.000543"/>
+</kw>
+<kw name="Is Wifi Enabled Adb" owner="Integration">
+<msg time="2025-07-14T10:20:00.229650" level="INFO">✅ Le Wi-Fi est activé.</msg>
+<msg time="2025-07-14T10:20:00.229650" level="INFO">${verfier_wifi_adb} = True</msg>
+<var>${verfier_wifi_adb}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-07-14T10:19:59.884533" elapsed="0.346118"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-14T10:20:00.230651" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is not active via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-07-14T10:20:00.230651" elapsed="0.000000"/>
+</kw>
+<doc>Tests WiFi activation</doc>
+<status status="PASS" start="2025-07-14T10:19:53.129746" elapsed="7.101905"/>
+</kw>
+<msg time="2025-07-14T10:20:00.231651" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-14T10:19:53.129746" elapsed="7.101905"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:20:00.232187" level="INFO">Test Test Ouvrir Wifi réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:20:00.232164" elapsed="0.000023"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-14T10:20:00.232187" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-14T10:20:00.232187" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:20:00.231651" elapsed="0.000536"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:00.232187" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:00.233176" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:00.233176" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:20:00.232187" elapsed="0.000989"/>
+</branch>
+<status status="NOT RUN" start="2025-07-14T10:20:00.232187" elapsed="0.000989"/>
+</if>
+<status status="NOT RUN" start="2025-07-14T10:20:00.232187" elapsed="0.000989"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:20:00.231651" elapsed="0.001525"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-14T10:19:53.129746" elapsed="7.103430"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-14T10:19:53.129746" elapsed="7.103430"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:00.233176" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:20:00.233176" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:20:00.233176" elapsed="0.000000"/>
+</if>
+<arg>Execute Open Wifi Test</arg>
+<arg>Test Ouvrir Wifi</arg>
+<status status="PASS" start="2025-07-14T10:19:53.128212" elapsed="7.105964"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:20:00.234176" elapsed="1.011010"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-14T10:20:01.245705" level="INFO">${cpu} = 34.333333333333336</msg>
+<msg time="2025-07-14T10:20:01.245705" level="INFO">${mem} = 2813.4827473958335</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.245186" elapsed="0.000519"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-07-14T10:20:01.246704" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Ouvrir Wifi:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.245705" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:20:01.246704" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.246704" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-07-14T10:20:01.247704" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Ouvrir Wifi:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.246704" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:20:01.248225" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.248225" elapsed="0.000000"/>
+</kw>
+<doc>Teste l'activation du WiFi
+- Ouvre les paramètres
+- Active le WiFi
+- Vérifie l'activation via UI et ADB</doc>
+<tag>smoke</tag>
+<tag>wifi</tag>
+<status status="PASS" start="2025-07-14T10:19:53.126212" elapsed="8.122013"/>
+</test>
+<test id="s1-t2" name="Test Fermer Wifi" line="170">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-14T10:20:01.249222" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-4, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.249222" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-14T10:20:01.249222" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-4, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.249222" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.250223" elapsed="0.000520"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:20:01.250743" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.250743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:20:01.251740" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.251740" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Close Wifi Test">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-14T10:20:01.681165" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-07-14T10:20:01.681165" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-14T10:20:01.252743" elapsed="0.428422"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-14T10:20:02.182348" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.681165" elapsed="0.501183"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-07-14T10:20:02.331303" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-07-14T10:20:02.182348" elapsed="0.148955"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-07-14T10:20:02.331303" elapsed="0.001002"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-14T10:20:03.878368" level="INFO">(0, 76, 550, 696)
+✅ 'Réseau et Internet' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.ReseauMenu}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-14T10:20:02.332305" elapsed="1.546063"/>
+</kw>
+<kw name="Desactiver Wifi Si Active" owner="Integration">
+<msg time="2025-07-14T10:20:05.719560" level="INFO">true</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-07-14T10:20:03.878368" elapsed="1.841192"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-14T10:20:07.721370" level="INFO">Slept 2 seconds.</msg>
+<arg>${WAIT_TIME}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-14T10:20:05.719560" elapsed="2.001810"/>
+</kw>
+<kw name="Is Active Wifi Ui" owner="Integration">
+<msg time="2025-07-14T10:20:08.592182" level="INFO">État actuel du Wi-Fi : false</msg>
+<msg time="2025-07-14T10:20:08.592182" level="INFO">${verifier_wifi_ui} = False</msg>
+<var>${verifier_wifi_ui}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-07-14T10:20:07.721370" elapsed="0.870812"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verifier_wifi_ui}</arg>
+<arg>WiFi is still active in UI</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-07-14T10:20:08.592182" elapsed="0.000950"/>
+</kw>
+<kw name="Is Wifi Enabled Adb" owner="Integration">
+<msg time="2025-07-14T10:20:08.912600" level="INFO">❌ Le Wi-Fi est désactivé.</msg>
+<msg time="2025-07-14T10:20:08.912600" level="INFO">${verfier_wifi_adb} = False</msg>
+<var>${verfier_wifi_adb}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-07-14T10:20:08.593132" elapsed="0.319468"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verfier_wifi_adb}</arg>
+<arg>WiFi is still active via ADB</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-07-14T10:20:08.912600" elapsed="0.000998"/>
+</kw>
+<doc>Tests WiFi deactivation</doc>
+<status status="PASS" start="2025-07-14T10:20:01.252743" elapsed="7.660855"/>
+</kw>
+<msg time="2025-07-14T10:20:08.913598" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-14T10:20:01.251740" elapsed="7.661858"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:20:08.913598" level="INFO">Test Test Fermer Wifi réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:20:08.913598" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-14T10:20:08.913598" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-14T10:20:08.913598" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:20:08.913598" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:20:08.913598" elapsed="0.001000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-14T10:20:01.251740" elapsed="7.662858"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-14T10:20:01.251740" elapsed="7.662858"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:20:08.914598" elapsed="0.000000"/>
+</if>
+<arg>Execute Close Wifi Test</arg>
+<arg>Test Fermer Wifi</arg>
+<status status="PASS" start="2025-07-14T10:20:01.250743" elapsed="7.663855"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:20:08.914598" elapsed="1.009971"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-14T10:20:09.924569" level="INFO">${cpu} = 74.0</msg>
+<msg time="2025-07-14T10:20:09.924569" level="INFO">${mem} = 2817.8518880208335</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.924569" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-07-14T10:20:09.925569" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Fermer Wifi:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.924569" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:20:09.925569" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.925569" elapsed="0.001005"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-07-14T10:20:09.927104" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Fermer Wifi:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.926592" elapsed="0.000512"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:20:09.927104" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.927104" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-07-14T10:20:09.927623" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Verfier Mise A Jour System:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.927608" elapsed="0.000015"/>
+</kw>
+<doc>Teste la désactivation du WiFi
+- Ouvre les paramètres
+- Désactive le WiFi
+- Vérifie la désactivation via UI et ADB</doc>
+<tag>smoke</tag>
+<tag>wifi</tag>
+<status status="PASS" start="2025-07-14T10:20:01.248225" elapsed="8.679398"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-07-14T10:20:09.929617" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-07-14T10:20:09.929617" elapsed="0.002018">No application is open</status>
+</kw>
+<msg time="2025-07-14T10:20:09.932636" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-07-14T10:20:09.932636" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-07-14T10:20:09.929617" elapsed="0.003714">No application is open</status>
+</kw>
+<msg time="2025-07-14T10:20:09.933331" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.928615" elapsed="0.004716"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:09.933331" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:09.933331" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:20:09.933331" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:20:09.933331" level="INFO">Le driver n'était pas actif</msg>
+<arg>Le driver n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:20:09.933331" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:20:09.933331" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:20:09.933331" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-07-14T10:20:09.928615" elapsed="0.004716"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-14T10:20:09.934326" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:20:09.933331" elapsed="0.000995"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:20:09.928615" elapsed="0.005711"/>
+</try>
+<doc>Cleans up and closes the test driver</doc>
+<status status="PASS" start="2025-07-14T10:20:09.928615" elapsed="0.005711"/>
+</kw>
+<doc>Tests de connectivité WiFi pour appareil Android
+- Activation du WiFi
+- Désactivation du WiFi
+- Vérification de l'état via UI et ADB
+- Prend en charge les interfaces en français et en anglais</doc>
+<status status="PASS" start="2025-07-14T10:19:46.199036" elapsed="23.735290"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">smoke</stat>
+<stat pass="2" fail="0" skip="0">wifi</stat>
+</tag>
+<suite>
+<stat name="WiFiAndConnectivite" id="s1" pass="2" fail="0" skip="0">WiFiAndConnectivite</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-07-14T10:19:49.152123" level="WARN">Imported library 'C:\Users\bahae\Documents\PfeProject\test_cases\resource_monitor.py' contains no keywords.</msg>
+<msg time="2025-07-14T10:20:09.932636" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>

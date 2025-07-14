@@ -16,7 +16,7 @@ class ResourceMonitor(threading.Thread):
     def get_cpu_usage(self):
         try:
             output = subprocess.check_output(
-                "adb shell dumpsys cpuinfo",
+                "adb -s emulator-5554 shell dumpsys cpuinfo",
                 shell=True,
                 stderr=subprocess.STDOUT
             ).decode()
@@ -33,7 +33,7 @@ class ResourceMonitor(threading.Thread):
     def get_mem_usage(self):
         try:
             output = subprocess.check_output(
-                "adb shell dumpsys meminfo",
+                "adb -s emulator-5554 shell dumpsys meminfo",
                 shell=True,
                 stderr=subprocess.STDOUT
             ).decode()

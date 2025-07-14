@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-07-14T10:34:58.790843" rpa="false" schemaversion="5">
+<suite id="s1" name="MisesAJourAndReseau" source="C:\Users\bahae\Documents\PfeProject\test_cases\MisesAJourAndReseau.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-07-14T10:35:06.658877" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="f778531c-56df-41df-8bbf-ddbe87b8e4c9")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-07-14T10:35:01.608848" elapsed="5.050029"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:35:06.659875" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="f778531c-56df-41df-8bbf-ddbe87b8e4c9")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.658877" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:35:01.608848" elapsed="5.051027"/>
+</kw>
+<test id="s1-t1" name="Test Verfier Mise A Jour System" line="95">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-14T10:35:06.659875" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-1, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.659875" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-14T10:35:06.660874" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-1, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.659875" elapsed="0.000999"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.660874" elapsed="0.000531"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:35:06.661405" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.661405" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:35:06.662397" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.662397" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Vérifier Mise A Jour System">
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-07-14T10:35:06.711090" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-07-14T10:35:06.662397" elapsed="0.048693"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-07-14T10:35:06.711090" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'System_update': 'Mise à jour du système', 'System_update_check': 'Rechercher les mises à jour'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.711090" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-07-14T10:35:06.711090" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'System_update': 'Mise à jour du système', 'System_update_check': 'Rechercher les mises à jour'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.711090" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:35:06.662397" elapsed="0.048693"/>
+</kw>
+<kw name="Aller Dans Paramètres">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-07-14T10:35:06.712090" elapsed="0.000000"/>
+</return>
+<msg time="2025-07-14T10:35:06.712090" level="INFO">${setting} = Paramètres</msg>
+<var>${setting}</var>
+<arg>Setting</arg>
+<status status="PASS" start="2025-07-14T10:35:06.712090" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-07-14T10:35:07.009783" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<arg>${driver}</arg>
+<arg>${setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-07-14T10:35:06.713090" elapsed="0.296693"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-14T10:35:15.942650" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'System' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-14T10:35:07.009783" elapsed="8.933868"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:35:06.712090" elapsed="9.231561"/>
+</kw>
+<kw name="Aller Dans Mise A Jour">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-07-14T10:35:15.943651" elapsed="0.000000"/>
+</return>
+<msg time="2025-07-14T10:35:15.944650" level="INFO">${system} = Système</msg>
+<var>${system}</var>
+<arg>System</arg>
+<status status="PASS" start="2025-07-14T10:35:15.943651" elapsed="0.000999"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-07-14T10:35:16.967769" level="INFO">(0, 76, 550, 696)
+✅ 'Système' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${system}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-07-14T10:35:15.944650" elapsed="1.023119"/>
+</kw>
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-07-14T10:35:16.967769" elapsed="0.000000"/>
+</return>
+<msg time="2025-07-14T10:35:16.968770" level="INFO">${system_update} = Mise à jour du système</msg>
+<var>${system_update}</var>
+<arg>System_update</arg>
+<status status="PASS" start="2025-07-14T10:35:16.967769" elapsed="0.001001"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-07-14T10:36:07.663419" level="INFO">📌 Liste des applications détectées : ['Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Google', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+📌 First Home Page détectée : ['Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Google', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Confidentialité', 'Accessibilité', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+🔄 Swipe #2 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+🔄 Swipe #3 en cours...
+
+📌 Liste des applications détectées : ['Bluetooth', 'Réseau et Internet', 'Notifications', 'Son', 'Écran', 'Profils et comptes', 'Position', 'Mise à jour du système', 'Langues et saisie', 'Unités', 'Date et heure', 'Stockage']
+✅ Retour à la first home page !
+First Home Page détectée : ['Date et heure', 'Langues et saisie', 'Mise à jour du système', 'Stockage', 'Unités']
+ Mise à jour du système trouvé ! Appui sur le texte contenant 'Mise à jour du système'.</msg>
+<arg>${driver}</arg>
+<arg>${system_update}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-07-14T10:35:16.968770" elapsed="50.694649"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:35:15.943651" elapsed="51.720768"/>
+</kw>
+<kw name="Lancer Recherche Mise A Jour">
+<kw name="Get Localized Text">
+<return>
+<value>${LANG_DICT.${key}}</value>
+<status status="PASS" start="2025-07-14T10:36:07.664419" elapsed="0.000000"/>
+</return>
+<msg time="2025-07-14T10:36:07.665421" level="INFO">${system_update_check} = Rechercher les mises à jour</msg>
+<var>${system_update_check}</var>
+<arg>System_update_check</arg>
+<status status="PASS" start="2025-07-14T10:36:07.664419" elapsed="0.001002"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<msg time="2025-07-14T10:36:08.042913" level="INFO">Aucun élément trouvé avec le texte: Rechercher les mises à jour</msg>
+<arg>${driver}</arg>
+<arg>${system_update_check}</arg>
+<status status="PASS" start="2025-07-14T10:36:07.665421" elapsed="0.377492"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:36:07.664419" elapsed="0.378494"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:35:06.662397" elapsed="61.380516"/>
+</kw>
+<msg time="2025-07-14T10:36:08.042913" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-14T10:35:06.662397" elapsed="61.380516"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:36:08.043885" level="INFO">Test Test Verfier Mise A Jour System réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:36:08.042913" elapsed="0.000972"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-07-14T10:36:08.043885" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:36:08.042913" elapsed="0.000972"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:36:08.042913" elapsed="0.000972"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-07-14T10:35:06.662397" elapsed="61.381488"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-07-14T10:35:06.662397" elapsed="61.381488"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-07-14T10:36:08.043885" elapsed="0.000000"/>
+</if>
+<arg>Vérifier Mise A Jour System</arg>
+<arg>Test Verfier Mise A Jour System</arg>
+<status status="PASS" start="2025-07-14T10:35:06.661405" elapsed="61.382480"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:36:08.043885" elapsed="1.004994"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-14T10:36:09.048879" level="INFO">${cpu} = 64.95</msg>
+<msg time="2025-07-14T10:36:09.048879" level="INFO">${mem} = 2880.8365234375</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-14T10:36:09.048879" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-07-14T10:36:09.049878" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Verfier Mise A Jour System:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-07-14T10:36:09.048879" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:36:09.049878" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:36:09.049878" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-07-14T10:36:09.050877" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Verfier Mise A Jour System:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-07-14T10:36:09.049878" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-14T10:36:09.050877" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-14T10:36:09.050877" elapsed="0.000000"/>
+</kw>
+<doc>Verifies system update functionality
+- Navigates to system update section
+- Checks for available updates
+- Supports both French and English interfaces</doc>
+<status status="PASS" start="2025-07-14T10:35:06.659875" elapsed="62.391002"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-07-14T10:36:09.051877" elapsed="0.297945"/>
+</kw>
+<status status="PASS" start="2025-07-14T10:36:09.051877" elapsed="0.298472"/>
+</kw>
+<doc>Tests for system update verification
+- Verifies system update functionality
+- Supports both French and English interfaces</doc>
+<status status="PASS" start="2025-07-14T10:34:58.792400" elapsed="70.557949"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="MisesAJourAndReseau" id="s1" pass="1" fail="0" skip="0">MisesAJourAndReseau</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-07-14T10:35:01.606849" level="WARN">Imported library 'C:\Users\bahae\Documents\PfeProject\test_cases\resource_monitor.py' contains no keywords.</msg>
+</errors>
+</robot>
