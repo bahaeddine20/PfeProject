@@ -1569,6 +1569,7 @@ def set_location_viaAdb(device_id, x, y):
         "latitude": y
     }
 
+
     try:
         response = requests.post(url_host + "/setlocation", json=payload)
         if response.status_code == 200:
