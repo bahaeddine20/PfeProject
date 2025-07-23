@@ -98,7 +98,7 @@ start_emulator_mobile:
         Write-Host "✅ Un émulateur est déjà en cours d'exécution."
       }
   rules:
-    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile]\]/'
+    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile\]/'
       when: on_success
     - when: never
 
@@ -118,7 +118,7 @@ wait_emulator_ready_mobile:
   needs:
     - start_emulator_mobile
   rules:
-    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile]\]/'
+    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile\]/'
       when: on_success
     - when: never
 
