@@ -48,74 +48,29 @@ start_emulator:
     SHELL: "powershell"
   script:
     - $emulator_port = "emulator-5554"
-    # Vérifier si l'émulateur est déjà fonctionnel
-    - $device_state = adb devices | Where-Object { $_ -match "$emulator_port\s+device" }
-    - if (-not $device_state) {
-        # Tuer les processus bloqués
-        - Get-Process "emulator*" -ErrorAction SilentlyContinue | Stop-Process -Force
-        - adb kill-server
-        - Start-Sleep -Seconds 2
-        
-        Write-Host "✅ Lancement de l'émulateur Automotive..."
-        - $process = Start-Process -FilePath "emulator" `
-            -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" `
-            -WindowStyle Minimized `
-            -PassThru
-        
-        # Vérifier que le processus a démarré
-        - if (-not $process.Id) {
-            Write-Host "❌ Échec du démarrage de l'émulateur"
-            exit 1
-          }
-      } else {
-        Write-Host "✅ Émulateur Automotive déjà en cours d'exécution"
-      }
-  rules:
-    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
-      when: on_success
-    - when: never
-
-wait_emulator_ready:
-  stage: start_emulator
-  tags:
-    - python-shell
-  variables:
-    SHELL: "powershell"
-  script:
-    - $emulator_port = "emulator-5554"
-    - $timeout = 300  # 5 minutes timeout
-    - $counter = 0
     - |
-        Write-Host "⏳ Attente de l'émulateur Automotive..."
-        while ($counter -lt $timeout) {
-            # Vérifier la connexion ADB
-            $device = adb devices | Select-String "$emulator_port"
-            if (-not $device) {
-                Write-Host "⚠️ Émulateur non détecté, attente..."
-                Start-Sleep -Seconds 5
-                $counter += 5
-                continue
-            }
+        # Vérifier si l'émulateur est déjà fonctionnel
+        $device_state = adb devices | Where-Object { $_ -match "$emulator_port\s+device" }
+        if (-not $device_state) {
+            # Tuer les processus bloqués
+            Get-Process "emulator*" -ErrorAction SilentlyContinue | Stop-Process -Force
+            adb kill-server
+            Start-Sleep -Seconds 2
             
-            # Vérifier le statut boot_completed
-            $boot_status = adb -s $emulator_port shell "getprop sys.boot_completed" 2>$null
-            if (($boot_status -eq "1") -and ($device -match "device")) {
-                Write-Host "✅ Émulateur Automotive prêt"
-                exit 0
-            }
+            Write-Host "✅ Lancement de l'émulateur Automotive..."
+            $process = Start-Process -FilePath "emulator" `
+                -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" `
+                -WindowStyle Minimized `
+                -PassThru
             
-            Start-Sleep -Seconds 5
-            $counter += 5
-            Write-Host "⌛ Statut: $boot_status | Compteur: $counter/$timeout"
+            # Vérifier que le processus a démarré
+            if (-not $process.Id) {
+                Write-Host "❌ Échec du démarrage de l'émulateur"
+                exit 1
+            }
+        } else {
+            Write-Host "✅ Émulateur Automotive déjà en cours d'exécution"
         }
-        
-        # Gestion du timeout
-        Write-Host "❌ Timeout: L'émulateur Automotive n'a pas démarré"
-        adb devices
-        Get-Process "emulator*" | Stop-Process -Force
-        exit 1
-  needs:
-    - start_emulator
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
       when: on_success
@@ -129,74 +84,29 @@ start_emulator_mobile:
     SHELL: "powershell"
   script:
     - $emulator_port = "emulator-5556"
-    # Vérifier si l'émulateur est déjà fonctionnel
-    - $device_state = adb devices | Where-Object { $_ -match "$emulator_port\s+device" }
-    - if (-not $device_state) {
-        # Tuer les processus bloqués
-        - Get-Process "emulator*" -ErrorAction SilentlyContinue | Stop-Process -Force
-        - adb kill-server
-        - Start-Sleep -Seconds 2
-        
-        Write-Host "✅ Lancement de l'émulateur Mobile..."
-        - $process = Start-Process -FilePath "emulator" `
-            -ArgumentList "-avd Medium_Phone_API_35" `
-            -WindowStyle Minimized `
-            -PassThru
-        
-        # Vérifier que le processus a démarré
-        - if (-not $process.Id) {
-            Write-Host "❌ Échec du démarrage de l'émulateur"
-            exit 1
-          }
-      } else {
-        Write-Host "✅ Émulateur Mobile déjà en cours d'exécution"
-      }
-  rules:
-    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile\]/'
-      when: on_success
-    - when: never
-
-wait_emulator_ready_mobile:
-  stage: start_emulator_mobile
-  tags:
-    - python-shell
-  variables:
-    SHELL: "powershell"
-  script:
-    - $emulator_port = "emulator-5556"
-    - $timeout = 300  # 5 minutes timeout
-    - $counter = 0
     - |
-        Write-Host "⏳ Attente de l'émulateur Mobile..."
-        while ($counter -lt $timeout) {
-            # Vérifier la connexion ADB
-            $device = adb devices | Select-String "$emulator_port"
-            if (-not $device) {
-                Write-Host "⚠️ Émulateur non détecté, attente..."
-                Start-Sleep -Seconds 5
-                $counter += 5
-                continue
-            }
+        # Vérifier si l'émulateur est déjà fonctionnel
+        $device_state = adb devices | Where-Object { $_ -match "$emulator_port\s+device" }
+        if (-not $device_state) {
+            # Tuer les processus bloqués
+            Get-Process "emulator*" -ErrorAction SilentlyContinue | Stop-Process -Force
+            adb kill-server
+            Start-Sleep -Seconds 2
             
-            # Vérifier le statut boot_completed
-            $boot_status = adb -s $emulator_port shell "getprop sys.boot_completed" 2>$null
-            if (($boot_status -eq "1") -and ($device -match "device")) {
-                Write-Host "✅ Émulateur Mobile prêt"
-                exit 0
-            }
+            Write-Host "✅ Lancement de l'émulateur Mobile..."
+            $process = Start-Process -FilePath "emulator" `
+                -ArgumentList "-avd Medium_Phone_API_35" `
+                -WindowStyle Minimized `
+                -PassThru
             
-            Start-Sleep -Seconds 5
-            $counter += 5
-            Write-Host "⌛ Statut: $boot_status | Compteur: $counter/$timeout"
+            # Vérifier que le processus a démarré
+            if (-not $process.Id) {
+                Write-Host "❌ Échec du démarrage de l'émulateur"
+                exit 1
+            }
+        } else {
+            Write-Host "✅ Émulateur Mobile déjà en cours d'exécution"
         }
-        
-        # Gestion du timeout
-        Write-Host "❌ Timeout: L'émulateur Mobile n'a pas démarré"
-        adb devices
-        Get-Process "emulator*" | Stop-Process -Force
-        exit 1
-  needs:
-    - start_emulator_mobile
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile\]/'
       when: on_success
