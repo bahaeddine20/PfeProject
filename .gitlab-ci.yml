@@ -40,37 +40,47 @@ deploy:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
     - when: never
+
 start_emulator:
   stage: start_emulator
   tags:
     - python-shell
   variables:
     SHELL: "powershell"
-    # Define the Android Virtual Device (AVD) name as a CI/CD variable
     AVD_NAME: "Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2"
-    # Define the path to the Android SDK tools. Adjust if necessary.
-    # It's best practice to set ANDROID_SDK_ROOT as a system environment variable on the runner.
-    EMULATOR_PATH: "$env:ANDROID_SDK_ROOT\\emulator\\emulator.exe"
-    ADB_PATH: "$env:ANDROID_SDK_ROOT\\platform-tools\\adb.exe"
+    # ANDROID_SDK_ROOT should be set in GitLab's CI/CD settings or the runner's config
   script:
     - |
       # Use PowerShell for the script logic
       Write-Host "--- Starting Android Emulator Setup ---"
       
-      # Configuration
+      # --- Corrected Configuration ---
+      # Construct paths at runtime using PowerShell's Join-Path for robustness
       $avdName = $env:AVD_NAME
-      $emulatorPath = $env:EMULATOR_PATH
-      $adbPath = $env:ADB_PATH
-      $bootTimeoutSeconds = 360 # 6-minute timeout for the emulator to boot
+      $emulatorPath = Join-Path $env:ANDROID_SDK_ROOT "emulator\emulator.exe"
+      $adbPath = Join-Path $env:ANDROID_SDK_ROOT "platform-tools\adb.exe"
+      $bootTimeoutSeconds = 360 # 6-minute timeout
       
+      # Verify that the paths are correct before proceeding
+      Write-Host "ADB Path: $adbPath"
+      Write-Host "Emulator Path: $emulatorPath"
+      if (-not (Test-Path $adbPath)) {
+        Write-Host "❌ ERROR: adb.exe not found at the specified path. Check ANDROID_SDK_ROOT."
+        exit 1
+      }
+      if (-not (Test-Path $emulatorPath)) {
+        Write-Host "❌ ERROR: emulator.exe not found at the specified path. Check ANDROID_SDK_ROOT."
+        exit 1
+      }
+
       # Check if the emulator is already running to avoid conflicts
       $existingEmulator = & $adbPath devices | Select-String "emulator-5554"
       if ($existingEmulator) {
         Write-Host "✅ Emulator 'emulator-5554' is already running. Proceeding..."
       } else {
+        # (The rest of your script remains the same)
         Write-Host "🚀 No running emulator detected. Launching AVD: $avdName"
       
-        # Define arguments for the emulator using a hashtable for readability (splatting)
         $emulatorArgs = @{
             FilePath = $emulatorPath
             ArgumentList = @(
@@ -81,11 +91,9 @@ start_emulator:
                 "-netdelay", "none",
                 "-netspeed", "full"
             )
-            # Use -PassThru to get the process object, which can be used to kill it on failure
             PassThru = $true 
         }
       
-        # Launch the emulator as a background process using Start-Process
         try {
             $emulatorProcess = Start-Process @emulatorArgs -ErrorAction Stop
             Write-Host "✅ Emulator process started with PID: $($emulatorProcess.Id)"
@@ -101,7 +109,6 @@ start_emulator:
         $booted = $false
       
         while (((Get-Date) - $startTime).TotalSeconds -lt $bootTimeoutSeconds) {
-            # Check for the system boot completed property
             $bootCompleted = & $adbPath -s emulator-5554 shell getprop sys.boot_completed 2>$null
             if ($bootCompleted -and $bootCompleted.Trim() -eq '1') {
                 Write-Host "✅ Emulator is fully booted!"
@@ -109,7 +116,6 @@ start_emulator:
                 break
             }
       
-            # Check if the process has exited unexpectedly
             if ($emulatorProcess.HasExited) {
                 Write-Host "❌ ERROR: Emulator process exited prematurely."
                 exit 1
@@ -122,17 +128,14 @@ start_emulator:
         if (-not $booted) {
             Write-Host ""
             Write-Host "❌ ERROR: Timeout reached while waiting for the emulator to boot."
-            # Attempt to gracefully stop the hung process before failing the job
             Stop-Process -Id $emulatorProcess.Id -Force -ErrorAction SilentlyContinue
             exit 1
         }
       }
       
-      # Wait a few extra seconds for all services to stabilize
       Write-Host "✅ Waiting for system services to stabilize..."
       Start-Sleep -Seconds 10
       
-      # At this point, the emulator is ready for testing
       Write-Host "--- Emulator Ready for Tests ---"
       & $adbPath devices
   rules:
