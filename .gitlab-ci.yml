@@ -89,7 +89,7 @@ start_emulator_mobile:
   variables:
     SHELL: "powershell"
   script:
-    - $devices = adb devices | Select-String "emulator-5554"
+    - $devices = adb devices | Select-String "emulator-5556"
     - if (-not $devices) {
         Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
         Start-Process -FilePath "emulator" -ArgumentList "-avd Medium_Phone_API_35" -WindowStyle Minimized;
