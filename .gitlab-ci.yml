@@ -40,6 +40,7 @@ deploy:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
     - when: never
+
 start_emulator:
   stage: start_emulator
   tags:
@@ -75,7 +76,6 @@ start_emulator:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
       when: on_success
     - when: never
-
 start_emulator_mobile:
   stage: start_emulator_mobile
   tags:
@@ -93,7 +93,7 @@ start_emulator_mobile:
             adb kill-server
             Start-Sleep -Seconds 2
             
-            Write-Host "✅ Lancement de l'émulateur Mobile..."
+            Write-Host "✅ Lancement de l'émulateur Automotive..."
             $process = Start-Process -FilePath "emulator" `
                 -ArgumentList "-avd Medium_Phone_API_35" `
                 -WindowStyle Minimized `
@@ -105,12 +105,13 @@ start_emulator_mobile:
                 exit 1
             }
         } else {
-            Write-Host "✅ Émulateur Mobile déjà en cours d'exécution"
+            Write-Host "✅ Émulateur Automotive déjà en cours d'exécution"
         }
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile\]/'
       when: on_success
     - when: never
+
 run_flask_extern:
   stage: run
   tags:
