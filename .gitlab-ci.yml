@@ -46,6 +46,12 @@ start_emulator:
     - python-shell
   variables:
     SHELL: "powershell"
+    # Define the Android Virtual Device (AVD) name as a CI/CD variable
+    AVD_NAME: "Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2"
+    # Define the path to the Android SDK tools. Adjust if necessary.
+    # It's best practice to set ANDROID_SDK_ROOT as a system environment variable on the runner.
+    EMULATOR_PATH: "$env:ANDROID_SDK_ROOT\\emulator\\emulator.exe"
+    ADB_PATH: "$env:ANDROID_SDK_ROOT\\platform-tools\\adb.exe"
   script:
     - |
       # Use PowerShell for the script logic
