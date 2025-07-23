@@ -81,6 +81,7 @@ wait_emulator_ready:
       when: on_success
     - when: never
 
+
 start_emulator_mobile:
   stage: start_emulator_mobile
   tags:
@@ -88,28 +89,40 @@ start_emulator_mobile:
   variables:
     SHELL: "powershell"
   script:
-    # Vérifier si un émulateur est déjà ouvert
-    - $devices = adb devices | Select-String "emulator-5556" | ForEach-Object { $_.ToString() }
+    - $devices = adb devices | Select-String "emulator-5554"
     - if (-not $devices) {
-        Write-Host "✅ Aucun émulateur mobile détecté, lancement en cours...";
-        Start-Process -FilePath "emulator" -ArgumentList "-avd Medium_Phone_API_35" -NoNewWindow;
-        Write-Host "⏳ Attente du lancement de l'émulateur mobile...";
-        do {
-          Start-Sleep -Seconds 5
-          $devices = adb devices | Select-String "emulator-5556"
-        } while (-not $devices)
+        Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
+        Start-Process -FilePath "emulator" -ArgumentList "-avd Medium_Phone_API_35" -WindowStyle Minimized;
+        Write-Host "✅ Emulateur lancé"
       } else {
-        Write-Host "✅ Un émulateur mobile est déjà en cours d'exécution."
+        Write-Host "✅ Un émulateur est déjà en cours d'exécution."
       }
-
-    # Attendre qu’il soit complètement prêt
-    - adb -s emulator-5556 wait-for-device
-    - while ((adb -s emulator-5556 shell getprop sys.boot_completed).Trim() -ne "1") { Start-Sleep -Seconds 5 }
-
   rules:
-    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile\]/'
+    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile]\]/'
       when: on_success
     - when: never
+
+wait_emulator_ready_mobile:
+  stage: start_emulator_mobile
+  tags:
+    - python-shell
+  variables:
+    SHELL: "powershell"
+  script:
+    - Write-Host "⏳ Attente de l'émulateur..."
+    - adb -s emulator-5556 wait-for-device
+    - while ((adb -s emulator-5556 shell getprop sys.boot_completed).Trim() -ne "1") {
+        Start-Sleep -Seconds 5
+      }
+    - Write-Host "✅ Emulateur prêt"
+  needs:
+    - start_emulator_mobile
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile]\]/'
+      when: on_success
+    - when: never
+
+
 
 run_flask_extern:
   stage: run
