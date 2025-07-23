@@ -51,8 +51,8 @@ start_emulator:
     - $devices = adb devices | Select-String "emulator-5554"
     - if (-not $devices) {
         Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
-        Start-Process "emulator" -ArgumentList @("-avd", "Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2") -NoNewWindow;
-        Write-Host "⏳ Attente du lancement de l'émulateur...";
+        $avdName = "Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2"
+        Start-Process -FilePath "emulator" -ArgumentList "-avd", $avdName -NoNewWindow        Write-Host "⏳ Attente du lancement de l'émulateur...";
         do {
           Start-Sleep -Seconds 5;
           $devices = adb devices | Select-String "emulator-5554";
