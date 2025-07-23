@@ -41,7 +41,6 @@ deploy:
       when: on_success
     - when: never
 
-
 start_emulator:
   stage: start_emulator
   tags:
@@ -50,14 +49,14 @@ start_emulator:
     SHELL: "powershell"
   script:
     # Vérifier si un émulateur est déjà ouvert
-    - $devices = adb devices | Select-String "emulator-5554" | ForEach-Object { $_.ToString() }
+    - $devices = adb devices | Select-String "emulator-5554"
     - if (-not $devices) {
         Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
         Start-Process -FilePath "emulator" -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" -NoNewWindow;
         Write-Host "⏳ Attente du lancement de l'émulateur...";
         do {
-          Start-Sleep -Seconds 5
-          $devices = adb devices | Select-String "emulator-5554"
+          Start-Sleep -Seconds 5;
+          $devices = adb devices | Select-String "emulator-5554";
         } while (-not $devices)
       } else {
         Write-Host "✅ Un émulateur est déjà en cours d'exécution."
@@ -65,7 +64,9 @@ start_emulator:
 
     # Attendre qu’il soit complètement prêt
     - adb -s emulator-5554 wait-for-device
-    - while ((adb -s emulator-5554 shell getprop sys.boot_completed).Trim() -ne "1") { Start-Sleep -Seconds 5 }
+    - while ((adb -s emulator-5554 shell getprop sys.boot_completed).Trim() -ne "1") {
+        Start-Sleep -Seconds 5
+      }
 
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
