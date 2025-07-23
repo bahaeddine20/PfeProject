@@ -178,51 +178,49 @@ run_flask_and_test:
   tags:
     - python-shell
   variables:
-    SHELL: "powershell"  # Force l'utilisation de PowerShell Core
-
+    SHELL: "powershell"
 
   before_script:
     - cd ServeurFlaskHost
     - python -m venv venv
-    - ./venv/Scripts/Activate.ps1  # Format correct pour pwsh
+    - ./venv/Scripts/Activate.ps1
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
     - pip install robotframework requests
 
   script:
-    # Démarrer Flask en arrière-plan
-    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.l
+    # Démarrer les émulateurs et Flask
+    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
+    - Start-Sleep -Seconds 15  # Attendre que l'émulateur auto démarre
+
     - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
+    - Start-Sleep -Seconds 15  # Attendre que l'émulateur mobile démarre
 
     - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
     - $flaskProcess.Id | Out-File flask_pid.txt
-    - Start-Sleep -Seconds 10
+    - Start-Sleep -Seconds 20  # Attendre que Flask démarre
 
-    # Exécuter les tests (reste dans le même répertoire)
-    - docker exec pfeproject-flask-1 python execution.py --list    FonctionnaliteBluetooth.robot
+    # Exécuter les tests
+    - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteBluetooth.robot
 
-
-    # Arrêter Flask proprement
+    # Arrêter les processus
     - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
-    - Stop-Process -Id $emulateurautoProcess.Id -Force -ErrorAction SilentlyContinue
     - Stop-Process -Id $emulateurProcess.Id -Force -ErrorAction SilentlyContinue
-
+    - Stop-Process -Id $emulateurautoProcess.Id -Force -ErrorAction SilentlyContinue
 
   retry: 2
-
 
   artifacts:
     paths:
       - ServeurFlaskHost/resultats
-      - ServeurFlaskHost/flask.log
-      - ServeurFlaskHost/flask_error.log  # Pour le débogage
+      - ServeurFlaskHost/*.log  # Récupère tous les fichiers .log
+      - ServeurFlaskHost/flask_pid.txt
     expire_in: 1 week
+
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[run2\]/'
       when: on_success
     - when: never
-
-
 
 
 
