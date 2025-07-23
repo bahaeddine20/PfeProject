@@ -48,29 +48,18 @@ start_emulator:
   variables:
     SHELL: "powershell"
   script:
-    - try {
-        $devices = adb devices | Select-String "emulator-5554"
-        if (-not $devices) {
-          Write-Host "✅ Aucun émulateur détecté, lancement en cours..."
-          Start-Process -FilePath "emulator" -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" -WindowStyle Minimized
-          Start-Sleep -Seconds 5
-          # Vérifier si le processus est bien lancé
-          if (-not (Get-Process emulator -ErrorAction SilentlyContinue)) {
-            throw "❌ L'émulateur n'a pas démarré correctement."
-          }
-          Write-Host "✅ Emulateur lancé"
-        } else {
-          Write-Host "✅ Un émulateur est déjà en cours d'exécution."
-        }
-      } catch {
-        Write-Host $_.Exception.Message
-        exit 1
+    - $devices = adb devices | Select-String "emulator-5554"
+    - if (-not $devices) {
+        Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
+        Start-Process -FilePath "emulator" -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" -WindowStyle Minimized;
+        Write-Host "✅ Emulateur lancé"
+      } else {
+        Write-Host "✅ Un émulateur est déjà en cours d'exécution."
       }
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
       when: on_success
     - when: never
-
 
 wait_emulator_ready:
   stage: start_emulator
@@ -186,7 +175,6 @@ run_flask_and_test:
     - python-shell
   variables:
     SHELL: "powershell"  # Force l'utilisation de PowerShell Core
-
 
 
   before_script:
