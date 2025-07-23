@@ -48,26 +48,34 @@ start_emulator:
   variables:
     SHELL: "powershell"
   script:
-    # Vérifier si un émulateur est déjà ouvert
     - $devices = adb devices | Select-String "emulator-5554"
     - if (-not $devices) {
         Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
-        Start-Process -FilePath "emulator" -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" -NoNewWindow;
-        Write-Host "⏳ Attente du lancement de l'émulateur...";
-        do {
-          Start-Sleep -Seconds 5;
-          $devices = adb devices | Select-String "emulator-5554";
-        } while (-not $devices)
+        Start-Process -FilePath "emulator" -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" -WindowStyle Minimized;
+        Write-Host "✅ Emulateur lancé"
       } else {
         Write-Host "✅ Un émulateur est déjà en cours d'exécution."
       }
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
+      when: on_success
+    - when: never
 
-    # Attendre qu’il soit complètement prêt
+wait_emulator_ready:
+  stage: start_emulator
+  tags:
+    - python-shell
+  variables:
+    SHELL: "powershell"
+  script:
+    - Write-Host "⏳ Attente de l'émulateur..."
     - adb -s emulator-5554 wait-for-device
     - while ((adb -s emulator-5554 shell getprop sys.boot_completed).Trim() -ne "1") {
         Start-Sleep -Seconds 5
       }
-
+    - Write-Host "✅ Emulateur prêt"
+  needs:
+    - start_emulator
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
       when: on_success
