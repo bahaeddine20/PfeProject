@@ -1,6 +1,8 @@
 stages:
   - build
   - deploy
+  - start_emulator
+  - start_emulator_mobile
   - run
   - run2
   - test
@@ -38,6 +40,68 @@ deploy:
     - if: '$CI_COMMIT_MESSAGE =~ /\[deploy\]/'
       when: on_success
     - when: never
+
+
+start_emulator:
+  stage: start_emulator
+  tags:
+    - python-shell
+  variables:
+    SHELL: "powershell"
+  script:
+    # Vérifier si un émulateur est déjà ouvert
+    - $devices = adb devices | Select-String "emulator-5554" | ForEach-Object { $_.ToString() }
+    - if (-not $devices) {
+        Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
+        Start-Process -FilePath "emulator" -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" -NoNewWindow;
+        Write-Host "⏳ Attente du lancement de l'émulateur...";
+        do {
+          Start-Sleep -Seconds 5
+          $devices = adb devices | Select-String "emulator-5554"
+        } while (-not $devices)
+      } else {
+        Write-Host "✅ Un émulateur est déjà en cours d'exécution."
+      }
+
+    # Attendre qu’il soit complètement prêt
+    - adb -s emulator-5554 wait-for-device
+    - while ((adb -s emulator-5554 shell getprop sys.boot_completed).Trim() -ne "1") { Start-Sleep -Seconds 5 }
+
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
+      when: on_success
+    - when: never
+
+start_emulator_mobile:
+  stage: start_emulator_mobile
+  tags:
+    - python-shell
+  variables:
+    SHELL: "powershell"
+  script:
+    # Vérifier si un émulateur est déjà ouvert
+    - $devices = adb devices | Select-String "emulator-5556" | ForEach-Object { $_.ToString() }
+    - if (-not $devices) {
+        Write-Host "✅ Aucun émulateur mobile détecté, lancement en cours...";
+        Start-Process -FilePath "emulator" -ArgumentList "-avd Medium_Phone_API_35" -NoNewWindow;
+        Write-Host "⏳ Attente du lancement de l'émulateur mobile...";
+        do {
+          Start-Sleep -Seconds 5
+          $devices = adb devices | Select-String "emulator-5556"
+        } while (-not $devices)
+      } else {
+        Write-Host "✅ Un émulateur mobile est déjà en cours d'exécution."
+      }
+
+    # Attendre qu’il soit complètement prêt
+    - adb -s emulator-5556 wait-for-device
+    - while ((adb -s emulator-5556 shell getprop sys.boot_completed).Trim() -ne "1") { Start-Sleep -Seconds 5 }
+
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /\[emulator_mobile\]/'
+      when: on_success
+    - when: never
+
 run_flask_extern:
   stage: run
   tags:

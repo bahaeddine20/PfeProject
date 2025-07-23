@@ -1556,6 +1556,44 @@ def get_location_viaAdb(device_id):
         return None, None
 
 
+def get_location_viaAdb(device_id):
+    # Exécuter la commande adb pour obtenir les données de localisation
+    adb_command = ["adb", "-s", device_id, "shell", "dumpsys", "location"]
+    result = subprocess.run(adb_command, capture_output=True, text=True)
+
+    # Modèle Regex pour extraire la latitude et la longitude de la sortie
+    location_pattern = r"Location\[gps (-?\d+\.\d+),(-?\d+\.\d+)"
+
+    # Chercher la latitude et la longitude dans la sortie de la commande
+    match = re.search(location_pattern, result.stdout)
+
+    if match:
+        latitude = match.group(1)
+        longitude = match.group(2)
+        return float(latitude), float(longitude)
+    else:
+        return None, None
+
+
+def get_location_viaAdb(device_id):
+    # Exécuter la commande adb pour obtenir les données de localisation
+    adb_command = ["adb", "-s", device_id, "shell", "dumpsys", "location"]
+    result = subprocess.run(adb_command, capture_output=True, text=True)
+
+    # Modèle Regex pour extraire la latitude et la longitude de la sortie
+    location_pattern = r"Location\[gps (-?\d+\.\d+),(-?\d+\.\d+)"
+
+    # Chercher la latitude et la longitude dans la sortie de la commande
+    match = re.search(location_pattern, result.stdout)
+
+    if match:
+        latitude = match.group(1)
+        longitude = match.group(2)
+        return float(latitude), float(longitude)
+    else:
+        return None, None
+
+
 import subprocess
 
 
