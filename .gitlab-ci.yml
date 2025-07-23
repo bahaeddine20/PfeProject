@@ -47,97 +47,27 @@ start_emulator:
     - python-shell
   variables:
     SHELL: "powershell"
-    AVD_NAME: "Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2"
-    # ANDROID_SDK_ROOT should be set in GitLab's CI/CD settings or the runner's config
   script:
-    - |
-      # Use PowerShell for the script logic
-      Write-Host "--- Starting Android Emulator Setup ---"
-      
-      # --- Corrected Configuration ---
-      # Construct paths at runtime using PowerShell's Join-Path for robustness
-      $avdName = $env:AVD_NAME
-      $emulatorPath = Join-Path $env:ANDROID_SDK_ROOT "emulator\emulator.exe"
-      $adbPath = Join-Path $env:ANDROID_SDK_ROOT "platform-tools\adb.exe"
-      $bootTimeoutSeconds = 360 # 6-minute timeout
-      
-      # Verify that the paths are correct before proceeding
-      Write-Host "ADB Path: $adbPath"
-      Write-Host "Emulator Path: $emulatorPath"
-      if (-not (Test-Path $adbPath)) {
-        Write-Host "❌ ERROR: adb.exe not found at the specified path. Check ANDROID_SDK_ROOT."
-        exit 1
-      }
-      if (-not (Test-Path $emulatorPath)) {
-        Write-Host "❌ ERROR: emulator.exe not found at the specified path. Check ANDROID_SDK_ROOT."
-        exit 1
+    # Vérifier si un émulateur est déjà ouvert
+    - $devices = adb devices | Select-String "emulator-5554"
+    - if (-not $devices) {
+        Write-Host "✅ Aucun émulateur détecté, lancement en cours...";
+        Start-Process -FilePath "emulator" -ArgumentList "-avd Automotive_1408p_landscape_with_Google_Play_API_34-ext9_2" -NoNewWindow;
+        Write-Host "⏳ Attente du lancement de l'émulateur...";
+        do {
+          Start-Sleep -Seconds 5;
+          $devices = adb devices | Select-String "emulator-5554";
+        } while (-not $devices)
+      } else {
+        Write-Host "✅ Un émulateur est déjà en cours d'exécution."
       }
 
-      # Check if the emulator is already running to avoid conflicts
-      $existingEmulator = & $adbPath devices | Select-String "emulator-5554"
-      if ($existingEmulator) {
-        Write-Host "✅ Emulator 'emulator-5554' is already running. Proceeding..."
-      } else {
-        # (The rest of your script remains the same)
-        Write-Host "🚀 No running emulator detected. Launching AVD: $avdName"
-      
-        $emulatorArgs = @{
-            FilePath = $emulatorPath
-            ArgumentList = @(
-                "-avd", $avdName,
-                "-no-window",
-                "-no-snapshot",
-                "-no-boot-anim",
-                "-netdelay", "none",
-                "-netspeed", "full"
-            )
-            PassThru = $true 
-        }
-      
-        try {
-            $emulatorProcess = Start-Process @emulatorArgs -ErrorAction Stop
-            Write-Host "✅ Emulator process started with PID: $($emulatorProcess.Id)"
-        } catch {
-            Write-Host "❌ ERROR: Failed to start the emulator process."
-            Write-Host $_.Exception.Message
-            exit 1
-        }
-      
-        # --- Robust Wait Loop ---
-        Write-Host "⏳ Waiting for emulator to fully boot (Timeout: $bootTimeoutSeconds seconds)..."
-        $startTime = Get-Date
-        $booted = $false
-      
-        while (((Get-Date) - $startTime).TotalSeconds -lt $bootTimeoutSeconds) {
-            $bootCompleted = & $adbPath -s emulator-5554 shell getprop sys.boot_completed 2>$null
-            if ($bootCompleted -and $bootCompleted.Trim() -eq '1') {
-                Write-Host "✅ Emulator is fully booted!"
-                $booted = $true
-                break
-            }
-      
-            if ($emulatorProcess.HasExited) {
-                Write-Host "❌ ERROR: Emulator process exited prematurely."
-                exit 1
-            }
-      
-            Start-Sleep -Seconds 5
-            Write-Host "." -NoNewline
-        }
-      
-        if (-not $booted) {
-            Write-Host ""
-            Write-Host "❌ ERROR: Timeout reached while waiting for the emulator to boot."
-            Stop-Process -Id $emulatorProcess.Id -Force -ErrorAction SilentlyContinue
-            exit 1
-        }
+    # Attendre qu’il soit complètement prêt
+    - adb -s emulator-5554 wait-for-device
+    - while ((adb -s emulator-5554 shell getprop sys.boot_completed).Trim() -ne "1") {
+        Start-Sleep -Seconds 5
       }
-      
-      Write-Host "✅ Waiting for system services to stabilize..."
-      Start-Sleep -Seconds 10
-      
-      Write-Host "--- Emulator Ready for Tests ---"
-      & $adbPath devices
+
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ /\[emulator\]/'
       when: on_success
