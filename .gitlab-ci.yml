@@ -191,8 +191,8 @@ run_flask_and_test:
 
   script:
     # Start emulators and Flask
-    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
-    - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
+    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow
+    - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow
     - pip install -r requirements.txt
     - pip install robotframework requests
     - python -m pip install --upgrade pip
@@ -202,6 +202,12 @@ run_flask_and_test:
 
     # Execute tests
     - docker exec pfeproject-flask-1 python execution.py --list InstallationApplications.robot
+
+
+      # Arrêter les processus
+    - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
+    - Stop-Process -Id $emulateurProcess.Id -Force -ErrorAction SilentlyContinue
+    - Stop-Process -Id $emulateurautoProcess.Id -Force -ErrorAction SilentlyContinue
 
     # Proper emulator shutdown with error handling
     - |
@@ -223,11 +229,7 @@ run_flask_and_test:
           }
         }
       }
-      # Arrêter les processus
-    - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
-    - Stop-Process -Id $emulateurProcess.Id -Force -ErrorAction SilentlyContinue
-    - Stop-Process -Id $emulateurautoProcess.Id -Force -ErrorAction SilentlyContinue
-  retry: 2
+
 
   artifacts:
     paths:
