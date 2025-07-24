@@ -181,7 +181,14 @@ run_flask_and_test:
     SHELL: "powershell"
 
   before_script:
+
     - cd ServeurFlaskHost
+    # Démarrer les émulateurs et Flask
+    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
+
+    - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
+    - Start-Sleep -Seconds 15  # Attendre que l'émulateur mobile démarre
+
     - python -m venv venv
     - ./venv/Scripts/Activate.ps1
     - python -m pip install --upgrade pip
@@ -189,12 +196,6 @@ run_flask_and_test:
     - pip install robotframework requests
 
   script:
-    # Démarrer les émulateurs et Flask
-    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
-    - Start-Sleep -Seconds 15  # Attendre que l'émulateur auto démarre
-
-    - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
-    - Start-Sleep -Seconds 15  # Attendre que l'émulateur mobile démarre
 
     - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
     - $flaskProcess.Id | Out-File flask_pid.txt
