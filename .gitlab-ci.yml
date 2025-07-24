@@ -27,8 +27,6 @@ build:
       when: on_success
     - when: never
 
-
-
 deploy:
   stage: deploy
   tags:
@@ -183,26 +181,22 @@ run_flask_and_test:
     SHELL: "powershell"
 
   before_script:
-
     - cd ServeurFlaskHost
-    # Démarrer les émulateurs et Flask
-
     - python -m venv venv
     - ./venv/Scripts/Activate.ps1
     - python -m pip install --upgrade pip
-    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
-
-    - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
-    - Start-Sleep -Seconds 15  # Attendre que l'émulateur mobile démarre
-
     - pip install -r requirements.txt
     - pip install robotframework requests
 
   script:
+    # Démarrer les émulateurs et Flask
+    - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
+
+    - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
 
     - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
     - $flaskProcess.Id | Out-File flask_pid.txt
-    - Start-Sleep -Seconds 20  # Attendre que Flask démarre
+    - Start-Sleep -Seconds 60  # Attendre que Flask démarre
 
     # Exécuter les tests
     - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteBluetooth.robot
