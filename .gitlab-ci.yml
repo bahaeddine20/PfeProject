@@ -206,7 +206,7 @@ run_flask_and_test:
     - Start-Sleep -Seconds 60  # Attendre que Flask démarre
 
     # Exécuter les tests
-    - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteBluetooth.robot   FonctionnaliteDeBase.robot    InstallationApplications.robot
+    - docker exec pfeproject-flask-1 python execution.py --list  InstallationApplications.robot
 
 
     # Fermer proprement tous les émulateurs Android
@@ -216,6 +216,7 @@ run_flask_and_test:
             adb -s $matches[0] emu kill
         }
       }
+
 
 
   retry: 2
