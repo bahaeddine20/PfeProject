@@ -177,7 +177,6 @@ run_tests:
     - if: '$CI_COMMIT_MESSAGE =~ /\[test\]/'
       when: on_success
     - when: never
-
 run_flask_and_test:
   stage: run2
   tags:
@@ -185,45 +184,45 @@ run_flask_and_test:
   variables:
     SHELL: "powershell"
 
-
   before_script:
     - cd ServeurFlaskHost
     - python -m venv venv
     - ./venv/Scripts/Activate.ps1
 
-
   script:
-    # Démarrer les émulateurs et Flask
+    # Start emulators and Flask
     - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
-
     - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
     - pip install -r requirements.txt
     - pip install robotframework requests
     - python -m pip install --upgrade pip
-
     - $flaskProcess = Start-Process -FilePath "python" -ArgumentList "flaskhost.py" -PassThru -NoNewWindow -RedirectStandardOutput "flask.log" -RedirectStandardError "flask_error.log"
     - $flaskProcess.Id | Out-File flask_pid.txt
-    - Start-Sleep -Seconds 60  # Attendre que Flask démarre
+    - Start-Sleep -Seconds 60  # Wait for Flask to start
 
-    # Exécuter les tests
-    - docker exec pfeproject-flask-1 python execution.py --list  InstallationApplications.robot
+    # Execute tests
+    - docker exec pfeproject-flask-1 python execution.py --list InstallationApplications.robot
 
-
-    # Fermer proprement tous les émulateurs Android
-    - adb devices | ForEach-Object {
-    - if ($_ -match "emulator-\d+") {
-    - Write-Host "🔴 Fermeture de $($matches[0])"
-    - adb -s $matches[0] emu kill
-    - Start-Sleep -Seconds 3
-    - if (adb devices | Select-String $matches[0]) {
-    - Write-Host "⚠️ Fermeture forcée de $($matches[0])"
-    - Stop-Process -Name "qemu-system-x86_64" -Force -ErrorAction SilentlyContinue
+    # Proper emulator shutdown with error handling
+    - |
+      adb devices | ForEach-Object {
+        if ($_ -match "(emulator-\d+)") {
+          $emu = $matches[1]
+          Write-Host "🔴 Closing $emu"
+          adb -s $emu emu kill
+          Start-Sleep -Seconds 3
+          
+          # Verify if emulator is still running
+          if (adb devices | Select-String -Pattern $emu) {
+            Write-Host "⚠️ Force closing $emu"
+            # Find and kill associated QEMU processes
+            $port = $emu.Split("-")[1]
+            Get-Process -Name "qemu-system-x86_64" -ErrorAction SilentlyContinue | 
+              Where-Object { $_.CommandLine -match "port $port" } | 
+              Stop-Process -Force
+          }
+        }
       }
-      }
-      }
-
-
-
   retry: 2
 
   artifacts:
