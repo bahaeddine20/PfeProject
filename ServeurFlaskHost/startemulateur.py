@@ -12,10 +12,6 @@ def open_emulator(avd_name, port):
             f"@{avd_name}",
             "-ports", f"{port},{port + 1}"  # Format: console_port,adb_port
         ]
-        command.extend([
-            "-no-snapshot-load",  # Ne charge pas le snapshot existant
-            "-no-snapshot-save"  # Ne crée pas de nouveau snapshot
-        ])
 
         subprocess.Popen(command)
         print(f"🚀 Lancement de {avd_name} sur le port {port}...")
