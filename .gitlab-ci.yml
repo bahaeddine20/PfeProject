@@ -186,14 +186,15 @@ run_flask_and_test:
 
     - cd ServeurFlaskHost
     # Démarrer les émulateurs et Flask
+
+    - python -m venv venv
+    - ./venv/Scripts/Activate.ps1
+    - python -m pip install --upgrade pip
     - $emulateurautoProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py automotive" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_auto.log" -RedirectStandardError "emulator_auto_error.log"
 
     - $emulateurProcess = Start-Process -FilePath "python" -ArgumentList "startemulateur.py mobile" -PassThru -NoNewWindow -RedirectStandardOutput "emulator_mobile.log" -RedirectStandardError "emulator_mobile_error.log"
     - Start-Sleep -Seconds 15  # Attendre que l'émulateur mobile démarre
 
-    - python -m venv venv
-    - ./venv/Scripts/Activate.ps1
-    - python -m pip install --upgrade pip
     - pip install -r requirements.txt
     - pip install robotframework requests
 
