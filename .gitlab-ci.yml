@@ -206,13 +206,11 @@ run_flask_and_test:
     - Start-Sleep -Seconds 60  # Attendre que Flask démarre
 
     # Exécuter les tests
-    - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteBluetooth.robot
+    - docker exec pfeproject-flask-1 python execution.py --list FonctionnaliteBluetooth.robot   FonctionnaliteDeBase.robot    InstallationApplications.robot
 
 
     # Arrêter les processus
     - Stop-Process -Id $flaskProcess.Id -Force -ErrorAction SilentlyContinue
-    - Stop-Process -Id $emulateurProcess.Id -Force -ErrorAction SilentlyContinue
-    - Stop-Process -Id $emulateurautoProcess.Id -Force -ErrorAction SilentlyContinue
 
 
   retry: 2
