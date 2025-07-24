@@ -212,12 +212,15 @@ run_flask_and_test:
     # Fermer proprement tous les émulateurs Android
     - adb devices | ForEach-Object {
     - if ($_ -match "emulator-\d+") {
-    - Write-Host "🔴 Fermeture de $($matches[0])";
+    - Write-Host "🔴 Fermeture de $($matches[0])"
     - adb -s $matches[0] emu kill
-       }
-       }
-
-
+    - Start-Sleep -Seconds 3
+    - if (adb devices | Select-String $matches[0]) {
+    - Write-Host "⚠️ Fermeture forcée de $($matches[0])"
+    - Stop-Process -Name "qemu-system-x86_64" -Force -ErrorAction SilentlyContinue
+      }
+      }
+      }
 
 
 
