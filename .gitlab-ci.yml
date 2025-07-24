@@ -32,6 +32,9 @@ deploy:
   tags:
     - python-shell
 
+  before_script:
+    - Start-Sleep -Seconds 5
+    - Remove-Item -Path "ServeurFlaskHost\*.log" -Force -ErrorAction SilentlyContinue
   retry: 2
   script:
     - docker compose down
@@ -184,6 +187,9 @@ run_flask_and_test:
     - cd ServeurFlaskHost
     - python -m venv venv
     - ./venv/Scripts/Activate.ps1
+  after_script:
+    - Start-Sleep -Seconds 5
+    - Remove-Item -Path "ServeurFlaskHost\*.log" -Force -ErrorAction SilentlyContinue
 
   script:
     # Démarrer les émulateurs et Flask
