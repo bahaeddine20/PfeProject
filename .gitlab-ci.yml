@@ -211,11 +211,12 @@ run_flask_and_test:
 
     # Fermer proprement tous les émulateurs Android
     - adb devices | ForEach-Object {
-        if ($_ -match "emulator-\d+") {
-            Write-Host "🔴 Fermeture de $($matches[0])"
-            adb -s $matches[0] emu kill
-        }
-      }
+    - if ($_ -match "emulator-\d+") {
+    - Write-Host "🔴 Fermeture de $($matches[0])";
+    - adb -s $matches[0] emu kill
+       }
+       }
+
 
 
 
