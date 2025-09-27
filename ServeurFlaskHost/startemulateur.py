@@ -1,6 +1,11 @@
 import sys
 import subprocess
 import time
+import os
+
+# Configuration de l'encodage pour Windows
+if sys.platform == "win32":
+    os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 
 def open_emulator(avd_name, port):
@@ -14,10 +19,10 @@ def open_emulator(avd_name, port):
         ]
 
         subprocess.Popen(command)
-        print(f"🚀 Lancement de {avd_name} sur le port {port}...")
+        print(f"[INFO] Lancement de {avd_name} sur le port {port}...")
         return True
     except Exception as e:
-        print(f"❌ Erreur lors du lancement: {e}")
+        print(f"[ERROR] Erreur lors du lancement: {e}")
         return False
 
 
@@ -56,12 +61,12 @@ if __name__ == "__main__":
 
     # Lancement de l'émulateur
     if open_emulator(avd_name, port):
-        print("⏳ Vérification de l'état de l'émulateur...")
+        print("[INFO] Vérification de l'état de l'émulateur...")
         time.sleep(15)  # Temps d'attente pour le démarrage
 
         # Vérification de la connexion
         if check_emulator(port):
-            print(f"✅ Émulateur {device_type} connecté sur emulator-{port}")
+            print(f"[SUCCESS] Émulateur {device_type} connecté sur emulator-{port}")
         else:
-            print(f"⚠️ Avertissement: Émulateur détecté mais non connecté")
-            print("Conseil: Exécutez 'adb connect emulator-{port}' manuellement")
+            print(f"[WARNING] Avertissement: Émulateur détecté mais non connecté")
+            print(f"Conseil: Exécutez 'adb connect emulator-{port}' manuellement")
