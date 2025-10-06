@@ -1,0 +1,1645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-10-05T04:27:15.374801" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteDeBase" source="C:\Users\bahae\Documents\PfeProject\test_cases\FonctionnaliteDeBase.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-10-05T04:28:05.887754" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="926af391-ad5e-43e3-bc4a-0a21ec6554fc")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-10-05T04:27:57.047222" elapsed="8.840532"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:28:05.887754" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="926af391-ad5e-43e3-bc4a-0a21ec6554fc")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T04:28:05.887754" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:27:57.046222" elapsed="8.842534"/>
+</kw>
+<test id="s1-t1" name="Test Home_Button" line="76">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:28:05.889754" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-1, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:28:05.889754" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T04:28:05.890755" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-1, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T04:28:05.889754" elapsed="0.001001"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:28:05.891762" elapsed="0.001992"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:28:05.894753" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:28:05.894753" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:28:05.894753" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:28:05.894753" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Home Button Test">
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-10-05T04:28:31.725559" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-10-05T04:28:05.895753" elapsed="25.829806"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:28:05.895753" elapsed="25.829806"/>
+</kw>
+<msg time="2025-10-05T04:28:31.725559" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:28:05.895753" elapsed="25.829806"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:28:31.725559" level="INFO">Test Test Home_Button réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:28:31.725559" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T04:28:31.726561" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T04:28:31.725559" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:28:31.725559" elapsed="0.001002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:28:31.725559" elapsed="0.001002"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T04:28:05.894753" elapsed="25.831808"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T04:28:05.894753" elapsed="25.831808"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:28:31.726561" elapsed="0.000000"/>
+</if>
+<arg>Execute Home Button Test</arg>
+<arg>Test Home_Button</arg>
+<status status="PASS" start="2025-10-05T04:28:05.893754" elapsed="25.832807"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:28:31.726561" elapsed="1.013849"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:28:32.741412" level="INFO">${cpu} = 99.0</msg>
+<msg time="2025-10-05T04:28:32.741412" level="INFO">${mem} = 2298.38720703125</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.740410" elapsed="0.001002"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T04:28:32.743416" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Home_Button:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.742415" elapsed="0.001995"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:28:32.744410" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.744410" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T04:28:32.746409" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Home_Button:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.745414" elapsed="0.000995"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:28:32.746409" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.746409" elapsed="0.000000"/>
+</kw>
+<doc>Teste la fonctionnalité du bouton Home
+- Vérifie que le bouton Home ramène bien à l'écran d'accueil
+- Utilise la fonction 'Revenir A La Home Page'</doc>
+<tag>home</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-10-05T04:28:05.888756" elapsed="26.858655"/>
+</test>
+<test id="s1-t2" name="Test Ouvrir YouTube App" line="96">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:28:32.749411" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-2, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.748410" elapsed="0.001001"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T04:28:32.750411" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-2, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.749411" elapsed="0.001000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.750411" elapsed="0.001000"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:28:32.752411" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.752411" elapsed="0.001004"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:28:32.753415" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.753415" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute YouTube App Test">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:28:34.757727" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.757411" elapsed="2.000316"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:29:31.819990" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']</msg>
+<msg time="2025-10-05T04:29:31.819990" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>YouTube</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:28:34.758728" elapsed="57.061262"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>L'activité YouTube n'est pas trouvée.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:29:31.820989" elapsed="0.000000"/>
+</kw>
+<kw name="Print Activity2" owner="Integration">
+<msg time="2025-10-05T04:29:32.046322" level="INFO">${Activity} = com.android.car.carlauncher/.GASAppGridActivity</msg>
+<var>${Activity}</var>
+<arg>${driver}</arg>
+<doc>Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'.</doc>
+<status status="PASS" start="2025-10-05T04:29:31.820989" elapsed="0.225333"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:29:37.047929" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:29:32.046322" elapsed="5.001607"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:29:37.048923" level="INFO">com.android.car.carlauncher/.GASAppGridActivity</msg>
+<arg>${Activity}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:29:37.047929" elapsed="0.000994"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-10-05T04:29:37.643224" level="INFO">${is_element_present} = True</msg>
+<var>${is_element_present}</var>
+<arg>${driver}</arg>
+<arg>com.google.android.apps.automotive.youtube:id/decor_content_parent</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T04:29:37.048923" elapsed="0.594301"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_element_present}</arg>
+<arg>L'élément YouTube n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:29:37.644226" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:28:32.756414" elapsed="64.888816"/>
+</kw>
+<msg time="2025-10-05T04:29:37.645230" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:28:32.755419" elapsed="64.889811"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:29:37.646225" level="INFO">Test Test Ouvrir YouTube App réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:29:37.645230" elapsed="0.000995"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T04:29:37.646225" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T04:29:37.646225" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:29:37.645230" elapsed="0.000995"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T04:29:37.646225" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:29:37.646225" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:29:37.647222" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:29:37.646225" elapsed="0.000997"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T04:29:37.646225" elapsed="0.000997"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T04:29:37.646225" elapsed="0.000997"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:29:37.645230" elapsed="0.001992"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T04:28:32.754416" elapsed="64.892806"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T04:28:32.753415" elapsed="64.893807"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T04:29:37.647222" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:29:37.647222" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:29:37.647222" elapsed="0.000000"/>
+</if>
+<arg>Execute YouTube App Test</arg>
+<arg>Test Ouvrir YouTube App</arg>
+<status status="PASS" start="2025-10-05T04:28:32.752411" elapsed="64.894811"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:29:37.648223" elapsed="1.010949"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.661170" level="INFO">${cpu} = 98.875</msg>
+<msg time="2025-10-05T04:29:38.661170" level="INFO">${mem} = 2302.89404296875</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.660173" elapsed="0.000997"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T04:29:38.663171" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Ouvrir YouTube App:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.661170" elapsed="0.002001"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.664171" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.664171" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T04:29:38.666173" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Ouvrir YouTube App:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.664171" elapsed="0.002002"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.666173" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.666173" elapsed="0.000000"/>
+</kw>
+<doc>Teste le lancement de l'application YouTube
+- Ouvre l'application YouTube
+- Vérifie que l'activité YouTube est correctement lancée
+- Contrôle la présence d'éléments UI spécifiques à YouTube</doc>
+<tag>smoke</tag>
+<tag>youtube</tag>
+<status status="PASS" start="2025-10-05T04:28:32.747411" elapsed="65.919762"/>
+</test>
+<test id="s1-t3" name="Test Modifier Languages" line="117">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.668171" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-3, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.667173" elapsed="0.000998"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.668171" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-3, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.668171" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.668171" elapsed="0.000999"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.671172" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.671172" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.672172" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.671172" elapsed="0.001000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Language Change Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T04:29:38.907116" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T04:29:38.672733" elapsed="0.234383"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.908117" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.907116" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.908658" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.908658" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.909647" level="INFO">${Langue1} = Langues et saisie</msg>
+<var>${Langue1}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues et saisie</arg>
+<arg>Languages &amp; input</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.908658" elapsed="0.000989"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:29:38.909647" level="INFO">${Langue2} = Langues</msg>
+<var>${Langue2}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues</arg>
+<arg>Languages</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.909647" elapsed="0.000999"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:29:40.351537" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T04:29:40.351537" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:29:38.910646" elapsed="1.440891"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:29:41.354215" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:29:40.353139" elapsed="1.001076"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-10-05T04:29:41.521172" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T04:29:41.354215" elapsed="0.166957"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:29:41.521172" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:29:44.953841" level="INFO">(0, 76, 550, 696)
+✅ 'Système' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T04:29:41.521172" elapsed="3.432669"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:29:47.551087" level="INFO">(551, 172, 1408, 696)
+✅ 'Langues et saisie' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:29:44.954841" elapsed="2.596246"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:29:50.125911" level="INFO">(551, 172, 1408, 696)
+✅ 'Langues' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:29:47.552085" elapsed="2.573826"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:30:09.056770" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+✅ 'English' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:29:50.125911" elapsed="18.930859"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:30:16.426077" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+✅ 'English (United States)' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English (United States)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:30:09.057767" elapsed="7.368310"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:30:20.428070" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:30:16.427076" elapsed="4.000994"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-10-05T04:30:20.574124" level="INFO">Tentative 1 : Vérification de la langue...
+✅ La langue a bien été modifiée : en-US</msg>
+<msg time="2025-10-05T04:30:20.575122" level="INFO">${verfieadb} = True</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>en-US</arg>
+<status status="PASS" start="2025-10-05T04:30:20.428070" elapsed="0.147052"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:30:20.575122" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:30:21.739992" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T04:30:21.739992" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:30:20.575122" elapsed="1.164870"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:30:46.028343" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🔽 Swipe vers le bas #2
+🔽 Swipe vers le bas #3
+🔽 Swipe vers le bas #4
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Système' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T04:30:21.739992" elapsed="24.288351"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:30:54.025057" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Langues et saisie' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:30:46.028343" elapsed="7.996714"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:02.191798" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Langues' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:30:54.025057" elapsed="8.166741"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:11.078951" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Français' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>Français</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:02.191798" elapsed="8.887153"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:19.572030" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'Français (France)' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>Français (France)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:11.079950" elapsed="8.492080"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:31:23.573881" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:31:19.573024" elapsed="4.000857"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-10-05T04:31:27.940509" level="INFO">Tentative 1 : Vérification de la langue...
+🔁 Langue actuelle : en-US ≠ attendue : fr-FR
+⏳ Nouvelle tentative dans 2 secondes...
+Tentative 2 : Vérification de la langue...
+🔁 Langue actuelle : en-US ≠ attendue : fr-FR
+⏳ Nouvelle tentative dans 2 secondes...
+Tentative 3 : Vérification de la langue...
+🔁 Langue actuelle : en-US ≠ attendue : fr-FR
+❌ Échec : la langue n'a pas été modifiée après plusieurs tentatives.</msg>
+<msg time="2025-10-05T04:31:27.940509" level="INFO">${verfieadb} = False</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>fr-FR</arg>
+<status status="PASS" start="2025-10-05T04:31:23.573881" elapsed="4.366628"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-05T04:31:27.940509" level="FAIL">Modifier Languages ne s'active pas (via adb).</msg>
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-05T04:31:27.940509" elapsed="0.000000">Modifier Languages ne s'active pas (via adb).</status>
+</kw>
+<status status="FAIL" start="2025-10-05T04:29:38.672733" elapsed="109.267776">Modifier Languages ne s'active pas (via adb).</status>
+</kw>
+<msg time="2025-10-05T04:31:27.941511" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:29:38.672733" elapsed="109.268778"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:31:27.941511" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T04:31:27.941511" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:31:27.941511" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:31:27.941511" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:31:27.941511" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:31:27.942511" level="INFO">Test Test Modifier Languages échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:31:27.941511" elapsed="0.001000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:31:29.942934" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:31:27.942511" elapsed="2.000423"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:31:27.941511" elapsed="2.001423"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:31:27.941511" elapsed="2.001423"/>
+</if>
+<status status="PASS" start="2025-10-05T04:31:27.941511" elapsed="2.001423"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:31:27.941511" elapsed="2.001423"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T04:29:38.672172" elapsed="111.270762"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Language Change Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T04:31:30.019918" level="INFO">${lang} = eng</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T04:31:29.946921" elapsed="0.072997"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:31:30.019918" level="INFO">${System} = System</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:31:30.019918" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:31:30.020920" level="INFO">${Setting} = Settings</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:31:30.019918" elapsed="0.001002"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:31:30.020920" level="INFO">${Langue1} = Languages &amp; input</msg>
+<var>${Langue1}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues et saisie</arg>
+<arg>Languages &amp; input</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:31:30.020920" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:31:30.020920" level="INFO">${Langue2} = Languages</msg>
+<var>${Langue2}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Langues</arg>
+<arg>Languages</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:31:30.020920" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:31:30.445908" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T04:31:30.445908" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:31:30.020920" elapsed="0.424988"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:31:31.446396" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:31:30.445908" elapsed="1.000488"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-10-05T04:31:31.516396" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T04:31:31.446396" elapsed="0.070000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:31:31.516396" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:33.488458" level="INFO">(0, 76, 550, 696)
+✅ 'System' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T04:31:31.516396" elapsed="1.972062"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:34.469010" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages &amp; input' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:33.488458" elapsed="0.980552"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:36.122329" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:34.469010" elapsed="1.653319"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:45.688974" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+✅ 'English' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:36.123331" elapsed="9.565643"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:51.744140" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+✅ 'English (United States)' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>English (United States)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:45.688974" elapsed="6.056167"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:31:55.745951" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:31:51.745141" elapsed="4.000810"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-10-05T04:31:55.833953" level="INFO">Tentative 1 : Vérification de la langue...
+✅ La langue a bien été modifiée : en-US</msg>
+<msg time="2025-10-05T04:31:55.833953" level="INFO">${verfieadb} = True</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>en-US</arg>
+<status status="PASS" start="2025-10-05T04:31:55.746951" elapsed="0.087002"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:31:55.833953" elapsed="0.000998"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:31:56.240955" level="INFO">🔄 Tentative d'ouverture de Settings via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Settings ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T04:31:56.240955" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:31:55.834951" elapsed="0.406004"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:58.338009" level="INFO">(0, 76, 550, 696)
+✅ 'System' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${System}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T04:31:56.240955" elapsed="2.097054"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:31:59.224524" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages &amp; input' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue1}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:58.338009" elapsed="0.886515"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:32:01.487548" level="INFO">(551, 172, 1408, 696)
+✅ 'Languages' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Langue2}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:31:59.224524" elapsed="2.263024"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:32:14.526078" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+✅ 'Français' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Français</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:32:01.488546" elapsed="13.037532"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:32:16.140739" level="INFO">(551, 172, 1408, 696)
+✅ 'Français (France)' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Français (France)</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:32:14.526078" elapsed="1.614661"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:32:20.141848" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:32:16.140739" elapsed="4.001109"/>
+</kw>
+<kw name="Check Language Change" owner="Integration">
+<msg time="2025-10-05T04:32:20.299847" level="INFO">Tentative 1 : Vérification de la langue...
+✅ La langue a bien été modifiée : fr-FR</msg>
+<msg time="2025-10-05T04:32:20.299847" level="INFO">${verfieadb} = True</msg>
+<var>${verfieadb}</var>
+<arg>${Device}</arg>
+<arg>fr-FR</arg>
+<status status="PASS" start="2025-10-05T04:32:20.141848" elapsed="0.157999"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfieadb}</arg>
+<arg>Modifier Languages ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:32:20.299847" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:31:29.943918" elapsed="50.355929"/>
+</kw>
+<msg time="2025-10-05T04:32:20.299847" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:31:29.942934" elapsed="50.356913"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:32:20.300846" level="INFO">Test Test Modifier Languages réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T04:32:20.300846" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:32:20.299847" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:32:20.299847" elapsed="0.000999"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-10-05T04:31:29.942934" elapsed="50.357912"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T04:29:38.672172" elapsed="161.628674"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.001000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:32:20.300846" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:32:20.300846" elapsed="0.001000"/>
+</if>
+<arg>Execute Language Change Test</arg>
+<arg>Test Modifier Languages</arg>
+<status status="PASS" start="2025-10-05T04:29:38.670174" elapsed="161.631672"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:32:20.301846" elapsed="1.014992"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.316838" level="INFO">${cpu} = 99.0</msg>
+<msg time="2025-10-05T04:32:21.316838" level="INFO">${mem} = 2200.9133752893517</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.316838" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T04:32:21.318839" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Modifier Languages:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.317840" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.318839" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.318839" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T04:32:21.320842" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Modifier Languages:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.318839" elapsed="0.002003"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.320842" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.320842" elapsed="0.000000"/>
+</kw>
+<doc>Teste la modification de la langue système
+- Vérifie la langue actuelle du système
+- Change la langue en anglais puis en français
+- Vérifie les changements via ADB</doc>
+<tag>language</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-10-05T04:29:38.667173" elapsed="162.653669"/>
+</test>
+<test id="s1-t4" name="Test Notification Réception" line="138">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.321839" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-20, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.321839" elapsed="0.001004"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.322843" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-20, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.322843" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.322843" elapsed="0.001997"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.325839" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.325839" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.325839" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.325839" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Notification Reception Test">
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-10-05T04:32:21.637886" level="INFO">Échec de l'installation : adb: failed to install automotive-Notification_Test.apk: 
+Exception occurred while executing 'install':
+android.os.ParcelableException: java.io.IOException: Requested internal only, but not enough space
+	at android.util.ExceptionUtils.wrap(ExceptionUtils.java:34)
+	at com.android.server.pm.PackageInstallerService.createSession(PackageInstallerService.java:630)
+	at com.android.server.pm.PackageManagerShellCommand.doCreateSession(PackageManagerShellCommand.java:3691)
+	at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1</msg>
+<arg>${driver}</arg>
+<arg>automotive-Notification_Test.apk</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.326839" elapsed="0.311047"/>
+</kw>
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-10-05T04:32:21.709836" level="INFO">${isIns} = True</msg>
+<var>${isIns}</var>
+<arg>${driver}</arg>
+<arg>actia.pfe25.testnotificationapk</arg>
+<doc>Vérifie de manière fiable si une application est installée sur l'appareil via ADB.
+Utilise 'pm path' pour s'assurer que le package est vraiment présent.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.637886" elapsed="0.071950"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.710837" level="INFO">True</msg>
+<arg>${isIns}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.710837" elapsed="0.000000"/>
+</kw>
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T04:32:21.781835" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T04:32:21.710837" elapsed="0.070998"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.781835" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Système</arg>
+<arg>System</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.781835" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.782835" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>Paramètres</arg>
+<arg>Settings</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.782835" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:32:21.782835" level="INFO">${Noti} = Notifications</msg>
+<var>${Noti}</var>
+<arg>Notifications</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.782835" elapsed="0.000000"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:32:22.201834" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T04:32:22.201834" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:32:21.782835" elapsed="0.418999"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:32:23.203891" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:32:22.202834" elapsed="1.001057"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-10-05T04:32:23.317892" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T04:32:23.203891" elapsed="0.114001"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Settings n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:32:23.317892" elapsed="0.001000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:32:26.945090" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+✅ 'Notifications' trouvé en bas ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${Noti}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T04:32:23.318892" elapsed="3.626198"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:33:00.567025" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🔼 Swipe vers le haut #9
+🔼 Swipe vers le haut #10
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'TestNotificationapk' introuvable après balayage complet.</msg>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:32:26.946088" elapsed="33.620937"/>
+</kw>
+<kw name="Activer Notification Si Desactive" owner="Integration">
+<msg time="2025-10-05T04:33:00.784157" level="INFO">❌ Erreur lors de l'activation du notification : Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-10-05T04:33:00.568022" elapsed="0.216135"/>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:34:16.066147" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+🔄 Swipe en cours...
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetText.safeHandle(GetText.java:20)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+✅ Retour à la première page !</msg>
+<msg time="2025-10-05T04:34:16.067148" level="INFO">${resultat} = False</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>TestNotificationapk</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:33:00.785157" elapsed="75.281991"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<msg time="2025-10-05T04:34:36.192066" level="FAIL">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</msg>
+<arg>${driver}</arg>
+<arg>ENVOYER NOTIFICATION</arg>
+<status status="FAIL" start="2025-10-05T04:34:16.068149" elapsed="20.142918">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.211067" elapsed="0.000000"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<arg>${driver}</arg>
+<arg>notif</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.211067" elapsed="0.000000"/>
+</kw>
+<kw name="Click Icon Ia" owner="script_IA">
+<arg>${driver}</arg>
+<arg>notif2</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.211067" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.211067" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>com.android.systemui:id/notifications</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.211067" elapsed="0.000996"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Notification n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.212063" elapsed="0.000000"/>
+</kw>
+<kw name="Check Element Exists By Text" owner="Integration">
+<var>${VerfierNotif}</var>
+<arg>${driver}</arg>
+<arg>Bouton appuyé !</arg>
+<doc>Vérifie si un élément contenant le texte spécifié existe sur la page.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.212063" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${VerfierNotif}</arg>
+<arg>La notification n'a pas été reçue.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.212063" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-10-05T04:32:21.326839" elapsed="134.885224">TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)</status>
+</kw>
+<msg time="2025-10-05T04:34:36.212063" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:32:21.326839" elapsed="134.885224"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.212063" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T04:34:36.213063" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:34:36.212063" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:34:36.213063" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:34:36.213063" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:34:36.214065" level="INFO">Test Test Notification Réception échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:34:36.213063" elapsed="0.001002"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:34:38.214358" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:34:36.214065" elapsed="2.000293"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:34:36.213063" elapsed="2.001295"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:34:36.213063" elapsed="2.001295"/>
+</if>
+<status status="PASS" start="2025-10-05T04:34:36.213063" elapsed="2.001295"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:34:36.212063" elapsed="2.002295"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T04:32:21.326839" elapsed="136.887519"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Notification Reception Test">
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-10-05T04:34:38.755361" level="INFO">Échec de l'installation : adb: failed to install automotive-Notification_Test.apk: 
+Exception occurred while executing 'install':
+android.os.ParcelableException: java.io.IOException: Requested internal only, but not enough space
+	at android.util.ExceptionUtils.wrap(ExceptionUtils.java:34)
+	at com.android.server.pm.PackageInstallerService.createSession(PackageInstallerService.java:630)
+	at com.android.server.pm.PackageManagerShellCommand.doCreateSession(PackageManagerShellCommand.java:3691)
+	at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1</msg>

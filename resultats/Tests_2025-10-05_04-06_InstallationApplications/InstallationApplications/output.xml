@@ -1,0 +1,1538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-10-05T04:06:09.316401" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="C:\Users\bahae\Documents\PfeProject\test_cases\InstallationApplications.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-10-05T04:06:23.347600" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="8019221a-a8e0-45eb-8171-952194fac415")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-10-05T04:06:13.195618" elapsed="10.151982"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:06:23.348601" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="8019221a-a8e0-45eb-8171-952194fac415")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.347600" elapsed="0.001001"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T04:06:23.512799" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T04:06:23.349599" elapsed="0.163200"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:06:23.514800" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.513804" elapsed="0.000996"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:06:23.515811" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.515811" elapsed="0.000000"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-10-05T04:06:23.348601" elapsed="0.167210"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-10-05T04:06:13.191621" elapsed="10.325179"/>
+</kw>
+<test id="s1-t1" name="Test Install Apk" line="198">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:06:23.518327" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-3, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.517332" elapsed="0.000995"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T04:06:23.518327" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-3, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.518327" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.518327" elapsed="0.001997"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:06:23.522324" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.521323" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:06:23.522849" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.522324" elapsed="0.000525"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T04:08:00.342779" level="INFO">Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-10-05T04:08:00.344778" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-10-05T04:06:23.525845" elapsed="96.818933"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-10-05T04:08:00.344778" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:08:00.846751" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:08:00.344778" elapsed="0.502978"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="PASS" start="2025-10-05T04:06:23.524844" elapsed="97.322912"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-10-05T04:08:01.878617" level="INFO">Échec de l'installation : adb: failed to install automotive-Notification_Test.apk: 
+Exception occurred while executing 'install':
+android.os.ParcelableException: java.io.IOException: Requested internal only, but not enough space
+	at android.util.ExceptionUtils.wrap(ExceptionUtils.java:34)
+	at com.android.server.pm.PackageInstallerService.createSession(PackageInstallerService.java:630)
+	at com.android.server.pm.PackageManagerShellCommand.doCreateSession(PackageManagerShellCommand.java:3691)
+	at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1</msg>
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-10-05T04:08:00.847756" elapsed="1.030861"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:08:02.378833" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:08:01.878617" elapsed="0.500216"/>
+</kw>
+<kw name="Verify App Installation">
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-10-05T04:08:02.523137" level="INFO">${is_installed} = True</msg>
+<var>${is_installed}</var>
+<arg>${driver}</arg>
+<arg>${package_name}</arg>
+<doc>Vérifie de manière fiable si une application est installée sur l'appareil via ADB.
+Utilise 'pm path' pour s'assurer que le package est vraiment présent.</doc>
+<status status="PASS" start="2025-10-05T04:08:02.380834" elapsed="0.142303"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T04:09:48.441763" level="INFO">Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-10-05T04:09:48.443765" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-10-05T04:08:02.523137" elapsed="105.920628"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:09:48.443765" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-10-05T04:09:48.443765" elapsed="0.001000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-05T04:09:48.444765" level="FAIL">Application is not visible in UI</msg>
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-05T04:09:48.444765" elapsed="0.000000">Application is not visible in UI</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-10-05T04:09:48.444765" elapsed="0.000000">Application is not visible in UI</status>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="FAIL" start="2025-10-05T04:08:02.378833" elapsed="106.065932">Application is not visible in UI</status>
+</kw>
+<doc>Executes the APK installation test</doc>
+<status status="FAIL" start="2025-10-05T04:06:23.523847" elapsed="204.920918">Application is not visible in UI</status>
+</kw>
+<msg time="2025-10-05T04:09:48.445762" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:06:23.522849" elapsed="204.922913"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:09:48.445762" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T04:09:48.445762" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:09:48.445762" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:09:48.445762" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:09:48.445762" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:09:48.445762" level="INFO">Test Test Install Apk échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:09:48.445762" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:09:50.447680" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:09:48.446766" elapsed="2.000914"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:09:48.445762" elapsed="2.001918"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:09:48.445762" elapsed="2.001918"/>
+</if>
+<status status="PASS" start="2025-10-05T04:09:48.445762" elapsed="2.001918"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:09:48.445762" elapsed="2.001918"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T04:06:23.522849" elapsed="206.924831"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T04:11:11.708967" level="INFO">Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-10-05T04:11:11.709963" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-10-05T04:09:50.449681" elapsed="81.260282"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-10-05T04:11:11.709963" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:11:12.210518" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:11:11.709963" elapsed="0.500555"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="PASS" start="2025-10-05T04:09:50.449681" elapsed="81.760837"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-10-05T04:11:12.847369" level="INFO">Échec de l'installation : adb: failed to install automotive-Notification_Test.apk: 
+Exception occurred while executing 'install':
+android.os.ParcelableException: java.io.IOException: Requested internal only, but not enough space
+	at android.util.ExceptionUtils.wrap(ExceptionUtils.java:34)
+	at com.android.server.pm.PackageInstallerService.createSession(PackageInstallerService.java:630)
+	at com.android.server.pm.PackageManagerShellCommand.doCreateSession(PackageManagerShellCommand.java:3691)
+	at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1</msg>
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-10-05T04:11:12.210518" elapsed="0.636851"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:11:13.348615" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:11:12.848366" elapsed="0.500249"/>
+</kw>
+<kw name="Verify App Installation">
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-10-05T04:11:13.487222" level="INFO">${is_installed} = True</msg>
+<var>${is_installed}</var>
+<arg>${driver}</arg>
+<arg>${package_name}</arg>
+<doc>Vérifie de manière fiable si une application est installée sur l'appareil via ADB.
+Utilise 'pm path' pour s'assurer que le package est vraiment présent.</doc>
+<status status="PASS" start="2025-10-05T04:11:13.349616" elapsed="0.137606"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T04:13:08.215755" level="INFO">Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-10-05T04:13:08.216758" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-10-05T04:11:13.487222" elapsed="114.729536"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:13:08.217763" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-10-05T04:13:08.216758" elapsed="0.001005"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-05T04:13:08.218760" level="FAIL">Application is not visible in UI</msg>
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-05T04:13:08.218760" elapsed="0.001004">Application is not visible in UI</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-10-05T04:13:08.218760" elapsed="0.001004">Application is not visible in UI</status>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="FAIL" start="2025-10-05T04:11:13.348615" elapsed="114.871149">Application is not visible in UI</status>
+</kw>
+<doc>Executes the APK installation test</doc>
+<status status="FAIL" start="2025-10-05T04:09:50.448678" elapsed="197.771086">Application is not visible in UI</status>
+</kw>
+<msg time="2025-10-05T04:13:08.219764" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:09:50.448678" elapsed="197.771086"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:13:08.220764" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T04:13:08.220764" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:13:08.220764" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:13:08.220764" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:13:08.220764" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T04:13:08.221757" level="INFO">Test Test Install Apk échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T04:13:08.221757" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:13:10.222945" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:13:08.221757" elapsed="2.001188"/>
+</kw>
+<status status="PASS" start="2025-10-05T04:13:08.220764" elapsed="2.002181"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:13:08.220764" elapsed="2.002181"/>
+</if>
+<status status="PASS" start="2025-10-05T04:13:08.220764" elapsed="2.002181"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:13:08.220764" elapsed="2.002181"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-10-05T04:09:50.447680" elapsed="199.775265"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T04:14:20.440047" level="INFO">Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-10-05T04:14:20.441047" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-10-05T04:13:10.224937" elapsed="70.216110"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-10-05T04:14:20.441047" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:14:20.942365" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:14:20.441047" elapsed="0.501318"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="PASS" start="2025-10-05T04:13:10.224937" elapsed="70.717428"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-10-05T04:14:21.591969" level="INFO">Échec de l'installation : adb: failed to install automotive-Notification_Test.apk: 
+Exception occurred while executing 'install':
+android.os.ParcelableException: java.io.IOException: Requested internal only, but not enough space
+	at android.util.ExceptionUtils.wrap(ExceptionUtils.java:34)
+	at com.android.server.pm.PackageInstallerService.createSession(PackageInstallerService.java:630)
+	at com.android.server.pm.PackageManagerShellCommand.doCreateSession(PackageManagerShellCommand.java:3691)
+	at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1</msg>
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="PASS" start="2025-10-05T04:14:20.943359" elapsed="0.649614"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:14:22.093758" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:14:21.592973" elapsed="0.500785"/>
+</kw>
+<kw name="Verify App Installation">
+<kw name="Is App Installed" owner="Integration">
+<msg time="2025-10-05T04:14:22.182758" level="INFO">${is_installed} = True</msg>
+<var>${is_installed}</var>
+<arg>${driver}</arg>
+<arg>${package_name}</arg>
+<doc>Vérifie de manière fiable si une application est installée sur l'appareil via ADB.
+Utilise 'pm path' pour s'assurer que le package est vraiment présent.</doc>
+<status status="PASS" start="2025-10-05T04:14:22.094760" elapsed="0.087998"/>
+</kw>
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T04:15:54.119618" level="INFO">Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-10-05T04:15:54.120620" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-10-05T04:14:22.182758" elapsed="91.937862"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.120620" elapsed="0.000000"/>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_installed}</arg>
+<arg>Application is not installed via ADB</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.120620" elapsed="0.001014"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-05T04:15:54.121634" level="FAIL">Application is not visible in UI</msg>
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-05T04:15:54.121634" elapsed="0.000000">Application is not visible in UI</status>
+</kw>
+<arg>Should Be True</arg>
+<arg>${is_visible}</arg>
+<arg>Application is not visible in UI</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2025-10-05T04:15:54.121634" elapsed="0.000000">Application is not visible in UI</status>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="FAIL" start="2025-10-05T04:14:22.093758" elapsed="92.027876">Application is not visible in UI</status>
+</kw>
+<doc>Executes the APK installation test</doc>
+<status status="FAIL" start="2025-10-05T04:13:10.224937" elapsed="163.896697">Application is not visible in UI</status>
+</kw>
+<msg time="2025-10-05T04:15:54.122621" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:13:10.223938" elapsed="163.898683"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.122621" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.122621" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:15:54.122621" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:15:54.123618" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.122621" elapsed="0.000997"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.123618" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.123618" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T04:15:54.123618" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:15:54.123618" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-10-05T04:15:54.122621" elapsed="0.000997"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:15:54.122621" elapsed="0.000997"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-10-05T04:13:10.223938" elapsed="163.899680"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T04:06:23.522849" elapsed="570.600769"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-10-05T04:15:54.123618" level="FAIL">Le test Test Install Apk a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-10-05T04:15:54.123618" elapsed="0.001000">Le test Test Install Apk a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-10-05T04:15:54.123618" elapsed="0.001000">Le test Test Install Apk a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-10-05T04:15:54.123618" elapsed="0.001000">Le test Test Install Apk a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Install Apk Test</arg>
+<arg>Test Install Apk</arg>
+<status status="FAIL" start="2025-10-05T04:06:23.521323" elapsed="570.603295">Le test Test Install Apk a échoué après 3 tentatives</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.124618" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.124618" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>cpu_usage.log</arg>
+<arg>Test Install Apk:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.124618" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.124618" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>mem_usage.log</arg>
+<arg>Test Install Apk:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.124618" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T04:15:54.124618" elapsed="0.000000"/>
+</kw>
+<doc>Tests APK installation process
+- Checks pre-installation state
+- Installs the APK
+- Verifies installation in system and UI</doc>
+<tag>installation</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-05T04:06:23.516800" elapsed="570.607818">Le test Test Install Apk a échoué après 3 tentatives</status>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="219">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:15:54.126159" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-16, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.126159" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T04:15:54.127141" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-16, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.126159" elapsed="0.000982"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.127141" elapsed="0.001001"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:15:54.129140" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.129140" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:15:54.130141" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:15:54.130141" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Uninstall Application Test">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T04:16:39.008132" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.carlauncher/.GASAppGridActivity
+⚠️ L'activité n'a pas démarré correctement, tentative par recherche visuelle
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+Erreur lors de la récupération d'un élément : Message: Cached elements 'By.xpath: //*' do not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: Cached elements 'By.xpath: //*' do not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:78)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:435)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:250)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:345)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:366)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:611)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:466)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:438)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:1012)
+
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']</msg>
+<msg time="2025-10-05T04:16:39.009128" level="INFO">${result} = True</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T04:15:54.132140" elapsed="44.876988"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:16:39.511107" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:16:39.010131" elapsed="0.500976"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T04:16:39.514088" elapsed="0.886969"/>
+</kw>
+<msg time="2025-10-05T04:16:40.401057" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:16:39.514088" elapsed="0.886969"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-10-05T04:16:40.401057" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-10-05T04:16:40.401057" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:16:40.401057" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:16:40.401057" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-10-05T04:16:39.513089" elapsed="0.887968"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T04:16:39.513089" elapsed="0.887968"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-10-05T04:16:40.402065" elapsed="0.000000"/>
+</return>
+<msg time="2025-10-05T04:16:40.402065" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-10-05T04:16:39.512091" elapsed="0.889974"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:16:40.402065" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:16:50.093485" level="INFO">(0, 76, 550, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+✅ 'Applis' trouvé en remontant ! Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T04:16:40.402065" elapsed="9.692420"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:16:50.595411" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:16:50.094485" elapsed="0.500926"/>
+</kw>
+<kw name="Wait For Element">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Check Element Exists By Id" owner="Integration">
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T04:16:50.597413" elapsed="1.610090"/>
+</kw>
+<msg time="2025-10-05T04:16:52.207503" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Check Element ExistsBy Id</arg>
+<arg>${driver}</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T04:16:50.597413" elapsed="1.610090"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<return>
+<value>${True}</value>
+<status status="PASS" start="2025-10-05T04:16:52.208509" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-10-05T04:16:52.208509" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T04:16:52.208509" elapsed="0.000000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T04:16:52.208509" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-10-05T04:16:50.597413" elapsed="1.611096"/>
+</iter>
+<var>${i}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T04:16:50.596413" elapsed="1.612096"/>
+</for>
+<return>
+<value>${False}</value>
+<status status="NOT RUN" start="2025-10-05T04:16:52.208509" elapsed="0.000000"/>
+</return>
+<msg time="2025-10-05T04:16:52.208509" level="INFO">${view_all_exists} = True</msg>
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="PASS" start="2025-10-05T04:16:50.596413" elapsed="1.613090"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T04:16:52.209503" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<msg time="2025-10-05T04:17:28.891512" level="INFO">📌 Liste des applications détectées : ['Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Ouvertes récemment', 'Google\xa0Maps', 'Voir les 23\xa0applis', "Rétablir l'ordre A-Z pour la grille d'applications", "Gestionnaire d'autorisations"]
+📌 First Home Page détectée : ['Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Ouvertes récemment', 'Google\xa0Maps', 'Voir les 23\xa0applis', "Rétablir l'ordre A-Z pour la grille d'applications", "Gestionnaire d'autorisations"]
+🔄 Swipe #1 en cours...
+
+📌 Liste des applications détectées : ['Position', 'Confidentialité', 'Accessibilité', 'Sécurité', 'Applis', 'Assistant et voix', 'Système', 'Ouvertes récemment', 'Google\xa0Maps', 'Voir les 23\xa0applis', "Rétablir l'ordre A-Z pour la grille d'applications", "Gestionnaire d'autorisations"]
+✅ Retour à la first home page !
+First Home Page détectée : ["Contrôler l'accès des applis à vos données", "Gestionnaire d'autorisations", "Rétablir l'ordre A-Z pour la grille d'applications", 'Ouvertes récemment', 'Voir les 23\xa0applis', 'Google\xa0Maps', 'Il y a 24 secondes']
+ Voir les trouvé ! Appui sur le texte contenant 'Voir les 23 applis'.</msg>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="PASS" start="2025-10-05T04:16:52.209503" elapsed="36.683012"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:17:29.393027" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:17:28.892515" elapsed="0.500512"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T04:18:00.313809" level="INFO">(551, 172, 1408, 696)
+🔽 Swipe vers le bas #1
+🛑 Plus de nouveaux éléments en bas. Fin de balayage.
+🔼 Swipe vers le haut #1
+🔼 Swipe vers le haut #2
+🔼 Swipe vers le haut #3
+🔼 Swipe vers le haut #4
+🔼 Swipe vers le haut #5
+🔼 Swipe vers le haut #6
+🔼 Swipe vers le haut #7
+🔼 Swipe vers le haut #8
+🛑 Aucun nouvel élément en haut. Fin de balayage.
+❌ 'TestNotificationapk' introuvable après balayage complet.

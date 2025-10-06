@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-10-06T00:23:33.965651" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteDeBase" source="C:\Users\bahae\Documents\PfeProject\test_cases\FonctionnaliteDeBase.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-10-06T00:23:48.061166" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="5bee977a-9f15-47d6-834b-e16a940f513e")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-10-06T00:23:43.006172" elapsed="5.054994"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-06T00:23:48.062167" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="5bee977a-9f15-47d6-834b-e16a940f513e")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-06T00:23:48.062167" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-06T00:23:43.006172" elapsed="5.055995"/>
+</kw>
+<test id="s1-t1" name="Test Home_Button" line="76">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-06T00:23:48.063166" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-1, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-06T00:23:48.062167" elapsed="0.000999"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-06T00:23:48.063166" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-1, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-06T00:23:48.063166" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-06T00:23:48.063166" elapsed="0.000999"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-06T00:23:48.065167" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-06T00:23:48.065167" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-06T00:23:48.065167" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-06T00:23:48.065167" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Home Button Test">
+<kw name="Revenir A La Home Page" owner="Integration">
+<msg time="2025-10-06T00:24:01.703607" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !</msg>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-10-06T00:23:48.066167" elapsed="13.637440"/>
+</kw>
+<status status="PASS" start="2025-10-06T00:23:48.066167" elapsed="13.637440"/>
+</kw>
+<msg time="2025-10-06T00:24:01.703607" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-06T00:23:48.065167" elapsed="13.638945"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-06T00:24:01.704123" level="INFO">Test Test Home_Button réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-06T00:24:01.704123" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-06T00:24:01.704123" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-06T00:24:01.704123" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-06T00:24:01.704123" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-06T00:24:01.704123" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-06T00:24:01.704123" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-06T00:24:01.705120" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-06T00:24:01.704123" elapsed="0.000997"/>
+</branch>
+<status status="NOT RUN" start="2025-10-06T00:24:01.704123" elapsed="0.000997"/>
+</if>
+<status status="NOT RUN" start="2025-10-06T00:24:01.704123" elapsed="0.000997"/>
+</branch>
+<status status="PASS" start="2025-10-06T00:24:01.704123" elapsed="0.000997"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-06T00:23:48.065167" elapsed="13.639953"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-06T00:23:48.065167" elapsed="13.639953"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-06T00:24:01.705120" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-06T00:24:01.705120" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-06T00:24:01.705120" elapsed="0.000000"/>
+</if>
+<arg>Execute Home Button Test</arg>
+<arg>Test Home_Button</arg>
+<status status="PASS" start="2025-10-06T00:23:48.065167" elapsed="13.639953"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-06T00:24:01.705120" elapsed="0.923761"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-06T00:24:02.628881" level="INFO">${cpu} = 52.4</msg>
+<msg time="2025-10-06T00:24:02.628881" level="INFO">${mem} = 2651.7630859375</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}

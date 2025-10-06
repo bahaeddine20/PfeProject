@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-10-05T03:57:05.564042" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="C:\Users\bahae\Documents\PfeProject\test_cases\InstallationApplications.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-10-05T03:57:48.101091" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="8c50726c-dfb5-42ef-a9f3-5e9271308a02")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-10-05T03:57:13.932754" elapsed="34.168337"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T03:57:48.104093" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="8c50726c-dfb5-42ef-a9f3-5e9271308a02")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.102089" elapsed="0.002004"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T03:57:48.323152" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T03:57:48.106092" elapsed="0.217060"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T03:57:48.325153" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.324157" elapsed="0.000996"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T03:57:48.325153" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.325153" elapsed="0.000000"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-10-05T03:57:48.105090" elapsed="0.220063"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-10-05T03:57:13.929756" elapsed="34.396397"/>
+</kw>
+<test id="s1-t1" name="Test Install Apk" line="198">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:57:48.328153" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-3, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.327153" elapsed="0.001000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T03:57:48.329159" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-3, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.328153" elapsed="0.001006"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.329159" elapsed="0.001997"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T03:57:48.332694" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.332694" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T03:57:48.333690" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.333690" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T03:58:28.367055" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b3/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b3/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b4/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b4/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b5/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b5/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bc/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bc/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bd/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bd/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000be/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000be/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c5/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c5/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c6/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c6/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c7/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c7/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000ce/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000ce/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cf/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cf/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d0/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d0/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d7/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d7/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d8/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d8/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d9/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d9/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b6/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b6/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b7/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b7/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b8/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b8/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bf/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bf/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c0/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c0/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c1/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c1/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c8/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c8/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c9/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c9/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000ca/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000ca/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d1/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d1/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d2/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d2/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d3/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d3/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000da/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000da/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000db/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000db/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000dc/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000dc/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b9/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000b9/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000ba/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000ba/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bb/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000bb/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c2/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c2/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c3/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c3/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c4/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000c4/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cb/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cb/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cc/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cc/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cd/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000cd/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d4/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d4/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d5/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d5/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d6/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000d6/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000dd/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000dd/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000de/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000de/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000df/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000df/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+Erreur lors de la récupération d'un élément : Message: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000af/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'GET /element/00000000-0000-0012-ffff-ffff000000af/attribute/class' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.getAttribute (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\element.js:26:5)
+
+📌 Liste des applications détectées : []
+🔄 Swipe en cours...</msg>
+<msg time="2025-10-05T03:58:28.368056" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="FAIL" start="2025-10-05T03:57:48.337691" elapsed="40.062363">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:28.400054" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:28.400054" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="FAIL" start="2025-10-05T03:57:48.336687" elapsed="40.063367">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:28.400054" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:28.400054" elapsed="0.000000"/>
+</kw>
+<kw name="Verify App Installation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:28.400054" elapsed="0.000000"/>
+</kw>
+<doc>Executes the APK installation test</doc>
+<status status="FAIL" start="2025-10-05T03:57:48.335685" elapsed="40.064369">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<msg time="2025-10-05T03:58:28.401122" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T03:57:48.334687" elapsed="40.066435"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:28.401122" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:28.401122" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:28.401122" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:58:28.401122" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:28.401122" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T03:58:28.401122" level="INFO">Test Test Install Apk échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T03:58:28.401122" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T03:58:30.403116" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T03:58:28.401122" elapsed="2.001994"/>
+</kw>
+<status status="PASS" start="2025-10-05T03:58:28.401122" elapsed="2.001994"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:28.401122" elapsed="2.001994"/>
+</if>
+<status status="PASS" start="2025-10-05T03:58:28.401122" elapsed="2.001994"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:28.401122" elapsed="2.003014"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T03:57:48.334687" elapsed="42.069491"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T03:58:30.412538" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="FAIL" start="2025-10-05T03:58:30.405226" elapsed="0.009316">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:30.415581" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:30.415581" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="FAIL" start="2025-10-05T03:58:30.405226" elapsed="0.010886">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:30.416112" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:30.416112" elapsed="0.000000"/>
+</kw>
+<kw name="Verify App Installation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:30.416651" elapsed="0.000000"/>
+</kw>
+<doc>Executes the APK installation test</doc>
+<status status="FAIL" start="2025-10-05T03:58:30.405216" elapsed="0.011435">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<msg time="2025-10-05T03:58:30.416651" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T03:58:30.404708" elapsed="0.011943"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:30.416651" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:30.416651" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:30.416651" elapsed="0.000989"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:58:30.417640" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:30.417640" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T03:58:30.417640" level="INFO">Test Test Install Apk échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T03:58:30.417640" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.418133" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T03:58:30.417640" elapsed="2.000493"/>
+</kw>
+<status status="PASS" start="2025-10-05T03:58:30.417640" elapsed="2.000493"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:30.417640" elapsed="2.000493"/>
+</if>
+<status status="PASS" start="2025-10-05T03:58:30.417640" elapsed="2.000493"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:30.416651" elapsed="2.001482"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-10-05T03:58:30.404178" elapsed="2.013955"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T03:58:32.440669" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="FAIL" start="2025-10-05T03:58:32.420132" elapsed="0.023537">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.443669" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.443669" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="FAIL" start="2025-10-05T03:58:32.420132" elapsed="0.024538">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<arg>${driver}</arg>
+<arg>${TEST_APK_FILE}</arg>
+<doc>Installe un fichier APK sur un appareil Android via ADB.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.444670" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.444670" elapsed="0.000000"/>
+</kw>
+<kw name="Verify App Installation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is properly installed</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.444670" elapsed="0.000000"/>
+</kw>
+<doc>Executes the APK installation test</doc>
+<status status="FAIL" start="2025-10-05T03:58:32.419128" elapsed="0.025542">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<msg time="2025-10-05T03:58:32.445669" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.419128" elapsed="0.026541"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.445669" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.445669" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:32.445669" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.446672" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.446672" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.447676" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.447676" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:32.446672" elapsed="0.001004"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:32.446672" elapsed="0.001004"/>
+</if>
+<status status="PASS" start="2025-10-05T03:58:32.445669" elapsed="0.002007"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:32.445669" elapsed="0.002007"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-10-05T03:58:32.419128" elapsed="0.029547"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T03:57:48.333690" elapsed="44.114985"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.449669" level="FAIL">Le test Test Install Apk a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-10-05T03:58:32.449669" elapsed="0.000000">Le test Test Install Apk a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-10-05T03:58:32.448675" elapsed="0.001999">Le test Test Install Apk a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-10-05T03:58:32.448675" elapsed="0.001999">Le test Test Install Apk a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Install Apk Test</arg>
+<arg>Test Install Apk</arg>
+<status status="FAIL" start="2025-10-05T03:57:48.332156" elapsed="44.118518">Le test Test Install Apk a échoué après 3 tentatives</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.450674" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.451193" elapsed="0.000023"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>cpu_usage.log</arg>
+<arg>Test Install Apk:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.451216" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.451216" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>mem_usage.log</arg>
+<arg>Test Install Apk:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.451216" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.451216" elapsed="0.000000"/>
+</kw>
+<doc>Tests APK installation process
+- Checks pre-installation state
+- Installs the APK
+- Verifies installation in system and UI</doc>
+<tag>installation</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-05T03:57:48.326153" elapsed="44.125063">Le test Test Install Apk a échoué après 3 tentatives</status>
+</test>
+<test id="s1-t2" name="Test Uninstall Application" line="219">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.453213" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-4, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.452210" elapsed="0.001003"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.454209" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-4, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.454209" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.454209" elapsed="0.004001"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.459210" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.459210" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.460212" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.459210" elapsed="0.001002"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Uninstall Application Test">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T03:58:32.698094" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+⚠️ Erreur lors de l'ouverture par activité: Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\bahae\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -H 127.0.0.1 -P 5037 -s emulator-5554 shell am start-activity com.android.car.settings/.Settings_Launcher_Homepage' exited with code 20'; Command output: cmd: Can't find service: activity
+
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\bahae\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -H 127.0.0.1 -P 5037 -s emulator-5554 shell am start-activity com.android.car.settings/.Settings_Launcher_Homepage' exited with code 20'; Command output: cmd: Can't find service: activity
+
+    at getResponseForW3CError (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.js:1143:9)
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:485:57)
+🔄 Tentative par recherche visuelle...</msg>
+<msg time="2025-10-05T03:58:32.699094" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="FAIL" start="2025-10-05T03:58:32.462210" elapsed="0.237885">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.701096" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.701096" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.701096" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:32.701096" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.701096" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.702097" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.702097" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:32.702097" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.703096" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:32.703096" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.703096" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:32.703096" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.703096" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:32.703096" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.703096" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="FAIL" start="2025-10-05T03:58:32.461209" elapsed="0.242887">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Verify App Uninstallation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is completely uninstalled</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.704096" elapsed="0.000000"/>
+</kw>
+<doc>Executes the application uninstallation test</doc>
+<status status="FAIL" start="2025-10-05T03:58:32.461209" elapsed="0.242887">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<msg time="2025-10-05T03:58:32.705093" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.460212" elapsed="0.244881"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.705093" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:32.705093" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:32.705093" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.706094" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.705093" elapsed="0.001001"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T03:58:32.706094" level="INFO">Test Test Uninstall Application échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.706094" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T03:58:34.708108" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T03:58:32.707096" elapsed="2.001012"/>
+</kw>
+<status status="PASS" start="2025-10-05T03:58:32.706094" elapsed="2.002014"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:32.706094" elapsed="2.002014"/>
+</if>
+<status status="PASS" start="2025-10-05T03:58:32.705093" elapsed="2.003015"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:32.705093" elapsed="2.003015"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T03:58:32.460212" elapsed="2.247896"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Uninstall Application Test">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T03:58:34.818276" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+⚠️ Erreur lors de l'ouverture par activité: Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\bahae\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -H 127.0.0.1 -P 5037 -s emulator-5554 shell am start-activity com.android.car.settings/.Settings_Launcher_Homepage' exited with code 20'; Command output: cmd: Can't find service: activity
+
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\bahae\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -H 127.0.0.1 -P 5037 -s emulator-5554 shell am start-activity com.android.car.settings/.Settings_Launcher_Homepage' exited with code 20'; Command output: cmd: Can't find service: activity
+
+    at getResponseForW3CError (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.js:1143:9)
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:485:57)
+🔄 Tentative par recherche visuelle...</msg>
+<msg time="2025-10-05T03:58:34.818276" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="FAIL" start="2025-10-05T03:58:34.710111" elapsed="0.109167">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.820280" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.820280" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.820280" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:34.820280" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.821281" elapsed="0.000996"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:34.822277" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.822277" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="FAIL" start="2025-10-05T03:58:34.709114" elapsed="0.113163">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Verify App Uninstallation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is completely uninstalled</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.824277" elapsed="0.000000"/>
+</kw>
+<doc>Executes the application uninstallation test</doc>
+<status status="FAIL" start="2025-10-05T03:58:34.709114" elapsed="0.115163">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<msg time="2025-10-05T03:58:34.824277" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T03:58:34.709114" elapsed="0.115163"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.824277" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:34.825277" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:34.824277" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:58:34.825277" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:34.825277" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T03:58:34.826278" level="INFO">Test Test Uninstall Application échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T03:58:34.825277" elapsed="0.001001"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T03:58:36.826867" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T03:58:34.826278" elapsed="2.000589"/>
+</kw>
+<status status="PASS" start="2025-10-05T03:58:34.825277" elapsed="2.001590"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:34.825277" elapsed="2.001590"/>
+</if>
+<status status="PASS" start="2025-10-05T03:58:34.825277" elapsed="2.001590"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:34.824277" elapsed="2.002590"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-10-05T03:58:34.709114" elapsed="2.117753"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Uninstall Application Test">
+<kw name="Uninstall Application">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T03:58:36.938867" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+⚠️ Erreur lors de l'ouverture par activité: Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\bahae\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -H 127.0.0.1 -P 5037 -s emulator-5554 shell am start-activity com.android.car.settings/.Settings_Launcher_Homepage' exited with code 20'; Command output: cmd: Can't find service: activity
+
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\bahae\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -H 127.0.0.1 -P 5037 -s emulator-5554 shell am start-activity com.android.car.settings/.Settings_Launcher_Homepage' exited with code 20'; Command output: cmd: Can't find service: activity
+
+    at getResponseForW3CError (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.js:1143:9)
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:485:57)
+🔄 Tentative par recherche visuelle...</msg>
+<msg time="2025-10-05T03:58:36.938867" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<arg>${LANG_DICT.Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="FAIL" start="2025-10-05T03:58:36.827867" elapsed="0.112000">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.939867" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.939867" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${exists}</arg>
+<arg>Settings screen is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.939867" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.apps}</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:36.939867" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.939867" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Element">
+<var>${view_all_exists}</var>
+<arg>${driver}</arg>
+<arg>${Setting_system}</arg>
+<doc>Waits for an element to be present with retry mechanism</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.939867" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${view_all_exists}</arg>
+<arg>Apps section is not displayed</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting Include" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.view_all}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<arg>${Setting_system}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.uninstall}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element By Text" owner="Integration">
+<arg>${driver}</arg>
+<arg>${LANG_DICT.confirm}</arg>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<doc>Performs the uninstallation process</doc>
+<status status="FAIL" start="2025-10-05T03:58:36.827867" elapsed="0.113000">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<kw name="Verify App Uninstallation">
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Verifies if the application is completely uninstalled</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.940867" elapsed="0.000000"/>
+</kw>
+<doc>Executes the application uninstallation test</doc>
+<status status="FAIL" start="2025-10-05T03:58:36.827867" elapsed="0.114001">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /actions' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\jsonwp-proxy\proxy.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.performActions (C:\Users\bahae\.appium\node_modules\appium-uiautomator2-driver\lib\commands\actions.js:88:3)</status>
+</kw>
+<msg time="2025-10-05T03:58:36.941868" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T03:58:36.826867" elapsed="0.115001"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.941868" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.941868" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:36.941868" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T03:58:36.942873" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T03:58:36.941868" elapsed="0.001005"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.942873" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.942873" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:36.942873" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:36.942873" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-10-05T03:58:36.941868" elapsed="0.001005"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:36.941868" elapsed="0.002004"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-10-05T03:58:36.826867" elapsed="0.117005"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T03:58:32.460212" elapsed="4.483660"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-10-05T03:58:36.943872" level="FAIL">Le test Test Uninstall Application a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-10-05T03:58:36.943872" elapsed="0.000000">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-10-05T03:58:36.943872" elapsed="0.001001">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-10-05T03:58:36.943872" elapsed="0.001001">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Uninstall Application Test</arg>
+<arg>Test Uninstall Application</arg>
+<status status="FAIL" start="2025-10-05T03:58:32.458210" elapsed="4.486663">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.944873" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.944873" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>cpu_usage.log</arg>
+<arg>Test Uninstall Application:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.944873" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.944873" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>mem_usage.log</arg>
+<arg>Test Uninstall Application:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.944873" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.944873" elapsed="0.000995"/>
+</kw>
+<doc>Tests application uninstallation
+- Navigates through settings
+- Performs uninstallation
+- Verifies complete removal</doc>
+<tag>smoke</tag>
+<tag>uninstallation</tag>
+<status status="FAIL" start="2025-10-05T03:58:32.452210" elapsed="4.493658">Le test Test Uninstall Application a échoué après 3 tentatives</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-10-05T03:58:36.948868" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-10-05T03:58:36.947868" elapsed="0.029525">No application is open</status>
+</kw>
+<msg time="2025-10-05T03:58:36.979393" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T03:58:36.979393" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-10-05T03:58:36.946868" elapsed="0.033531">No application is open</status>
+</kw>
+<msg time="2025-10-05T03:58:36.981398" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T03:58:36.946868" elapsed="0.034530"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.982920" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.983055" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:36.981398" elapsed="0.001657"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T03:58:36.983939" level="INFO">Le driver n'était pas actif</msg>
+<arg>Le driver n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T03:58:36.983055" elapsed="0.000884"/>
+</kw>
+<status status="PASS" start="2025-10-05T03:58:36.983055" elapsed="0.000884"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:36.981398" elapsed="0.002541"/>
+</if>
+<status status="PASS" start="2025-10-05T03:58:36.946868" elapsed="0.037071"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la fermeture du driver: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T03:58:36.983939" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T03:58:36.983939" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T03:58:36.946868" elapsed="0.037071"/>
+</try>
+<doc>Cleans up and closes the test driver</doc>
+<status status="PASS" start="2025-10-05T03:58:36.946868" elapsed="0.037071"/>
+</kw>
+<doc>Tests for APK installation and uninstallation
+- Verifies APK installation via ADB
+- Checks application visibility in UI
+- Tests complete uninstallation flow</doc>
+<status status="FAIL" start="2025-10-05T03:57:05.573010" elapsed="91.410929"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">installation</stat>
+<stat pass="0" fail="2" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">uninstallation</stat>
+</tag>
+<suite>
+<stat name="InstallationApplications" id="s1" pass="0" fail="2" skip="0">InstallationApplications</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-10-05T03:57:13.213750" level="WARN">Imported library 'C:\Users\bahae\Documents\PfeProject\test_cases\resource_monitor.py' contains no keywords.</msg>
+<msg time="2025-10-05T03:58:36.979393" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>

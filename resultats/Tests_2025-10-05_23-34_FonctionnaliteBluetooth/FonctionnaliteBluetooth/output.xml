@@ -1,0 +1,3803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-10-05T23:34:05.952868" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteBluetooth" source="C:\Users\bahae\Documents\PfeProject\test_cases\FonctionnaliteBluetooth.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-10-05T23:34:42.078758" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="22d0c0be-258a-40c8-b51d-ca7b0a4e5df1")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-10-05T23:34:37.475176" elapsed="4.603582"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:34:42.079762" level="INFO">Driver for emulator-5554: &lt;appium.webdriver.webdriver.WebDriver (session="22d0c0be-258a-40c8-b51d-ca7b0a4e5df1")&gt;</msg>
+<arg>Driver for ${Device}: ${driver}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:34:42.079762" elapsed="0.001001"/>
+</kw>
+<kw name="Setup Driver Mobile" owner="script_mobile">
+<msg time="2025-10-05T23:35:15.874034" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="b255b513-56e6-4ada-8875-8ff2f8f4e335")&gt;</msg>
+<var>${driver_mobile}</var>
+<arg>${Device_mobile}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="PASS" start="2025-10-05T23:34:42.080763" elapsed="33.793271"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.875036" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="22d0c0be-258a-40c8-b51d-ca7b0a4e5df1")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.875036" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.876032" level="INFO">${driver_mobile} = &lt;appium.webdriver.webdriver.WebDriver (session="b255b513-56e6-4ada-8875-8ff2f8f4e335")&gt;</msg>
+<arg>${driver_mobile}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.875036" elapsed="0.000996"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:34:37.474175" elapsed="38.401857"/>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Bluetooth" line="102">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.877034" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-1, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.877034" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.879032" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-1, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.878032" elapsed="0.001000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.879032" elapsed="0.002000"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.881032" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.881032" elapsed="0.001002"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.882034" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.882034" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Open Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:35:15.974032" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:35:15.883033" elapsed="0.090999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.975033" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.975033" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.976031" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.976031" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.976031" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.976031" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.976031" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.976031" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.977032" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.976031" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:15.977032" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.977032" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:15.974032" elapsed="0.003000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:15.977032" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:15.977032" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:15.977032" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:15.977032" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:15.977032" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:15.978032" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:15.977032" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:15.974032" elapsed="0.004000"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T23:35:16.767070" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T23:35:16.767070" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T23:35:15.978032" elapsed="0.789038"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:35:18.767556" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:35:16.767070" elapsed="2.000486"/>
+</kw>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-10-05T23:35:18.926119" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T23:35:18.767556" elapsed="0.158563"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Setting n'est pas affiché.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:35:18.926119" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T23:35:20.756176" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T23:35:18.926119" elapsed="1.830057"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<msg time="2025-10-05T23:35:21.389155" level="INFO">${ble} = True</msg>
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="PASS" start="2025-10-05T23:35:20.757179" elapsed="0.631976"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres de Bluetooth ne s'affichent pas.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:35:21.389155" elapsed="0.000000"/>
+</kw>
+<kw name="Activer Bluetooth Si Desactive" owner="Integration">
+<msg time="2025-10-05T23:35:21.602757" level="INFO">❌ Le Bluetooth est désactivé. Activation en cours...
+✅ Bluetooth activé avec succès !</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-10-05T23:35:21.389155" elapsed="0.213602"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:35:24.603381" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:35:21.602757" elapsed="3.000624"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<msg time="2025-10-05T23:35:24.782856" level="INFO">${verifier_ble_ui} = True</msg>
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-10-05T23:35:24.603381" elapsed="0.179475"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth ne s'active pas (ui).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:35:24.782856" elapsed="0.000998"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<msg time="2025-10-05T23:35:24.907140" level="INFO">✅ Bluetooth est activé.</msg>
+<msg time="2025-10-05T23:35:24.907140" level="INFO">${verfier_ble_adb} = True</msg>
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:35:24.783854" elapsed="0.123286"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth ne s'active pas (via adb).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:35:24.907140" elapsed="0.001006"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:15.883033" elapsed="9.025113"/>
+</kw>
+<msg time="2025-10-05T23:35:24.908146" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:35:15.882034" elapsed="9.026112"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:24.908146" level="INFO">Test Test Ouvrir Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:24.908146" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T23:35:24.908146" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T23:35:24.908146" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:24.908146" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:24.908146" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:24.909146" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:24.909146" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:24.909146" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:35:24.908146" elapsed="0.001000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:35:24.908146" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:24.908146" elapsed="0.001000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T23:35:15.882034" elapsed="9.027112"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T23:35:15.882034" elapsed="9.027112"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:24.909146" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:24.909146" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:24.909146" elapsed="0.000000"/>
+</if>
+<arg>Execute Open Bluetooth Test</arg>
+<arg>Test Ouvrir Bluetooth</arg>
+<status status="PASS" start="2025-10-05T23:35:15.881032" elapsed="9.028114"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:24.909146" elapsed="1.011701"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:35:25.920847" level="INFO">${cpu} = 92.5</msg>
+<msg time="2025-10-05T23:35:25.921848" level="INFO">${mem} = 2669.31103515625</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.920847" elapsed="0.001001"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:35:25.922845" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Ouvrir Bluetooth:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.921848" elapsed="0.000997"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:25.922845" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.922845" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:35:25.923847" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Ouvrir Bluetooth:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.922845" elapsed="0.001002"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:25.924848" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.924848" elapsed="0.000000"/>
+</kw>
+<doc>Teste l'activation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Active le Bluetooth s'il est désactivé
+- Vérifie que le Bluetooth est bien activé (UI et ADB)</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-10-05T23:35:15.876032" elapsed="10.048816"/>
+</test>
+<test id="s1-t2" name="Test Pairing Bluetooth" line="126">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:35:25.925849" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-6, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.925849" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T23:35:25.926846" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-6, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.925849" elapsed="0.000997"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.926846" elapsed="0.000000"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:25.927845" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.927845" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:25.927845" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.927845" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Pairing Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:35:26.221931" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:35:25.928846" elapsed="0.293085"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.221931" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.221931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.221931" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.221931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.222934" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.222934" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.222934" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.222934" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.222934" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.222934" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.223933" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.222934" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.223933" level="INFO">${pairing} = Associer un nouvel appareil</msg>
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.223933" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.223933" level="INFO">${pairing_conf} = Associer</msg>
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.223933" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:26.223933" level="INFO">${pairing_conf2} = Continuer</msg>
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:26.223933" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:26.221931" elapsed="0.002002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.223933" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.223933" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.224931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.224931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.224931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.224931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.224931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.224931" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:26.224931" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:26.223933" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:26.221931" elapsed="0.003000"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T23:35:27.591383" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T23:35:27.591383" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T23:35:26.224931" elapsed="1.366452"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T23:35:29.184120" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T23:35:27.591383" elapsed="1.592737"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<msg time="2025-10-05T23:35:29.779788" level="INFO">${name_bluetooth_mobile} = sdk_gphone64_x86_64</msg>
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="PASS" start="2025-10-05T23:35:29.184120" elapsed="0.595668"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:29.780788" level="INFO">sdk_gphone64_x86_64</msg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:29.780788" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-10-05T23:35:29.898826" level="INFO">${verif_adb} = False</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-10-05T23:35:29.780788" elapsed="0.118038"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${verif_adb}">
+<kw name="Press Key" owner="Integration">
+<msg time="2025-10-05T23:35:30.006900" level="INFO">Keycode 4 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>4</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-10-05T23:35:29.899828" elapsed="0.107072"/>
+</kw>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-10-05T23:35:30.553255" level="INFO">Keycode 176 pressé.</msg>
+<arg>${driver_mobile}</arg>
+<arg>176</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="PASS" start="2025-10-05T23:35:30.006900" elapsed="0.546355"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<status status="PASS" start="2025-10-05T23:35:30.554256" elapsed="2.443622"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Bluetooth, pairing</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:30.554256" elapsed="2.443622"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<status status="PASS" start="2025-10-05T23:35:32.998880" elapsed="0.318997"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:32.998880" elapsed="0.318997"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<status status="PASS" start="2025-10-05T23:35:33.317877" elapsed="1.747815"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:33.317877" elapsed="1.748814"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<status status="PASS" start="2025-10-05T23:35:35.066691" elapsed="2.654935"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Pair</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:35.066691" elapsed="2.654935"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<status status="PASS" start="2025-10-05T23:35:37.722619" elapsed="0.266029"/>
+</kw>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:37.721626" elapsed="0.267022"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<status status="PASS" start="2025-10-05T23:35:37.988648" elapsed="3.180794"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver_mobile}</arg>
+<arg>Allow</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:37.988648" elapsed="3.181794"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element By Text Att" owner="Integration">
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<status status="PASS" start="2025-10-05T23:35:41.170442" elapsed="2.720707"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${pairing_conf2}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:41.170442" elapsed="2.721707"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:29.898826" elapsed="13.993323"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:29.898826" elapsed="13.993323"/>
+</if>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<msg time="2025-10-05T23:35:44.023148" level="INFO">${verif_adb} = True</msg>
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="PASS" start="2025-10-05T23:35:43.892149" elapsed="0.130999"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>Le Bluetooth n'est pas connecté (via ADB).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.023148" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:25.928846" elapsed="18.095303"/>
+</kw>
+<msg time="2025-10-05T23:35:44.024149" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:35:25.927845" elapsed="18.096304"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.024149" level="INFO">Test Test Pairing Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.024149" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.024149" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.024149" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:44.024149" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:44.024149" elapsed="0.001000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T23:35:25.927845" elapsed="18.097304"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T23:35:25.927845" elapsed="18.097304"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:44.025149" elapsed="0.000000"/>
+</if>
+<arg>Execute Pairing Bluetooth Test</arg>
+<arg>Test Pairing Bluetooth</arg>
+<status status="PASS" start="2025-10-05T23:35:25.927845" elapsed="18.097304"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.026150" elapsed="0.537514"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.563664" level="INFO">${cpu} = 89.66666666666667</msg>
+<msg time="2025-10-05T23:35:44.563664" level="INFO">${mem} = 2742.3017578125</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.563664" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:35:44.564665" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Pairing Bluetooth:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.563664" elapsed="0.001001"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.565664" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.565664" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:35:44.565664" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Pairing Bluetooth:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.565664" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.566664" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.566664" elapsed="0.000000"/>
+</kw>
+<doc>Teste l'appairage Bluetooth entre les deux appareils
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Vérifie si l'appairage existe déjà
+- Si non, initie le processus d'appairage
+- Valide l'appairage des deux côtés
+- Vérifie que l'appairage est effectif via ADB</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-10-05T23:35:25.924848" elapsed="18.641816"/>
+</test>
+<test id="s1-t3" name="Test Call Bluetooth" line="152">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.567664" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-9, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.567664" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.567664" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-9, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.567664" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.567664" elapsed="0.001001"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.569664" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.569664" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:44.569664" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.569664" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Call Bluetooth Test">
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Simulate Incoming Call" owner="Integration">
+<msg time="2025-10-05T23:35:44.641186" level="INFO">[OK] Appel simulé : 52440030 vers emulator-5556.</msg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Simule un appel entrant sur un émulateur Android en envoyant une requête à l'endpoint /call.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.570664" elapsed="0.070522"/>
+</kw>
+<msg time="2025-10-05T23:35:44.641186" level="INFO">${call} = True</msg>
+<var>${call}</var>
+<arg>Simulate Incoming Call</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.570664" elapsed="0.070522"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:35:49.642700" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.641186" elapsed="5.001514"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-10-05T23:35:49.642700" elapsed="2.924400"/>
+</kw>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:35:49.642700" elapsed="2.924400"/>
+</kw>
+<msg time="2025-10-05T23:35:52.567100" level="INFO">${bounds} = (251, 147, 446, 187)</msg>
+<var>${bounds}</var>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver_mobile}</arg>
+<arg>52440030</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-10-05T23:35:49.642700" elapsed="2.924400"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:52.568100" level="INFO">(251, 147, 446, 187)</msg>
+<arg>${bounds}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:52.567100" elapsed="0.001000"/>
+</kw>
+<arg>Log</arg>
+<arg>${bounds}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-10-05T23:35:52.567100" elapsed="0.001000"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2025-10-05T23:35:52.568100" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;class 'NoneType'&gt;</msg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" start="2025-10-05T23:35:52.568100" elapsed="0.000000"/>
+</kw>
+<arg>Should Not Be Equal</arg>
+<arg>${bounds}</arg>
+<arg>${None}</arg>
+<arg>Le numéro 52440030 n'a pas été trouvé à l'écran</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="PASS" start="2025-10-05T23:35:52.568100" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:44.570664" elapsed="7.997436"/>
+</kw>
+<msg time="2025-10-05T23:35:52.568100" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:35:44.570664" elapsed="7.997436"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:52.568100" level="INFO">Test Test Call Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:52.568100" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T23:35:52.569099" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:52.568100" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:52.568100" elapsed="0.000999"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T23:35:44.570664" elapsed="7.998435"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T23:35:44.569664" elapsed="7.999435"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:52.569099" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:52.569099" elapsed="0.001000"/>
+</if>
+<arg>Execute Call Bluetooth Test</arg>
+<arg>Test Call Bluetooth</arg>
+<status status="PASS" start="2025-10-05T23:35:44.569664" elapsed="8.000435"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:52.570099" elapsed="1.010271"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.581373" level="INFO">${cpu} = 94.0</msg>
+<msg time="2025-10-05T23:35:53.581373" level="INFO">${mem} = 2761.8134765625</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.580370" elapsed="0.001003"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:35:53.584371" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Call Bluetooth:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.582373" elapsed="0.001998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.585370" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.584371" elapsed="0.000999"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:35:53.586369" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Call Bluetooth:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.585370" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.586369" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.586369" elapsed="0.000000"/>
+</kw>
+<doc>Teste la réception d'un appel via Bluetooth
+- Simule un appel entrant sur le mobile
+- Vérifie que le numéro appelant est affiché à l'écran
+- Continue l'exécution même en cas d'échec partiel</doc>
+<tag>bluetooth</tag>
+<tag>call</tag>
+<status status="PASS" start="2025-10-05T23:35:44.566664" elapsed="9.019705"/>
+</test>
+<test id="s1-t4" name="Test Answer Call Bluetooth" line="174">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.588370" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-86, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.587369" elapsed="0.001001"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.588370" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-86, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.588370" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.589369" elapsed="0.001001"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.591370" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.591370" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.591370" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.591370" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Answer Call Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:35:53.709370" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:35:53.593370" elapsed="0.116000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.709370" level="INFO">${answer} = Répondre</msg>
+<var>${answer}</var>
+<arg>Répondre</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.709370" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.710370" level="INFO">${accept} = Accepter</msg>
+<var>${accept}</var>
+<arg>Accepter</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.710370" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:53.710370" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.710370" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:35:53.709370" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${answer}</var>
+<arg>Answer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:53.710370" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${accept}</var>
+<arg>Accept</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:53.710370" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:35:53.710370" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:35:53.710370" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:53.709370" elapsed="0.001000"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:35:58.710741" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.710370" elapsed="5.000371"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-05T23:35:58.710741" level="INFO">${possible_texts} = ['Répondre', 'Accepter', 'Accept', 'Answer', 'Répondre', 'Accepter']</msg>
+<var>${possible_texts}</var>
+<arg>${answer}</arg>
+<arg>${accept}</arg>
+<arg>Accept</arg>
+<arg>Answer</arg>
+<arg>Répondre</arg>
+<arg>Accepter</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-05T23:35:58.710741" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:35:58.711742" level="INFO">${call_answered} = False</msg>
+<var>${call_answered}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:35:58.710741" elapsed="0.001001"/>
+</kw>
+<for flavor="IN">
+<iter>
+<try>
+<branch type="TRY">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-10-05T23:36:00.974122" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-10-05T23:35:58.711742" elapsed="2.262380"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.000000"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès (vérifié via icône)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.001011"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-10-05T23:36:00.976133" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.001011"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.001011"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.001011"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la recherche de l'icône: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.976133" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:00.976133" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:36:00.975122" elapsed="0.001011"/>
+</try>
+<status status="NOT RUN" start="2025-10-05T23:36:00.974122" elapsed="0.002011"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:00.974122" elapsed="0.002011"/>
+</if>
+<status status="PASS" start="2025-10-05T23:35:58.711742" elapsed="2.264391"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la tentative avec "${text}": ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.976133" elapsed="0.000000"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:00.976133" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:00.976133" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:35:58.711742" elapsed="2.264391"/>
+</try>
+<var name="${text}">Répondre</var>
+<status status="PASS" start="2025-10-05T23:35:58.711742" elapsed="2.265383"/>
+</iter>
+<iter>
+<try>
+<branch type="TRY">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-10-05T23:36:02.869205" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-10-05T23:36:00.977125" elapsed="1.892080"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.869205" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.869205" elapsed="0.000000"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès (vérifié via icône)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la recherche de l'icône: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</try>
+<status status="NOT RUN" start="2025-10-05T23:36:02.869205" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:02.869205" elapsed="0.001001"/>
+</if>
+<status status="PASS" start="2025-10-05T23:36:00.977125" elapsed="1.893081"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la tentative avec "${text}": ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:02.870206" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:00.977125" elapsed="1.893081"/>
+</try>
+<var name="${text}">Accepter</var>
+<status status="PASS" start="2025-10-05T23:36:00.977125" elapsed="1.893081"/>
+</iter>
+<iter>
+<try>
+<branch type="TRY">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-10-05T23:36:04.703891" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-10-05T23:36:02.871206" elapsed="1.832685"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Find Icon Position" owner="script_IA">
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<arg>Appel répondu avec succès (vérifié via icône)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la recherche de l'icône: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000000"/>
+</try>
+<status status="NOT RUN" start="2025-10-05T23:36:04.703891" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:04.703891" elapsed="0.001000"/>
+</if>
+<status status="PASS" start="2025-10-05T23:36:02.871206" elapsed="1.833685"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la tentative avec "${text}": ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.705890" elapsed="0.000000"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:04.705890" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:04.704891" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:02.871206" elapsed="1.834684"/>
+</try>
+<var name="${text}">Accept</var>
+<status status="PASS" start="2025-10-05T23:36:02.871206" elapsed="1.834684"/>
+</iter>
+<iter>
+<try>
+<branch type="TRY">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<msg time="2025-10-05T23:36:06.573837" level="INFO">${bounds} = (743, 344, 872, 379)</msg>
+<var>${bounds}</var>
+<arg>${driver_mobile}</arg>
+<arg>${text}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-10-05T23:36:04.705890" elapsed="1.867947"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} != ${None}">
+<kw name="Click Sur Bound" owner="Integration">
+<msg time="2025-10-05T23:36:06.959905" level="INFO">Clic effectué aux coordonnées (807, 361)</msg>
+<arg>${driver_mobile}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="PASS" start="2025-10-05T23:36:06.574823" elapsed="0.385082"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:36:11.960058" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:36:06.959905" elapsed="5.000153"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Find Icon Position" owner="script_IA">
+<msg time="2025-10-05T23:36:12.391712" level="INFO">${Verifcall} = (813, 17, 37, 40)</msg>
+<var>${Verifcall}</var>
+<arg>${driver}</arg>
+<arg>callsAnswer</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="PASS" start="2025-10-05T23:36:11.960058" elapsed="0.431654"/>
+</kw>
+<if>
+<branch type="IF" condition="${Verifcall} != ${None}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:36:12.392712" level="INFO">Appel répondu avec succès (vérifié via icône)</msg>
+<arg>Appel répondu avec succès (vérifié via icône)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:36:12.392712" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:36:12.392712" level="INFO">${call_answered} = True</msg>
+<var>${call_answered}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:36:12.392712" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="PASS" start="2025-10-05T23:36:12.392712" elapsed="0.000000"/>
+</break>
+<status status="PASS" start="2025-10-05T23:36:12.391712" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:12.391712" elapsed="0.001000"/>
+</if>
+<status status="PASS" start="2025-10-05T23:36:11.960058" elapsed="0.432654"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la recherche de l'icône: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.392712" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:12.392712" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:11.960058" elapsed="0.433652"/>
+</try>
+<status status="PASS" start="2025-10-05T23:36:06.573837" elapsed="5.819873"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:06.573837" elapsed="5.819873"/>
+</if>
+<status status="PASS" start="2025-10-05T23:36:04.705890" elapsed="7.687820"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la tentative avec "${text}": ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.393710" elapsed="0.000000"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.393710" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:12.393710" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:04.705890" elapsed="7.687820"/>
+</try>
+<var name="${text}">Answer</var>
+<status status="PASS" start="2025-10-05T23:36:04.705890" elapsed="7.687820"/>
+</iter>
+<var>${text}</var>
+<value>@{possible_texts}</value>
+<status status="PASS" start="2025-10-05T23:35:58.711742" elapsed="13.681968"/>
+</for>
+<if>
+<branch type="IF" condition="not ${call_answered}">
+<kw name="Log" owner="BuiltIn">
+<arg>Avertissement: Impossible de confirmer que l'appel a été répondu</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.393710" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:12.393710" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:12.393710" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-10-05T23:35:53.593370" elapsed="18.800340"/>
+</kw>
+<msg time="2025-10-05T23:36:12.394713" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:35:53.592370" elapsed="18.802343"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:36:12.394713" level="INFO">Test Test Answer Call Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:36:12.394713" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T23:36:12.394713" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T23:36:12.394713" elapsed="0.000996"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:36:12.394713" elapsed="0.000996"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:12.394713" elapsed="0.000996"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T23:35:53.592370" elapsed="18.803339"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T23:35:53.591370" elapsed="18.804339"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:12.395709" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:12.395709" elapsed="0.001001"/>
+</if>
+<arg>Execute Answer Call Bluetooth Test</arg>
+<arg>Test Answer Call Bluetooth</arg>
+<status status="PASS" start="2025-10-05T23:35:53.591370" elapsed="18.805340"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:36:12.396710" elapsed="1.012126"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.409830" level="INFO">${cpu} = 97.33333333333333</msg>
+<msg time="2025-10-05T23:36:13.409830" level="INFO">${mem} = 2771.5777994791665</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.408836" elapsed="0.000994"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:36:13.410834" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Answer Call Bluetooth:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.409830" elapsed="0.002003"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.411833" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.411833" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:36:13.413832" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Answer Call Bluetooth:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.411833" elapsed="0.001999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.413832" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.413832" elapsed="0.000000"/>
+</kw>
+<doc>Teste la réponse à un appel via Bluetooth
+- Localise et clique sur le bouton "Répondre"
+- Vérifie que l'interface d'appel est active
+- Continue l'exécution même en cas d'échec partiel</doc>
+<tag>bluetooth</tag>
+<tag>call</tag>
+<status status="PASS" start="2025-10-05T23:35:53.587369" elapsed="19.827465"/>
+</test>
+<test id="s1-t5" name="Test End Call Bluetooth" line="196">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.415832" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-393, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.415832" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.416831" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-393, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.415832" elapsed="0.000999"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.416831" elapsed="0.000999"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.418830" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.418830" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.418830" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.418830" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute End Call Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:36:13.513941" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:36:13.419832" elapsed="0.094109"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.514941" level="INFO">${phone} = Téléphone</msg>
+<var>${phone}</var>
+<arg>Téléphone</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.514941" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.514941" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.514941" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:36:13.514941" level="INFO">${end_call} = Terminer</msg>
+<var>${end_call}</var>
+<arg>Terminer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.514941" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:36:13.513941" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${phone}</var>
+<arg>Phone</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:13.515941" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:13.515941" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${end_call}</var>
+<arg>End</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:36:13.515941" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:36:13.514941" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:36:13.513941" elapsed="0.002000"/>
+</if>
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T23:36:59.786711" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'TestNotificationapk', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+🔄 Swipe en cours...
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'TestNotificationapk', 'Téléphone', 'Vivaldi Browser', 'YouTube']</msg>
+<msg time="2025-10-05T23:36:59.786711" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${phone}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T23:36:13.515941" elapsed="46.270770"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir l'application téléphone</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:36:59.786711" elapsed="0.001000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:37:04.788291" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:36:59.787711" elapsed="5.000580"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Text Bounds Driver" owner="script_IA">
+<arg>${driver}</arg>
+<arg>${end_call}</arg>
+<doc>Capture une capture d'écran du navigateur et extrait les coordonnées du texte.</doc>
+<status status="PASS" start="2025-10-05T23:37:04.788291" elapsed="1.931762"/>
+</kw>
+<msg time="2025-10-05T23:37:06.720053" level="INFO">${bounds} = None</msg>
+<var>${bounds}</var>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Get Text Bounds Driver</arg>
+<arg>${driver}</arg>
+<arg>${end_call}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:37:04.788291" elapsed="1.931762"/>
+</kw>
+<if>
+<branch type="IF" condition="${bounds} is not None">
+<kw name="Click Sur Bound" owner="Integration">
+<arg>${driver}</arg>
+<arg>${bounds}</arg>
+<doc>Clique sur un élément en utilisant ses coordonnées.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:06.720053" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:06.720053" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Find Icon Position" owner="script_IA">
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<doc>Trouve la position d'une icône sur l'écran du device Android.</doc>
+<status status="PASS" start="2025-10-05T23:37:06.721056" elapsed="0.321056"/>
+</kw>
+<msg time="2025-10-05T23:37:07.044114" level="INFO">${end_call_pos} = (645, 564, 115, 109)</msg>
+<var>${end_call_pos}</var>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Find Icon Position</arg>
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-10-05T23:37:06.720053" elapsed="0.324061"/>
+</kw>
+<if>
+<branch type="IF" condition="${end_call_pos} is not None">
+<kw name="Click Icon Ia" owner="script_IA">
+<arg>${driver}</arg>
+<arg>endcall</arg>
+<doc>Clique sur une icône trouvée sur l'écran.</doc>
+<status status="PASS" start="2025-10-05T23:37:07.046110" elapsed="0.732766"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:07.045114" elapsed="0.733762"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" owner="BuiltIn">
+<arg>Impossible de trouver le bouton pour terminer l'appel</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:07.778876" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:07.778876" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:07.045114" elapsed="0.733762"/>
+</if>
+<status status="PASS" start="2025-10-05T23:37:06.720053" elapsed="1.058823"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:06.720053" elapsed="1.058823"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:37:10.779207" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:37:07.778876" elapsed="3.000331"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:36:13.419832" elapsed="57.359375"/>
+</kw>
+<msg time="2025-10-05T23:37:10.779207" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:36:13.418830" elapsed="57.360377"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:10.780206" level="INFO">Test Test End Call Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:10.780206" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T23:37:10.780206" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T23:37:10.780206" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:10.779207" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:10.780206" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:10.781206" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:10.781206" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:10.781206" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:37:10.781206" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:37:10.780206" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:10.779207" elapsed="0.001999"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T23:36:13.418830" elapsed="57.363377"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T23:36:13.418830" elapsed="57.363377"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:10.782207" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:10.782207" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:10.782207" elapsed="0.000000"/>
+</if>
+<arg>Execute End Call Bluetooth Test</arg>
+<arg>Test End Call Bluetooth</arg>
+<status status="PASS" start="2025-10-05T23:36:13.417830" elapsed="57.364377"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:10.782207" elapsed="1.003822"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.786029" level="INFO">${cpu} = 95.55555555555556</msg>
+<msg time="2025-10-05T23:37:11.786029" level="INFO">${mem} = 2712.89453125</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.786029" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:37:11.788032" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test End Call Bluetooth:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.787029" elapsed="0.001003"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.788032" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.788032" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:37:11.789028" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test End Call Bluetooth:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.788032" elapsed="0.000996"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.789028" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.789028" elapsed="0.000000"/>
+</kw>
+<doc>Teste la fin d'un appel via Bluetooth
+- Ouvre l'application téléphone
+- Localise et clique sur le bouton "Terminer l'appel"
+- Continue l'exécution même en cas d'échec partiel</doc>
+<tag>bluetooth</tag>
+<tag>call</tag>
+<status status="PASS" start="2025-10-05T23:36:13.414834" elapsed="58.374194"/>
+</test>
+<test id="s1-t6" name="Test Supprimer Bluetooth" line="218">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.790029" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-472, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.790029" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.791030" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-472, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.790029" elapsed="0.001001"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.791030" elapsed="0.000000"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.792030" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.792030" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.792030" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.792030" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Supprimer Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:37:11.905558" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:37:11.793030" elapsed="0.112528"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.905558" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.905558" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.905558" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.905558" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.906561" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.906561" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.906561" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.906561" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.906561" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.906561" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.906561" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.906561" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.906561" level="INFO">${pairing} = Associer un nouvel appareil</msg>
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.906561" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.906561" level="INFO">${pairing_conf} = Associer</msg>
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.906561" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.907563" level="INFO">${pairing_conf2} = Continuer</msg>
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.907563" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.907563" level="INFO">${supp} = Supprimer</msg>
+<var>${supp}</var>
+<arg>Supprimer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.907563" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:11.905558" elapsed="0.002005"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${supp}</var>
+<arg>Forget</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.908565" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:11.907563" elapsed="0.001002"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:11.905558" elapsed="0.003007"/>
+</if>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-10-05T23:37:11.933089" level="FAIL">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at logger (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</msg>
+<arg>${driver_mobile}</arg>
+<arg>6</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="FAIL" start="2025-10-05T23:37:11.908565" elapsed="0.063053">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.971618" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir les paramètres</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${name_bluetooth_mobile}</arg>
+<arg>Impossible de récupérer le nom Bluetooth du mobile</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appareil n'est pas appairé</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${supp}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.972615" elapsed="0.000999"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.973614" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.973614" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appairage n'a pas été supprimé</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.973614" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-10-05T23:37:11.793030" elapsed="0.180584">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<msg time="2025-10-05T23:37:11.973614" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.793030" elapsed="0.180584"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.974613" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:11.974613" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:11.973614" elapsed="0.000999"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.974613" level="INFO">${attempt} = 2</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.974613" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:11.974613" level="INFO">Test Test Supprimer Bluetooth échoué - Tentative 2/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.974613" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:37:13.975746" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:37:11.975614" elapsed="2.000132"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:11.974613" elapsed="2.001133"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:11.974613" elapsed="2.001133"/>
+</if>
+<status status="PASS" start="2025-10-05T23:37:11.974613" elapsed="2.001133"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:11.973614" elapsed="2.002132"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T23:37:11.792030" elapsed="2.183716"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Supprimer Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:37:14.090743" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:37:13.976744" elapsed="0.113999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.091745" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.091745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.091745" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.091745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.091745" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.091745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.091745" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.091745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.091745" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.091745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.091745" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.091745" elapsed="0.001000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.092745" level="INFO">${pairing} = Associer un nouvel appareil</msg>
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.092745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.092745" level="INFO">${pairing_conf} = Associer</msg>
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.092745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.092745" level="INFO">${pairing_conf2} = Continuer</msg>
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.092745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.092745" level="INFO">${supp} = Supprimer</msg>
+<var>${supp}</var>
+<arg>Supprimer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.092745" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:14.090743" elapsed="0.002002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.092745" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${supp}</var>
+<arg>Forget</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.093743" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:14.092745" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:14.090743" elapsed="0.003000"/>
+</if>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-10-05T23:37:14.098744" level="FAIL">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at logger (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</msg>
+<arg>${driver_mobile}</arg>
+<arg>6</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="FAIL" start="2025-10-05T23:37:14.094745" elapsed="0.005002">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir les paramètres</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${name_bluetooth_mobile}</arg>
+<arg>Impossible de récupérer le nom Bluetooth du mobile</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appareil n'est pas appairé</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.100745" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.101743" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${supp}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.101743" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.101743" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.101743" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appairage n'a pas été supprimé</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.101743" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-10-05T23:37:13.976744" elapsed="0.124999">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<msg time="2025-10-05T23:37:14.101743" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:37:13.976744" elapsed="0.124999"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.102745" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:14.102745" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:14.101743" elapsed="0.001002"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.102745" level="INFO">${attempt} = 3</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.102745" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:14.102745" level="INFO">Test Test Supprimer Bluetooth échoué - Tentative 3/3</msg>
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.102745" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.103947" level="INFO">Slept 2 seconds.</msg>
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:37:14.103743" elapsed="2.000204"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:14.102745" elapsed="2.001202"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:14.102745" elapsed="2.001202"/>
+</if>
+<status status="PASS" start="2025-10-05T23:37:14.102745" elapsed="2.001202"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:14.101743" elapsed="2.002204"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-10-05T23:37:13.975746" elapsed="2.128201"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Supprimer Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:37:16.190083" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:37:16.105472" elapsed="0.084611"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.190083" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.190083" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.190083" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.190083" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.191080" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.190083" elapsed="0.000997"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.191080" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.191080" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.191080" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.191080" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.191080" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.191080" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.191080" level="INFO">${pairing} = Associer un nouvel appareil</msg>
+<var>${pairing}</var>
+<arg>Associer un nouvel appareil</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.191080" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.191080" level="INFO">${pairing_conf} = Associer</msg>
+<var>${pairing_conf}</var>
+<arg>Associer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.191080" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.192081" level="INFO">${pairing_conf2} = Continuer</msg>
+<var>${pairing_conf2}</var>
+<arg>Continuer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.192081" level="INFO">${supp} = Supprimer</msg>
+<var>${supp}</var>
+<arg>Supprimer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:16.190083" elapsed="0.001998"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing}</var>
+<arg>Pair new device</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf}</var>
+<arg>Pair</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${pairing_conf2}</var>
+<arg>Continue</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.193082" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${supp}</var>
+<arg>Forget</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.193082" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:16.192081" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:16.190083" elapsed="0.002999"/>
+</if>
+<kw name="Press Key" owner="Integration">
+<msg time="2025-10-05T23:37:16.197599" level="FAIL">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at logger (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</msg>
+<arg>${driver_mobile}</arg>
+<arg>6</arg>
+<doc>Effectue un appui sur une touche spécifique via son keycode.</doc>
+<status status="FAIL" start="2025-10-05T23:37:16.193082" elapsed="0.005519">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<kw name="Open Application With Click" owner="Integration">
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.198601" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir les paramètres</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.198601" elapsed="0.000000"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="NOT RUN" start="2025-10-05T23:37:16.198601" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.198601" elapsed="0.000000"/>
+</kw>
+<kw name="Get Bluetooth Name" owner="script_mobile">
+<var>${name_bluetooth_mobile}</var>
+<arg>${driver_mobile}</arg>
+<doc>Récupère le nom de l'appareil Bluetooth via ADB.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.198601" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${name_bluetooth_mobile}</arg>
+<arg>Impossible de récupérer le nom Bluetooth du mobile</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.198601" elapsed="0.001000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appareil n'est pas appairé</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>Click Element By Text Att</arg>
+<arg>${driver}</arg>
+<arg>${supp}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<kw name="Is Bluetooth Connected" owner="Integration">
+<var>${verif_adb}</var>
+<arg>${driver}</arg>
+<arg>${name_bluetooth_mobile}</arg>
+<doc>Vérifie si un appareil Bluetooth spécifique est connecté.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verif_adb}</arg>
+<arg>L'appairage n'a pas été supprimé</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.199601" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-10-05T23:37:16.105472" elapsed="0.094129">InvalidSessionIdException: Message: A session is either terminated or not started
+Stacktrace:
+NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:309:15)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.js:512:15
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:365:14)
+    [ Message content over the limit has been removed. ]
+...AppData\Roaming\npm\node_modules\appium\node_modules\morgan\index.js:144:5)
+    at Layer.handle [as handle_request] (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\body-parser\lib\read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\bahae\AppData\Roaming\npm\node_modules\appium\node_modules\raw-body\index.js:287:7)</status>
+</kw>
+<msg time="2025-10-05T23:37:16.200603" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.104948" elapsed="0.095655"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.200603" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.200603" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:16.200603" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.200603" level="INFO">${attempt} = 4</msg>
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.200603" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.201602" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.201602" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:16.200603" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:16.200603" elapsed="0.000999"/>
+</if>
+<status status="PASS" start="2025-10-05T23:37:16.200603" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:16.200603" elapsed="0.000999"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-10-05T23:37:16.103947" elapsed="0.097655"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T23:37:11.792030" elapsed="4.409572"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.201602" level="FAIL">Le test Test Supprimer Bluetooth a échoué après 3 tentatives</msg>
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2025-10-05T23:37:16.201602" elapsed="0.000000">Le test Test Supprimer Bluetooth a échoué après 3 tentatives</status>
+</kw>
+<status status="FAIL" start="2025-10-05T23:37:16.201602" elapsed="0.000000">Le test Test Supprimer Bluetooth a échoué après 3 tentatives</status>
+</branch>
+<status status="FAIL" start="2025-10-05T23:37:16.201602" elapsed="0.000000">Le test Test Supprimer Bluetooth a échoué après 3 tentatives</status>
+</if>
+<arg>Execute Supprimer Bluetooth Test</arg>
+<arg>Test Supprimer Bluetooth</arg>
+<status status="FAIL" start="2025-10-05T23:37:11.792030" elapsed="4.409572">Le test Test Supprimer Bluetooth a échoué après 3 tentatives</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.201602" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.201602" elapsed="0.001000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>cpu_usage.log</arg>
+<arg>Test Supprimer Bluetooth:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.202602" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.202602" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<arg>mem_usage.log</arg>
+<arg>Test Supprimer Bluetooth:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.202602" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.202602" elapsed="0.000000"/>
+</kw>
+<doc>Teste la suppression de l'appairage Bluetooth
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Supprime l'appareil appairé
+- Vérifie que l'appairage n'est plus actif via ADB</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-05T23:37:11.789028" elapsed="4.413574">Le test Test Supprimer Bluetooth a échoué après 3 tentatives</status>
+</test>
+<test id="s1-t7" name="Test Fermer Bluetooth" line="242">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.203601" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-479, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.203601" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.204602" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-479, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.203601" elapsed="0.001001"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.204602" elapsed="0.000534"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.206127" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.206127" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.206127" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.206127" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Fermer Bluetooth Test">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T23:37:16.619024" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:37:16.208127" elapsed="0.410897"/>
+</kw>
+<if>
+<branch type="IF" condition="'${lang}' == 'fr'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.620023" level="INFO">${System} = Système</msg>
+<var>${System}</var>
+<arg>Système</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.620023" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.620023" level="INFO">${Setting} = Paramètres</msg>
+<var>${Setting}</var>
+<arg>Paramètres</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.620023" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.620023" level="INFO">${apps} = Applis</msg>
+<var>${apps}</var>
+<arg>Applis</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.620023" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.620023" level="INFO">${Consulter_allapps} = Voir les</msg>
+<var>${Consulter_allapps}</var>
+<arg>Voir les</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.620023" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.621020" level="INFO">${DesButton} = Désinstaller</msg>
+<var>${DesButton}</var>
+<arg>Désinstaller</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.620023" elapsed="0.000997"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:16.621020" level="INFO">${confirme} = OK</msg>
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:16.619024" elapsed="0.001996"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${System}</var>
+<arg>System</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Setting}</var>
+<arg>Settings</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${apps}</var>
+<arg>Apps</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${Consulter_allapps}</var>
+<arg>See all</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DesButton}</var>
+<arg>Uninstall</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${confirme}</var>
+<arg>OK</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:16.621020" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:16.619024" elapsed="0.001996"/>
+</if>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-10-05T23:37:16.623025" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-10-05T23:37:16.622025" elapsed="0.025998">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:37:16.649020" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:37:16.649020" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-10-05T23:37:16.622025" elapsed="0.027996">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:37:16.650021" level="INFO">${app_open} = False</msg>
+<var>${app_open}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.621020" elapsed="0.029001"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${app_open}">
+<kw name="Open Application With Click" owner="Integration">
+<msg time="2025-10-05T23:37:17.429897" level="INFO">🔄 Tentative d'ouverture de Paramètres via l'activité: com.android.car.settings/.Settings_Launcher_Homepage
+com.android.car.settings/.Settings_Launcher_Homepage
+✅ Paramètres ouvert avec succès via l'activité</msg>
+<msg time="2025-10-05T23:37:17.429897" level="INFO">${resultat} = True</msg>
+<var>${resultat}</var>
+<arg>${driver}</arg>
+<arg>${Setting}</arg>
+<doc>Ouvre une application soit par son activité si connue, soit par recherche visuelle</doc>
+<status status="PASS" start="2025-10-05T23:37:16.650021" elapsed="0.779876"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resultat}</arg>
+<arg>Impossible d'ouvrir les paramètres</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:37:17.429897" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:37:19.431934" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:37:17.430895" elapsed="2.001039"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:16.650021" elapsed="2.781913"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:16.650021" elapsed="2.781913"/>
+</if>
+<kw name="Check Element Exists By Id" owner="Integration">
+<msg time="2025-10-05T23:37:19.546935" level="INFO">${Verfier} = True</msg>
+<var>${Verfier}</var>
+<arg>${driver}</arg>
+<arg>${Setting_xpath_id}</arg>
+<doc>Vérifie si un élément existe en utilisant son ID.</doc>
+<status status="PASS" start="2025-10-05T23:37:19.431934" elapsed="0.115001"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${Verfier}</arg>
+<arg>Les paramètres ne sont pas affichés</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:37:19.546935" elapsed="0.000999"/>
+</kw>
+<kw name="Clique Sur Setting" owner="Integration">
+<msg time="2025-10-05T23:37:21.353218" level="INFO">(0, 76, 550, 696)
+✅ 'Bluetooth' trouvé sans swipe. Appui en cours...</msg>
+<arg>${driver}</arg>
+<arg>Bluetooth</arg>
+<arg>${Setting_menu}</arg>
+<status status="PASS" start="2025-10-05T23:37:19.547934" elapsed="1.806285"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:37:23.354767" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:37:21.354219" elapsed="2.000548"/>
+</kw>
+<kw name="Element Existe Par Accessibility Id" owner="Integration">
+<msg time="2025-10-05T23:37:23.426762" level="INFO">${ble} = True</msg>
+<var>${ble}</var>
+<arg>${driver}</arg>
+<arg>Bluetooth toggle switch</arg>
+<status status="PASS" start="2025-10-05T23:37:23.354767" elapsed="0.071995"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ble}</arg>
+<arg>Les paramètres Bluetooth ne s'affichent pas</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-10-05T23:37:23.426762" elapsed="0.000000"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<msg time="2025-10-05T23:37:23.586764" level="INFO">${ble_active} = True</msg>
+<var>${ble_active}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-10-05T23:37:23.426762" elapsed="0.160002"/>
+</kw>
+<if>
+<branch type="IF" condition="${ble_active}">
+<kw name="Desactive Bluetooth Si Activer" owner="Integration">
+<msg time="2025-10-05T23:37:23.850278" level="INFO">✅ Le Bluetooth est désactivé.</msg>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-10-05T23:37:23.586764" elapsed="0.263514"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T23:37:26.851731" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T23:37:23.851285" elapsed="3.000446"/>
+</kw>
+<kw name="Verfier Bluetooth Activer" owner="Integration">
+<msg time="2025-10-05T23:37:26.975730" level="INFO">${verifier_ble_ui} = False</msg>
+<var>${verifier_ble_ui}</var>
+<arg>${driver}</arg>
+<arg>android:id/switch_widget</arg>
+<status status="PASS" start="2025-10-05T23:37:26.851731" elapsed="0.123999"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verifier_ble_ui}</arg>
+<arg>Le Bluetooth n'est pas désactivé dans l'interface</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-10-05T23:37:26.976729" elapsed="0.000000"/>
+</kw>
+<kw name="Est Bluetooth Active" owner="Integration">
+<msg time="2025-10-05T23:37:27.059730" level="INFO">❌ Bluetooth est désactivé.</msg>
+<msg time="2025-10-05T23:37:27.059730" level="INFO">${verfier_ble_adb} = False</msg>
+<var>${verfier_ble_adb}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T23:37:26.976729" elapsed="0.083001"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${verfier_ble_adb}</arg>
+<arg>Le Bluetooth n'est pas désactivé via ADB</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2025-10-05T23:37:27.059730" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:27.059730" level="INFO">Bluetooth est désactivé.</msg>
+<arg>Bluetooth est désactivé.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:27.059730" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:23.586764" elapsed="3.472966"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>Le Bluetooth est déjà désactivé</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:27.059730" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:27.059730" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:23.586764" elapsed="3.472966"/>
+</if>
+<status status="PASS" start="2025-10-05T23:37:16.208127" elapsed="10.851603"/>
+</kw>
+<msg time="2025-10-05T23:37:27.060729" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:37:16.207128" elapsed="10.853601"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:27.060729" level="INFO">Test Test Fermer Bluetooth réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-10-05T23:37:27.060729" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-10-05T23:37:27.060729" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:27.060729" elapsed="0.001001"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-10-05T23:37:16.207128" elapsed="10.854602"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-10-05T23:37:16.206127" elapsed="10.855603"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:27.061730" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:27.061730" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:27.061730" elapsed="0.000000"/>
+</if>
+<arg>Execute Fermer Bluetooth Test</arg>
+<arg>Test Fermer Bluetooth</arg>
+<status status="PASS" start="2025-10-05T23:37:16.206127" elapsed="10.855603"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:27.061730" elapsed="1.000994"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T23:37:28.062724" level="INFO">${cpu} = 93.5</msg>
+<msg time="2025-10-05T23:37:28.063727" level="INFO">${mem} = 2805.26416015625</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.062724" elapsed="0.001003"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:37:28.064722" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Fermer Bluetooth:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.063727" elapsed="0.000995"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:28.065720" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.064722" elapsed="0.000998"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-10-05T23:37:28.066722" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Fermer Bluetooth:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.065720" elapsed="0.001002"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:28.066722" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.066722" elapsed="0.000000"/>
+</kw>
+<doc>Teste la désactivation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Désactive le Bluetooth s'il est activé
+- Vérifie que le Bluetooth est bien désactivé (UI et ADB)</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-10-05T23:37:16.202602" elapsed="11.864120"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-10-05T23:37:28.068721" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-10-05T23:37:28.067721" elapsed="0.001000">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:37:28.069722" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:37:28.069722" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-10-05T23:37:28.067721" elapsed="0.003000">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:37:28.070721" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.067721" elapsed="0.003000"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:28.070721" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver principal fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:28.070721" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:28.070721" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:28.070721" level="INFO">Le driver principal n'était pas actif</msg>
+<arg>Le driver principal n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.070721" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:28.070721" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:28.070721" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-10-05T23:37:28.067721" elapsed="0.003000"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la vérification du driver principal: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:28.071721" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:28.070721" elapsed="0.001000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:28.067721" elapsed="0.004000"/>
+</try>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-10-05T23:37:28.071721" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-10-05T23:37:28.071721" elapsed="0.000999">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:37:28.073722" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:37:28.074723" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-10-05T23:37:28.071721" elapsed="0.003002">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:37:28.074723" level="INFO">${session_active_mobile} = False</msg>
+<var>${session_active_mobile}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.071721" elapsed="0.003002"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active_mobile}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver_mobile}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver mobile fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:37:28.075722" level="INFO">Le driver mobile n'était pas actif</msg>
+<arg>Le driver mobile n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2025-10-05T23:37:28.071721" elapsed="0.004001"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la vérification du driver mobile: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:37:28.075722" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:37:28.071721" elapsed="0.005001"/>
+</try>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:28.076722" level="INFO">${driver} = None</msg>
+<arg>${driver}</arg>
+<arg>${None}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.076722" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:37:28.076722" level="INFO">${driver_mobile} = None</msg>
+<arg>${driver_mobile}</arg>
+<arg>${None}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T23:37:28.076722" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:37:28.067721" elapsed="0.009001"/>
+</kw>
+<doc>Ce fichier contient des tests d'activation, désactivation, appairage et gestion d'appels via Bluetooth sur des appareils Android.
+Les tests vérifient que les paramètres Bluetooth sont accessibles, que les actions d'activation/désactivation fonctionnent correctement,
+que l'appairage entre appareils fonctionne, et que les fonctionnalités d'appel via Bluetooth opèrent correctement.
+Les tests prennent en charge les interfaces en français et en anglais.</doc>
+<status status="FAIL" start="2025-10-05T23:34:05.954869" elapsed="202.121853"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="6" fail="1" skip="0">bluetooth</stat>
+<stat pass="3" fail="0" skip="0">call</stat>
+<stat pass="3" fail="1" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteBluetooth" id="s1" pass="6" fail="1" skip="0">FonctionnaliteBluetooth</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-10-05T23:34:10.997739" level="WARN">Imported library 'C:\Users\bahae\Documents\PfeProject\test_cases\resource_monitor.py' contains no keywords.</msg>
+<msg time="2025-10-05T23:37:16.649020" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:37:28.069722" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:37:28.073722" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>

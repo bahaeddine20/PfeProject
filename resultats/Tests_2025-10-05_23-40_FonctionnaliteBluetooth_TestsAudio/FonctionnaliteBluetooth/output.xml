@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-10-05T23:40:18.430746" rpa="false" schemaversion="5">
+<suite id="s1" name="FonctionnaliteBluetooth" source="C:\Users\bahae\Documents\PfeProject\test_cases\FonctionnaliteBluetooth.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-10-05T23:40:35.716127" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA8A2FAA0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-10-05T23:40:37.736174" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CE9C0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-10-05T23:40:39.754725" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CDF10&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-10-05T23:40:41.783941" level="FAIL">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="FAIL" start="2025-10-05T23:40:33.695767" elapsed="8.159184">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver for ${Device}: ${driver}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.854951" elapsed="0.000000"/>
+</kw>
+<kw name="Setup Driver Mobile" owner="script_mobile">
+<var>${driver_mobile}</var>
+<arg>${Device_mobile}</arg>
+<doc>Initialise et retourne le driver Appium.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.854951" elapsed="0.001001"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.855952" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${driver_mobile}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.855952" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-10-05T23:40:33.694777" elapsed="8.161175">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</kw>
+<test id="s1-t1" name="Test Ouvrir Bluetooth" line="102">
+<doc>Teste l'activation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Active le Bluetooth s'il est désactivé
+- Vérifie que le Bluetooth est bien activé (UI et ADB)</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-05T23:40:41.855952" elapsed="0.001531">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<test id="s1-t2" name="Test Pairing Bluetooth" line="126">
+<doc>Teste l'appairage Bluetooth entre les deux appareils
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Vérifie si l'appairage existe déjà
+- Si non, initie le processus d'appairage
+- Valide l'appairage des deux côtés
+- Vérifie que l'appairage est effectif via ADB</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-05T23:40:41.858477" elapsed="0.000000">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<test id="s1-t3" name="Test Call Bluetooth" line="152">
+<doc>Teste la réception d'un appel via Bluetooth
+- Simule un appel entrant sur le mobile
+- Vérifie que le numéro appelant est affiché à l'écran
+- Continue l'exécution même en cas d'échec partiel</doc>
+<tag>bluetooth</tag>
+<tag>call</tag>
+<status status="FAIL" start="2025-10-05T23:40:41.858477" elapsed="0.000997">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<test id="s1-t4" name="Test Answer Call Bluetooth" line="174">
+<doc>Teste la réponse à un appel via Bluetooth
+- Localise et clique sur le bouton "Répondre"
+- Vérifie que l'interface d'appel est active
+- Continue l'exécution même en cas d'échec partiel</doc>
+<tag>bluetooth</tag>
+<tag>call</tag>
+<status status="FAIL" start="2025-10-05T23:40:41.859474" elapsed="0.000530">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<test id="s1-t5" name="Test End Call Bluetooth" line="196">
+<doc>Teste la fin d'un appel via Bluetooth
+- Ouvre l'application téléphone
+- Localise et clique sur le bouton "Terminer l'appel"
+- Continue l'exécution même en cas d'échec partiel</doc>
+<tag>bluetooth</tag>
+<tag>call</tag>
+<status status="FAIL" start="2025-10-05T23:40:41.860004" elapsed="0.000000">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<test id="s1-t6" name="Test Supprimer Bluetooth" line="218">
+<doc>Teste la suppression de l'appairage Bluetooth
+- Vérifie la langue du système
+- Ouvre les paramètres Bluetooth
+- Récupère le nom Bluetooth du mobile
+- Supprime l'appareil appairé
+- Vérifie que l'appairage n'est plus actif via ADB</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-05T23:40:41.860004" elapsed="0.000996">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<test id="s1-t7" name="Test Fermer Bluetooth" line="242">
+<doc>Teste la désactivation du Bluetooth sur l'appareil principal
+- Vérifie la langue du système
+- Ouvre les paramètres
+- Accède aux paramètres Bluetooth
+- Désactive le Bluetooth s'il est activé
+- Vérifie que le Bluetooth est bien désactivé (UI et ADB)</doc>
+<tag>bluetooth</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-05T23:40:41.861000" elapsed="0.000000">Parent suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-10-05T23:40:41.863526" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-10-05T23:40:41.862558" elapsed="0.004492">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:40:41.868050" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:40:41.868050" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-10-05T23:40:41.862558" elapsed="0.005492">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:40:41.868050" level="INFO">${session_active} = False</msg>
+<var>${session_active}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:40:41.862558" elapsed="0.005492"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.868050" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver principal fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.869051" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:40:41.868050" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:40:41.869051" level="INFO">Le driver principal n'était pas actif</msg>
+<arg>Le driver principal n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:40:41.869051" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:40:41.869051" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:40:41.868050" elapsed="0.001001"/>
+</if>
+<status status="PASS" start="2025-10-05T23:40:41.862558" elapsed="0.006493"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la vérification du driver principal: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.869587" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:40:41.869051" elapsed="0.000536"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:40:41.862558" elapsed="0.007029"/>
+</try>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Source" owner="AppiumLibrary">
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2025-10-05T23:40:41.869587" level="FAIL">No application is open</msg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" start="2025-10-05T23:40:41.869587" elapsed="0.000992">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:40:41.870579" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:40:41.871578" level="FAIL">No application is open</msg>
+<doc>Returns the entire source of the current page.</doc>
+<status status="FAIL" start="2025-10-05T23:40:41.869587" elapsed="0.001991">No application is open</status>
+</kw>
+<msg time="2025-10-05T23:40:41.871578" level="INFO">${session_active_mobile} = False</msg>
+<var>${session_active_mobile}</var>
+<arg>Get Source</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-05T23:40:41.869587" elapsed="0.001991"/>
+</kw>
+<if>
+<branch type="IF" condition="${session_active_mobile}">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver_mobile}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.871578" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Driver mobile fermé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.872579" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:40:41.871578" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-05T23:40:41.872579" level="INFO">Le driver mobile n'était pas actif</msg>
+<arg>Le driver mobile n'était pas actif</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-05T23:40:41.872579" elapsed="0.000532"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:40:41.872579" elapsed="0.000532"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:40:41.871578" elapsed="0.001533"/>
+</if>
+<status status="PASS" start="2025-10-05T23:40:41.869587" elapsed="0.003524"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Log" owner="BuiltIn">
+<arg>Erreur lors de la vérification du driver mobile: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-10-05T23:40:41.873111" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-10-05T23:40:41.873111" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-10-05T23:40:41.869587" elapsed="0.003524"/>
+</try>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:40:41.873111" level="INFO">${driver} = None</msg>
+<arg>${driver}</arg>
+<arg>${None}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T23:40:41.873111" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T23:40:41.874108" level="INFO">${driver_mobile} = None</msg>
+<arg>${driver_mobile}</arg>
+<arg>${None}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T23:40:41.874108" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-10-05T23:40:41.862558" elapsed="0.011550"/>
+</kw>
+<doc>Ce fichier contient des tests d'activation, désactivation, appairage et gestion d'appels via Bluetooth sur des appareils Android.
+Les tests vérifient que les paramètres Bluetooth sont accessibles, que les actions d'activation/désactivation fonctionnent correctement,
+que l'appairage entre appareils fonctionne, et que les fonctionnalités d'appel via Bluetooth opèrent correctement.
+Les tests prennent en charge les interfaces en français et en anglais.</doc>
+<status status="FAIL" start="2025-10-05T23:40:18.433274" elapsed="23.440834">Suite setup failed:
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CD0D0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="7" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="7" skip="0">bluetooth</stat>
+<stat pass="0" fail="3" skip="0">call</stat>
+<stat pass="0" fail="4" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="FonctionnaliteBluetooth" id="s1" pass="0" fail="7" skip="0">FonctionnaliteBluetooth</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-10-05T23:40:21.560411" level="WARN">Imported library 'C:\Users\bahae\Documents\PfeProject\test_cases\resource_monitor.py' contains no keywords.</msg>
+<msg time="2025-10-05T23:40:35.716127" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA8A2FAA0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-10-05T23:40:37.736174" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CE9C0&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-10-05T23:40:39.754725" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000020CA92CDF10&gt;: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session</msg>
+<msg time="2025-10-05T23:40:41.868050" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-10-05T23:40:41.870579" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+</errors>
+</robot>

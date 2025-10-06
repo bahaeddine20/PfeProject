@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-10-05T04:24:51.440916" rpa="false" schemaversion="5">
+<suite id="s1" name="InstallationApplications" source="C:\Users\bahae\Documents\PfeProject\test_cases\InstallationApplications.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Setup Driver" owner="Integration">
+<msg time="2025-10-05T04:25:02.780838" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="98695a98-0a75-4425-81a4-65ba12acfcd0")&gt;</msg>
+<var>${driver}</var>
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-10-05T04:24:55.182995" elapsed="7.597843"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:25:02.781839" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="98695a98-0a75-4425-81a4-65ba12acfcd0")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.781839" elapsed="0.000000"/>
+</kw>
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-10-05T04:25:02.889890" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-10-05T04:25:02.783840" elapsed="0.106050"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-10-05T04:25:02.890888" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.890888" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:25:02.890888" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'apps': 'Applis', 'view_all': 'Voir les', 'uninstall': 'Désinstaller', 'confirm': 'OK'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.890888" elapsed="0.001004"/>
+</kw>
+<doc>Sets up language-specific variables based on system language</doc>
+<status status="PASS" start="2025-10-05T04:25:02.782838" elapsed="0.109054"/>
+</kw>
+<doc>Initializes the test driver</doc>
+<status status="PASS" start="2025-10-05T04:24:55.180994" elapsed="7.710898"/>
+</kw>
+<test id="s1-t1" name="Test Install Apk" line="198">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-05T04:25:02.892893" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-3, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.891892" elapsed="0.001001"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-05T04:25:02.893895" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-3, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.892893" elapsed="0.001002"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.893895" elapsed="0.000995"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:25:02.895891" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.895891" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-05T04:25:02.895891" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-05T04:25:02.895891" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Execute Install Apk Test">
+<kw name="Uninstall App If Exists">
+<kw name="Search Application" owner="Integration">
+<msg time="2025-10-05T04:26:05.973621" level="INFO">📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+📌 First Home Page détectée : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+✅ Retour à la first home page !
+111111111111111111111
+2222222222222222
+
+📌 Liste des applications détectées : ['Agenda', 'Appium Settings', 'ARD Audiothek', 'Audio Bluetooth', 'Audio Recorder Auto', 'Crunchyroll', 'Enregistreur vocal', 'Google Assistant', 'Google\xa0Actualités', 'Google\xa0Maps', 'Home Assistant', 'Local Media Player', 'Paramètres', 'Play\xa0Store', 'Prime Video']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+6666666666666666666
+🔄 Swipe en cours...
+2222222222222222
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+444444444444444444444'
+
+📌 Liste des applications détectées : ['SMS', 'Spotify', 'Téléphone', 'Vivaldi Browser', 'YouTube']
+55555555555555555
+✅ Retour à la first home page !</msg>
+<msg time="2025-10-05T04:26:05.973621" level="INFO">${is_visible} = False</msg>
+<var>${is_visible}</var>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<status status="PASS" start="2025-10-05T04:25:02.898889" elapsed="63.074732"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${is_visible}</arg>
+<arg>Uninstall Application</arg>
+<arg>${driver}</arg>
+<arg>${app_name}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-10-05T04:26:05.974622" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-05T04:26:06.474630" level="INFO">Slept 500 milliseconds.</msg>
+<arg>${QUICK_WAIT}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-05T04:26:05.974622" elapsed="0.500008"/>
+</kw>
+<arg>${driver}</arg>
+<arg>${TEST_APP_NAME}</arg>
+<arg>${TEST_APP_PACKAGE}</arg>
+<doc>Uninstalls the application if it exists</doc>
+<status status="PASS" start="2025-10-05T04:25:02.897892" elapsed="63.576738"/>
+</kw>
+<kw name="Install Apk" owner="Integration">
+<msg time="2025-10-05T04:26:06.974859" level="INFO">Échec de l'installation : adb: failed to install automotive-Notification_Test.apk: 
+Exception occurred while executing 'install':
+android.os.ParcelableException: java.io.IOException: Requested internal only, but not enough space
+	at android.util.ExceptionUtils.wrap(ExceptionUtils.java:34)
+	at com.android.server.pm.PackageInstallerService.createSession(PackageInstallerService.java:630)
+	at com.android.server.pm.PackageManagerShellCommand.doCreateSession(PackageManagerShellCommand.java:3691)
+	at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1

@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-09-29T16:04:43.712811" rpa="false" schemaversion="5">
+<suite id="s1" name="TestsAudio" source="C:\Users\bahae\Documents\PfeProject\test_cases\TestsAudio.robot">
+<kw name="Démarrer Driver" type="SETUP">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:04:55.844773" level="INFO">Tentative d'initialisation du driver Appium...</msg>
+<arg>Tentative d'initialisation du driver Appium...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:04:55.843772" elapsed="0.001001"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:04:55.845315" level="INFO">URL Appium: C:\Users\bahae\Documents\PfeProject\test_cases\..\config.py</msg>
+<arg>URL Appium: C:\\Users\\bahae\\Documents\\PfeProject\\test_cases${/}..${/}config.py</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:04:55.845315" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Setup Driver" owner="Integration">
+<arg>${Device}</arg>
+<doc>Initialise et retourne le driver Appium avec des options de stabilité.</doc>
+<status status="PASS" start="2025-09-29T16:04:55.845315" elapsed="13.157971"/>
+</kw>
+<msg time="2025-09-29T16:05:09.003286" level="INFO">${result} = ('PASS', &lt;appium.webdriver.webdriver.WebDriver (session="eb35411b-80b5-4181-8e00-c19a1fc5b68d")&gt;)</msg>
+<var>${result}</var>
+<arg>setup driver</arg>
+<arg>${Device}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-29T16:04:55.845315" elapsed="13.157971"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-29T16:05:09.003286" level="INFO">${status} = PASS</msg>
+<msg time="2025-09-29T16:05:09.003286" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="eb35411b-80b5-4181-8e00-c19a1fc5b68d")&gt;</msg>
+<var>${status}</var>
+<var>${driver}</var>
+<arg>${result}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-29T16:05:09.003286" elapsed="0.000999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'FAIL'">
+<kw name="Log" owner="BuiltIn">
+<arg>Échec de l'initialisation du driver: ${driver}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-29T16:05:09.004285" elapsed="0.000000"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Impossible d'initialiser le driver Appium: ${driver}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-09-29T16:05:09.004285" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-09-29T16:05:09.004285" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:05:09.004285" elapsed="0.000000"/>
+</if>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-29T16:05:09.005282" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="eb35411b-80b5-4181-8e00-c19a1fc5b68d")&gt;</msg>
+<arg>${driver}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-29T16:05:09.004285" elapsed="0.000997"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:05:09.005282" level="INFO">Driver Appium initialisé avec succès</msg>
+<arg>Driver Appium initialisé avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:05:09.005282" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:04:55.842916" elapsed="13.162366"/>
+</kw>
+<test id="s1-t1" name="Test Audio Recording And Playback" line="238">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:05:09.006821" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-1, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:05:09.006286" elapsed="0.000535"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-29T16:05:09.007347" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-1, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-29T16:05:09.006821" elapsed="0.000526"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:05:09.007878" elapsed="0.000994"/>
+</kw>
+<kw name="Close Activity Robot" owner="Integration">
+<msg time="2025-09-29T16:05:11.867911" level="INFO">Application com.example.audioapplicationtest fermée avec terminateApp
+Application com.example.audioapplicationtest fermée avec succès</msg>
+<arg>${driver}</arg>
+<arg>com.example.audioapplicationtest</arg>
+<doc>Version de close_activity adaptée pour Robot Framework.
+Utilise plusieurs méthodes pour s'assurer que l'application est bien fermée.</doc>
+<status status="PASS" start="2025-09-29T16:05:09.009667" elapsed="2.858244"/>
+</kw>
+<kw name="Execute Test With Retry">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-29T16:05:11.868909" level="INFO">${attempt} = 1</msg>
+<var>${attempt}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-29T16:05:11.868909" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-29T16:05:11.869908" level="INFO">${test_status} = False</msg>
+<var>${test_status}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-29T16:05:11.868909" elapsed="0.000999"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Verify Audio Recording">
+<kw name="Initialize Language Settings">
+<kw name="Get System Language" owner="Integration">
+<msg time="2025-09-29T16:05:12.072897" level="INFO">${lang} = fr</msg>
+<var>${lang}</var>
+<arg>${Device}</arg>
+<status status="PASS" start="2025-09-29T16:05:11.870908" elapsed="0.201989"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2025-09-29T16:05:12.072897" level="INFO">${lang_dict} = {'System': 'Système', 'Setting': 'Paramètres', 'Audio': 'Enregistrement', 'Record': 'START', 'Stop': 'STOP', 'Play': 'Lire'}</msg>
+<var>${lang_dict}</var>
+<arg>'${lang}' == 'fr'</arg>
+<arg>${LANG_FR}</arg>
+<arg>${LANG_EN}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2025-09-29T16:05:12.072897" elapsed="0.000997"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-29T16:05:12.073894" level="INFO">${LANG_DICT} = {'System': 'Système', 'Setting': 'Paramètres', 'Audio': 'Enregistrement', 'Record': 'START', 'Stop': 'STOP', 'Play': 'Lire'}</msg>
+<arg>${LANG_DICT}</arg>
+<arg>${lang_dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-29T16:05:12.073894" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:05:11.870908" elapsed="0.202986"/>
+</kw>
+<kw name="Navigate To Audio App">
+<kw name="Start Activity Code" owner="Integration">
+<arg>${driver}</arg>
+<arg>com.example.audioapplicationtest/.MainActivity</arg>
+<doc>Lance une activité spécifique sur un appareil Android via Appium.</doc>
+<status status="PASS" start="2025-09-29T16:05:12.074895" elapsed="0.250144"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-29T16:05:15.327206" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-29T16:05:12.325039" elapsed="3.002167"/>
+</kw>
+<kw name="Print Activity" owner="Integration">
+<msg time="2025-09-29T16:05:15.685104" level="INFO">${current_activity} = com.example.audioapplicationtest/.MainActivity</msg>
+<var>${current_activity}</var>
+<arg>${driver}</arg>
+<doc>Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.327206" elapsed="0.357898"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${current_activity}</arg>
+<arg>com.example.audioapplicationtest/.MainActivity</arg>
+<arg>L'application n'est pas correctement lancée</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.685104" elapsed="0.000537"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:05:12.073894" elapsed="3.611747"/>
+</kw>
+<kw name="Start Audio Recording And Playback">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:05:15.686634" level="INFO">Démarrage de l'enregistrement audio...</msg>
+<arg>Démarrage de l'enregistrement audio...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.685641" elapsed="0.000993"/>
+</kw>
+<kw name="Get Audio File Duration">
+<kw name="Get Audio Duration" owner="Integration">
+<msg time="2025-09-29T16:05:15.695400" level="INFO">✅ Durée du fichier audio C:\Users\bahae\Documents\PfeProject\test_cases\test.wav: 18.31 secondes</msg>
+<msg time="2025-09-29T16:05:15.695400" level="INFO">${duration} = 18.311836734693877</msg>
+<var>${duration}</var>
+<arg>${driver}</arg>
+<arg>${audio_file}</arg>
+<doc>Obtient la durée d'un fichier audio en secondes.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.686634" elapsed="0.009303"/>
+</kw>
+<kw name="Should Not Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-09-29T16:05:15.695937" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${duration}</arg>
+<arg>0</arg>
+<arg>Impossible d'obtenir la durée du fichier audio</arg>
+<doc>Fails if objects are equal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.695937" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${duration}</value>
+<status status="PASS" start="2025-09-29T16:05:15.695937" elapsed="0.000000"/>
+</return>
+<msg time="2025-09-29T16:05:15.695937" level="INFO">${duration} = 18.311836734693877</msg>
+<var>${duration}</var>
+<arg>${audio_file}</arg>
+<status status="PASS" start="2025-09-29T16:05:15.686634" elapsed="0.010305"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:05:15.696939" level="INFO">Durée du fichier audio à lire: 18.311836734693877 secondes</msg>
+<arg>Durée du fichier audio à lire: ${duration} secondes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.696939" elapsed="0.000000"/>
+</kw>
+<kw name="Click Record Button">
+<kw name="Wait For Record Button">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Check Element Exists" owner="Integration">
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="START"]</arg>
+<doc>Vérifie si un élément existe en utilisant le XPath donné.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.697931" elapsed="3.165885"/>
+</kw>
+<arg>${timeout}</arg>
+<arg>${QUICK_WAIT}</arg>
+<arg>Check Element Exists</arg>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="START"]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-09-29T16:05:15.697931" elapsed="3.165885"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:05:15.697931" elapsed="3.165885"/>
+</kw>
+<kw name="Check Element Exists" owner="Integration">
+<msg time="2025-09-29T16:05:19.107140" level="INFO">${button_exists} = True</msg>
+<var>${button_exists}</var>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="START"]</arg>
+<doc>Vérifie si un élément existe en utilisant le XPath donné.</doc>
+<status status="PASS" start="2025-09-29T16:05:18.864340" elapsed="0.242800"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${button_exists}</arg>
+<arg>Le bouton START n'est pas visible</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:05:19.108140" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click Element By Xpath Bounds" owner="Integration">
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="START"]</arg>
+<doc>Trouve un élément par XPath et clique dessus en utilisant ses bounds.</doc>
+<status status="PASS" start="2025-09-29T16:05:19.108140" elapsed="0.676183"/>
+</kw>
+<msg time="2025-09-29T16:05:19.785324" level="INFO">${success} = True</msg>
+<var>${success}</var>
+<arg>click_element_by_xpath_bounds</arg>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="START"]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:05:19.108140" elapsed="0.677184"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${success}</arg>
+<arg>Impossible de cliquer sur le bouton START</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:05:19.785872" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:05:15.696939" elapsed="4.088933"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-29T16:05:21.786192" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-29T16:05:19.785872" elapsed="2.000320"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Play Audio" owner="Integration">
+<msg time="2025-09-29T16:05:40.290732" level="INFO">✅ Lecture audio réussie : Lecture du fichier test.wav terminée</msg>
+<arg>${driver}</arg>
+<arg>${audio_file}</arg>
+<doc>Joue un fichier audio via l'API Flask.</doc>
+<status status="PASS" start="2025-09-29T16:05:21.786718" elapsed="18.504014"/>
+</kw>
+<msg time="2025-09-29T16:05:40.291738" level="INFO">${success} = True</msg>
+<var>${success}</var>
+<arg>play_audio</arg>
+<arg>${driver}</arg>
+<arg>${audio_file}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:05:21.786718" elapsed="18.505020"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${success}</arg>
+<arg>La lecture audio a échoué</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:05:40.291738" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-29T16:05:58.604808" level="INFO">Slept 18 seconds 312 milliseconds.</msg>
+<arg>${duration}s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-29T16:05:40.292735" elapsed="18.312073"/>
+</kw>
+<kw name="Click Stop Button">
+<kw name="Check Element Exists" owner="Integration">
+<msg time="2025-09-29T16:05:58.723918" level="INFO">${button_exists} = True</msg>
+<var>${button_exists}</var>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="STOP"]</arg>
+<doc>Vérifie si un élément existe en utilisant le XPath donné.</doc>
+<status status="PASS" start="2025-09-29T16:05:58.605339" elapsed="0.118579"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${button_exists}</arg>
+<arg>Le bouton STOP n'est pas visible</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:05:58.723918" elapsed="0.000994"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click Element By Xpath Bounds" owner="Integration">
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="STOP"]</arg>
+<doc>Trouve un élément par XPath et clique dessus en utilisant ses bounds.</doc>
+<status status="PASS" start="2025-09-29T16:05:58.724912" elapsed="0.571887"/>
+</kw>
+<msg time="2025-09-29T16:05:59.297801" level="INFO">${success} = True</msg>
+<var>${success}</var>
+<arg>click_element_by_xpath_bounds</arg>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="STOP"]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:05:58.724912" elapsed="0.572889"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${success}</arg>
+<arg>Impossible de cliquer sur le bouton STOP</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:05:59.297801" elapsed="0.000535"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:05:58.605339" elapsed="0.692997"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:05:15.685641" elapsed="43.612695"/>
+</kw>
+<kw name="Compare Audio Files">
+<kw name="Compare With Latest Recorded" owner="TestAudio">
+<msg time="2025-09-29T16:07:06.509051" level="INFO">Graphiques sauvegardés dans: resultats\Tests_2025-09-29_16-04_TestsAudio\plots\audio_comparison_enregistrement_20250929_160632.png</msg>
+<msg time="2025-09-29T16:07:06.517133" level="INFO">============================= Début du test audio ==============================
+Original: C:\Users\bahae\Documents\PfeProject\test_cases\test.wav
+Enregistré: latest_download.wav
+Date du test: 2025-09-29 16:05:59
+
+Original - Durée: 18.31s -&gt; Segment actif: 18.31s
+Enregistré - Durée: 39.38s -&gt; Segment actif: 18.17s
+Recherche du meilleur alignement...
+Alignement initial trouvé, ajustement fin...
+
+Détails de l'alignement:
+Position originale: 0.000s
+Position enregistrée: -0.036s
+Ajustement: -36.0ms
+Corrélation initiale: 0.843
+Original length: 803005, Recorded length: 803005
+Best lag: 0 samples (0.000 seconds)
+Final lengths - Original: 803005, Aligned: 803005
+Décalage temporel final: 0.000 secondes
+
+=== Résultats ===
+Décalage temporel: 0.000 secondes
+         snr: 5.2788
+ correlation: 0.8428
+         mse: 0.0097
+        rmse: 0.0986
+energy_ratio: 0.8571
+    max_diff: 0.9262
+   mean_diff: 0.0638
+         mos: 3.8225
+     clarity: 1.0235
+  clarity_db: 0.1010
+
+=== Résultat: SUCCÈS ===
+SNR: 5.28 dB (seuil: -1 dB)
+Corrélation: 0.843 (seuil: 0.4)
+MOS: 3.82/5 (seuil: 3.0)
+Clarté: 1.024 (seuil: 0.8)</msg>
+<msg time="2025-09-29T16:07:06.517133" level="INFO">C:\Users\bahae\Documents\PfeProject\test_cases\TestAudio.py:341: UserWarning: Glyph 9989 (\N{WHITE HEAVY CHECK MARK}) missing from font(s) DejaVu Sans.
+  plt.savefig(output_file, dpi=300, bbox_inches='tight')
+C:\Program Files\JetBrains\PyCharm 2024.3.2\plugins\python-ce\helpers\pycharm_matplotlib_backend\backend_interagg.py:124: UserWarning: Glyph 9989 (\N{WHITE HEAVY CHECK MARK}) missing from font(s) DejaVu Sans.
+  FigureCanvasAgg.draw(self)</msg>
+<msg time="2025-09-29T16:07:06.520668" level="INFO">${test_passed} = True</msg>
+<msg time="2025-09-29T16:07:06.521666" level="INFO">${metrics} = {'snr': np.float64(5.2787710197288025), 'correlation': np.float64(0.8428039122486521), 'mse': np.float64(0.009715087340845108), 'rmse': np.float64(0.09856514262580413), 'energy_ratio': np.float64(0.85...</msg>
+<var>${test_passed}</var>
+<var>${metrics}</var>
+<arg>${original_audio}</arg>
+<doc>Télécharge le dernier audio enregistré via l'API Flask et le compare à l'original.
+:param original_audio: Chemin du fichier original (wav)
+:param latest_audio_path: Chemin où sauvegarder le fichier téléchargé
+:param api_url: URL de l'API Flask pour récupérer le dernier audio enregistré
+:return: (test_passed, metrics)</doc>
+<status status="PASS" start="2025-09-29T16:05:59.299332" elapsed="67.223333"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.539900" level="INFO">SNR: 5.2787710197288025 dB</msg>
+<arg>SNR: ${metrics['snr']} dB</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.530277" elapsed="0.010613"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.541889" level="INFO">Corrélation: 0.8428039122486521 (seuil: 0.4)</msg>
+<arg>Corrélation: ${metrics['correlation']} (seuil: 0.4)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.540890" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.542891" level="INFO">MOS: 3.8225155354875344/5 (seuil: 3.0)</msg>
+<arg>MOS: ${metrics['mos']}/5 (seuil: 3.0)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.541889" elapsed="0.001002"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.543546" level="INFO">Clarté: 1.0235269554999913 (seuil: 0.8)</msg>
+<arg>Clarté: ${metrics['clarity']} (seuil: 0.8)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.542891" elapsed="0.000655"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.545427" level="INFO">${correlation_ok} = True</msg>
+<var>${correlation_ok}</var>
+<arg>${metrics['correlation']} &gt;= 0.4</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.544428" elapsed="0.002001"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.547967" level="INFO">${mos_ok} = True</msg>
+<var>${mos_ok}</var>
+<arg>${metrics['mos']} &gt;= 3.0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.546429" elapsed="0.001538"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.548966" level="INFO">${clarity_ok} = True</msg>
+<var>${clarity_ok}</var>
+<arg>${metrics['clarity']} &gt;= 0.8</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.547967" elapsed="0.000999"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.549970" level="INFO">${test_passed} = True</msg>
+<var>${test_passed}</var>
+<arg>${correlation_ok} and ${mos_ok} and ${clarity_ok}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.548966" elapsed="0.001004"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${test_passed}">
+<kw name="Log" owner="BuiltIn">
+<arg>❌ Test échoué - Métriques critiques non satisfaites</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-29T16:07:06.550507" elapsed="0.000000"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Test audio échoué - Vérifiez les métriques dans les logs</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-09-29T16:07:06.551510" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-09-29T16:07:06.550507" elapsed="0.001003"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.552511" level="INFO">✅ Test réussi - Toutes les métriques sont satisfaites</msg>
+<arg>✅ Test réussi - Toutes les métriques sont satisfaites</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.551510" elapsed="0.001001"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:07:06.551510" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:07:06.550507" elapsed="0.002004"/>
+</if>
+<return>
+<value>${test_passed}</value>
+<value>${metrics}</value>
+<status status="PASS" start="2025-09-29T16:07:06.552511" elapsed="0.000992"/>
+</return>
+<msg time="2025-09-29T16:07:06.554503" level="INFO">${result} = [True, {'snr': np.float64(5.2787710197288025), 'correlation': np.float64(0.8428039122486521), 'mse': np.float64(0.009715087340845108), 'rmse': np.float64(0.09856514262580413), 'energy_ratio': np.float...</msg>
+<var>${result}</var>
+<arg>${DEFAULT_OUTPUT_FILE}</arg>
+<status status="PASS" start="2025-09-29T16:05:59.298336" elapsed="67.256167"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.555502" level="INFO">Résultat de la comparaison: [True, {'snr': np.float64(5.2787710197288025), 'correlation': np.float64(0.8428039122486521), 'mse': np.float64(0.009715087340845108), 'rmse': np.float64(0.09856514262580413), 'energy_ratio': np.float64(0.8570736525261801), 'max_diff': np.float64(0.9261903550645819), 'mean_diff': np.float64(0.06383047225755187), 'mos': np.float64(3.8225155354875344), 'clarity': np.float64(1.0235269554999913), 'clarity_db': np.float64(0.10099284726104227), 'plot_file': 'resultats\\Tests_2025-09-29_16-04_TestsAudio\\plots\\audio_comparison_enregistrement_20250929_160632.png'}]</msg>
+<arg>Résultat de la comparaison: ${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.555502" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:05:11.870908" elapsed="114.684594"/>
+</kw>
+<msg time="2025-09-29T16:07:06.555502" level="INFO">${test_status} = True</msg>
+<var>${test_status}</var>
+<arg>${test_keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:05:11.869908" elapsed="114.685594"/>
+</kw>
+<if>
+<branch type="IF" condition="${test_status}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.557049" level="INFO">Test Test Audio Recording And Playback réussi</msg>
+<arg>Test ${test_name} réussi</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.556511" elapsed="0.000538"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-09-29T16:07:06.557049" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.557049" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:07:06.556511" elapsed="0.001540"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${attempt}</var>
+<arg>${attempt} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-29T16:07:06.558051" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="${attempt} &lt;= ${MAX_RETRIES}">
+<kw name="Log" owner="BuiltIn">
+<arg>Test ${test_name} échoué - Tentative ${attempt}/${MAX_RETRIES}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-29T16:07:06.558051" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${RETRY_DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-29T16:07:06.559123" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-09-29T16:07:06.558051" elapsed="0.001072"/>
+</branch>
+<status status="NOT RUN" start="2025-09-29T16:07:06.558051" elapsed="0.001072"/>
+</if>
+<status status="NOT RUN" start="2025-09-29T16:07:06.558051" elapsed="0.001072"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:07:06.556511" elapsed="0.002612"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-09-29T16:05:11.869908" elapsed="114.689215"/>
+</iter>
+<var>${index}</var>
+<value>${MAX_RETRIES}</value>
+<status status="PASS" start="2025-09-29T16:05:11.869908" elapsed="114.689215"/>
+</for>
+<if>
+<branch type="IF" condition="not ${test_status}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Le test ${test_name} a échoué après ${MAX_RETRIES} tentatives</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-09-29T16:07:06.560120" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-09-29T16:07:06.560120" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:07:06.560120" elapsed="0.000000"/>
+</if>
+<arg>Verify Audio Recording</arg>
+<arg>Test Audio Recording And Playback</arg>
+<status status="PASS" start="2025-09-29T16:05:11.867911" elapsed="114.692209"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-29T16:07:16.561311" level="INFO">Slept 10 seconds.</msg>
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-29T16:07:06.560120" elapsed="10.001191"/>
+</kw>
+<kw name="Close Activity Robot" owner="Integration">
+<msg time="2025-09-29T16:07:19.536577" level="INFO">Application com.example.audioapplicationtest fermée avec terminateApp
+Application com.example.audioapplicationtest fermée avec succès</msg>
+<arg>${driver}</arg>
+<arg>com.example.audioapplicationtest</arg>
+<doc>Version de close_activity adaptée pour Robot Framework.
+Utilise plusieurs méthodes pour s'assurer que l'application est bien fermée.</doc>
+<status status="PASS" start="2025-09-29T16:07:16.561311" elapsed="2.975266"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:19.537110" elapsed="1.010997"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:07:20.549969" level="INFO">${cpu} = 68.56521739130434</msg>
+<msg time="2025-09-29T16:07:20.550967" level="INFO">${mem} = 2297.9852666440215</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.548107" elapsed="0.002860"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-09-29T16:07:20.553235" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Audio Recording And Playback:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.550967" elapsed="0.002449"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:20.553416" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.553416" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-09-29T16:07:20.555258" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Audio Recording And Playback:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.553416" elapsed="0.001842"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:07:20.555258" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.555258" elapsed="0.000000"/>
+</kw>
+<doc>Verifies audio recording and playback functionality
+- Navigates to audio recording app
+- Records audio for a specified duration
+- Plays back the recorded audio
+- Supports both French and English interfaces</doc>
+<tag>audio</tag>
+<tag>playback</tag>
+<tag>recording</tag>
+<status status="PASS" start="2025-09-29T16:05:09.005282" elapsed="131.549976"/>
+</test>
+<test id="s1-t2" name="Test Audio Player And Playback" line="263">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:07:20.558702" level="INFO">${monitor} = &lt;ResourceMonitor(Thread-4, initial daemon)&gt;</msg>
+<var>${monitor}</var>
+<arg>__import__('resource_monitor').ResourceMonitor()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.557702" elapsed="0.001000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-29T16:07:20.560240" level="INFO">${namespace} = {'monitor': &lt;ResourceMonitor(Thread-4, initial daemon)&gt;}</msg>
+<var>${namespace}</var>
+<arg>monitor=${monitor}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.559702" elapsed="0.000538"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.start()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.560240" elapsed="0.143301"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Navigate To Audio Player App">
+<kw name="Start Activity Code" owner="Integration">
+<arg>${driver}</arg>
+<arg>com.example.audioapplicationtest/.AudioPlayerActivity</arg>
+<doc>Lance une activité spécifique sur un appareil Android via Appium.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.706538" elapsed="0.166384"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-29T16:07:23.874170" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.872922" elapsed="3.001248"/>
+</kw>
+<kw name="Print Activity" owner="Integration">
+<msg time="2025-09-29T16:07:24.073722" level="INFO">${current_activity} = com.example.audioapplicationtest/.AudioPlayerActivity</msg>
+<var>${current_activity}</var>
+<arg>${driver}</arg>
+<doc>Retourne l'activité complète sous la forme 'com.android.car.messenger/.ui.launcher.MessageLauncherActivity'.</doc>
+<status status="PASS" start="2025-09-29T16:07:23.874709" elapsed="0.199013"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${current_activity}</arg>
+<arg>com.example.audioapplicationtest/.AudioPlayerActivity</arg>
+<arg>L'application n'est pas correctement lancée</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-29T16:07:24.073722" elapsed="0.001001"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:07:20.705539" elapsed="3.369184"/>
+</kw>
+<msg time="2025-09-29T16:07:24.074723" level="INFO">${status} = True</msg>
+<var>${status}</var>
+<arg>Navigate To Audio Player App</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:07:20.704539" elapsed="3.370184"/>
+</kw>
+<if>
+<branch type="IF" condition="${status}">
+<break>
+<status status="PASS" start="2025-09-29T16:07:24.074723" elapsed="0.000999"/>
+</break>
+<status status="PASS" start="2025-09-29T16:07:24.074723" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:07:24.074723" elapsed="0.000999"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-29T16:07:24.075722" elapsed="0.000000"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-09-29T16:07:20.704539" elapsed="3.371183"/>
+</iter>
+<var>${i}</var>
+<value>3</value>
+<status status="PASS" start="2025-09-29T16:07:20.703541" elapsed="3.372696"/>
+</for>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>Failed to navigate to audio player app after 3 attempts</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:07:24.076263" elapsed="0.000000"/>
+</kw>
+<kw name="Record Audio" owner="Integration">
+<msg time="2025-09-29T16:07:24.113100" level="INFO">✅ Enregistrement audio réussi : Enregistrement audio démarré</msg>
+<msg time="2025-09-29T16:07:24.113100" level="INFO">${recording_success} = True</msg>
+<var>${recording_success}</var>
+<arg>${driver}</arg>
+<arg>23</arg>
+<doc>Enregistre l'audio du système via l'API Flask.</doc>
+<status status="PASS" start="2025-09-29T16:07:24.076263" elapsed="0.036837"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${recording_success}</arg>
+<arg>L'enregistrement audio a échoué</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:07:24.113100" elapsed="0.000998"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-29T16:07:25.114953" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-29T16:07:24.114098" elapsed="1.000855"/>
+</kw>
+<kw name="Click Play Button">
+<kw name="Wait For Record Button">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Check Element Exists" owner="Integration">
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="START"]</arg>
+<doc>Vérifie si un élément existe en utilisant le XPath donné.</doc>
+<status status="PASS" start="2025-09-29T16:07:25.116091" elapsed="0.211291"/>
+</kw>
+<arg>${timeout}</arg>
+<arg>${QUICK_WAIT}</arg>
+<arg>Check Element Exists</arg>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="START"]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-09-29T16:07:25.116091" elapsed="0.211291"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:07:25.115478" elapsed="0.211904"/>
+</kw>
+<kw name="Check Element Exists" owner="Integration">
+<msg time="2025-09-29T16:07:25.436450" level="INFO">${button_exists} = True</msg>
+<var>${button_exists}</var>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="PLAY TEST WAV"]</arg>
+<doc>Vérifie si un élément existe en utilisant le XPath donné.</doc>
+<status status="PASS" start="2025-09-29T16:07:25.327382" elapsed="0.109068"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${button_exists}</arg>
+<arg>Le bouton PLAY TEST WAV n'est pas visible</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:07:25.436450" elapsed="0.001000"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click Element By Xpath Bounds" owner="Integration">
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="PLAY TEST WAV"]</arg>
+<doc>Trouve un élément par XPath et clique dessus en utilisant ses bounds.</doc>
+<status status="PASS" start="2025-09-29T16:07:25.437450" elapsed="0.600477"/>
+</kw>
+<msg time="2025-09-29T16:07:26.037927" level="INFO">${success} = True</msg>
+<var>${success}</var>
+<arg>click_element_by_xpath_bounds</arg>
+<arg>${driver}</arg>
+<arg>//android.widget.Button[@text="PLAY TEST WAV"]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:07:25.437450" elapsed="0.600477"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${success}</arg>
+<arg>Impossible de cliquer sur le bouton START</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-09-29T16:07:26.037927" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:07:25.115478" elapsed="0.922449"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-29T16:07:48.039236" level="INFO">Slept 22 seconds.</msg>
+<arg>22s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-29T16:07:26.038928" elapsed="22.000308"/>
+</kw>
+<kw name="Compare Audio Files Play">
+<kw name="Compare With Latest Recorded Play" owner="TestAudio">
+<msg time="2025-09-29T16:08:55.343191" level="INFO">Graphiques sauvegardés dans: resultats\Tests_2025-09-29_16-04_TestsAudio\plots\audio_comparison_lecture_20250929_160820.png</msg>
+<msg time="2025-09-29T16:08:55.343191" level="INFO">============================= Début du test audio ==============================
+Original: C:\Users\bahae\Documents\PfeProject\test_cases\test.wav
+Enregistré: latest_playback.wav
+Date du test: 2025-09-29 16:07:48
+
+Original - Durée: 18.31s -&gt; Segment actif: 18.31s
+Enregistré - Durée: 23.00s -&gt; Segment actif: 18.39s
+Recherche du meilleur alignement...
+Alignement initial trouvé, ajustement fin...
+
+Détails de l'alignement:
+Position originale: 0.000s
+Position enregistrée: 0.066s
+Ajustement: 65.7ms
+Corrélation initiale: 0.562
+Original length: 807552, Recorded length: 807552
+Best lag: -430 samples (-0.010 seconds)
+Final lengths - Original: 807552, Aligned: 807552
+Décalage temporel final: -0.010 secondes
+
+=== Résultats ===
+Décalage temporel: -0.010 secondes
+         snr: 6.0735
+ correlation: 0.8766
+         mse: 0.0082
+        rmse: 0.0903
+energy_ratio: 1.0018
+    max_diff: 0.8881
+   mean_diff: 0.0344
+         mos: 3.8949
+     clarity: 1.1108
+  clarity_db: 0.4565
+
+=== Résultat: SUCCÈS ===
+SNR: 6.07 dB (seuil: -1 dB)
+Corrélation: 0.877 (seuil: 0.4)
+MOS: 3.89/5 (seuil: 3.0)
+Clarté: 1.111 (seuil: 0.8)</msg>
+<msg time="2025-09-29T16:08:55.343191" level="INFO">${test_passed} = True</msg>
+<msg time="2025-09-29T16:08:55.344189" level="INFO">${metrics} = {'snr': np.float64(6.073473940476511), 'correlation': np.float64(0.876621361490268), 'mse': np.float64(0.008157959888363263), 'rmse': np.float64(0.0903214254114895), 'energy_ratio': np.float64(1.00175...</msg>
+<var>${test_passed}</var>
+<var>${metrics}</var>
+<arg>${original_audio}</arg>
+<doc>Télécharge le dernier audio lu via l'API Flask et le compare à l'original.
+:param original_audio: Chemin du fichier original (wav)
+:param latest_audio_path: Chemin où sauvegarder le fichier téléchargé
+:param api_url: URL de l'API Flask pour récupérer le dernier audio lu
+:return: (test_passed, metrics)</doc>
+<status status="PASS" start="2025-09-29T16:07:48.040226" elapsed="67.303963"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.345189" level="INFO">SNR: 6.073473940476511 dB</msg>
+<arg>SNR: ${metrics['snr']} dB</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.344189" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.347741" level="INFO">Corrélation: 0.876621361490268 (seuil: 0.4)</msg>
+<arg>Corrélation: ${metrics['correlation']} (seuil: 0.4)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.345189" elapsed="0.002552"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.348730" level="INFO">MOS: 3.894884591407382/5 (seuil: 3.0)</msg>
+<arg>MOS: ${metrics['mos']}/5 (seuil: 3.0)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.347741" elapsed="0.000989"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.349729" level="INFO">Clarté: 1.1108290899006221 (seuil: 0.8)</msg>
+<arg>Clarté: ${metrics['clarity']} (seuil: 0.8)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.348730" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.351284" level="INFO">${plot_file} = resultats\Tests_2025-09-29_16-04_TestsAudio\plots\audio_comparison_lecture_20250929_160820.png</msg>
+<var>${plot_file}</var>
+<arg>${metrics['plot_file']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.350728" elapsed="0.000556"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.351284" level="INFO">&lt;img src="resultats\Tests_2025-09-29_16-04_TestsAudio\plots\audio_comparison_lecture_20250929_160820.png" width="800px"/&gt;</msg>
+<arg>&lt;img src="${plot_file}" width="800px"/&gt;</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.351284" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.353270" level="INFO">${correlation_ok} = True</msg>
+<var>${correlation_ok}</var>
+<arg>${metrics['correlation']} &gt;= 0.4</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.352272" elapsed="0.000998"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.354799" level="INFO">${mos_ok} = True</msg>
+<var>${mos_ok}</var>
+<arg>${metrics['mos']} &gt;= 3.0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.353270" elapsed="0.001529"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.355791" level="INFO">${clarity_ok} = True</msg>
+<var>${clarity_ok}</var>
+<arg>${metrics['clarity']} &gt;= 0.8</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.354799" elapsed="0.000992"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.356793" level="INFO">${test_passed} = True</msg>
+<var>${test_passed}</var>
+<arg>${correlation_ok} and ${mos_ok} and ${clarity_ok}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.356793" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${test_passed}">
+<kw name="Log" owner="BuiltIn">
+<arg>❌ Test échoué - Métriques critiques non satisfaites</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-29T16:08:55.356793" elapsed="0.000000"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Test audio échoué - Vérifiez les métriques dans les logs</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-09-29T16:08:55.357799" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-09-29T16:08:55.356793" elapsed="0.001006"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.357799" level="INFO">✅ Test réussi - Toutes les métriques sont satisfaites</msg>
+<arg>✅ Test réussi - Toutes les métriques sont satisfaites</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.357799" elapsed="0.000535"/>
+</kw>
+<status status="PASS" start="2025-09-29T16:08:55.357799" elapsed="0.000535"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:08:55.356793" elapsed="0.001541"/>
+</if>
+<return>
+<value>${test_passed}</value>
+<value>${metrics}</value>
+<status status="PASS" start="2025-09-29T16:08:55.358334" elapsed="0.000000"/>
+</return>
+<arg>C:\\Users\\bahae\\Documents\\PfeProject\\test_cases${/}test.wav</arg>
+<status status="PASS" start="2025-09-29T16:07:48.039236" elapsed="67.319098"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>monitor.stop()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.358334" elapsed="0.466767"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.825827" level="INFO">${cpu} = 57.19047619047619</msg>
+<msg time="2025-09-29T16:08:55.825827" level="INFO">${mem} = 2379.0936104910716</msg>
+<var>${cpu}</var>
+<var>${mem}</var>
+<arg>monitor.get_averages()</arg>
+<arg>namespace=${namespace}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.825827" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-09-29T16:08:55.827819" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\cpu_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\cpu_usage.log&lt;/a&gt;'.</msg>
+<arg>cpu_usage.log</arg>
+<arg>Test Audio Player And Playback:${cpu}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.825827" elapsed="0.001992"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.827819" level="INFO">CPU value saved to cpu_usage.log</msg>
+<arg>CPU value saved to cpu_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.827819" elapsed="0.000000"/>
+</kw>
+<kw name="Append To File" owner="OperatingSystem">
+<msg time="2025-09-29T16:08:55.828821" level="INFO" html="true">Appended to file '&lt;a href="file://C:\Users\bahae\Documents\PfeProject\mem_usage.log"&gt;C:\Users\bahae\Documents\PfeProject\mem_usage.log&lt;/a&gt;'.</msg>
+<arg>mem_usage.log</arg>
+<arg>Test Audio Player And Playback:${mem}\n</arg>
+<doc>Appends the given content to the specified file.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.827819" elapsed="0.002003"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-29T16:08:55.829822" level="INFO">RAM value saved to mem_usage.log</msg>
+<arg>RAM value saved to mem_usage.log</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.829822" elapsed="0.000000"/>
+</kw>
+<doc>Verifies audio recording and playback functionality
+- Navigates to audio recording app
+- Records audio for a specified duration
+- Plays audio
+- Supports both French and English interfaces</doc>
+<tag>audio</tag>
+<tag>playback</tag>
+<tag>recording</tag>
+<status status="PASS" start="2025-09-29T16:07:20.556709" elapsed="95.273113"/>
+</test>
+<kw name="Fermer Driver" type="TEARDOWN">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Variable Should Exist" owner="BuiltIn">
+<arg>${driver}</arg>
+<doc>Fails unless the given variable exists within the current scope.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.831361" elapsed="0.000990"/>
+</kw>
+<msg time="2025-09-29T16:08:55.832351" level="INFO">${driver_exists} = True</msg>
+<var>${driver_exists}</var>
+<arg>Variable Should Exist</arg>
+<arg>${driver}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.831361" elapsed="0.000990"/>
+</kw>
+<if>
+<branch type="IF" condition="${driver_exists}">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Close Driver" owner="Integration">
+<arg>${driver}</arg>
+<doc>Ferme proprement le driver Appium.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.832351" elapsed="0.310557"/>
+</kw>
+<msg time="2025-09-29T16:08:56.142908" level="INFO">${close_success} = True</msg>
+<var>${close_success}</var>
+<arg>Close Driver</arg>
+<arg>${driver}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-09-29T16:08:55.832351" elapsed="0.310557"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${close_success}">
+<kw name="Log" owner="BuiltIn">
+<arg>Warning: Impossible de fermer proprement le driver Appium</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-29T16:08:56.142908" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-09-29T16:08:56.142908" elapsed="0.001001"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:08:56.142908" elapsed="0.001001"/>
+</if>
+<status status="PASS" start="2025-09-29T16:08:55.832351" elapsed="0.311558"/>
+</branch>
+<status status="PASS" start="2025-09-29T16:08:55.832351" elapsed="0.311558"/>
+</if>
+<status status="PASS" start="2025-09-29T16:08:55.831361" elapsed="0.312548"/>
+</kw>
+<doc>Tests for audio recording and playback functionality
+- Verifies audio recording capabilities
+- Verifies audio playback capabilities
+- Supports both French and English interfaces</doc>
+<status status="PASS" start="2025-09-29T16:04:43.715462" elapsed="252.428447"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">audio</stat>
+<stat pass="2" fail="0" skip="0">playback</stat>
+<stat pass="2" fail="0" skip="0">recording</stat>
+</tag>
+<suite>
+<stat name="TestsAudio" id="s1" pass="2" fail="0" skip="0">TestsAudio</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-29T16:04:49.668365" level="WARN">Imported library 'C:\Users\bahae\Documents\PfeProject\test_cases\resource_monitor.py' contains no keywords.</msg>
+</errors>
+</robot>
